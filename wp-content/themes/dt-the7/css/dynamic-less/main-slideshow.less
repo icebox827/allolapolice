@@ -1,0 +1,31 @@
+
+// /* #Main slideshow
+// ================================================== */
+
+#main-slideshow:not(.rv-slider):not(.empty-slider) {
+	min-height: @header-height;
+}
+	/*FIXED WIDTH SLIDESHOW*/
+
+		#main-slideshow.fixed,
+		#main-slideshow.fix,
+		#main-slideshow.layer-fixed {
+			background: @main-slideshow-bg-image @main-slideshow-bg-repeat @main-slideshow-bg-attachment @main-slideshow-bg-position-x @main-slideshow-bg-position-y;
+			background-size: @main-slideshow-bg-size;
+			background-color: fade(@base-color, 8%);
+		}
+		#main-slideshow.fixed {
+				min-height: @header-height - 80;
+			}
+
+		#main-slideshow.fixed > .royalSlider,
+		#main-slideshow.fixed .ts-wrap {
+			max-width: @content-width - 88;
+		}
+			#main-slideshow.fixed:after,
+			#main-slideshow.layer-fixed:after,
+			#main-slideshow.fix:after {
+				.outline-element-decoration & {
+					background-color: fade(@base-color, 15%);
+				}
+			}

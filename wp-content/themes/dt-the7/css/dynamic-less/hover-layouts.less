@@ -1,0 +1,131 @@
+ /* #Hover layouts
+================================================== */
+
+/* # Background color: custom
+================================================== */
+
+ @project-bg-hover-opacity=70;
+
+.rollover i,
+.post-rollover i,
+.rollover-video i,
+.enable-bg-rollover .post-thumbnail-rollover:after,
+.enable-bg-rollover .gallery-rollover,
+.enable-bg-rollover.hover-scale figure:after {
+	background-color: @rollover-bg-color;
+	.background-gradient (@startColor: @rollover-bg-color, @endColor: @rollover-bg-color-2);
+}
+.hover-style-two:not(.effect-layla):not(.effect-bubba):not(.effect-sarah) .rollover-content,
+.buttons-on-img .rollover-content,
+.albums .rollover-thumbnails-on i,
+.dt-albums-shortcode .rollover-thumbnails-on i,
+.rollover-buttons-on i,
+.hover-scale .rollover-project:after,
+.hover-style-two.content-align-bottom .rollover-project:after,
+.portfolio-shortcode.enable-bg-rollover .post-thumbnail-rollover:after,
+.albums-shortcode.enable-bg-rollover .post-thumbnail-rollover:after,
+.enable-bg-rollover.hover-scale article:after {
+	background-color: @project-rollover-bg-color;
+	.background-gradient (@startColor: @project-rollover-bg-color, @endColor: @project-rollover-bg-color-2);
+}
+.rollover-project {
+	.effect-bubba &,
+	.effect-layla &,
+	.effect-sarah & {
+		background-color: @project-rollover-bg-color;
+		.background-gradient (@startColor: @project-rollover-bg-color, @endColor: @project-rollover-bg-color-2);
+	}
+}
+@percent-to-num-opacity: (unit(@project-bg-hover-opacity) / 100);
+
+ > a > img{
+	.mobile-false .effect-bubba:not(.hover-color-static) .rollover-project:hover &,
+	.mobile-false .effect-layla:not(.hover-color-static) .rollover-project:hover &,
+	.mobile-false .effect-sarah:not(.hover-color-static) .rollover-project:hover &,
+	.mobile-true .effect-bubba:not(.hover-color-static) .is-clicked &,
+	.mobile-true .effect-layla:not(.hover-color-static) .is-clicked &,
+	.mobile-true .effect-sarah:not(.hover-color-static) .is-clicked & {
+		opacity: 1 - @percent-to-num-opacity;
+	}
+}
+/* # Background color: dark
+================================================== */
+@percent-to-num: (unit(@bg-hover-opacity) / 100);
+.hover-color-static:not(.effect-layla):not(.effect-bubba):not(.effect-sarah) .rollover-content,
+.accent-gradient .hover-color-static:not(.effect-layla):not(.effect-bubba):not(.effect-sarah) .rollover-content,
+.hover-color-static.hover-scale .rollover-project:after,
+.hover-color-static.hover-style-two.content-align-bottom .rollover-project:after {
+	background-color: rgba(0, 0, 0, 0.65);
+	background-image: none;
+}
+.rollover-project {
+	.hover-color-static.effect-bubba &,
+	.hover-color-static.effect-layla &,
+	.hover-color-static.effect-sarah & {
+		background-color: rgba(0, 0, 0, 1);
+		background-image: none;
+	}
+}
+.hover-color-static .buttons-on-img i,
+.hover-color-static .rollover i,
+.hover-color-static .rollover-video i,
+.hover-color-static .rollover.rollover-thumbnails-on i,
+#page .hover-color-static .buttons-on-img .rollover-content {
+	background-color: rgba(0, 0, 0, 0.35);
+	background-image: none;
+}
+
+
+/* # Buttons on rollover
+================================================== */
+
+.rollover-thumbnails span:first-child i {
+	.accent-bg-mixin;
+}
+.gallery-zoom-ico {
+	.gallery-shortcode &,
+	.blog-shortcode &,
+	.blog-carousel-shortcode & {
+		& span,
+		&:before {
+			color: @accent-bg-color;
+		}
+		border-color: @accent-bg-color;
+		.dt-icon-bg-on& {
+			background-color: @accent-bg-color;
+			.accent-gradient & {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+		}
+	}
+}
+.album-zoom-ico {
+	.albums-shortcode & {
+		& span {
+			color: @accent-bg-color;
+		}
+		border-color: @accent-bg-color;
+		.dt-icon-bg-on& {
+			background-color: @accent-bg-color;
+			.accent-gradient & {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+		}
+	}
+}
+
+.rollover-content {
+	line-height: @base-line-height;
+}
+	.rollover-content h2.entry-title {
+		.header-color;
+	}
+
+
+/* #Under images
+================================================== */
+.portfolio-categories a,
+.portfolio-categories a *,
+.portfolio-categories span {
+	color: @secondary-text-color;
+}

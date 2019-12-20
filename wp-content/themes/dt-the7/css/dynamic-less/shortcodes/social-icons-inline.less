@@ -1,0 +1,87 @@
+/* #Social icons
+================================================== */
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+	background: none;
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+}
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	box-shadow:         @string;
+}
+a {
+	.dt-shortcode-soc-icons.@{unique-shortcode-class-name} & {
+		//margin-right: @soc-icon-gap-between;
+		.custom-mixin-margin-right (@soc-icon-gap-between);
+	}
+}
+.custom-mixin-margin-right (@customString) when not(@customString = ~"") {
+	margin-right: @customString;
+}
+a.@{unique-shortcode-class-name} {
+	.dt-shortcode-soc-icons & {
+		min-width: @soc-icon-bg-size;
+		min-height: @soc-icon-bg-size;
+		font-size: @soc-icon-size;
+		border-radius: @soc-icon-border-radius;
+		//margin-right: @soc-icon-gap-between;
+		.custom-mixin-margin-right (@soc-icon-gap-between);
+		&:last-child {
+			margin-right: 0;
+		}
+		&:before,
+		&:after {
+			min-width: @soc-icon-bg-size;
+			min-height: @soc-icon-bg-size;
+			padding: inherit;
+			//border: @soc-icon-border-width solid transparent;
+		}
+		&.dt-icon-bg-on:before {
+			#page &,
+			#phantom & {
+				.custom-mixin-bg (@soc-icon-bg-color);
+			}
+		}
+		&.dt-icon-border-on:before {
+			border: @soc-icon-border-width solid @soc-icon-border-color;
+		}
+		&.dt-icon-hover-border-on:after {
+			border: @soc-icon-border-width solid @soc-icon-border-color-hover;
+		}
+		&:hover {
+			font-size: @soc-icon-size;
+			
+			& .soc-font-icon,
+			& .soc-icon {
+				#page &,
+				#phantom & {
+					.custom-mixin-color (@soc-icon-color-hover);
+				}
+			}
+		}
+		&.dt-icon-hover-bg-on {
+			&:after {
+				#page &,
+				#phantom & {
+					.custom-mixin-bg (@soc-icon-bg-color-hover);
+				}
+			}
+		}
+		&:not(:hover) .soc-font-icon,
+		&:not(:hover) .soc-icon {
+			#page &,
+			#phantom & {
+				.custom-mixin-color (@soc-icon-color);
+			}
+		}
+		& .soc-font-icon,
+		& .soc-icon {
+			font-size: @soc-icon-size;
+		}
+	}
+}

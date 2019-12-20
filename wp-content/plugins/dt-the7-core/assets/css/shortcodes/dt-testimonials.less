@@ -1,0 +1,216 @@
+ /* #Shortcode carousel
+================================================== */
+
+
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+	background: none;
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+}
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.custom-mixin-shadow ( @string: "", @customColor) when (iscolor(@customColor)) {
+	-webkit-box-shadow: @string @customColor;
+	box-shadow:         @string @customColor;
+}
+.custom-mixin-font-size (@customSize) when (isnumber(@customSize)) {
+	font-size: @customSize;
+}
+.custom-mixin-line-height (@customSize) when (isnumber(@customSize)) {
+	line-height: @customSize;
+}
+.custom-mixin-width (@customSize) when (isnumber(@customSize)) {
+	width: @customSize;
+}
+
+.custom-mixin-max-width(@customSize) when (isnumber(@customSize)) {
+	max-width: @customSize;
+}
+.custom-mixin-fade-border (@customSize) when (iscolor(@customSize)) {
+	border-color: fade(@customSize, 15%);
+}
+.custom-mixin-fade-color (@customSize) when (iscolor(@customSize)) {
+	color: fade(@customSize, 15%);
+}
+
+.custom-mixin-fade-fill (@customSize) when (iscolor(@customSize)) {
+	fill: fade(@customSize, 15%);
+}
+.custom-mixin-fade-avatar-border (@customSize) when (iscolor(@customSize)) {
+	border-color: fade(@customSize, 15%);
+}
+.custom-mixin-font-style (@customString) when not(@customString = ~"") {
+	font-style: @customString;
+}
+.custom-mixin-font-weight (@customString) when not(@customString = ~"") {
+	font-weight: @customString;
+}
+.custom-mixin-text-transform (@customString) when not(@customString = ~"") {
+	text-transform: @customString;
+}
+
+.@{unique-shortcode-class-name}.content-bg-on .testimonial-item {
+	.custom-mixin-bg (@post-content-bg);
+}
+.testimonial-item {
+	.@{unique-shortcode-class-name} & {
+		padding: @post-content-padding-top @post-content-padding-right @post-content-padding-bottom @post-content-padding-left;
+	}
+}
+.testimonial-name,
+.testimonial-name a,
+.testimonial-name span {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-color (@post-title-color);
+		margin-bottom: @post-title-margin-bottom;
+		.custom-mixin-font-size (@post-title-font-size);
+		.custom-mixin-line-height (@post-title-line-height);
+		.custom-mixin-font-style ( @post-title-font-style);
+		.custom-mixin-font-weight (@post-title-font-weight);
+		.custom-mixin-text-transform (@post-title-text-transform);
+	}
+}
+.testimonial-position {
+	.@{unique-shortcode-class-name} & {
+		margin-bottom: @testimonial-position-margin-bottom;
+	}
+}
+.testimonial-position,
+.testimonial-position span {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-font-size (@testimonial-position-font-size);
+		.custom-mixin-line-height (@testimonial-position-line-height);
+		.content & {
+			.custom-mixin-color (@testimonial-position-color);
+		}
+		.custom-mixin-font-style ( @testimonial-position-font-style);
+		.custom-mixin-font-weight (@testimonial-position-font-weight);
+		.custom-mixin-text-transform (@testimonial-position-text-transform);
+	}
+}
+.testimonial-avatar {
+	.@{unique-shortcode-class-name}  & {
+		padding: @post-thumb-padding-top @post-thumb-padding-right @post-thumb-padding-bottom @post-thumb-padding-left;
+	
+		& a,
+		& span,
+		& img {
+			.custom-mixin-max-width (@testimonial-img-max-width);
+		}
+	}
+	.@{unique-shortcode-class-name} .dt-css-grid & {
+		& img,
+		& svg {
+			.custom-mixin-max-width(@team-img-max-width);
+			max-width: 100%;
+		}
+	}
+}
+.content-wrap {
+	.@{unique-shortcode-class-name}.layout-5:not(.hide-testimonial-avatar) &,
+	.@{unique-shortcode-class-name}.layout-6:not(.hide-testimonial-avatar) & {
+		width: calc(100% ~'-' @testimonial-img-max-width  ~'-' @post-thumb-padding-right ~'-' @post-thumb-padding-left);
+	}
+}
+.testimonial-content {
+	.@{unique-shortcode-class-name} & {
+		margin-bottom: @post-excerpt-margin-bottom;
+		
+		.custom-mixin-font-size (@post-excerpt-font-size);
+		.custom-mixin-line-height (@post-excerpt-line-height);
+		.custom-mixin-color (@post-content-color);
+
+		.custom-mixin-font-style ( @post-content-font-style);
+		.custom-mixin-font-weight (@post-content-font-weight);
+		.custom-mixin-text-transform (@post-content-text-transform);
+	}
+}
+.testimonial-avatar,
+.testimonial-avatar a.rollover,
+.testimonial-avatar a.rollover *,
+.testimonial-avatar img,
+.testimonial-avatar .no-avatar,
+.testim-no-avatar {
+	.@{unique-shortcode-class-name}  & {
+		border-radius: @img-border-radius;
+	}
+}
+.testimonial-avatar .no-avatar {
+	.@{unique-shortcode-class-name}  & {
+		height: @testimonial-img-max-width;
+		.custom-mixin-fade-avatar-border(@post-title-color);
+		&:after {
+			.custom-mixin-fade-color(@post-title-color);
+		}
+	}
+}
+.testim-no-avatar {
+	.@{unique-shortcode-class-name}  & {
+		.custom-mixin-fade-avatar-border(@post-title-color);
+	}
+}
+.testim-no-avatar svg {
+	.@{unique-shortcode-class-name}  & {
+		.custom-mixin-fade-fill (@post-title-color);
+	}
+}
+.testimonial-avatar .no-avatar {
+	.@{unique-shortcode-class-name}  & {
+		font-size: @testimonial-img-max-width;
+		.custom-mixin-width (@testimonial-img-max-width);
+	}
+}
+
+
+@media screen and (max-width:992px){
+	.testimonial-name,
+	.testimonial-name a,
+	.testimonial-name span {
+		.@{unique-shortcode-class-name} & {
+			
+			.custom-mixin-font-size (@post-title-font-size-tablet);
+			.custom-mixin-line-height (@post-title-line-height-tablet);
+		}
+	}
+	.testimonial-content {
+		.@{unique-shortcode-class-name} & {
+			.custom-mixin-font-size (@post-excerpt-font-size-tablet);
+			.custom-mixin-line-height (@post-excerpt-line-height-tablet);
+		}
+	}
+	.testimonial-position,
+	.testimonial-position span {
+		.@{unique-shortcode-class-name} & {
+			.custom-mixin-font-size (@testimonial-position-font-size-tablet);
+			.custom-mixin-line-height (@testimonial-position-line-height-tablet);
+		}
+	}
+}
+@media screen and (max-width:768px){
+	.testimonial-name,
+	.testimonial-name a,
+	.testimonial-name span {
+		.@{unique-shortcode-class-name} & {
+			
+			.custom-mixin-font-size (@post-title-font-size-phone);
+			.custom-mixin-line-height (@post-title-line-height-phone);
+		}
+	}
+
+	.testimonial-content {
+		.@{unique-shortcode-class-name} & {
+			.custom-mixin-font-size (@post-excerpt-font-size-phone);
+			.custom-mixin-line-height (@post-excerpt-line-height-phone);
+		}
+	}
+	.testimonial-position,
+	.testimonial-position span {
+		.@{unique-shortcode-class-name} & {
+			.custom-mixin-font-size (@testimonial-position-font-size-phone);
+			.custom-mixin-line-height (@testimonial-position-line-height-phone);
+		}
+	}
+}

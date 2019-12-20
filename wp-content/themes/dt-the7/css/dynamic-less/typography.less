@@ -1,0 +1,420 @@
+
+/* #Basic Font
+================================================== */
+
+html,
+body,
+body.page,
+.wf-container > * {
+	font: @base-font-style @base-font-variant @base-font-weight @text-big~"/"@text-big-line-height @base-font-family;
+	word-spacing: normal;
+	color: @base-color;
+}
+
+
+/*Large text*/
+.text-big,
+.dt-accordion-text-big .wpb_accordion_header > a {
+	font-size: @text-big;
+	line-height: @text-big-line-height;
+}
+/*Medium text*/
+.text-normal,
+.dt-accordion-text-normal .wpb_accordion_header > a,
+.icon-with-text-shortcode .dt-text-desc {
+	font-size: @base-font-size;
+	line-height: @base-line-height;
+}
+/*Small text*/
+.text-small,
+.dt-accordion-text-small .wpb_accordion_header > a {
+	font-size: @text-small;
+	line-height: @text-small-line-height;
+}
+.wp-caption-text {
+	.text-small;
+}
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+/* #Headers fonts
+================================================== */
+h1,
+.h1-size,
+.entry-title.h1-size,
+.dt-accordion-h1-size .wpb_accordion_header > a {
+	color: @h1-color;
+	font: @h1-font-style @h1-font-variant @h1-font-weight @h1-font-size~"/"@h1-line-height @h1-font-family;
+	text-transform: @h1-text-transform;
+	 @media (max-width: 800px) {
+		font-size: @h2-font-size;
+		line-height: @h2-line-height;
+	}
+}
+
+h2,
+.h2-size,
+.entry-title.h2-size,
+h1.entry-title,
+.dt-accordion-h2-size .wpb_accordion_header > a {
+	color: @h2-color;
+	font: @h2-font-style @h2-font-variant @h2-font-weight @h2-font-size~"/"@h2-line-height @h2-font-family;
+	text-transform: @h2-text-transform;
+}
+
+h3,
+.h3-size,
+.entry-title.h3-size,
+h2.entry-title,
+.dt-accordion-h3-size .wpb_accordion_header > a {
+	color: @h3-color;
+	font: @h3-font-style @h3-font-variant @h3-font-weight @h3-font-size~"/"@h3-line-height @h3-font-family;
+	text-transform: @h3-text-transform;
+}
+
+h4,
+.h4-size,
+.entry-title.h4-size,
+h3.entry-title,
+.dt-accordion-h4-size .wpb_accordion_header > a,
+.vc_separator h4 {
+	color: @h4-color;
+	font: @h4-font-style @h4-font-variant @h4-font-weight @h4-font-size~"/"@h4-line-height @h4-font-family;
+	text-transform: @h4-text-transform;
+}
+
+h5,
+.h5-size,
+h4.entry-title,
+.entry-title.h5-size,
+.dt-accordion-h5-size .wpb_accordion_header > a {
+	color: @h5-color;
+	font: @h5-font-style @h5-font-variant @h5-font-weight @h5-font-size~"/"@h5-line-height @h5-font-family;
+	text-transform: @h5-text-transform;
+}
+
+
+h6,
+.h6-size,
+.entry-title.h6-size,
+.dt-accordion-h6-size .wpb_accordion_header > a {
+	color: @h6-color;
+	font: @h6-font-style @h6-font-variant @h6-font-weight @h6-font-size~"/"@h6-line-height @h6-font-family;
+	text-transform: @h6-text-transform;
+}
+
+// Define default font sizes for UA heding shortcode.
+.uvc-heading.uvc-heading-default-font-sizes .uvc-main-heading {
+	h1 {
+		line-height: @h1-line-height;
+	}
+	h2 {
+		line-height: @h2-line-height;
+	}
+	h3 {
+		line-height: @h3-line-height;
+	}
+	h4 {
+		line-height: @h4-line-height;
+	}
+	h5 {
+		line-height: @h5-line-height;
+	}
+	h6 {
+		line-height: @h6-line-height;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 a, 
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+.h1-size,
+.entry-title.h1-size,
+.h2-size,
+.entry-title.h2-size,
+h1.entry-title,
+.h3-size,
+.entry-title.h3-size,
+h2.entry-title,
+.h4-size,
+.entry-title.h4-size,
+h3.entry-title,
+.h5-size,
+.entry-title.h5-size,
+.h6-size,
+.entry-title.h6-size,
+.header-color,
+.entry-meta .header-color,
+.color-title {
+	color: @h1-color;
+
+	.dt-mega-menu .dt-mega-parent .sidebar-content .widget & {
+		color: @mega-menu-widget-title-color;
+	}
+	.sidebar-content & {
+		color: @widget-sidebar-header-color;
+	}
+	.footer & {
+		color: @widget-footer-header-color;
+		.custom-mixin-footer-with-accent-color (@widget-footer-header-color, @widget-footer-accent-color);
+	}
+}
+.fade-header-color( @property, @property-str-1, @property-str-2, @property-str-3, @property-str-4, @property-str-5, @opacity) {
+	color: fade(@property, @opacity);
+}
+
+/*Primary text colors*/
+
+.text-primary {
+	.text-big;
+	.content & {
+		color: @h4-color;
+	}
+	.footer & {
+		color: @widget-footer-header-color;
+	}
+	a& {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+.color-primary {
+	.sidebar,
+	.sidebar-content & {
+		color: @widget-sidebar-header-color;
+	}
+	.footer & {
+		color: @widget-footer-header-color;
+	}
+	a& {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+/*Secondary text*/
+.text-secondary {
+	.text-small;
+}
+
+.color-secondary,
+.text-secondary {
+	color: @accent-bg-color;
+	.stripe & {
+		color: @accent-bg-color;
+	}
+	.wf-container-footer & {
+		.custom-mixin-footer-color (@widget-footer-accent-color);
+	}
+}
+a,
+a:hover {
+	color: @links-color;
+	.wf-container-footer & {
+		.custom-mixin-footer-color (@widget-footer-accent-color);
+	}
+}
+
+/*Accent text*/
+.color-accent {
+	#page & {
+		color: @accent-bg-color;
+	}
+	.accent-gradient #page & {
+		.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	}
+	#page .wf-container-footer &,
+	.accent-gradient #page .footer &  {
+		.custom-mixin-footer-color (@widget-footer-accent-color);
+	}
+}
+.paint-accent-color {
+	// color: @accent-bg-color !important;
+	// .accent-gradient & {
+	// 	.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	// }
+	color: @accent-bg-color !important;
+	.accent-gradient & {
+		.text-gradient-text-fill (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+  	}
+	.wf-container-footer &,
+	.accent-gradient &  {
+		.custom-mixin-footer-color (@widget-footer-accent-color) !important;
+	}
+}
+/*Transparent color*/
+.color-secondary,
+.color-base-transparent {
+	color: @secondary-text-color;
+	.sidebar-content & {
+		color: fade(@widget-sidebar-color, 50%);
+	}
+	.footer & {
+		color: fade(@widget-footer-color, 50%);
+	}
+}
+.bg-header-transparent(@opacity) {
+	background-color: fade(@h1-color, @opacity);
+	.sidebar-content & {
+		background-color: fade(@widget-sidebar-header-color, @opacity);
+	}
+	.footer & {
+		background-color: fade(@widget-footer-header-color, @opacity);
+	}
+}
+/* #General -> Appearance -> Layout -> Content width
+================================================== */
+#main > .wf-wrap,
+#bottom-bar > .wf-wrap,
+#footer > .wf-wrap {
+	width: @content-width;
+}
+.ph-wrap {
+	max-width:  @content-width - 88;
+}
+#phantom.full-width .ph-wrap.boxed,
+#page.boxed {
+	max-width: @box-width;
+}
+.boxed .footer,
+.boxed #bottom-bar {
+	.footer-overlap & {
+		max-width: @box-width;
+	}
+}
+
+#phantom .ph-wrap.boxed,
+.boxed .top-bar.line-content:before,
+.boxed .classic-header.content-width-line .navigation:before {
+	max-width: @content-width - 88;
+}
+.boxed .full-width .top-bar.line-content:before,
+.boxed .classic-header.full-width.content-width-line .navigation:before {
+	max-width: 100%;
+}
+	// .content {
+	// 	width: calc(100% ~'-' @sidebar-width);
+	// }
+
+#main {
+	padding: @page-top-margin 0 @page-bottom-margin 0;
+}
+
+
+/* #General -> Appearance -> Background under the box
+================================================== */
+body {
+	background: @body-bg-color @body-bg-image @body-bg-repeat @body-bg-attachment @body-bg-position-x @body-bg-position-y;
+	background-size: @body-bg-size;
+}
+
+/* #General -> Appearance -> Background
+================================================== */
+#page {
+	background: @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y;
+	background-size: @page-bg-size;
+	background-attachment: @page-bg-attachment;
+}
+	.footer-overlap .page-inner {
+		background: @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y;
+		background-size: @page-bg-size;
+	}
+
+		
+
+/*****************************************************
+	!-Theme Options -> Appearance -> BORDER RADIUS
+******************************************************/
+
+	textarea,
+	select,
+	blockquote,
+	.entry-author,
+	.format-aside-content,
+	.format-status-content,
+	.format-link-content,
+	.dt-form button,
+	.dt-btn,
+	#main-slideshow .tp-button,
+	.wpcf7-submit.dt-btn-m,
+	.shortcode-action-bg,
+	.shortcode-action-bg:before,
+	.shortcode-teaser.frame-on,
+	.testimonial-item  .ts-viewport,
+	.footer .testimonials.slider-content,
+	.shortcode-code,
+	#main .vc_text_separator div,
+	#main .vc_progress_bar .vc_single_bar,
+	#main .vc_progress_bar .vc_single_bar .vc_label,
+	#main .vc_progress_bar .vc_single_bar .vc_bar,
+	#main .flexslider,
+	.nsu-submit,
+	.mc4wp-form input[type="url"],
+	.mc4wp-form input[type="date"],
+	#main #content .rotatingtweets,
+	#main #content .norotatingtweets,
+	.mc4wp-form form select,
+	#megaMenu ul.megaMenu > li.menu-item,
+	#megaMenu ul.megaMenu > li.menu-item > a,
+	.customSelect,
+	.loading-label,
+	.widget .testimonial-content,
+	.skill,
+	.skill-value,
+	.widget .team-container,
+	.widget .logo-items li,
+	.comment-list .comment > article,
+	.bg-on:not(.fullwidth-img),
+	.blog-content .block-style-widget,
+	#mobile-menu,
+	.testimonial-content,
+	.wpb_content_element .wpb_accordion_header > a:before,
+	.wpb_content_element.dt-accordion-bg-on .wpb_accordion_wrapper .wpb_accordion_header,
+	.twentytwenty-before-label,
+	.twentytwenty-after-label,
+	.btn-cntr a,
+	.photo-scroller .album-share-overlay .share-button.entry-share,
+	.project-navigation,
+	.album-share-overlay,
+	.st-accordion li > a:before,
+	.arrows-accent .prev i,
+	.arrows-accent .next i,
+	.arrows-accent .owl-prev i,
+	.arrows-accent .owl-next i,
+	.round-images .bg-on.team-container:not(.fullwidth-img),
+	.solid-bg .sidebar-content,
+	.solid-bg.sidebar-content .widget,
+	.bg-under-widget .sidebar-content .widget,
+	.ls-container.ls-carousel .ls-nav-prev,
+	.ls-container.ls-carousel .ls-nav-next,
+	.menu-btn,
+	.custom-menu a:before,
+	.small-fancy-datas .fancy-date a {
+		.border-radius;
+	}
+	.wpb_tabs.tab-style-two,
+	.wpb_tour.tab-style-two {
+		.border-radius;
+	}
+
+

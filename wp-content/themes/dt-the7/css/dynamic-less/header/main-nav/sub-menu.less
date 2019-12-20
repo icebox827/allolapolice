@@ -1,0 +1,177 @@
+
+/* #Menu -> second level
+================================================== */
+/*svg*/
+
+@header-side-sub-plus(@colour){
+	background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='8px' height='8px' viewBox='3 3 8 8' enable-background='new 3 3 8 8' fill='@{colour}' xml:space='preserve'%3E%3Cpolygon points='11,6 8,6 8,3 6,3 6,6 3,6 3,8 6,8 6,11 8,11 8,8 11,8 '/%3E%3C/svg%3E");
+}
+/*Menu background width */
+li:not(.dt-mega-menu) .sub-nav {
+	width: @submenu-width;
+}
+
+.header-side-left #main-nav > li > .sub-nav {
+	padding-left: @padding-side;
+}
+.header-side-right #main-nav > li > .sub-nav {
+	padding-right: @padding-side;
+}
+	/*Menu background color*/
+	.sub-nav {
+		background-color: @submenu-bg-color;
+		padding: @submenu-padding-top @submenu-padding-right @submenu-padding-bottom @submenu-padding-left;
+	}
+	.top-header .sub-nav .sub-nav,
+	.sub-sideways .sub-nav .sub-nav {
+		top: -@submenu-padding-top;
+	}
+		/*Font*/
+		.main-nav .sub-nav > li > a .menu-text {
+			font: @submenu-font-style @submenu-font-variant @submenu-font-weight @submenu-font-size~"/"@submenu-font-size+4 @submenu-font-family;
+			text-transform: @submenu-text-transform;
+			//color: @submenu-color;
+		}
+		.sub-downwards .sub-nav .next-level-button:before,
+		.side-header.sub-downwards .main-nav.level-arrows-on .sub-nav > li.has-children > a:after {
+			line-height: @submenu-font-size+4;
+		}
+		.main-nav .sub-nav > li:not(.wpml-ls-item) > a .menu-text {
+			color: @submenu-color;
+		}
+		
+		.main-nav .sub-nav > li:not(.wpml-ls-item) > a,
+		#bottom-bar .sub-nav > li:not(.wpml-ls-item) > a {
+			color: @submenu-color;
+		}
+			/*Show next level indicator arrows*/
+			.sub-nav.level-arrows-on > li.has-children:not(.dt-mega-parent) > a:after,
+			#bottom-bar .sub-nav li.has-children > a:after {
+				color: @submenu-color;
+			}
+		.main-nav .sub-nav > li > a .subtitle-text {
+			font: @sub-subtitle-font-style normal @sub-subtitle-font-weight @sub-subtitle-font-size~"/"@sub-subtitle-font-size+4 @sub-subtitle-font-family;
+		}
+
+		/*Distance between menu items*/
+		.main-nav .sub-nav > li > a,
+		.sub-downwards .sub-nav.sub-nav-widgets > li {
+			margin: @submenu-item-margin-top @submenu-item-margin-right @submenu-item-margin-bottom @submenu-item-margin-left;
+			padding: @submenu-item-padding-top @submenu-item-padding-right @submenu-item-padding-bottom @submenu-item-padding-left;
+		}
+		.top-header .main-nav .sub-nav.level-arrows-on > li.has-children > a {
+			padding-right: @submenu-item-padding-right + 8px;
+		}
+		
+		.sub-nav li:not(:first-child) .sub-nav {
+			top: -(@submenu-item-margin-top + @submenu-item-padding-top);
+		}
+		
+			.masthead:not(.sub-downwards) .sub-nav li.has-children a:after {
+				right: @submenu-item-padding-right - 8px;
+				.top-header & {
+					right: @submenu-item-padding-right;
+				}
+				.rtl & {
+					right: auto;
+					left: @submenu-item-padding-right;
+				}
+			}
+
+		.sub-downwards .sub-nav > li > .next-level-button {
+			left: -@submenu-item-margin-right;
+			margin-top: @submenu-item-margin-top;
+			margin-bottom: @submenu-item-margin-bottom;
+		}
+		.sub-downwards.dt-parent-menu-clickable .sub-nav > li:not(.has-children) > a {
+			margin-right: @submenu-item-margin-right + 30;
+		}
+
+
+		/*Hover font color & bg*/
+		.masthead:not(.sub-downwards) .main-nav .sub-nav > li:not(.act):not(.dt-mega-parent):not(.no-link):not(.wpml-ls-item):hover > a,
+		#bottom-bar .sub-nav li:not(.act):not(.dt-mega-parent):not(.no-link):not(.wpml-ls-item):hover > a,
+		.masthead:not(.sub-downwards) .main-nav .sub-nav li.dt-mega-parent:not(.act):not(.no-link):not(.wpml-ls-item) > a:hover,
+		.sub-downwards .sub-nav li:not(.act):not(.wpml-ls-item):not(.dt-mega-parent) > a:hover {
+			color: @submenu-hover-color;
+		}
+		.sub-nav > li:not(.act):not(.dt-mega-parent):not(.no-link):not(.wpml-ls-item):hover > a .menu-text {
+			.masthead:not(.sub-downwards) .main-nav & {
+				color: @submenu-hover-color;
+				.text-gradient (@startColor: @submenu-hover-color, @endColor: @submenu-hover-color-2);
+			}
+		}
+		
+		.sub-downwards .sub-nav li:not(.act):not(.wpml-ls-item):not(.dt-mega-parent) > a:hover .menu-text {
+			color: @submenu-hover-color;
+			.text-gradient (@startColor: @submenu-hover-color, @endColor: @submenu-hover-color-2);
+		}
+			/*Show next level indicator arrows*/
+			.sub-nav.level-arrows-on li.has-children:not(.dt-mega-parent):not(.act):hover > a:after,
+			#bottom-bar .sub-nav li.has-children:not(.act):hover > a:after {
+				color: @submenu-hover-color;
+			}
+		
+		.top-header .sub-nav.hover-style-bg > li:not(.dt-mega-parent):not(.act):hover > a,
+		.top-header .sub-nav.gradient-hover.hover-style-bg > li:not(.dt-mega-parent):not(.act):hover > a {
+			background-color: @submenu-hover-bg;
+			.background-gradient (@startColor: @submenu-hover-bg, @endColor: @submenu-hover-bg-2);
+		}
+		.top-header .sub-nav.hover-style-bg > li:not(.dt-mega-parent).act > a,
+		.top-header .sub-nav.gradient-hover.hover-style-bg > li:not(.dt-mega-parent).act > a {
+			background-color: @submenu-active-bg;
+			.background-gradient (@startColor: @submenu-active-bg, @endColor: @submenu-active-bg-2);
+		}
+
+		/*Active font color*/
+		.sub-nav > li.act:not(.dt-mega-parent):not(.wpml-ls-item):not(.wpml-ls-item) > a,
+		.sub-nav > li.act:not(.dt-mega-parent):not(.wpml-ls-item) > a i[class^="fa"],
+		.sub-nav > li.act:not(.dt-mega-parent):not(.wpml-ls-item) > a i[class^="dt-icon"],
+		.sub-nav > li.dt-mega-parent.current-menu-item:not(.wpml-ls-item) > a {
+			.main-nav & {
+				color: @submenu-active-color;
+			}
+		}
+		.sub-nav > li.act:not(.dt-mega-parent):not(.wpml-ls-item) > a .menu-text {
+			.main-nav & {
+				color: @submenu-active-color;
+				.text-gradient (@startColor: @submenu-active-color, @endColor: @submenu-active-color-2);
+			}
+		}
+			/*Show next level indicator arrows*/
+			.sub-nav.level-arrows-on li.has-children:not(.dt-mega-parent).act > a:after,
+			#bottom-bar .sub-nav li.has-children.act > a:after {
+				color: @submenu-active-color;
+			}
+	
+		.masthead:not(.sub-downwards) .sub-nav .sub-nav {
+			left: @submenu-width + 1 - @submenu-padding-left !important;
+			.rtl & {
+				right: @submenu-width + 1 - @submenu-padding-left;
+				left: auto !important;
+			}
+		}
+		.masthead:not(.sub-downwards) .sub-nav .sub-nav.right-overflow {
+			left: -(@submenu-width + 1 + @submenu-padding-left) !important;
+			.rtl & {
+				right: -(@submenu-width - 1 + @submenu-padding-left);
+				left: auto !important
+			}
+		}
+
+
+	/*Show drop down menu -> Downwards*/
+	.sub-downwards .sub-nav.level-arrows-on li.has-children > a:after,
+	.sub-downwards .sub-nav.level-arrows-on li.has-children:not(.act):hover > a:after,
+	.sub-downwards .sub-nav.level-arrows-on li.has-children.act > a:after,
+	.sub-downwards .sub-nav .next-level-button {
+		color: fade(@menu-color, 27%);
+	}
+
+	.sub-downwards .main-nav.level-arrows-on > li.has-children > a {
+		max-width: calc(100% ~'-' 30px  ~'-' @menu-item-margin-right  ~'-' @menu-item-margin-left);
+	}
+	.sub-downwards .sub-nav.level-arrows-on > li.has-children > a {
+		max-width: calc(100% ~'-' 30px  ~'-' @submenu-item-margin-right  ~'-' @submenu-item-margin-left);
+	}
+	/* SUB MENU:end */

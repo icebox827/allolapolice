@@ -1,0 +1,460 @@
+
+/* #Images Styling & Hovers
+================================================== */
+
+.rollover,
+.rollover-video,
+.post-rollover,
+.rollover-project > a {
+	position: relative;
+	display: block;
+	line-height: 0;
+	text-decoration: none;
+}
+
+.rollover:hover {
+	text-decoration: none;
+}
+	.rollover img {
+		max-width: 100%;
+		height: auto;
+	}
+
+.rsShor .rollover-video {
+	position: static;
+}
+.gallery-item .gallery-icon .rollover {
+	display: inline-block;
+}
+.format-gallery .rollover {
+	overflow: hidden;
+}
+
+	/*rollover background*/
+	.rollover i,
+	.rollover-video i,
+	.post-rollover i {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+
+	.rollover i,
+	.post-rollover i,
+	.rollover-video i:after,
+	.rollover-thumbnails,
+	.rollover-video .video-icon,
+	.rollover-video i,
+	.rollover-content-container,
+	.hover-style-two .links-container,
+	.hover-style-one .links-container,
+	.hover-style-two .rollover-thumbnails,
+	.hover-style-one .rollover-thumbnails,
+	.hover-style-one .rollover-project > a:after,
+	.hover-style-three .rollover-project > a:after {
+		-webkit-transition: all 450ms ease;
+		transition:      all 450ms ease;
+	}
+
+	/*hide default rollover when turn on description on hover*/
+	.description-on-hover > .wf-cell .rollover i {
+		visibility: hidden;
+	}
+	.description-on-hover > .wf-cell .forward-post .rollover i,
+	.description-on-hover > .wf-cell .description-off .rollover i
+	{
+		visibility: visible;
+	}
+
+		/*rollover icon*/
+		.project-list-media .rollover-video i:after {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+		
+			background-position: center center;
+			background-repeat:  no-repeat; 
+			content: "";
+		}
+		
+		
+
+	/*video hover styling*/
+	.rollover-video .video-icon {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 99;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+		.rollover-video .video-icon:before {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 80px;
+			height: 80px;
+			margin: -40px 0 0 -40px;
+			background-color: rgba(0,0,0,0.4);
+			background-position: 30px center;
+			background-repeat: no-repeat;
+			content: "";
+			.static-border-radius;
+		}
+
+	/*show rollover on hover*/
+	.mobile-false .rollover:hover i,
+	.mobile-false .images-list:hover i,
+	.mobile-false .post-rollover:hover i,
+	.rollover-video:hover i  {
+		display: block;
+		opacity: 1;
+	}
+	.rollover-video:hover .video-icon:before,
+	.images-list:hover .rollover-video .video-icon:before {
+		background-color: rgba(0,0,0,0.4);
+		opacity: 1;
+	}
+	.rollover-video .video-icon:hover {
+		opacity: 1;
+	}
+
+		/*Video rollover icon*/
+		.rollover-video .video-icon:before,
+		.blog .format-video .rollover i:after,
+		.dt-blog-shortcode .format-video .rollover i:after,
+		.rollover-video i:after {
+			background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='32px' height='32px' viewBox='0 0 16 16' enable-background='new 0 0 16 16' xml:space='preserve' fill='white'%3E%3Cpath d='M3.125,4L10.2,8.001L3.125,12V3.8 M1,0v16l13-8L1,0L1,0z'/%3E%3C/svg%3E");
+		}
+		
+
+	.hover-style-one .rollover:hover i {
+		display: none;
+	}
+
+/* #Styling -> Grayscale
+================================================== */
+.filter-grayscale .royalSlider img,
+.filter-grayscale .content img,
+.filter-grayscale .sidebar img,
+.filter-grayscale .footer img,
+.filter-grayscale .shortcode-banner,
+.filter-grayscale .map-container,
+.filter-grayscale iframe,
+.filter-grayscale embed,
+.filter-grayscale object,
+.filter-grayscale-static .royalSlider img,
+.filter-grayscale-static .content img,
+.filter-grayscale-static .sidebar img,
+.filter-grayscale-static .footer img,
+.filter-grayscale-static .shortcode-banner,
+.filter-grayscale-static .map-container,
+.filter-grayscale-static iframe,
+.filter-grayscale-static embed,
+.filter-grayscale-static object {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray; /* IE 6-9 */
+
+	/* Make sure that it will not flicker in Desktop Safari due to usage of CSS3 animation in RoyalSlider */
+}
+.mobile-false .filter-grayscale .royalSlider img,
+.mobile-false .filter-grayscale .content img,
+.mobile-false .filter-grayscale .sidebar img,
+.mobile-false .filter-grayscale .footer img,
+.mobile-false .filter-grayscale .shortcode-banner,
+.mobile-false .filter-grayscale .map-container,
+.mobile-false .filter-grayscale iframe,
+.mobile-false .filter-grayscale embed,
+.mobile-false .filter-grayscale object,
+.mobile-false .filter-grayscale-static .royalSlider img,
+.mobile-false .filter-grayscale-static .content img,
+.mobile-false .filter-grayscale-static .sidebar img,
+.mobile-false .filter-grayscale-static .footer img,
+.mobile-false .filter-grayscale-static .shortcode-banner,
+.mobile-false .filter-grayscale-static .map-container,
+.mobile-false .filter-grayscale-static iframe,
+.mobile-false .filter-grayscale-static embed,
+.mobile-false .filter-grayscale-static object {
+	-webkit-backface-visibility: visible !important;
+	//-webkit-transform: inherit !important;	
+}
+
+/* .filter-grayscale img:hover, */
+.filter-grayscale img.filter-disable,
+.filter-grayscale .filter-disable img,
+.filter-grayscale img.dt-hovered,
+.filter-grayscale .dt-hovered img,
+.filter-grayscale .rollover:hover img,
+.filter-grayscale .post-thumbnail-rollover:hover img,
+.filter-grayscale .post-thumbnail:hover img,
+.filter-grayscale .gradient-overlap-layout-list article:hover img,
+.mobile-false .gradient-overlay-layout-list article:hover img,
+.mobile-false .content-rollover-layout-list article:hover img,
+.filter-grayscale .cs-style-3 .link:hover img,
+.filter-grayscale .rollover-video:hover img,
+.filter-grayscale .post-rollover:hover img,
+.filter-grayscale .dt-owl-item:hover img,
+.filter-grayscale .rsThumb:hover img,
+.filter-grayscale .royalSlider:hover img,
+.filter-grayscale .content img:hover,
+.filter-grayscale .sidebar img:hover,
+.filter-grayscale .footer img:hover,
+.filter-grayscale .shortcode-banner:hover,
+.filter-grayscale .content .rev_slider_wrapper:hover img,
+.filter-grayscale .map-container:hover,
+.filter-grayscale iframe:hover,
+.filter-grayscale embed:hover,
+.filter-grayscale object:hover,
+.filter-grayscale .rollover-project:hover img,
+.filter-grayscale .buttons-on-img:hover img,
+.filter-grayscale #branding-bottom img,
+.filter-grayscale-static #branding-bottom img {
+	-webkit-filter: grayscale(0%);
+	-moz-filter: grayscale(0%);
+	-ms-filter: grayscale(0%);
+	-o-filter: grayscale(0%);
+	filter: grayscale(0%);
+	filter: none;
+	filter: transparent;
+}
+
+
+//Gallery shortcode
+.gallery-shortcode figure {
+	position: relative;
+	overflow: hidden;
+	transform: translateZ(0);
+}
+.gallery-rollover {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease;
+    transition: opacity 400ms ease;
+    .gallery-shortcode figure:hover & {
+    	opacity: 1;
+    }
+}
+.album-gallery-shortcode .rollover {
+	float: left;
+}
+.gallery-zoom-ico {
+	.blog-shortcode &,
+	.blog-carousel-shortcode & {
+		opacity: 0;
+		 -webkit-transition: opacity 400ms ease;
+	    transition: opacity 400ms ease;
+    }
+    .blog-shortcode .post-thumbnail-rollover:hover &,
+    .blog-carousel-shortcode .post-thumbnail-rollover:hover &,
+    .gradient-overlay-layout-list &,
+    .content-rollover-layout-list & {
+    	opacity: 1;
+    }
+}
+.gallery-zoom-ico {
+	.gallery-shortcode &,
+	.albums-shortcode &,
+	.blog-shortcode &,
+	.blog-carousel-shortcode & {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		border-style: solid;
+		box-sizing: border-box;
+		.flex-display(@display: flex);
+		.align-items(@align: center);
+		.justify-content(@justify: center);
+		& span {
+			position: relative;
+			z-index: 11;
+		}
+		.gradient-overlay-layout-list&,
+		.content-rollover-layout-list& {
+			position: static;
+		}
+		
+	}
+	.gradient-overlay-layout-list .post-thumbnail-wrap &,
+	.content-rollover-layout-list .post-thumbnail-wrap & {
+		display: none;
+	}
+}
+.gallery-shortcode.album-gallery-shortcode.hover-scale article:after {
+	display: none;
+}
+.gallery-shortcode .rollover > i {
+	display: none !important;
+}
+
+.scale-img .rollover,
+.quick-scale-img .rollover {
+	transform: translateZ(0);
+	overflow: hidden;
+}
+
+.rollover img,
+.post-thumbnail-rollover img {
+	.quick-scale-img & {
+		-webkit-transition: -webkit-transform 0.25s ease-out, opacity 0.25s;
+		transition: transform 0.25s ease-out, opacity 0.25s;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	&.lazy-load,
+	&.blog-thumb-lazy-load {
+        -webkit-transition:  transform 0.25s ease-out, opacity 0.25s;
+        transition:  transform 0.25s ease-out, opacity 0.25s;
+    }
+		
+}
+.rollover img,
+.post-thumbnail-rollover img {
+	.scale-img & {
+		-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.35s;
+		transition: transform 0.3s ease-out, opacity 0.35s;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	&.lazy-load,
+	&.so-lazy-load,
+	&.blog-thumb-lazy-load {
+        -webkit-transition:  transform 0.3s ease-out, opacity 0.35s;
+        transition:  transform 0.3s ease-out, opacity 0.35s;
+    }
+}
+.mobile-false .scale-img figure:hover .rollover img,
+.mobile-false .scale-img article:hover .rollover img,
+.mobile-false .scale-img .post-thumbnail:not(.overlay-placeholder):hover > .post-thumbnail-rollover img,
+.scale-img .on-hover .post-thumbnail > .post-thumbnail-rollover img {
+	  -webkit-transform: scale(1.2);
+	          transform: scale(1.2);
+	  -webkit-transition: -webkit-transform 4s ease-out;
+	          transition: transform 4s ease-out;
+}
+.mobile-false .quick-scale-img figure:hover .rollover img,
+.mobile-false .quick-scale-img article:hover .rollover img,
+.mobile-false .quick-scale-img .post-thumbnail:not(.overlay-placeholder):hover > .post-thumbnail-rollover img,
+.quick-scale-img .on-hover .post-thumbnail > .post-thumbnail-rollover img {
+	  -webkit-transform: scale(1.2);
+	          transform: scale(1.2);
+	  -webkit-transition: -webkit-transform 0.25s ease-out;
+	          transition: transform 0.25s ease-out;
+}
+
+/* #Scale In
+-------------------------------------------------- */
+.mobile-false .hover-scale.gallery-shortcode .rollover-content {
+    background: none !important;
+    background-color: transparent;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.hover-scale.gallery-shortcode .post,
+.hover-scale.gallery-shortcode .post .rollover {
+	overflow: hidden;
+}
+.hover-scale.gallery-shortcode .rollover:after {
+	display: block;
+	background-color: inherit;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	content: "";
+	.static-border-radius;
+	padding-bottom: 100%;
+	-webkit-transform: scale(0);
+			transform: scale(0);
+	-webkit-transition: -webkit-transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+			transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+}
+.hover-scale.gallery-shortcode .rollover:after {
+	padding-bottom: 100%;
+	-webkit-transform: scale(0);
+			transform: scale(0);
+	-webkit-transition: -webkit-transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+			transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+}
+.hover-scale.gallery-shortcode .ratio-2 .rollover:after {
+	top: -50%;
+}
+.hover-scale .ratio_3-2 .rollover:after {
+	top: -25%;
+}
+.hover-scale.gallery-shortcode .ratio_0-5 .rollover:after,
+.hover-scale article.ratio_0-5:after {
+	top: 25%;
+}
+.hover-scale.gallery-shortcode .ratio_4-3 .rollover:after {
+	top: -16.6666%;
+}
+.hover-scale.gallery-shortcode .ratio_2-3 .rollover:after {
+	top: 16.6666%;
+}
+.hover-scale.gallery-shortcode .ratio_3-4 .rollover:after {
+	top: 14.5%;
+}
+	.mobile-false .hover-scale.gallery-shortcode .post:hover .rollover:after,
+	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked .rollover:after {
+		opacity: 1;
+		-webkit-transform: scale(1.42);
+				transform: scale(1.42);
+	}
+	.mobile-false .hover-scale.gallery-shortcode .post.ratio_3-2:hover .rollover:after,
+	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_3-2 .rollover:after {
+		-webkit-transform: scale(1.2);
+				transform: scale(1.2);
+	}
+	.mobile-false .hover-scale.gallery-shortcode .post.ratio_0-5:hover .rollover:after,
+	.mobile-false .hover-scale  article.ratio_0-5:hover:after {
+		-webkit-transform: scale(2.5);
+				transform: scale(2.5);
+	}
+	.mobile-false .hover-scale.gallery-shortcode .post.ratio_4-3:hover .rollover:after,
+	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_4-3 .rollover:after {
+		-webkit-transform: scale(1.5);
+				transform: scale(1.5);
+	}
+	.mobile-false .hover-scale.gallery-shortcode .post.ratio_3-4:hover .rollover:after,
+	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_3-4 .rollover:after {
+		-webkit-transform: scale(2);
+				transform: scale(2);
+	}
+	.mobile-false .hover-scale.gallery-shortcode .post.ratio_2-3:hover .rollover:after,
+	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_2-3 .rollover:after {
+		-webkit-transform: scale(2);
+				transform: scale(2);
+	}
+
+.mobile-false .hover-scale .rollover-content {
+	background: none !important;
+	background-color: transparent;
+	-webkit-transform: scale(0);
+			transform: scale(0);
+	-webkit-transition: -webkit-transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s;
+			transition: transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s;
+}
+	// .mobile-false .hover-scale .rollover-project:hover .rollover-content {
+	// 	opacity: 1;
+	// 	-webkit-transform: scale(1);
+	// 			transform: scale(1);
+	// }

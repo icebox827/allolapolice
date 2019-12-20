@@ -1,0 +1,205 @@
+/* #Text with icon
+================================================== */
+.icon-with-text-shortcode {
+	position: relative;
+	display: flex;
+	flex-flow: column wrap;
+	& .block-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	& .prevent-mousover {
+		//pointer-events: none;
+	}
+}
+.icon-with-text-shortcode {
+		align-items: center;
+		display: grid;
+	    grid-gap: 0px;
+	   	grid-template-rows: auto;
+	&.layout-1 {
+	    grid-template-columns: 100px minmax(0, 1fr);
+	     grid-template-areas:
+               "icon  header"
+               "icon  desc"
+               "icon  button"
+	}
+	&.layout-2 {
+	    grid-template-columns: minmax(0, 1fr) 100px ;
+	    grid-template-areas:
+               " header icon "
+               " desc icon "
+               " button icon "
+	}
+	&.layout-3 {
+	     grid-template-areas:
+               " icon header "
+               " desc desc "
+               " button button "
+	}
+	&.layout-4 {
+		 grid-template-columns: 1fr ;
+	     grid-template-areas:
+               " icon"
+               " header "
+               " desc"
+               " button "
+	}
+	&.layout-5 {
+		justify-content: center;
+		text-align: center;
+	     grid-template-areas:
+               " icon"
+               " header "
+               " desc"
+               " button "
+	}
+}
+.dt-text-title {
+	grid-area: header;
+}
+
+
+.icon-with-text-shortcode .dt-text-title {
+	font-weight: normal;
+}
+.dt-text-desc {
+	grid-area: desc;
+}
+> * {
+	.icon-with-text-shortcode.layout-1 & {
+	    grid-column: 2;
+	}
+}
+.text-icon {
+	.icon-with-text-shortcode & {
+		grid-area: icon;
+		&.layout-1 {
+		    grid-column: 1 ;
+		    grid-row: 1;
+		}
+
+		text-decoration: none;
+	}
+	.icon-with-text-shortcode.layout-5 & {
+    	justify-self: center;
+    }
+}
+.default-btn-shortcode {
+	.icon-with-text-shortcode & {
+	    justify-self: start;
+	    &.full-width-btn {
+	    	justify-self: stretch;
+	    }
+	}
+	.icon-with-text-shortcode.layout-5 & {
+    	justify-self: center;
+    	  &.full-width-btn {
+	    	justify-self: stretch;
+	    }
+    }
+}
+.default-btn-shortcode {
+	.icon-with-text-shortcode & {
+		grid-area: button;
+		&.layout-1 {
+	    	align-self: flex-start;
+	    }
+	}
+}
+> * {
+	.icon-with-text-shortcode & {
+		order: 1
+	}
+} 
+.text-icon {
+	.icon-with-text-shortcode & {
+		position: relative;
+		order: 0;
+		 align-self: flex-start;
+		 .layout-3& {
+			align-self: center;
+		}
+	}
+} 
+
+:before,
+:after {
+	.text-icon&,
+	.text-icon .icon-inner& {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 26px;
+		height: 26px;
+		box-sizing: border-box;
+		margin: 0 !important;
+		content: "";
+		font-size: 0 !important;
+		-webkit-border-radius: inherit;
+		border-radius: inherit;
+		-webkit-transition: opacity 0.150s linear;
+		transition: opacity 0.150s linear;
+	}
+}
+:before,
+:after {
+	.text-icon& {
+		z-index: 2;
+	}
+}
+
+:hover:after {
+	.text-icon:not(.dt-icon-hover-off)& {
+		opacity: 1;
+	}
+}
+:before {
+	.text-icon .icon-inner& {
+		opacity: 1;
+	}
+}
+:after {
+	.text-icon:not(.dt-icon-hover-off):hover .icon-inner& {
+		opacity: 1;
+	}
+}
+:hover:before,
+:not(:hover):after {
+	.text-icon& {
+   		transition-delay: 0.100s;
+   	}
+}
+:hover .icon-inner:before,
+:not(:hover) .icon-inner:after {
+	.text-icon& {
+   		transition-delay: 0.100s;
+   	}
+}
+:after {
+	.text-icon& {
+		opacity: 0;
+	}
+}
+:hover:before {
+	.text-icon:not(.dt-icon-hover-off)& {
+		opacity: 0;
+	}
+}
+.icon-inner:after {
+	.text-icon & {
+		opacity: 0;
+	}
+
+}
+:hover .icon-inner:before {
+	.text-icon:not(.dt-icon-hover-off)& {
+		opacity: 0;
+	}
+}
+.text-icon.dt-icon-hover-off:after {
+	display: none;
+}

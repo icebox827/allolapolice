@@ -1,0 +1,50 @@
+
+/* #Sidebar
+================================================== */
+.sidebar {
+	position: relative;
+	z-index: 9;
+	& .sidebar-content {
+		box-sizing: border-box;
+	}
+}
+.sidebar-none .sidebar {
+	display: none;
+}
+	#main .ui-widget-content
+	{
+		clear: both;
+	}
+	.sidebar-right .sidebar.solid-bg,
+	.sidebar-left .sidebar.solid-bg,
+	.sidebar-right .sidebar.bg-under-widget,
+	.sidebar-left .sidebar.bg-under-widget {
+		border: none;
+	}
+	.sidebar-left .sidebar.solid-bg,
+	.sidebar-left .sidebar.bg-under-widget {
+		padding-right: 0;
+	}
+	.sidebar-right .sidebar.solid-bg,
+	.sidebar-right .sidebar.bg-under-widget {
+		padding-left: 0;
+	}
+	.sidebar-left .wf-wrap:before,
+	.sidebar-left .wf-wrap:after,
+	.sidebar-right .wf-wrap:before,
+	.sidebar-right .wf-wrap:after {
+		content: "";
+		display: table;
+	}
+	.sidebar-divider-off #sidebar {
+		border: none;
+	}
+
+	/* !- Full-width page (no sidebar) */
+
+	.sidebar-none .content {
+		width: 100%;
+		.no-cssgridlegacy.no-cssgrid & {
+			width: 100%;
+		}
+	}

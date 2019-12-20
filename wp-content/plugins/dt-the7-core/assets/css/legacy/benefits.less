@@ -1,0 +1,290 @@
+
+
+//mixins dynamic
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	box-shadow:         @string;
+}
+.custom-rollover-gradient (@startColor: #eee) when (iscolor(@startColor)) {
+	background: @startColor;
+	background: -moz-linear-gradient(top,  fade(@startColor, 0%) 0%, @startColor 65%, @startColor 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  fade(@startColor, 0%) 0%, @startColor 65%, @startColor 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  fade(@startColor, 0%) 0%, @startColor 65%, @startColor 100%);
+}
+
+/* #Partners, Clients, etc.
+================================================== */
+#page .logos-grid {
+	margin-bottom: -40px;
+}
+	.logos-grid .wf-cell {
+		display: none;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+		.logos-grid a {
+			display: inline-block;
+			vertical-align: middle;
+			max-width: 100%;
+			line-height: 0;
+			-webkit-transition: opacity 400ms ease;
+			transition:      opacity 400ms ease;
+		}
+		.logos-grid a:hover {
+			opacity: 0.7;
+		}
+			.logos-grid img {
+				max-width: 100%;
+				height: auto;
+			}
+	.logo-items li {
+		text-align: center;
+	}
+		.logo-items li a {
+			line-height: 0;
+			font-size: 0;
+			opacity: 1;
+			-webkit-transition: opacity 400ms ease;
+			transition:      opacity 400ms ease;
+		}
+			.logo-items img {
+				max-width: 100%;
+				height: auto;
+			}
+		.logo-items li a:hover {
+			opacity: 0.8;
+		}
+/* #Benefits
+================================================== */
+#page .benefits-grid {
+	margin-bottom: -40px;
+}
+
+#page .benefits-style-one.benefits-grid,
+#page .benefits-style-two.benefits-grid {
+	margin-bottom: -30px;
+}
+	.benefits-grid .wf-cell {
+		margin-bottom: 40px;
+		text-align: center;
+	}
+	.benefits-grid br,
+	.benefits-grid > .wf-cell {
+		display: none;
+	}
+
+	.benefits-style-one.benefits-grid .wf-cell,
+	.benefits-style-two.benefits-grid .wf-cell {
+		margin-bottom: 30px;
+		text-align: left;
+	}
+
+	.benefits-style-one.benefits-grid.static-line .wf-cell,
+	.benefits-style-one.benefits-grid.hover-line .wf-cell,
+	.benefits-style-two.benefits-grid.static-line .wf-cell,
+	.benefits-style-two.benefits-grid.hover-line .wf-cell {
+		margin-bottom: 40px;
+	}
+		.benefits-style-one .wf-table,
+		.benefits-style-two .wf-table {
+			width: auto;
+		}
+			.benefits-style-two.benefits-grid .wf-td {
+				vertical-align: top;
+			}
+			.benefits-style-one.benefits-grid .wf-td {
+				padding-bottom: 0px;
+			}
+			.benefits-inner {
+				margin-top: -5px;
+			}
+				.benefit-line-decoration,
+				.benefits-style-one .wf-cell > div,
+				.benefits-style-two .benefits-inner {
+					position: relative;
+				}
+				.hover-line .benefit-line-decoration,
+				.static-line .benefit-line-decoration {
+					padding-bottom: 10px;
+					margin-bottom: 20px;
+				}
+				.hover-line.benefits-style-one .wf-cell > div,
+				.static-line.benefits-style-one .wf-cell > div,
+				.hover-line.benefits-style-two .benefits-inner,
+				.static-line.benefits-style-two .benefits-inner {
+					padding-bottom: 25px;
+				}
+					.hover-line .benefit-line-decoration:after,
+					.static-line .benefit-line-decoration:after,
+					.hover-line.benefits-style-one .wf-cell > div:after,
+					.hover-line.benefits-style-two .benefits-inner:after,
+					.static-line.benefits-style-one .wf-cell > div:after,
+					.static-line.benefits-style-two .benefits-inner:after {
+						position: absolute;
+						left: 50%;
+						bottom: 0;
+						margin-left: -25px;
+						width: 50px;
+						height: 2px;
+						content: "";
+					}
+					.hover-line.benefits-style-one .wf-cell > div:after,
+					.hover-line.benefits-style-two .benefits-inner:after,
+					.static-line.benefits-style-one .wf-cell > div:after,
+					.static-line.benefits-style-two .benefits-inner:after {
+						left: 0;
+						margin-left: 0;
+					}
+
+					.benefits-grid p,
+					.benefits-grid ul,
+					.benefits-grid ol {
+						margin-bottom: 0;
+					}
+					.benefit-title a {
+						display: inline-block;
+					}
+
+				/*benefits icon*/
+				.benefits-grid-ico {
+					display: block;
+					margin: 0 auto 10px auto;
+				}
+
+				.icons-bg .benefits-grid-ico {
+					margin: 0 auto 20px auto;
+					.border-radius;
+				}
+				.benefits-style-one.benefits-grid .benefits-grid-ico {
+					margin: 0 12px 10px 0;
+				}
+				.benefits-style-two.benefits-grid .benefits-grid-ico {
+					margin: 5px 22px 0 0;
+				}
+				.benefits-style-one.benefits-grid.icons-bg .benefits-grid-ico,
+				.benefits-style-two.benefits-grid.icons-bg .benefits-grid-ico {
+					text-align: center;
+				}
+				a.benefits-grid-ico {
+					-webkit-transition: background-color 250ms ease;
+					transition:      background-color 250ms ease;
+				}
+					a.benefits-grid-ico > i[class^="fa"],
+					a.benefits-grid-ico > i[class^="fa"]:before {
+						-webkit-transition: color 250ms ease;
+						transition:      color 250ms ease;
+					}
+
+				/*benefits image*/
+				.content .benefits-grid-ico > img {
+					max-width: 100%;
+					height: auto;
+					vertical-align: middle;
+					line-height: 0;
+				}
+		.benefits-grid a {
+			text-decoration: none;
+		}
+
+
+		/* #Benefits dynamic
+		================================================== */
+		/*Decorative lines*/
+		.benefit-line-decoration:after,
+		.hover-line.benefits-style-one .wf-cell > div:after,
+		.hover-line.benefits-style-two .benefits-inner:after,
+		.static-line.benefits-style-one .wf-cell > div:after,
+		.static-line.benefits-style-two .benefits-inner:after {
+			.stripe-transparent-bg-mixin(@opacity: 15%) ;
+		}
+
+		/*Backgrounds color -> Light*/
+
+		.fade-if-color(@attribute, @color, @percentage) when (iscolor(@color)) {
+			@attribute: fade(@color, @percentage);
+		}
+
+		.light-bg.icons-bg .benefits-grid-ico,
+		.light-hover-bg.icons-bg a.benefits-grid-ico:hover {
+			#page & {
+				background-color: fade(@base-color, 10%);
+				background-image: none;
+			}
+			#page .stripe-style-1 & {
+				.fade-if-color("background-color", @strype-1-color, 10%);
+			}
+			#page .stripe-style-2 & {
+				.fade-if-color("background-color", @strype-2-color, 10%);
+			}
+			#page .stripe-style-3 & {
+				.fade-if-color("background-color", @strype-3-color, 10%);
+			}
+			#page .stripe-style-4 & {
+				.fade-if-color("background-color", @strype-4-color, 10%);
+			}
+			#page .stripe-style-5 & {
+				.fade-if-color("background-color", @strype-5-color, 10%);
+			}
+		}
+
+		/*Icons color -> Light*/
+		.light-icon-color .benefits-grid-ico > i[class^="fa"],
+		.light-icon-hover-color a.benefits-grid-ico:hover > i[class^="fa"],
+		.light-icon-color .benefits-grid-ico > i[class^="fa"]:before,
+		.light-icon-hover-color a.benefits-grid-ico:hover > i[class^="fa"]:before {
+			#page & {
+				color: @secondary-text-color;
+				background: none;
+			}
+			#page .stripe-style-1 & {
+				.fade-if-color("color", @strype-1-color, 50%);
+			}
+			#page .stripe-style-2 & {
+				.fade-if-color("color", @strype-2-color, 50%);
+			}
+			#page .stripe-style-3 & {
+				.fade-if-color("color", @strype-3-color, 50%);
+			}
+			#page .stripe-style-4 & {
+				.fade-if-color("color", @strype-4-color, 50%);
+			}
+			#page .stripe-style-5 & {
+				.fade-if-color("color", @strype-5-color, 50%);
+			}
+		}
+
+		/*Accent*/
+		#page .icons-bg.accent-bg .benefits-grid-ico,
+		#page .icons-bg.accent-hover-bg a.benefits-grid-ico:hover,
+		.hover-line .benefit-line-decoration:after,
+		.benefits-style-one.hover-line .wf-cell > div:after,
+		.benefits-style-two.hover-line .wf-cell .benefits-inner:after {
+			color: #fff;
+			background-color: @accent-bg-color;
+
+			.accent-gradient & {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+		}
+		.icons-bg.accent-bg .benefits-grid-ico,
+		.icons-bg.accent-hover-bg a.benefits-grid-ico:hover {
+			#page & {
+				background-color: @accent-bg-color;
+			}
+		}
+			.accent-icon-color .benefits-grid-ico > i[class^="fa"],
+			.accent-icon-color .benefits-grid-ico > i[class^="fa"]:before,
+			.accent-icon-hover-color a.benefits-grid-ico:hover > i[class^="fa"],
+			.accent-icon-hover-color a.benefits-grid-ico:hover > i[class^="fa"]:before,
+			.benefit-title a:hover {
+				#page & {
+					color: @accent-bg-color;
+				}
+				.accent-gradient #page & {
+					.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+				}
+				#page .stripe & {
+					color: @accent-bg-color;
+				}
+			}

@@ -1,0 +1,112 @@
+/* #Main menu
+================================================== */
+
+	.main-nav > li {
+		position: relative;
+		.flex-display(@display: flex);
+		& > a {
+			text-decoration: none;
+		}
+	}
+	.main-nav > li > a,
+	.mini-nav li > a {
+		position: relative;
+		.flex-display(@display: flex);
+		.align-items(@align: center);
+
+
+		.side-header:not(.h-center) & {
+			.align-items(@align: flex-start);
+		}
+	}
+
+	.not-clickable-item {
+		cursor: default;
+	}
+	.main-nav > li > a .text-wrap {
+		.flex-display(@display: flex);
+		.align-items(@align: center);
+		border-radius: inherit;
+	}
+		.main-nav > li > a .text-wrap .menu-item-text {
+			position: relative;
+			z-index: 10;
+		}
+	.main-nav.level-arrows-on > li.has-children > a {
+		position: relative;
+	}
+		a i[class^="fa"],
+		a > i,
+		.text-wrap > i {
+			.main-nav .menu-item &,
+			.mini-nav .menu-item &,
+			.mobile-main-nav .menu-item & {
+				margin-right: 6px;
+			}
+		}
+		.subtitle-text,
+		.menu-text {
+			display: block;
+		}
+		.top-header .main-nav.level-arrows-on > li.has-children > a .menu-text {
+			position: relative;
+			padding-right: 10px;
+			//.flex-display(@display: inline-flex);
+			display: inline-block;
+			vertical-align: top;
+		}
+		.sub-sideways .main-nav.level-arrows-on > li.has-children > a .menu-item-text {
+			position: relative;
+		}
+			.top-header .main-nav .menu-text:after {
+				position: absolute;
+				top: 50%;
+				margin-top: -4px;
+				right: 0;
+				width: 8px;
+				height: 8px;
+			}
+			.top-header .main-nav.level-arrows-on > li.has-children > a .menu-text:after {
+				content: "\f005";
+				font-family: 'icomoon-the7-font';
+			    speak: none;
+			    font-style: normal;
+			    font-weight: normal;
+			    font-variant: normal;
+			    text-transform: none;
+			  	font-size: 8px;
+			  	line-height: 1;
+			  	text-align: center;
+			}
+		.sub-downwards .next-level-button,
+		.sub-downwards.dt-parent-menu-clickable.side-header .next-level-button {
+
+			position: relative;
+			.align-self(@align: center);
+			.flex-display(@display: flex);
+			margin-left: 5px;
+			&:before {
+				content: "\ef01";
+				font-family: 'icomoon-the7-font';
+			  	speak: none;
+			    font-style: normal;
+			    font-weight: normal;
+			    font-variant: normal;
+			    text-transform: none;
+			  	font-size: 12px;
+			  	line-height: 1;
+			}
+		}
+
+		.sub-downwards .next-level-button,
+		.dt-mobile-header .next-level-button {
+			-ms-transition: -ms-transform 0.3s ease-out;
+			-webkit-transition: -webkit-transform 0.3s ease-out;
+			transition: transform 0.3s ease-out;
+		}
+		.sub-downwards li.has-children.open-sub > .next-level-button,
+		.dt-mobile-header li.has-children.open-sub > .next-level-button {
+			-ms-transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}

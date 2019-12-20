@@ -1,0 +1,247 @@
+
+/*****************************************************
+	!-validationEngine.jquery
+******************************************************/
+
+.formError{position:absolute;top:300px;left:300px;padding-bottom:13px;display:block;z-index:5000}.ajaxSubmit{padding:10px;text-align:center;border:1px solid #999;display:none}.formError .formErrorContent{background:#8a0b2c;color:#fff;width:165px;font-family:tahoma;font-size:11px;border:0 solid #ddd;text-shadow:#f5f5f5;padding:4px 10px;border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px}.greenPopup .formErrorContent{background:#33be40}.blackPopup .formErrorContent{background:#393939;color:#FFF}.formError .formErrorArrow{position:absolute;bottom:0;left:20px;width:15px;height:15px;z-index:5001}.formError .formErrorArrowBottom{top:0;margin:-6px}.formError .formErrorArrow div{border:none;height:1px;background:#8a0b2c;margin:0 auto;line-height:0;font-size:0;display:block}.formError .formErrorArrowBottom div{box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none}.formError .formErrorArrow .line10{width:15px;border:none}.formError .formErrorArrow .line9{width:13px;border:none}.formError .formErrorArrow .line8{width:11px}.formError .formErrorArrow .line7{width:9px}.formError .formErrorArrow .line6{width:7px}.formError .formErrorArrow .line5{width:5px}.formError .formErrorArrow .line4{width:3px}.formError .formErrorArrow .line3{width:1px}.formError .formErrorArrow .line2{width:3px;border:none;display:none}.formError .formErrorArrow .line1{width:1px;border:none;display:none}.formError .formErrorArrow{border:none}
+.inline-message-style .formError {
+    z-index: 100;
+}
+/* validationEngine.jquery:end; */
+
+.dt-contact-form.dt-form {
+	& span .formError,
+    & .formError,
+    & .hide-privacy-message {
+		display: none;
+	}
+    & .formError {
+        .popup-message-style & {
+            display: none;
+        }
+    }
+	& span .formError.first,
+    & span .formError.field-success {
+		.flex-display(@display: flex);
+	}
+    & .formError.first,
+    & .formError.field-success {
+        .popup-message-style &,
+        .inline-message-style & {
+            .flex-display(@display: flex);
+        }
+    }
+    & .formError {
+        & .close-message {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            right: 15px;
+           font-family: 'icomoon-the7-font';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+
+            opacity: 0.5;
+            &:before {
+                content: "\eb01";
+            }
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+            }
+        }
+    }
+    & .error-field:not(.field-success) {
+        border-color: red;
+    }
+}
+.inline-message-style .dt-contact-form.dt-form {
+    position: relative;
+}
+.inline-message-style .form-fields > span {
+    position: static;
+}
+.inline-message-style .formError {
+    &.run-animation {
+        position: relative;
+    }
+    width: 100%;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 0 10px 0 !important;
+    padding: 15px 40px 15px 45px;
+    box-sizing: border-box;
+    & .formErrorContent { 
+        width: 100%;
+        background: none;
+    }
+    & .formErrorArrow {
+        display: none;
+    }
+}
+.parentFormundefined.run-animation {
+    .popup-message-style & {
+         -webkit-transform: translate3d(200px, -50%, 0);
+        
+        -ms-transform: translate3d(200px, -50%, 0);
+        transform: translate3d(200px, -50%, 0);
+         -webkit-animation: slide-in-message, slide-out-message;
+        animation: slide-in-message, slide-out-message;
+        -webkit-animation-duration: 1.2s, 1.1s;
+        animation-duration: 1.2s, 1.1s;
+       -webkit-animation-delay: .4s, 9s;
+        animation-delay: .4s, 9s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-timing-function: ease;
+        animation-timing-function: ease;
+         & .formErrorContent {
+            opacity: 1;
+        }
+    }
+}
+.parentFormundefined {
+     &:before {
+        position: absolute;
+        .flex-display(@display: flex);
+        .justify-content(@justify: center);
+        top: 20px;
+        left: 0;
+        width: 65px;
+        height: 100%;
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 28px;
+        line-height: 1;
+        content: "\f06a" !important;
+        .greenPopup& {
+            content: "\f058" !important;
+        }
+    }
+}
+
+.parentFormundefined:not(.run-animation),
+.parentFormundefined.run-animation {
+    .popup-message-style & {
+	   .flex-display(@display: flex);
+    	.align-items(@align: center);
+        box-shadow: 0px 10px 40px 0px rgba(0,0,0,0.3);
+        border: none;
+        opacity: 0;
+        position: fixed !important;
+        top: 50% !important;
+        left: 100% !important;
+        right: auto !important;
+        margin: 0 !important;
+        padding: 15px 40px 15px 20px;
+        padding-left: 45px;
+        width: 400px;
+        max-height: 500px;
+        z-index: 9999;
+        overflow: hidden;
+       
+        font-weight: bold;
+        color: #FFF;
+        box-sizing: border-box;
+        & a,
+        & a:hover {
+        	color: #fff;
+        }
+       
+        & .formErrorContent {
+            width: 100%;
+    	    background: none;
+    	}
+    	& .formErrorArrow {
+    		display: none;
+    	}
+    }
+}
+
+@-webkit-keyframes slide-in-message {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(600px, -50%, 0);
+        transform: translate3d(600px, -50%, 0);
+
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(-200px, -50%, 0);
+        transform: translate3d(-200px, -50%, 0);
+    }
+
+    100% {
+        opacity: 1;
+         -webkit-transform: translate3d(-400px, -50%, 0);
+        transform: translate3d(-400px, -50%, 0);
+    }
+}
+
+@keyframes slide-in-message {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(600px, -50%, 0);
+        transform: translate3d(600px, -50%, 0);
+
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(-200px, -50%, 0);
+        transform: translate3d(-200px, -50%, 0);
+    }
+
+    100% {
+        opacity: 1;
+         -webkit-transform: translate3d(-400px, -50%, 0);
+        transform: translate3d(-400px, -50%, 0);
+    }
+     
+}
+
+@-webkit-keyframes slide-out-message {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate3d(-400px, -50%, 0);
+        transform: translate3d(-400px, -50%, 0);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100px, -50%, 0);
+        transform: translate3d(-100px, -50%, 0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(800px, -50%, 0);
+        transform: translate3d(800px, -50%, 0);
+    }
+}
+
+@keyframes slide-out-message {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate3d(-400px, -50%, 0);
+        transform: translate3d(-400px, -50%, 0);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100px, -50%, 0);
+        transform: translate3d(-100px, -50%, 0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(800px, -50%, 0);
+        transform: translate3d(800px, -50%, 0);
+    }
+     
+}
+

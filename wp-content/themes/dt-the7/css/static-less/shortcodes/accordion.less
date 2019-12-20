@@ -1,0 +1,97 @@
+/* #Accordion
+================================================== */
+.dt-style.wpb_content_element {
+	margin-bottom: 0 !important;
+}
+	.wpb_content_element .wpb_accordion_header a:active,
+	.wpb_content_element .wpb_accordion_header a:focus,
+	.wpb_content_element .wpb_accordion_header a,
+	.wpb_accordion .wpb_accordion_wrapper .wpb_accordion_header {
+		outline: 0 !important;
+		-webkit-appearance: none;
+	}
+	.wpb_content_element .wpb_accordion_header > a span {
+		display: inline-block;
+	}
+	#main .wpb_accordion .wpb_accordion_wrapper .ui-state-default .ui-icon,
+	#main .wpb_accordion .wpb_accordion_wrapper .ui-state-active .ui-icon {
+		display: none;
+	}
+	.wpb_content_element.dt-style .wpb_accordion_wrapper .wpb_accordion_header {
+		margin: 10px 0 0;
+		border: none;
+		background: none;
+	}
+	.wpb_content_element.dt-accordion-line-on .wpb_accordion_wrapper .wpb_accordion_header {
+		margin: 10px 0 0;
+		padding: 9px 0 0;
+		border-top: 1px solid;
+	}
+	.wpb_content_element.dt-accordion-line-on .wpb_accordion_wrapper .wpb_accordion_section:first-child .wpb_accordion_header,
+	.wpb_content_element.dt-style .wpb_accordion_wrapper .wpb_accordion_section:first-child .wpb_accordion_header {
+		padding-top: 0;
+		margin-top: 0;
+		border: none;
+	}
+		.wpb_content_element.dt-style .wpb_accordion_header a {
+			position: relative;
+			display: block;
+			padding: 0 25px 0 0;
+		}
+		 .wpb_accordion .wpb_accordion_wrapper .ui-state-active > a:hover {
+			text-decoration: none;
+		}
+
+		.dt-style.dt-accordion-bg-on.wpb_content_element .wpb_accordion_header a {
+			padding: 9px 0 9px 18px;
+			.rtl & {
+				padding: 9px 18px 9px 0;
+			}
+		}
+
+			.wpb_content_element .wpb_accordion_header > a:before,
+			.wpb_content_element .wpb_accordion_header > a:after {
+				position: absolute;
+				top: 50%;
+				right: 0;
+				margin-top: -8px;
+				width: 16px;
+				height: 16px;
+				content: "";
+			}
+
+			.dt-accordion-bg-on.wpb_content_element .wpb_accordion_header > a:before,
+			.dt-accordion-bg-on.wpb_content_element .wpb_accordion_header > a:after {
+				right: 13px;
+				.rtl & {
+					right: auto;
+					left: 13px;
+				}
+			}
+			.wpb_content_element .wpb_accordion_header > a:after {
+				margin-top: -8px;
+				content: "\f005";
+				font-family: 'icomoon-the7-font';
+			    speak: none;
+			    font-style: normal;
+			    font-weight: normal;
+			    font-variant: normal;
+			    text-transform: none;
+			  	font-size: 8px;
+			  	line-height: 16px;
+			  	text-align: center;
+			}
+			.wpb_content_element .wpb_accordion_header.ui-state-active > a:after {
+				content: "\f004";
+			}
+
+	.dt-style.wpb_content_element .wpb_accordion_wrapper .wpb_accordion_content {
+		display: none;
+		padding: 10px 0 5px 0;
+		margin: 0;
+		clear: both;
+	}
+	.dt-accordion-bg-on.wpb_content_element .wpb_accordion_wrapper .wpb_accordion_content {
+		padding: 17px 0 13px 0;
+	}
+

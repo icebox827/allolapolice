@@ -1,0 +1,105 @@
+/* #Social icons
+================================================== */
+
+	.soc-ico a:before {
+		.content & {
+			background-color: fade(@base-color, 15%);
+		}
+		.sidebar &,
+		.sidebar-content & {
+			background-color: fade(@widget-sidebar-color, 15%);
+		}
+		.footer & {
+			background-color: fade(@widget-footer-color, 15%);
+		}
+	}
+	.dt-shortcode-soc-icons a.dt-icon-bg-on:before,
+	.content .dt-team-shortcode.dt-icon-bg-on .soc-ico a:before,
+	.dt-shortcode-icon.dt-icon-bg-on .icon-inner:before,
+	.text-icon.dt-icon-bg-on .icon-inner:before {
+		border-color: @accent-bg-color;
+		background-color: @accent-bg-color;
+		.accent-gradient & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+	}
+	.dt-shortcode-soc-icons a,
+	.dt-shortcode-icon,
+	.text-icon {
+		&.dt-icon-border-on:before {
+			border-color: @accent-bg-color;
+		}
+		&.dt-icon-hover-border-on:after {
+			border-color: @accent-bg-color;
+		}
+	}
+			
+	.soc-ico a {
+		#main &,
+		#footer & {
+			&:hover {
+				background-color: transparent;
+				.box-shadow (none);
+			}
+			&:after {
+				background-color: @accent-bg-color;
+				.box-shadow (none);
+			}
+		}
+		#footer & {
+			&:after {
+				.custom-mixin-footer-accent-bg (@widget-footer-accent-color, @color-opacity:100%);
+			}
+		}
+		
+		.accent-gradient #main &,
+		.accent-gradient #footer & {
+			&:hover {
+				background: none;
+			}
+			&:after {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+
+		}
+		.accent-gradient #footer & {
+			&:after {
+				.custom-mixin-footer-accent-bg (@widget-footer-accent-color, @color-opacity:100%);
+			}
+		}
+	}
+	.dt-shortcode-soc-icons a.dt-icon-hover-bg-on,
+	.content .dt-team-shortcode.dt-icon-hover-bg-on .soc-ico a,
+	.dt-shortcode-icon.dt-icon-hover-bg-on .icon-inner,
+	.text-icon.dt-icon-hover-bg-on .icon-inner {
+		&:after {
+			border-color: @accent-bg-color;
+			background-color: @accent-bg-color;
+			.accent-gradient & {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+		}
+	}
+	.dt-shortcode-soc-icons a .soc-font-icon,
+	#main .dt-team-shortcode .soc-ico a .soc-font-icon,
+	.dt-shortcode-icon .soc-icon,
+	.text-icon .soc-icon {
+
+		color: @accent-bg-color;
+		.accent-gradient & {
+			.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+		}
+	}
+
+	.soc-ico a:not(:hover) .soc-font-icon {
+		.content & {
+			color: @base-color;
+		}
+		.sidebar &,
+		.sidebar-content & {
+			color: @widget-sidebar-color;
+		}
+		.footer & {
+			color: @widget-footer-color;
+		}
+	}

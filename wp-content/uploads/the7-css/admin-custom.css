@@ -1,0 +1,61 @@
+.editor-styles-wrapper,
+.editor-styles-wrapper .editor-writing-flow,
+.editor-styles-wrapper p,
+.editor-styles-wrapper .wp-block p {
+  font:    15px / 27px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  word-spacing: normal;
+}
+.editor-styles-wrapper .wp-block-cover .wp-block-cover-text,
+.editor-styles-wrapper .wp-block-cover h2 {
+  font:   bold 24px / 34px "Roboto", Helvetica, Arial, Verdana, sans-serif !important;
+  text-transform: none;
+}
+.text-big,
+.dt-accordion-text-big .wpb_accordion_header > a {
+  font-size: 15px;
+  line-height: 27px;
+}
+.text-normal,
+.dt-accordion-text-normal .wpb_accordion_header > a {
+  font-size: 14px;
+  line-height: 25px;
+}
+.text-small,
+.dt-accordion-text-small .wpb_accordion_header > a {
+  font-size: 13px;
+  line-height: 23px;
+}
+.wp-block-heading h1,
+.wp-block-freeform.block-library-rich-text__tinymce > h1 {
+  font:   bold 44px / 54px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}
+.wp-block-heading h2,
+.wp-block-freeform.block-library-rich-text__tinymce > h2 {
+  font:   bold 34px / 44px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}
+.wp-block-heading h3,
+.wp-block-freeform.block-library-rich-text__tinymce > h3 {
+  font:   bold 24px / 34px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}
+.wp-block-heading h4,
+.wp-block-freeform.block-library-rich-text__tinymce > h4 {
+  font:   bold 20px / 30px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}
+.wp-block-heading h5,
+.wp-block-freeform.block-library-rich-text__tinymce > h5 {
+  font:   bold 16px / 26px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}
+.wp-block-heading h6,
+.wp-block-freeform.block-library-rich-text__tinymce > h6 {
+  font:   bold 14px / 24px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}
+.editor-styles-wrapper .wp-block .wp-block-button .wp-block-button__link {
+  font:   bold 14px / 16px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+}

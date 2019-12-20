@@ -1,0 +1,216 @@
+/* #Header
+================================================== */
+.masthead {
+	position: relative;
+	z-index: 102;
+	box-sizing: border-box;
+}
+.masthead:not(.side-header) {
+	//fix ie min-height bug
+	display: -ms-flexbox; 
+	 -ms-flex-direction: column;
+	
+}
+.masthead:not(#phantom) {
+	.floating-navigation-below-slider.transparent & {
+		transform: translateY(-100%);
+	}
+}
+.top-bar,
+.header-bar,
+.mobile-header-bar {
+	.hidden-header:not(.sticky-header):not(.overlay-navigation) .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) & {
+		display: none;
+	}
+}
+
+.header-side-left #page,
+.overlay-navigation.header-side-line #page:not(.boxed),
+.header-side-left.header-side-line #page:not(.boxed) {
+	.hidden-header&,
+	.disable-headers& {
+		padding-left: 0;
+	}
+}
+.header-side-right #page,
+.header-side-right.header-side-line #page:not(.boxed) {
+	.hidden-header&,
+	.disable-headers& {
+		padding-right: 0;
+	}
+}
+// .floating-navigation-below-slider .masthead:not(.side-header),
+// .floating-navigation-below-slider .header-space {
+// 	visibility: hidden;
+// 	opacity: 0;
+// }
+//Transparent header (in case of responsiveness off)
+.responsive-off.transparent:not(.photo-scroller-album):not(.phantom-sticky) .masthead:not(.side-header) {
+	position: absolute;
+	width: 100%;
+	z-index: 102;
+}
+/* #Header layouts
+================================================== */
+//@import "header/header-layouts.less";
+
+/* #Top bar
+================================================== */
+@import "header/top-bar.less";
+
+/* #Header elements
+================================================== */
+@import "header/header-elements.less";
+
+/* #Main menu
+================================================== */
+@import "header/main-nav.less";
+
+/*Window width bigger than First header switch point (tablet)*/
+
+	/*Hide mobile header*/
+	.responsive-off .dt-mobile-header,
+	.responsive-off .dt-mobile-menu-icon,
+	.responsive-off .mobile-header-space,
+	.responsive-off .masthead .mobile-header-bar,
+	.responsive-off.transparent .header-space {
+		display: none;
+	}
+
+
+	/*!!!REWRITE Sticky floating*/
+	.responsive-off.overlay-navigation .sticky-header-overlay {
+		display: none;
+	}
+
+	/*Floating navigation->Style->Sticky*/
+	.responsive-off.phantom-sticky .fixed-masthead.masthead {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 500;
+	}
+	.phantom-sticky .fixed-masthead.masthead.sticky-on {
+		position: fixed;
+	}
+
+
+	/*Shadow decoration for Sticky floating*/
+	.responsive-off.phantom-shadow-decoration.phantom-sticky .masthead.sticky-on {
+		-webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+		box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+		border-bottom: none;
+	}
+
+	/*Disable decoration for Sticky floating*/
+	.responsive-off.phantom-disable-decoration.phantom-sticky .masthead.sticky-on {
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+		border-bottom: none;
+	}
+	.responsive-off.phantom-sticky:not(.phantom-shadow-decoration) .masthead.sticky-on.shadow-decoration:not(.side-header-menu-icon) {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+
+	/*Floating navigation below slider & Sticky floating navigation*/
+	.responsive-off.floating-navigation-below-slider.phantom-sticky:not(.transparent) .masthead {
+		position: relative;
+		top: 0 !important;
+	}
+	/*--& transparent*/
+	.responsive-off.floating-navigation-below-slider.phantom-sticky.transparent .masthead {
+		position: absolute;
+	}
+	.responsive-off.floating-navigation-below-slider.phantom-sticky .masthead.sticky-on {
+		position: fixed;
+	}
+// could be an issue here
+/*
+	.responsive-off.floating-navigation-below-slider.phantom-sticky .header-space {
+		display: none;
+	}
+*/
+
+	.responsive-off.phantom-sticky:not(.overlap):not(.transparent) .masthead:not(.side-header) {
+		-webkit-transition: background-color 330ms ease;
+		transition: background-color 330ms ease;
+	}
+	.responsive-off.phantom-sticky .page-inner .masthead:not(.side-header) {
+		-webkit-backface-visibility: hidden;
+	}
+
+	/*Sticky navigation logo*/
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-off .branding .sticky-logo,
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-on .branding > a:not(.sticky-logo),
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-on .branding > img:not(.sticky-logo) {
+			display: none;
+			opacity: 0;
+		}
+		.responsive-off.phantom-sticky:not(.phantom-custom-logo-on) .sticky-off .branding .sticky-logo,
+		.responsive-off.phantom-sticky:not(.phantom-custom-logo-on) .sticky-on .branding .sticky-logo,
+		.responsive-off.phantom-main-logo-on.phantom-sticky .sticky-on .branding > a,
+		.responsive-off.phantom-main-logo-on.phantom-sticky .sticky-on .branding > img,
+		.responsive-off.phantom-logo-off.phantom-sticky .sticky-on .branding > a,
+		.responsive-off.phantom-logo-off.phantom-sticky .sticky-on .branding > img {
+			display: none;
+			visibility: hidden;
+		}
+		.responsive-off.phantom-main-logo-on.phantom-sticky .sticky-on .branding .sticky-logo {
+			display: block;
+			visibility: visible;
+		}
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-off .branding .sticky-logo,
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-on .branding > a:not(.sticky-logo),
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-on .branding > img:not(.sticky-logo) {
+			 visibility: hidden;
+		}
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-on .branding .sticky-logo,
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-off .branding > a:not(.sticky-logo),
+		.responsive-off.phantom-sticky.phantom-custom-logo-on .sticky-off .branding > img:not(.sticky-logo) {
+			 visibility: visible;
+		}
+		.phantom-main-logo-on.phantom-sticky.responsive-off .branding .sticky-logo {
+			display: none;
+		}
+		.phantom-sticky.responsive-off #page .side-header .branding > a:not(.sticky-logo),
+		.phantom-sticky.responsive-off #page .side-header .branding > img:not(.sticky-logo):not(.mobile-logo) {
+			display: block;
+			opacity: 1;
+			-webkit-animation: none;
+			animation: none;
+			visibility: visible;
+		}
+
+// could be an issue here
+.sticky-mobile-header .masthead-mobile-header {
+	transition: background .5s ease;
+}
+.phantom-sticky .masthead {
+	transition: background-color .5s ease, background-image .5s ease;
+}
+/*
+.phantom-sticky .header-bar * {
+	transition: all .8s ease;
+}
+*/
+.phantom-sticky .branding > a.same-logo {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+.phantom-sticky .branding > a:not(.same-logo) {
+	opacity: 0;
+	transition: opacity .3s ease;
+	display: block !important;	
+	position: absolute;
+	left: -100%;
+}
+	.phantom-sticky .sticky-off .branding > a:not(.sticky-logo) {
+		opacity: 1;
+		position: static;
+	}
+	.phantom-sticky .sticky-on .branding > a.sticky-logo {
+		opacity: 1;
+		position: static;
+	}

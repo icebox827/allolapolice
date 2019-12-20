@@ -1,0 +1,38 @@
+/* #Accordion & Toggle
+================================================== */
+
+.wpb_content_element .wpb_accordion_header > a span {
+	.header-color;
+}
+.wpb_accordion .wpb_accordion_wrapper > a:hover span,
+.wpb_content_element .wpb_accordion_header a:hover span {
+	.color-accent;
+}
+.wpb_content_element.dt-accordion-line-on .wpb_accordion_wrapper .wpb_accordion_header {
+	.transparent-border-mixin;
+}
+.dt-accordion-bg-on.wpb_content_element .wpb_accordion_wrapper .wpb_accordion_header {
+	.solid-bg-mixin;
+	.outline-decoration;
+	.shadow-decoration;
+}
+
+.wpb_content_element.dt-style:not(.dt-accordion-bg-on) .wpb_accordion_header > a:before {
+	.content &{
+		background-color: fade(@base-color, 15%);
+	}
+}
+.wpb_content_element.dt-style .wpb_accordion_header > a:after {
+	color: @base-color-transparent;
+}
+.wpb_content_element.dt-style:not(.dt-accordion-bg-on) .wpb_accordion_header > a:hover:after,
+.wpb_content_element.dt-style:not(.dt-accordion-bg-on) .ui-state-active > a:hover:after
+{
+		color: @accent-bg-color;
+}
+
+.wpb_accordion .wpb_accordion_wrapper .ui-state-active > a:after {
+	color: @secondary-color;
+}
+
+

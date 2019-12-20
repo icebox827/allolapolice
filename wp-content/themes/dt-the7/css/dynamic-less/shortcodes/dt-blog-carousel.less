@@ -1,0 +1,26 @@
+/* #Shortcode carousel
+================================================== */
+
+@import "inline-mixin.less";
+
+// DYNAMIC_IMPORT_TOP
+
+@import "blog.less";
+@import "dt-carousel.less";
+
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+	background: none;
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+}
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.custom-mixin-shadow ( @string: "", @customColor) when (iscolor(@customColor)) {
+	-webkit-box-shadow: @string @customColor;
+	box-shadow:         @string @customColor;
+}
+
+// DYNAMIC_IMPORT_BOTTOM

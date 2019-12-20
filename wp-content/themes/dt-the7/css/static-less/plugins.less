@@ -1,0 +1,40 @@
+
+@import "plugins/normalize.less";
+@import "plugins/validation.less";
+@import "plugins/ngg-gallery.less";
+@import "plugins/rs-slider.less";
+@import "plugins/owl.carousel.less";
+@import "plugins/photoswipe.less";
+@import "plugins/default-skin.less";
+
+.vc_grid-container div[style*="vc_gitem_image.png"] {
+	display: none;
+}
+.ult_modal-header > * {
+	font-family: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+}
+
+//Stripe payments
+.asp_all_buttons_container {
+	margin-top: 20px;
+}
+#page .asp_product_item {
+	padding: 0;
+	margin: 0;
+}
+#page .asp_product_item,
+#page .asp_product_description {
+	box-shadow: none;
+	border: none;
+}
+.asp_product_buy_button input {
+	margin-right: 5px; 
+}
+@media (max-width: 500px) {
+	#page .asp_price_container,
+	#page .asp_product_buy_btn_container {
+	    text-align: left;
+	}
+}

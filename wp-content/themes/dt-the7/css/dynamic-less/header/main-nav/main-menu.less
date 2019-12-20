@@ -1,0 +1,189 @@
+/* #Main Menu
+================================================== */
+
+/*DIVIDERS*/
+
+.masthead:not(.side-header).dividers .main-nav > li:before,
+.masthead:not(.side-header).dividers.surround .main-nav > li:last-child:after {
+	border-color: @menu-tem-divider-color;
+	height: @menu-tem-divider-height;
+}
+
+.side-header.dividers .main-nav > li:before,
+.side-header.dividers.surround .main-nav > li:last-child:after {
+	border-color: @menu-tem-divider-color;
+	width:  @menu-tem-divider-height;
+}
+/* MENU ITEMS MARGINS & PADDINGS*/
+.main-nav > li > a {
+	margin: @menu-item-margin-top @menu-item-margin-right @menu-item-margin-bottom @menu-item-margin-left;
+	padding: @menu-item-padding-top @menu-item-padding-right @menu-item-padding-bottom @menu-item-padding-left;
+}
+.main-nav > li > a .animate-wrap {
+	margin: -@menu-item-padding-top -@menu-item-padding-right -@menu-item-padding-bottom -@menu-item-padding-left;
+	padding: @menu-item-padding-top @menu-item-padding-right @menu-item-padding-bottom @menu-item-padding-left;
+}
+.main-nav {
+	.side-header.dividers:not(.surround) & {
+		margin: -(@menu-item-padding-top + @menu-item-margin-top) 0 -(@menu-item-padding-bottom + @menu-item-margin-bottom) 0;
+	}
+	.side-header:not(.dividers) & {
+		margin: -(@menu-item-padding-top + @menu-item-margin-top) 0 -(@menu-item-margin-bottom + @menu-item-padding-bottom) 0;
+	}
+}
+> li:first-child > a {
+	.top-header .outside-item-double-margin.main-nav & {
+		margin-left: @menu-item-margin-left*2;
+	}
+	.top-header .outside-item-custom-margin.main-nav & {
+		margin-left: @outside-item-custom-margin;
+	}
+	.top-header .outside-item-remove-margin.main-nav & {
+		margin-left: 0;
+	}
+}
+> li:last-child > a {
+	.top-header .outside-item-double-margin.main-nav & {
+		margin-right: @menu-item-margin-right*2;
+	}
+	.top-header .outside-item-custom-margin.main-nav & {
+		margin-right: @outside-item-custom-margin;
+	}
+	.top-header .outside-item-remove-margin.main-nav & {
+		margin-right: 0;
+	}
+}
+.sub-downwards .main-nav > li > .next-level-button {
+	left: -@menu-item-margin-right;
+	margin-top: @menu-item-margin-top;
+	margin-bottom: @menu-item-margin-bottom;
+}
+
+.sub-downwards .main-nav > li > .sub-nav:last-child {
+	margin-bottom: @menu-item-padding-bottom + @menu-item-margin-bottom;
+}
+.sub-downwards .main-nav > li:last-child > .sub-nav:last-child {
+	margin-bottom: 0;
+}
+.side-header.dividers .main-nav > li:before,
+.side-header.dividers.surround .main-nav > li:last-child:after {
+	left: @menu-item-padding-left + @menu-item-margin-left;
+}
+
+	/*MENU ITEMS FONTS & COLORS*/
+	.main-nav > li > a .menu-text {
+		font: @menu-font-style @menu-font-variant @menu-font-weight @menu-font-size~"/"@menu-font-size+4 @menu-font-family;
+		// color: @menu-color;
+		text-transform: @menu-text-transform;
+	}
+	.main-nav.level-arrows-on > li.has-children > a .menu-item-text {
+		line-height: @menu-font-size+4;
+	}
+	.main-nav > li:not(.wpml-ls-item) > a .menu-text {
+		color: @menu-color;
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color ;
+		}
+	}
+	.main-nav > li:not(.wpml-ls-item) > a {
+		color: @menu-color;
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color ;
+		}
+	}
+	.main-nav > li.act:not(.wpml-ls-item) > a {
+		color: @menu-active-color;
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color-active;
+		}
+	}
+	.main-nav > li.act:not(.wpml-ls-item) > a .menu-text,
+	.main-nav > li.act:not(.wpml-ls-item) > a .subtitle-text {
+		color: @menu-active-color;
+		.text-gradient (@startColor: @menu-active-color, @endColor: @menu-active-color-2);
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color-active;
+			.text-gradient (@startColor: @floating-menu-color-active, @endColor: @floating-menu-color-active-2);
+		}
+	}
+	.main-nav > li:not(.act):not(.wpml-ls-item) > a:hover .subtitle-text,
+	.main-nav > li:not(.act):not(.wpml-ls-item) > a:hover .menu-text,
+	.main-nav > li.dt-hovered:not(.act):not(.wpml-ls-item) > a .subtitle-text,
+	.main-nav > li.dt-hovered:not(.act):not(.wpml-ls-item) > a .menu-text {
+		color: @menu-hover-color;
+		.text-gradient (@startColor: @menu-hover-color, @endColor: @menu-hover-color-2);
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color-hover;
+			.text-gradient (@startColor: @floating-menu-color-hover, @endColor: @floating-menu-color-hover-2);
+		}
+	}
+	.main-nav > li:not(.act):not(.wpml-ls-item) > a:hover,
+	.main-nav > li.dt-hovered:not(.act):not(.wpml-ls-item) > a {
+		color: @menu-hover-color;
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color-hover;
+		}
+	}
+	.top-header .main-nav.level-arrows-on > li.has-children > a .menu-text:after {
+		color: @menu-color;
+	}
+	.main-nav.level-arrows-on > li.has-children > a .menu-text:after {
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-color;
+		}
+	}
+	.sub-sideways .main-nav.level-arrows-on > li.has-children > a:after {
+		color: fade(@menu-color, 27%);
+	}
+	.sub-downwards .main-nav.level-arrows-on > li.has-children > a:after,
+	.sub-downwards .next-level-button,
+	.sub-downwards .main-nav > li.menu-item-language > a:after {
+		color: fade(@menu-color, 27%);
+	}
+	.top-header .main-nav.level-arrows-on > li.has-children:not(.act) > a:hover .menu-text:after,
+	.top-header .main-nav.level-arrows-on > li.dt-hovered.has-children:not(.act) > a .menu-text:after {
+		color: @menu-hover-last-color;
+	}
+	.main-nav.level-arrows-on > li.has-children:not(.act) > a:hover .menu-text:after,
+	.main-nav.level-arrows-on > li.dt-hovered.has-children:not(.act) > a .menu-text:after {
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-hover-last-color;
+		}
+	}
+
+	.top-header .main-nav.level-arrows-on > li.has-children.act > a .menu-text:after {
+		color: @menu-active-last-color;
+	}
+	.main-nav.level-arrows-on > li.has-children.act > a .menu-text:after {
+		.sticky-on &,
+		#phantom & {
+			color: @floating-menu-active-last-color;
+		}
+	}
+	.side-header.sub-downwards .main-nav.level-arrows-on li.has-children > a:after {
+		line-height: @menu-font-size+4;
+	}
+	/*subtitle*/
+	.main-nav > li > a .subtitle-text {
+		font: @subtitle-font-style normal @subtitle-font-weight @subtitle-font-size~"/"@subtitle-font-size+4 @subtitle-font-family;
+	}
+
+	/*icon size*/
+	.main-nav > .menu-item > a > i {
+		font-size: @main-menu-icon-size;
+	}
+	#main-nav > .menu-item > a > i {
+		line-height: @main-menu-icon-size;
+	}
+	.main-nav .sub-nav > .menu-item > a > i {
+		font-size: @sub-menu-icon-size;
+	}
+

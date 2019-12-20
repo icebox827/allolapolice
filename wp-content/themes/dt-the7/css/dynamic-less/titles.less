@@ -1,0 +1,114 @@
+
+/* #Page title
+================================================== */
+@page-title-font-variant: normal;
+@breadcrumbs-font-variant: normal;
+//@page-title-line-height: 1;
+.title-background-gradient (@startColor: #eee, @endColor: white, @dir: 135deg)  when (isstring(~"@endColor")) {
+	background: @startColor; /* Old browsers */
+	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
+	background: linear-gradient(@endColor); /* W3C */
+}
+/*Title background & lines -> Solid background*/
+.page-title .wf-wrap {
+	min-height: @page-title-height;
+	padding-top: @page-title-top-padding;
+	padding-bottom: @page-title-bottom-padding;
+}
+.page-title .wf-wrap:after {
+	border-bottom: @page-title-decorative-line-height @page-title-line-style @page-title-line-color;
+		
+}
+.page-title.solid-bg {
+	background-color: @page-title-bg-color;
+}
+.page-title.solid-bg.bg-img-enabled {
+	background-image: @page-title-bg-image;
+	background-repeat: @page-title-bg-repeat;
+	background-attachment: @page-title-bg-attachment;
+	background-position: @page-title-bg-position-x @page-title-bg-position-y;
+	background-size: @page-title-bg-size;
+}
+.page-title.overlay-bg {
+	&:after {
+		background: @page-title-overlay-color;
+	}
+}
+
+/*Title background & lines -> Solid background*/
+.page-title.gradient-bg {
+	background: @page-title-bg-color;
+	.title-background-gradient (@startColor: @page-title-bg-color, @endColor: @page-title-bg-color-2, @dir: ~"@{page-title-gradient-dir}deg");
+}
+
+/*Title background & lines -> Transparent background*/
+.page-title.title-outline-decoration {
+	border-bottom: @page-title-border-height @page-title-border-style @title-outline-color;
+}
+
+/*Title background & lines -> Content-width line/Full-width line*/
+
+	.page-title > .wf-wrap,
+	#fancy-header > .wf-wrap {
+		width: @content-width;
+	}
+	/*Page title -> Title color*/
+		.page-title h1,
+		.page-title h1 *,
+		.page-title h1 a:hover,
+		#page .page-title .entry-title {
+			font: @page-title-font-style @page-title-font-variant @page-title-font-weight @title-font-size~"/"@page-title-line-height @page-title-font-family;
+			color: @page-title-color;
+			//font-size: @title-font-size;
+			text-transform: @page-title-text-transform;
+		}
+		
+		/*Breadcrumbs*/
+		.page-title .breadcrumbs li:before,
+		.page-title .breadcrumbs li:before {
+			color: fade(@base-color, 35%);
+		}
+		/*Breadcrumbs -> Breadcrumbs color*/
+		.page-title.breadcrumbs-bg .breadcrumbs {
+			background: @breadcrumbs-bg-color;
+			border-radius: @breadcrumbs-border-radius;
+			border: @breadcrumbs-border-width solid @breadcrumbs-border-color;
+		}
+		.page-title .breadcrumbs {
+			padding: @breadcrumbs-padding-top @breadcrumbs-padding-right @breadcrumbs-padding-bottom @breadcrumbs-padding-left;
+			margin: @breadcrumbs-margin-top @breadcrumbs-margin-right @breadcrumbs-margin-bottom @breadcrumbs-margin-left;
+			
+		}
+		.page-title .breadcrumbs,
+		.page-title .breadcrumbs a {
+			color: @page-title-breadcrumbs-color;
+
+			font: @breadcrumbs-font-style @breadcrumbs-font-variant @breadcrumbs-font-weight @breadcrumbs-font-size~"/"@breadcrumbs-line-height @breadcrumbs-font-family;
+			//font-size: @title-font-size;
+			text-transform: @breadcrumbs-text-transform;
+		}
+		.page-title .breadcrumbs li:before,
+		.page-title .breadcrumbs li:before {
+			color: fade(@page-title-breadcrumbs-color, 50%);
+		}
+
+		.fancy-header h1,
+		.fancy-header h2,
+		.fancy-header .fancy-subtitle {
+			font: @page-title-font-style @page-title-font-variant @page-title-font-weight @title-font-size~"/"@page-title-line-height @page-title-font-family;
+		}
+		.fancy-header .color-accent span {
+			#page & {
+				color: @accent-bg-color;
+			}
+			.accent-gradient #page & {
+				.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+			}
+		}
+.breadcrumbs {
+	.dt-breadcrumbs-shortcode & {
+		& * {
+			color: @secondary-text-color;
+		}
+	}
+}

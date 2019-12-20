@@ -1,0 +1,56 @@
+
+/* #Top bar
+================================================== */
+
+/*Top bar background & lines -> Solid background*/
+.top-bar-bg {
+	background: @top-bg-color @top-bg-image @top-bg-repeat @top-bg-position-x @top-bg-position-y;
+	#phantom &,
+	.sticky-on &,
+	.sticky-top-line-on & {
+		background: @top-bg-color @top-bg-image @top-bg-repeat @top-bg-position-x @top-bg-position-y !important;
+	}
+}
+
+/*Top bar background & lines -> Content-width line/Full-width line*/
+.top-bar.line-content:after,
+.top-bar.full-width-line:after {
+	border-bottom: @top-bar-line-size @top-bar-line-style @top-bar-line-color;
+}
+
+/*Top & bottom paddings*/
+.top-bar {
+	min-height: @top-bar-height;
+	padding: @top-bar-padding-top @top-bar-side-paddings @top-bar-padding-bottom;
+}
+/*Top bar font color*/
+.top-bar,
+.top-bar a:not(.wpml-ls-link):not(.wpml-ls-item-toggle),
+.top-bar .mini-nav .customSelect,
+.top-bar .mini-nav a:hover,
+.header-bottom-bar a {
+	color: @top-color;
+}
+
+.mini-contacts,
+.mini-nav > ul:not(.mini-sub-nav) > li > a,
+.mini-login,
+.mini-login .submit,
+.mini-search .submit,
+.mini-search,
+.wc-ico-cart,
+.text-area,
+.customSelectInner {
+	.masthead .top-bar & {
+		font: @top-bar-font-style @top-bar-font-weight @top-bar-font-size~"/"@top-bar-font-size + 6 @top-bar-font-family;
+		text-transform: @top-bar-text-transform;
+	}
+}
+.shopping-cart,
+.soc-ico a,
+.soc-ico {
+	.masthead .top-bar & {
+		line-height: @top-bar-font-size + 6;
+	}
+}
+

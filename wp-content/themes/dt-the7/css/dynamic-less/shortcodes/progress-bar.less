@@ -1,0 +1,31 @@
+
+/* #Progress bar
+================================================== */
+.dt-style.vc_progress_bar.default-bg .vc_single_bar {
+	.solid-bg-mixin;
+	.outline-decoration;
+	.shadow-decoration;
+}
+.dt-style.vc_progress_bar.outline-bg .vc_single_bar {
+	.box-shadow (inset 0px 0px 0px 1px fade(@base-color, 20%));
+	background: none;
+}
+.dt-style.vc_progress_bar.transparent-bg .vc_single_bar {
+	background-color: fade(@base-color, 15%);
+}
+.pb-style-two .vc_label,
+.pb-style-three .vc_label {
+	.header-color;
+	.text-small;
+}
+#page .accent-bg:not([class*='vc_progress-bar-color']) .vc_bar {
+	color: #fff;
+	background-color: @accent-bg-color;
+	.accent-gradient & {
+		.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+	}
+	.footer &,
+	.accent-gradient .footer & {
+		.custom-mixin-footer-accent-bg (@widget-footer-accent-color, @color-opacity:100%);
+	}
+}

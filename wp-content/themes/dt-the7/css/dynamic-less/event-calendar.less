@@ -1,0 +1,196 @@
+
+//Event calendar
+.mec-event-title .event-color,
+.mec-event-sharing-wrap {
+	display: none;
+}
+.mec-wrap.colorskin-custom .mec-bg-color {
+	background: none;
+}
+.mec-event-grid-classic .mec-event-article,
+.mec-skin-grid-events-container .mec-event-footer {
+	box-shadow: none;
+	border: none;
+	background: none;
+}
+.mec-event-grid-classic .mec-event-content {
+	min-height: auto;
+}
+.mec-skin-grid-events-container .mec-event-footer {
+	text-align: center;
+	padding: 0;
+	min-height: auto;
+}
+.mec-event-grid-classic .mec-event-date {
+	margin-bottom: 10px;
+}
+.mec-skin-grid-events-container .mec-event-footer .mec-booking-button {
+	position: static;
+	display: inline-block;
+	border: none;
+}
+.mec-event-footer .mec-booking-button {
+	padding: @btn-s-padding-top @btn-s-padding-right @btn-s-padding-bottom @btn-s-padding-left;
+	height: auto;
+	font: @dt-btn-s-font-style @dt-btn-s-font-variant @dt-btn-s-font-weight @dt-btn-s-font-size~"/"@dt-btn-s-font-size + 2 @dt-btn-s-font-family;
+	text-transform: @dt-btn-s-text-transform;
+	text-decoration: none;
+}
+.mec-event-footer .mec-booking-button:hover {
+	border-color: transparent;
+}
+
+.mec-single-event .mec-event-social li.mec-event-social-icon a {
+	text-decoration: none;
+}
+.content .mec-event-grid-classic .mec-event-date,
+.mec-wrap.colorskin-custom .mec-event-description,
+.mec-event-list-standard .mec-date-details,
+.mec-event-list-standard .mec-time-details,
+.mec-event-list-standard .mec-venue-details,
+.lity-container, .mec-wrap,
+.mec-wrap div:not([class^=elementor-]),
+.mec-event-content p, .mec-wrap p {
+	font: @base-font-style @base-font-variant @base-font-weight @text-big~"/"@text-big-line-height @base-font-family;
+	text-transform: none;
+}
+.mec-wrap .mec-totalcal-box .mec-totalcal-view span,
+.mec-wrap .mec-totalcal-box input,
+.mec-wrap .mec-totalcal-box select,
+.mec-wrap.colorskin-custom .mec-event-description,
+.mec-event-content p, .mec-wrap p {
+	color: @base-color;
+}
+.mec-wrap .mec-totalcal-box .mec-totalcal-view span,
+.mec-wrap .mec-totalcal-box input, .mec-wrap .mec-totalcal-box select {
+	font-family: @h4-font-family;
+	font-size: 14px;
+}
+.mec-wrap.colorskin-custom .mec-calendar:not(.mec-event-calendar-classic) .mec-selected-day,
+.mec-wrap.colorskin-custom .mec-bg-color,
+.mec-single-event .mec-event-meta .mec-events-event-categories a,
+.mec-single-event .mec-event-meta dd {
+	color: @secondary-text-color;
+	font-size: @text-small;
+	line-height: @text-small-line-height;
+}
+.content .mec-month-divider span,
+.mec-event-list-standard .mec-event-title a,
+.mec-event-list-standard .mec-event-meta span.mec-event-d,
+.mec-event-list-standard .mec-event-meta span.mec-event-m,
+.mec-event-grid-classic .mec-event-title a {
+	color: @h4-color;
+	font: @h4-font-style @h4-font-variant @h4-font-weight @h4-font-size~"/"@h4-line-height @h4-font-family;
+	text-transform: @h4-text-transform;
+}
+.mec-single-event .mec-event-meta dt, .mec-single-event .mec-event-meta h3,
+.mec-single-event .mec-event-social h3,
+.mec-wrap {
+	color: @h4-color;
+}
+.custom-background (@isColor) when (iscolor(@isColor)) {
+	background-color: @isColor;
+}
+.custom-color (@isColor) when (iscolor(@isColor)) {
+	color: @isColor;
+}
+.custom-border-color (@isColor) when (iscolor(@isColor)) {
+	border-bottom-color: @isColor;
+}
+
+.mec-wrap.colorskin-custom .mec-calendar:not(.mec-event-calendar-classic) .mec-selected-day {	
+	.custom-background (@mec-colorskin);
+	.custom-background (@mec-color);
+}
+.mec-event-countdown-style3 .mec-event-date:after {
+	.custom-border-color (@mec-colorskin);
+	.custom-border-color (@mec-color);
+}
+.mec-calendar.mec-calendar-daily .mec-calendar-d-table .mec-daily-view-day.mec-daily-view-day-active,
+.mec-calendar.mec-calendar-daily .mec-calendar-d-table dl dt.mec-table-d-current {
+	
+	.custom-color (@mec-colorskin);
+	.custom-color (@mec-color);
+}
+.mec-calendar.mec-calendar-daily .mec-calendar-d-table .mec-daily-view-day.mec-daily-view-day-active,
+.mec-calendar.mec-calendar-daily .mec-calendar-d-table dl dt.mec-table-d-current {
+
+}
+.mec-wrap .mec-single-title {
+	display: none;
+}
+#page .mec-load-more-button {
+	border-radius: 0;
+	width: 220px;
+  	height: 50px;
+	line-height: 50px !important;
+	color: @h4-color;
+	font-weight: 700;
+	&:hover {
+	    background: @h4-color;
+	    color: #fff;
+	    border-color: @h4-color;
+	}
+	font-size: @base-font-size;
+	line-height: @base-line-height;
+	&:before {
+	    content: "\f13a";
+	    margin-right: 5px;
+	    font-family: 'Font Awesome 5 Free';
+	    font-weight: 900;
+	    font-size: 14px;
+	    line-height: 1;
+	}
+}
+.mec-event-footer .mec-booking-button,
+.mec-event-footer .mec-booking-button:hover {
+	border: none;
+}
+#page .mec-topsec .mec-event-image {
+	line-height: 0;
+}
+.mec-calendar.mec-event-calendar-classic .mec-calendar-row dt.mec-has-event:hover a,
+.mec-wrap.colorskin-custom .mec-calendar:not(.mec-event-calendar-classic) .mec-selected-day,
+.mec-wrap.colorskin-custom .mec-totalcal-box .mec-totalcal-view span.mec-totalcalview-selected:hover {
+	color: #fff;
+}
+#page .mec-calendar dt {
+	line-height: 80px;
+}
+#page .mec-widget .mec-calendar dt {
+	line-height: 1.2
+}
+.mec-load-more-loading,
+.mec-single-event .mec-event-meta dd a i:before {
+	content: '';
+}
+.mec-single-event .mec-event-meta dd a i {
+	display: none;
+}
+.mec-wrap colorskin-custom:not(.mec-full-calendar-wrap) .mec-search-form.mec-totalcal-box {
+	display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+}
+/*Carousel*/
+.mec-owl-theme .owl-dots .owl-dot {
+	border: none;
+}
+.mec-single-event .mec-event-meta dd a {
+	text-decoration: none;
+}
+@media only screen and (min-width: 960px) {
+	.mec-single-modern .col-md-4 .mec-frontbox {
+	    margin-left: 0px;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	.mec-wrap .row {
+	    margin-left: 0;
+	    margin-right: 0;
+	}
+	.mec-container {
+	    padding-left: 0;
+	    padding-right: 0;
+	}
+}

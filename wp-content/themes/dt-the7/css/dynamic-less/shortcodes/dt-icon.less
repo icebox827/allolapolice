@@ -1,0 +1,121 @@
+/* #Social icons
+================================================== */
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+	background: none;
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+}
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	box-shadow:         @string;
+}
+a {
+	.dt-shortcode-icon.@{unique-shortcode-class-name} & {
+		//margin-right: @soc-icon-gap-between;
+		.custom-mixin-margin-right (@soc-icon-gap-between);
+	}
+}
+.custom-mixin-margin-right (@customString) when not(@customString = ~"") {
+	margin-right: @customString;
+}
+.@{unique-shortcode-class-name} {
+	.dt-shortcode-icon& {
+		min-width: @dt-icon-bg-size;
+		min-height: @dt-icon-bg-size;
+		font-size: @dt-icon-size;
+		border-radius: @dt-icon-border-radius;
+		&:last-child {
+			margin-right: 0;
+		}
+		& .icon-inner {
+			margin: @icon-border-gap;
+			min-width: @dt-icon-bg-size;
+			min-height: @dt-icon-bg-size;
+			border-radius: @dt-icon-border-radius;
+		}
+		& .dt-hover-icon {
+			line-height: @dt-icon-bg-size;
+		}
+		&:before,
+		&:after,
+		& .icon-inner:before,
+		& .icon-inner:after {
+			min-width: 100%;
+			min-height: 100%;
+			padding: inherit;
+			border-radius: inherit;
+		}
+		&.dt-icon-bg-on .icon-inner:before {
+			#page &,
+			#phantom & {
+				.custom-mixin-bg (@dt-icon-bg-color);
+			}
+		}
+		&.dt-icon-border-on:before {
+			border-width: @dt-icon-border-width;
+			border-style: solid;
+			border-color: @dt-icon-border-color;
+			.dt-icon-border-dashed& {
+				border-style: dashed
+			}
+			.dt-icon-border-dotted& {
+				border-style: dotted
+			}
+			.dt-icon-border-double& {
+				border-style: double
+			}
+		}
+		&.dt-icon-hover-border-on:after {
+
+			border-width: @dt-icon-border-width;
+			border-style: solid;
+			border-color: @dt-icon-border-color-hover;
+			.dt-icon-border-dashed& {
+				border-style: dashed
+			}
+			.dt-icon-border-dotted& {
+				border-style: dotted
+			}
+			.dt-icon-border-double& {
+				border-style: double
+			}
+		}
+		&.dt-icon-hover-on:hover {
+			font-size: @dt-icon-size;
+			
+			& .soc-font-icon,
+			& .soc-icon {
+				#page &,
+				#phantom & {
+					.custom-mixin-color (@dt-icon-color-hover);
+				}
+			}
+		}
+		&.dt-icon-hover-bg-on {
+			& .icon-inner:after {
+				#page &,
+				#phantom & {
+					.custom-mixin-bg (@dt-icon-bg-color-hover);
+				}
+			}
+		}
+		&.dt-icon-hover-on:not(:hover) .soc-font-icon,
+		&.dt-icon-hover-on:not(:hover) .soc-icon,
+		&.dt-icon-hover-off .soc-font-icon,
+		&.dt-icon-hover-off .soc-icon {
+			#page &,
+			#phantom & {
+				.custom-mixin-color (@dt-icon-color);
+			}
+		}
+		& .soc-font-icon,
+		& .soc-icon {
+			font-size: @dt-icon-size;
+		}
+	}
+}

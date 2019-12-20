@@ -1,0 +1,85 @@
+/* =Styles for 'normal' meta boxes
+-------------------------------------------------------------- */
+
+.the7-mb-field {
+	margin: 10px 0;
+}
+.the7-mb-label,
+.the7-mb-input {
+	display: inline-block;
+	vertical-align: top;
+}
+.the7-mb-label {
+	width: 24%;
+}
+.the7-mb-label.required > span {
+	color: #c00;
+	font-weight: bold;
+}
+
+/* 75% if field has label, 100% if no label */
+.the7-mb-input {
+	width: 100%;
+}
+.the7-mb-label ~ .the7-mb-input {
+	width: 75%;
+}
+.the7-mb-input h4 {
+	margin: 0;
+}
+.the7-mb-textarea {
+	resize: vertical;
+}
+
+/* Clone */
+.the7-mb-clone {
+	min-height: 24px;
+}
+.the7-mb-clone > input[type="radio"],
+.the7-mb-clone > input[type="checkbox"] {
+	margin: 6px 0 0 4px;
+}
+.the7-mb-button {
+	display: inline;
+	float: right;
+}
+
+/* Fix width to not overlap button for cloned sliders */
+.the7-mb-clone .the7-mb-slider {
+	width: 80%;
+	margin: 6px 0 0;
+}
+
+/* Fix buttons after sliders */
+.clearfix + .the7-mb-button {
+	margin-top: -16px;
+}
+
+/* Fix empty block below admin footer (issue #24) */
+#ui-datepicker-div {
+	display: none;
+}
+
+/* jQuery validation */
+label.error {
+	padding-left: 3px;
+	color: red;
+}
+input.error,
+textarea.error,
+select.error {
+	border: #c00 solid 1px !important;
+	background: #ffebe8 !important;
+}
+
+/* =Styles for 'side' meta boxes
+-------------------------------------------------------------- */
+
+#side-sortables .the7-mb-label,
+#side-sortables .the7-mb-input {
+	width: 100%;
+}
+
+#side-sortables .the7-mb-input input[type=text] {
+	width: inherit;
+}

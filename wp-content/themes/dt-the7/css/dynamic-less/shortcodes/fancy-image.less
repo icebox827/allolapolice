@@ -1,0 +1,42 @@
+
+.rollover-background-gradient(@firstColor, @gradient) when (isstring(~"@gradient")) {
+	background: @firstColor;
+	background: -webkit-linear-gradient(@gradient);
+	background: linear-gradient(@gradient);
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+	-webkit-box-shadow: none;
+	box-shadow:         none;
+}
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+}
+
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.rollover i,
+.rollover-video i {
+	.@{unique-shortcode-class-name}.enable-bg-rollover & {
+		.custom-mixin-bg (@portfolio-rollover-bg);
+		.rollover-background-gradient (@firstColor: @portfolio-rollover-bg, @gradient: @portfolio-rollover-bg-gradient);
+	}
+}
+.rollover-icon {
+	.@{unique-shortcode-class-name} & {
+		font-size: @rollover-icon-size;
+    	.custom-mixin-color (@rollover-icon-color);
+    	min-width: @rollover-icon-bg-size;
+	    min-height: @rollover-icon-bg-size;
+	    line-height: @rollover-icon-bg-size;
+	    border-radius: @rollover-icon-border-radius;
+	    border-style: solid;
+	    //margin: -@project-icon-bg-size/2 0 0 -@project-icon-bg-size/2;
+	    border-width: @rollover-icon-border-width;
+	  	.custom-mixin-border (@rollover-icon-border-color);
+	    .dt-icon-bg-on& {
+	    	.custom-mixin-bg (@rollover-icon-bg-color);
+	    }
+	}
+}

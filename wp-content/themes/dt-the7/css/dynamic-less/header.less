@@ -1,0 +1,71 @@
+/* #Top bar
+================================================== */
+@import "header/top-bar.less";
+
+/* #Header elements
+================================================== */
+@import "header/header-elements.less";
+
+/* #Main menu
+================================================== */
+@import "header/main-nav.less";
+
+/* #Floating header
+================================================== */
+@import "header/floating-header.less";
+
+/* #Header
+================================================== */
+
+
+	/* HEADER BACKGROUND */
+
+		.masthead:not(.mixed-header) {
+			background: @header-bg-color @header-bg-image @header-bg-repeat @header-bg-position-x @header-bg-position-y;
+			background-size: @header-bg-size;
+			background-attachment: @header-bg-attachment;
+		}
+		
+	/* HEADER BACKGROUND:end */
+
+	/* HEADER DECORATION */
+
+		/*- Line*/
+
+		.masthead.line-decoration:not(.side-header):not(.mixed-header):not(.masthead-mobile-header) {
+			border-bottom: 1px solid @header-decoration;
+		}
+		.header-side-left .masthead.line-decoration:not(.mixed-header):not(.masthead-mobile-header)  {
+			border-right: 1px solid @header-decoration;
+		}
+		.header-side-right .masthead.line-decoration:not(.mixed-header):not(.masthead-mobile-header)  {
+			border-left: 1px solid @header-decoration;
+		}
+
+		/*- Line :end*/
+
+		/*- shadow*/
+		.transparent .masthead:not(.side-header),
+		.overlay-navigation .masthead.shadow-decoration:not(.mixed-header) {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+		.masthead.shadow-decoration:not(.side-header-menu-icon):not(#phantom):not(.masthead-mobile-header) {
+			-webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+			box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+		}
+
+	/* HEADER DECORATION:end */
+
+	
+
+	/* TRANSPARENT HEADER */
+
+		.transparent .masthead:not(.side-header) {
+			background: @header-transparent-bg-color;
+		}
+		.transparent .top-bar-bg {
+			background: @top-bar-transparent-bg-color;
+		}
+
+	/* TRANSPARENT HEADER:end */

@@ -1,0 +1,170 @@
+/* #Buttons
+================================================== */
+
+@btn-pi: 0px;
+@btn-pi-h: 0px;
+
+.mixin-bg (@customColor) when not (@customColor = ~"") {
+  background: @customColor !important;
+}
+
+.mixin-border-color (@customColor) when (iscolor(@customColor)) {
+  border-color: @customColor !important;
+}
+
+.mixin-color (@customColor) when (iscolor(@customColor)) {
+  color: @customColor;
+}
+.mixin-link-color (@customColor) when (iscolor(@customColor)) {
+  color: @customColor;
+  background: none;
+}
+
+.mixin-3d-shadow (@customColor) when (iscolor(@customColor)) {
+  box-shadow: 0px 2px 0px 0px desaturate(darken(@customColor, 12%), 20%);
+}
+
+.mixin-padding(@pt, @pr, @pb, @pl, @pi: 0px) when (ispixel(@pt)) {
+  padding: @pt+@pi @pr+@pi @pb+@pi @pl+@pi;
+}
+.custom-mixin-font-style (@customString) when not(@customString = ~"") {
+  font-style: @customString;
+}
+.custom-mixin-font-weight (@customString) when not(@customString = ~"") {
+  font-weight: @customString;
+}
+.custom-mixin-text-transform (@customString) when not(@customString = ~"") {
+  text-transform: @customString;
+}
+
+.mixin-shadow-style() {
+  .btn-shadow& {
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+
+    -webkit-transition: -webkit-box-shadow 0.2s ease-out, opacity 0.45s;
+    transition: box-shadow 0.2s ease-out, opacity 0.45s;
+
+    &:hover {
+      -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+.mixin-3d-style(@3d-bg, @3d-hover-bg) {
+  .btn-3d& {
+    .mixin-3d-shadow (@3d-bg);
+
+    &:hover {
+      .mixin-3d-shadow (@3d-hover-bg);
+    }
+  }
+}
+
+.mixin-custom-settings() when (ispixel(@btn-border-radius)) {
+  border-radius: @btn-border-radius;
+  font-size: @btn-font-size;
+
+  .mixin-shadow-style();
+  .mixin-3d-style(@btn-bg-color, @btn-bg-color-hover);
+
+  .btn-flat& {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+    &:hover {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+
+  &.ico-right-side > i {
+    margin-right: 0px;
+    margin-left: @btn-icon-gap;
+  }
+
+  & > i {
+    margin-right: @btn-icon-gap;
+    font-size: @btn-icon-size;
+  }
+
+  &:not(:hover) {
+    border-width: @btn-border-width;
+    .mixin-border-color (@btn-border-color);
+    .mixin-color (@btn-color);
+    .mixin-bg (@btn-bg-color);
+    .mixin-padding (@btn-padding-top, @btn-padding-right, @btn-padding-bottom, @btn-padding-left, @btn-pi);
+
+    & * {
+      .mixin-color (@btn-color);
+    }
+  }
+
+  &:hover {
+    border-width: @btn-border-width-hover;
+    .mixin-border-color (@btn-border-color-hover);
+    .mixin-color (@btn-color-hover);
+    .mixin-bg (@btn-bg-color-hover);
+    .mixin-padding (@btn-padding-top-hover, @btn-padding-right-hover, @btn-padding-bottom-hover, @btn-padding-left-hover, @btn-pi-h);
+
+    & * {
+      .mixin-color (@btn-color-hover);
+    }
+  }
+}
+
+.mixin-link-settings() when (ispixel(@link-font-size)) {
+  font-size: @link-font-size;
+  line-height: @link-font-size + 2;
+  .custom-mixin-font-style (@link-font-style);
+  .custom-mixin-font-weight (@link-font-weight);
+  .custom-mixin-text-transform (@link-text-transform);
+  .mixin-padding (@link-padding-top, @link-padding-right, @link-padding-bottom, @link-padding-left, @link-pi);
+
+
+  &.ico-right-side > i {
+    margin-right: 0px;
+    margin-left: @btn-icon-gap;
+  }
+  &:after {
+    height: @link-border-width;
+    .mixin-bg (@link-border-color-hover);
+  }
+
+  & > i {
+    margin-right: @btn-icon-gap;
+    font-size: @link-icon-size;
+  }
+
+  &:not(:hover),
+  &.link-hover-off:hover {
+   // .mixin-border-color (@link-border-color);
+    .mixin-link-color (@link-color);
+    & * {
+      .mixin-link-color (@link-color);
+    }
+  }
+
+  &:not(.link-hover-off):hover {
+   // border-width: @link-border-width-hover;
+    //.mixin-border-color (@link-border-color-hover);
+    .mixin-link-color (@link-color-hover);
+    //.mixin-padding (@link-padding-top-hover, @link-padding-right-hover, @link-padding-bottom-hover, @link-padding-left-hover, @link-pi-h);
+
+    & * {
+      .mixin-link-color (@link-color-hover);
+    }
+  }
+}
+
+
+#@{unique-shortcode-class-name} {
+  .mixin-custom-settings();
+  .mixin-link-settings();
+
+  & * {
+    vertical-align: middle;
+  }
+}
+

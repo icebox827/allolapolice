@@ -1,0 +1,488 @@
+/* #Buttons
+================================================== */
+
+/*vars*/
+@dt-btn-bg-color-darken: darken(@dt-btn-hover-bg-color, 5%);
+@dt-btn-bg-color-2-darken: darken(@dt-btn-hover-bg-color-2, 5%);
+@btn-font-size: 14;
+.btn-icon-gap (@a, @btn-font-size) when (@a > @btn-font-size) {
+  margin-right: @a*8/unit(@btn-font-size);
+}
+
+.btn-icon-gap-left (@a, @btn-font-size) when (@a > @btn-font-size) {
+  margin-left: @a*8/unit(@btn-font-size);
+  margin-right: 0 !important;
+}
+/*3D style*/
+
+/*small button*/
+.dt-btn,
+.widget .dt-form .dt-btn,
+.nsu-submit,
+.give-btn.give-btn-reveal {
+	font: @dt-btn-s-font-style @dt-btn-s-font-variant @dt-btn-s-font-weight @dt-btn-s-font-size~"/"@dt-btn-s-font-size + 2 @dt-btn-s-font-family;
+	text-transform: @dt-btn-s-text-transform;
+	.border-radius (@radius: @dt-btn-s-border-radius);
+	border: @dt-btn-s-border-width solid @dt-btn-border-color;
+
+	padding: @btn-s-padding-top @btn-s-padding-right @btn-s-padding-bottom @btn-s-padding-left;
+	&.ico-right-side > i {
+	    .btn-icon-gap-left (@dt-btn-s-font-size, 12px);
+	  }
+
+	& > i,
+	& > i[class^="fa"],
+	& > i[class^="dt-icon"] {
+	    font-size: @dt-btn-s-icon-size;
+	    .btn-icon-gap (@dt-btn-s-font-size, 12px);
+  	}
+}
+
+.btn-link.dt-btn-s {
+	font: @dt-btn-s-font-style @dt-btn-s-font-variant @dt-btn-s-font-weight @dt-btn-s-font-size~"/"@dt-btn-s-line-height @dt-btn-s-font-family;
+}
+
+/*middle button*/
+button.button,
+a.button,
+input[type="button"],
+input[type="reset"],
+.wpcf7-submit,
+.dt-btn-m,
+input.dt-btn-m[type="submit"],
+#main .gform_wrapper .gform_footer input.button,
+#main .gform_wrapper .gform_footer input[type="submit"],
+#main-slideshow .tp-button,
+.woocommerce-widget-layered-nav-dropdown__submit {
+	font: @dt-btn-m-font-style @dt-btn-m-font-variant @dt-btn-m-font-weight @dt-btn-m-font-size~"/"@dt-btn-m-font-size + 2 @dt-btn-m-font-family;
+	text-transform: @dt-btn-m-text-transform;
+	.border-radius (@radius: @dt-btn-m-border-radius);
+	border: @dt-btn-m-border-width solid @dt-btn-border-color;
+	padding: @btn-m-padding-top @btn-m-padding-right @btn-m-padding-bottom @btn-m-padding-left;
+}
+.dt-btn-m {
+	&.ico-right-side > i {
+	    .btn-icon-gap-left (@dt-btn-m-font-size, 14px);
+	  }
+
+	& > i,
+	& > i[class^="fa"],
+	& > i[class^="dt-icon-"] {
+	    font-size: @dt-btn-m-icon-size;
+	    .btn-icon-gap (@dt-btn-m-font-size, 14px);
+  	}
+ }
+.wp-block-button .wp-block-button__link {
+	font: @dt-btn-m-font-style @dt-btn-m-font-variant @dt-btn-m-font-weight @dt-btn-m-font-size~"/"@dt-btn-m-font-size + 2 @dt-btn-m-font-family;
+	text-transform: @dt-btn-m-text-transform;
+}
+
+/*large button*/
+.dt-btn-l {
+	padding: @btn-l-padding-top @btn-l-padding-right @btn-l-padding-bottom @btn-l-padding-left;
+	font: @dt-btn-l-font-style @dt-btn-l-font-variant @dt-btn-l-font-weight @dt-btn-l-font-size~"/"@dt-btn-l-font-size + 2 @dt-btn-l-font-family;
+	text-transform: @dt-btn-l-text-transform;
+	.border-radius (@radius: @dt-btn-l-border-radius);
+	border: @dt-btn-l-border-width solid @dt-btn-border-color;
+	&.ico-right-side > i {
+	    .btn-icon-gap-left (@dt-btn-l-font-size, 18px);
+	}
+
+	& > i,
+	& > i[class^="fa"],
+	& > i[class^="dt-icon-"] {
+	    font-size: @dt-btn-l-icon-size;
+	    .btn-icon-gap (@dt-btn-l-font-size, 18px);
+  	}
+}
+
+
+/*bg style*/
+.dt-btn:not(.btn-light):not(.light-bg-btn):not(.outline-btn):not(.outline-bg-btn):not(.btn-no-decoration),
+.mec-event-footer .mec-booking-button,
+button.button,
+a.button:not(.edd-submit),
+.dt-form button,
+.widget .dt-form .dt-btn,
+//input[type="button"],
+input[type="reset"],
+.wpcf7-submit,
+.nsu-submit,
+.dt-wc-btn,
+.checkout-button,
+input#place_order,
+input[name="apply_coupon"],
+input[name="login"],
+button[name="calc_shipping"],
+button[name="calc_shipping"]:hover,
+.single_add_to_cart_button.button,
+.button.wc-backward,
+.woocommerce-Button.button,
+.woocommerce-Reviews .submit,
+.woocommerce-Button[name="register"],
+.track_order input[name="track"],
+.cart-btn-below-img .woo-buttons a,
+input[name="save_address"],
+.wc-layout-list .woo-buttons a,
+.post-password-form input[type="submit"],
+.mc4wp-form input[type="submit"],
+div.mc4wp-form button[type="submit"],
+.tml-submit-wrap input[type="submit"],
+.wpcf7-form input[type="submit"],
+input[type="submit"]:not([name="update_cart"]),
+.woocommerce-widget-layered-nav-dropdown__submit,
+.give-btn.give-btn-reveal {
+	.btn-3d & {
+		box-shadow: 0px 2px 0px 0px desaturate(darken(@dt-btn-bg-color, 12%), 20%);
+
+		&:hover {
+			box-shadow: 0px 2px 0px 0px desaturate(darken(@dt-btn-hover-bg-color, 12%), 20%);
+		}
+		&.accent-btn-bg-color {
+			box-shadow: 0px 2px 0px 0px desaturate(darken(@accent-bg-color, 12%), 20%);
+		}
+		&.accent-btn-bg-hover-color:hover {
+			box-shadow: 0px 2px 0px 0px desaturate(darken(@accent-bg-color, 12%), 20%);
+		}
+	}
+
+	/*material style*/
+	.btn-shadow & {
+		-webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+		box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+		
+		-webkit-transition: -webkit-box-shadow 0.2s ease-out, opacity 0.45s;
+		transition: box-shadow 0.2s ease-out, opacity 0.45s;
+		&:hover {
+			-webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+			box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+		}
+	}
+	.btn-3d& {
+		box-shadow: 0px 2px 0px 0px desaturate(darken(@dt-btn-bg-color, 12%), 20%);
+
+		&:hover {
+			//border-bottom-color: desaturate(darken(@dt-btn-hover-bg-color, 12%), 20%);
+			box-shadow: 0px 2px 0px 0px desaturate(darken(@dt-btn-hover-bg-color, 12%), 20%);
+		}
+		&.accent-btn-bg-color {
+			//border-bottom-color: desaturate(darken(@accent-bg-color, 12%), 20%);
+			box-shadow: 0px 2px 0px 0px desaturate(darken(@accent-bg-color, 12%), 20%);
+		}
+		&.accent-btn-bg-hover-color:hover {
+			//border-bottom-color: desaturate(darken(@accent-bg-color, 12%), 20%) !important;
+			box-shadow: 0px 2px 0px 0px desaturate(darken(@accent-bg-color, 12%), 20%);
+		}
+	}
+
+}
+
+/* #standard buttons color & background
+================================================== */
+button.button,
+.mec-event-footer .mec-booking-button,
+a.button:not(.edd-submit),
+.dt-form button,
+#page .widget .dt-form .dt-btn,
+.widget .dt-form .dt-btn,
+input[type="button"],
+input[type="reset"],
+.wpcf7-submit,
+.nsu-submit,
+.dt-wc-btn,
+input#place_order,
+.woocommerce-Reviews .submit,
+input.button,
+.cart-btn-below-img .woo-buttons a,
+input[name="save_address"],
+.wc-layout-list .woo-buttons a,
+.post-password-form input[type="submit"],
+.mc4wp-form input[type="submit"],
+div.mc4wp-form button[type="submit"],
+.tml-submit-wrap input[type="submit"],
+.wpcf7-form input[type="submit"],
+input[type="submit"]:not([name="update_cart"]),
+.woocommerce-widget-layered-nav-dropdown__submit,
+.give-btn.give-btn-reveal {
+	color: @dt-btn-color;
+	.stripe &,
+	& *,
+	.sidebar &,
+	.sidebar .widget &,
+	.sidebar-content .widget &,
+	.footer & {
+		color: @dt-btn-color;
+		.custom-mixin-footer-with-accent-color (@dt-btn-color, @widget-footer-accent-color);
+	}
+	background-color: @dt-btn-bg-color;
+	.background-gradient (@startColor: @dt-btn-bg-color, @endColor: @dt-btn-bg-color-2);
+	&:not(:hover) {
+		.btn-bg-off & {
+			background: none;
+		}
+	}
+	&:hover {
+		color: @dt-btn-hover-color;
+		border-color: @dt-btn-border-hover-color;
+		.stripe &,
+		.sidebar &,
+		.sidebar .widget &,
+		.sidebar-content .widget &,
+		.footer & {
+			color: @dt-btn-hover-color;
+			.custom-mixin-footer-with-accent-color (@dt-btn-hover-color, @widget-footer-accent-color);
+		}
+		#page & {
+			background: @dt-btn-hover-bg-color;
+			.background-gradient (@startColor: @dt-btn-hover-bg-color, @endColor: @dt-btn-hover-bg-color-2);
+		}
+		.btn-hover-bg-off #page & {
+			background: none;
+		}
+	}
+	&:hover .text-wrap {
+		color: @dt-btn-hover-color;
+	}
+}
+
+/* # DT Custom buttons
+================================================== */
+
+
+.dt-btn:not(.btn-light):not(.light-bg-btn):not(.outline-btn):not(.outline-bg-btn):not(.btn-custom-style),
+.mec-event-footer .mec-booking-button,
+.give-btn.give-btn-reveal{
+	background-color: @dt-btn-bg-color;
+	background-image: none;
+	.background-gradient (@startColor: @dt-btn-bg-color, @endColor: @dt-btn-bg-color-2);
+	&:not(:hover) {
+		.btn-bg-off & {
+			background: none;
+		}
+	}
+	&:hover {
+		background: none;
+		background: @dt-btn-hover-bg-color;
+		.background-gradient (@startColor: @dt-btn-hover-bg-color, @endColor: @dt-btn-hover-bg-color-2);
+
+		border-color: @dt-btn-border-hover-color;
+		.btn-hover-bg-off & {
+			background: none;
+		}
+	}
+	/*accent background*/
+	&.accent-btn-bg-color {
+		background: @accent-bg-color;
+		.accent-gradient & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+	}
+	/*accent hover background*/
+	&.accent-btn-bg-hover-color:hover {
+		#page & {
+			background: @accent-bg-color;
+		}
+		.accent-gradient #page & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+	}
+	&.default-btn-bg-hover-color:hover {
+		#page & {
+			background: none;
+			background: @dt-btn-hover-bg-color;
+			.background-gradient (@startColor: @dt-btn-hover-bg-color, @endColor: @dt-btn-hover-bg-color-2);
+		}
+	}
+}
+.btn-light:hover,
+.outline-bg-btn:hover {
+	background: @dt-btn-hover-bg-color;
+	.background-gradient (@startColor: @dt-btn-hover-bg-color, @endColor: @dt-btn-hover-bg-color-2);
+}
+.dt-btn.btn-hover-off:hover {
+	background-color: @dt-btn-bg-color !important;
+	.background-gradient (@startColor: @dt-btn-bg-color, @endColor: @dt-btn-bg-color-2) !important;
+}
+
+
+/*button text color*/
+.dt-btn:not(.btn-custom-style),
+.btn-link {
+	color: @dt-btn-color;
+	& *,
+	.sidebar &,
+	.content .sidebar-content &,
+	.footer &,
+	.content .shortcode-banner-inside & *,
+	.content & {
+		color: @dt-btn-color;
+	}
+	&:hover,
+	&:hover > * {
+		color: @dt-btn-hover-color;
+	}
+	&.accent-btn-color > span,
+	&.accent-btn-color > .text-wrap *,
+	&.accent-btn-color > i[class^="fa"],
+	&.accent-btn-color > i[class^="dt-icon-"] {
+		color: @accent-bg-color;
+		.accent-gradient & {
+			.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+		}
+	}
+	&.title-btn-color,
+	&.title-btn-color > span,
+	&.title-btn-color > .text-wrap *,
+	&.title-btn-color > i[class^="fa"],
+	&.title-btn-color > i[class^="dt-icon-"] {
+		.color-title;
+	}
+	&.title-btn-hover-color:hover > span,
+	&.title-btn-hover-color:hover > .text-wrap *,
+	&.title-btn-hover-color:hover > i[class^="fa"],
+	&.title-btn-hover-color:hover > i[class^="dt-icon-"] {
+		color: @h1-color !important;
+	}
+	&.default-btn-hover-color:hover > span,
+	&.default-btn-hover-color:hover > .text-wrap *,
+	&.default-btn-hover-color:hover > i[class^="fa"],
+	&.default-btn-hover-color:hover > i[class^="dt-icon-"] {
+		color: @dt-btn-hover-color !important;
+	}
+	&.accent-btn-hover-color:hover > span,
+	&.accent-btn-hover-color:hover > .text-wrap *,
+	&.accent-btn-hover-color:hover > i[class^="fa"],
+	&.accent-btn-hover-color:hover > i[class^="dt-icon-"] {
+		#page & {
+			color: @accent-bg-color !important;
+		}
+		.accent-gradient #page & {
+			.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+		}
+	}
+}
+.dt-btn:not(.custom-btn-color):not(.btn-shortcode):not(.btn-custom-style) > span,
+.dt-btn:not(.custom-btn-color):not(.btn-shortcode):not(.btn-custom-style) > .text-wrap * {
+	.accent-btn-color & {
+		color: @accent-bg-color;
+	}
+	.accent-btn-color.accent-gradient & {
+		.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	}
+}
+.custom-btn-hover-color .dt-btn:not(.custom-btn-color):not(.accent-btn-hover-color):not(.btn-shortcode):hover > span,
+.custom-btn-hover-color .dt-btn:not(.custom-btn-color):not(.accent-btn-hover-color):not(.btn-shortcode):hover > .text-wrap * {
+	background: none;
+	color: @dt-btn-hover-color;
+}
+.custom-btn-hover-color .dt-btn:hover > .text-wrap * {
+	color: inherit;
+}
+.dt-btn:not(.custom-btn-hover-color):not(.btn-shortcode):not(.btn-custom-style):hover > span,
+.dt-btn:not(.custom-btn-hover-color):not(.btn-shortcode):not(.btn-custom-style):hover > .text-wrap * {
+	.accent-btn-hover-color & {
+		color: @accent-bg-color;
+	}
+	.accent-btn-hover-color.accent-gradient & {
+		.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	}
+}
+
+/* #Light Buttons
+================================================== */
+.light-bg-btn {
+	.solid-bg-mixin;
+	.outline-decoration;
+	.shadow-decoration;
+	&:hover {
+		background: @dt-btn-hover-bg-color;
+		.background-gradient (@startColor: @dt-btn-hover-bg-color, @endColor: @dt-btn-hover-bg-color-2);
+	}
+	&.accent-btn-bg-hover-color:hover {
+		#page & {
+			background: @accent-bg-color;
+		}
+		.accent-gradient #page & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+	}
+
+}
+/* #Link with background Buttons
+================================================== */
+
+.btn-light {
+	.solid-bg-mixin;
+	.outline-decoration;
+	.shadow-decoration;
+	background-image: none;
+	&:hover {
+		background-image: none;
+		.solid-bg-mixin;
+		.outline-decoration;
+		.shadow-decoration;
+	}
+}
+/* #Outline with background on hover
+================================================== */
+.dt-btn.outline-bg-btn {
+	background: none;
+	.accent-gradient & {
+		background: none;
+	}
+	&:hover {
+		border-color: transparent;
+	}
+}
+.outline-bg-btn {
+	border-color: @dt-btn-bg-color;
+	&:hover {
+		border-color: @dt-btn-hover-bg-color;
+		background: @dt-btn-hover-bg-color;
+		.background-gradient (@startColor: @dt-btn-hover-bg-color, @endColor: @dt-btn-hover-bg-color-2);
+	}
+	&.accent-btn-bg-color {
+		border-color: @accent-bg-color;
+	}
+	&.accent-btn-bg-hover-color:hover {
+		#page & {
+			background: @accent-bg-color;
+			border-color: transparent;
+		}
+		.accent-gradient #page & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+	}
+}
+/* #Outline button
+================================================== */
+.outline-btn {
+	border-color: @dt-btn-bg-color;
+	&:hover {
+		border-color: @dt-btn-hover-bg-color;
+		background: none;
+	}
+	&.accent-btn-bg-color {
+		border-color: @accent-bg-color;
+	}
+	&.accent-btn-bg-hover-color:hover {
+		#page & {
+			border-color: @accent-bg-color;
+		}
+	}
+}
+.dt-btn-link,
+.dt-btn-link > span,
+.dt-btn-link > i {
+	color: @accent-bg-color;
+	.accent-gradient & {
+		.text-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+	}
+}
+.dt-btn-link:after {
+	background: @accent-bg-color;
+	.accent-gradient & {
+		.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+	}
+}
+

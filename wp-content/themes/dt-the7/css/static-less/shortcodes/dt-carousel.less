@@ -1,0 +1,255 @@
+ /* #Shortcode carousel
+================================================== */
+.owl-carousel {
+  box-sizing: border-box;
+}
+.post {
+	.owl-carousel & {
+		.flex-display(@display: flex);
+		.flex-flow( column wrap);
+	}
+}
+.owl-carousel article.post {
+  width: 100%;
+}
+.owl-nav a:not(:hover):before {
+  .dt-arrow-border-on & {
+      border-style: solid;
+      border-width: 0;
+  }
+}
+.owl-nav a:hover:after {
+  .dt-arrow-border-on &,
+  .dt-arrow-hover-border-on & {
+      border-style: solid;
+      border-width: 0;
+  }
+}
+.owl-nav a {
+	position: absolute;
+  z-index: 10;
+	.flex-display(@display: inline-flex);
+	.justify-content(@justify: center);
+	.align-items(@align: center);
+	text-decoration: none;
+  &:before,
+  &:after {
+    //.dt-owl-carousel-call & {
+      position: absolute;
+     // background: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      opacity: 0;
+      box-sizing: border-box;
+      -webkit-border-radius: inherit;
+      border-radius: inherit;
+      -webkit-backface-visibility: hidden;
+      -webkit-transition: opacity 0.150s linear;
+      transition: opacity 0.150s linear;
+      .disable-arrows-hover-bg & {
+        -webkit-transition: none;
+        transition: none;
+      }
+    }
+
+   // .arrows-bg-on & {
+      &:not(:hover):before {
+        opacity: 1;
+      }
+      &:hover:before,
+      &:not(:hover):after {
+        transition-delay: 0.100s;
+      }
+    //}
+
+   // .arrows-hover-bg-on & {
+      &:hover:after {
+        opacity: 1;
+      }
+    //}
+    &:after,
+    &:hover:before {
+      opacity: 0;
+    }
+    & i {
+      position: relative;
+      z-index: 1;
+
+      -webkit-transition: color 0.150s;
+      transition: color 0.150s;
+        transition-delay: 0.100s;
+    }
+ /* .arrows-hover-bg-off & {
+    &:hover {
+      background: none !important;
+    }
+  }*/
+
+ // }
+}
+.owl-carousel .owl-dots {
+	position: absolute;
+	//transform: translateY(100%);
+	& .owl-dot {
+    position: relative;
+		display: inline-block;
+    & span {
+      :not(.bullets-etefu)& {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border-radius: 50%;
+      }
+    }
+	}
+}
+
+/* Scale up */
+
+.bullets-scale-up .owl-dot span {
+  -webkit-transition: -webkit-transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+
+.bullets-scale-up .owl-dot.active span {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+/* Stroke */
+
+.bullets-stroke .owl-dot:not(.active) span {
+   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0) !important;
+}
+.bullets-stroke .owl-dot span {
+  -webkit-transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+
+.bullets-stroke .owl-dot.active span {
+  background-color: transparent;
+  box-shadow: 0 0 0 2px white;
+}
+/* Fill in */
+
+.bullets-fill-in .owl-dot span {
+  background-color: transparent;
+  -webkit-transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Small dot with stroke */
+
+.bullets-small-dot-stroke .owl-dot {
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0);
+  -webkit-transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+}
+
+.bullets-small-dot-stroke .owl-dot span {
+    cursor: pointer;
+    position: absolute;
+  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.bullets-small-dot-stroke .owl-dot.active span {
+  -webkit-transform: scale(0.4);
+  transform: scale(0.4);
+}
+
+
+/*** Ubax ***/
+
+
+.bullets-ubax .owl-dot span {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  border: 2px solid transparent;
+  border-radius: 0 !important;
+  box-sizing: border-box;
+}
+
+.bullets-ubax .owl-dot.active span  {
+  z-index: 10;
+  background: transparent !important;
+  -webkit-transition:  background-color 0.3s, border-color 0.3s;
+  transition:  background-color 0.3s, border-color 0.3s;
+}
+
+.bullets-ubax .owl-dot:not(.active):hover span {
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+
+/*** Etefu ***/
+
+.bullets-etefu .owl-dot {
+  height: 5px !important;
+}
+
+.bullets-etefu .owl-dot span {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 5px;
+  -webkit-transition: background 0.3s;
+    transition: background 0.3s;
+}
+
+.bullets-etefu .owl-dot span:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate3d(-100%,0,0);
+  transform: translate3d(-100%,0,0);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  -webkit-transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+  transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+}
+
+.bullets-etefu .owl-dot.active span:before {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+
+
+.carousel-shortcode [class^="icon-"]:not(.icon-with-text-shortcode),
+.carousel-shortcode [class*=" icon-"]:not(.icon-with-text-shortcode),
+.carousel-shortcode [class^="icon-"]:not(.icon-with-text-shortcode):before,
+.carousel-shortcode [class*=" icon-"]:not(.icon-with-text-shortcode):before {
+   /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon-arrows-carousel-32x32' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

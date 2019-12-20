@@ -1,0 +1,431 @@
+/*! Prefix flex for IE10  in LESS
+* https://gist.github.com/codler/2148ba4ff096a19f08ea
+* Copyright (c) 2014 Han Lin Yap http://yap.nu; MIT license */
+/* These are the conditional mixins for the different syntax for IE10 Flexbox */
+.portfolio-shortcode article,
+.albums-shortcode article {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -ms-align-items: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+.mode-masonry:not(.bottom-overlap-layout-list).portfolio-shortcode article,
+.mode-grid:not(.bottom-overlap-layout-list).portfolio-shortcode article,
+.mode-masonry:not(.bottom-overlap-layout-list).albums-shortcode article,
+.mode-grid:not(.bottom-overlap-layout-list).albums-shortcode article {
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-align-items: stretch;
+  -ms-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+.bottom-overlap-layout-list.portfolio-shortcode article,
+.bottom-overlap-layout-list.albums-shortcode article {
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.gradient-overlay-layout-list.mode-grid.portfolio-shortcode article,
+.content-rollover-layout-list.mode-grid.portfolio-shortcode article,
+.gradient-overlay-layout-list.mode-grid.albums-shortcode article,
+.content-rollover-layout-list.mode-grid.albums-shortcode article {
+  height: auto;
+}
+.hover-grid article,
+.hover-grid-reverse article {
+  position: relative;
+  overflow: hidden;
+}
+.gradient-overlay-layout-list.portfolio-shortcode article,
+.gradient-overlay-layout-list.albums-shortcode article {
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.portfolio-shortcode.scale-img .post-thumbnail-rollover,
+.portfolio-shortcode.quick-scale-img .post-thumbnail-rollover,
+.albums-shortcode.scale-img .post-thumbnail-rollover,
+.albums-shortcode.quick-scale-img .post-thumbnail-rollover {
+  transform: translateZ(0);
+}
+.portfolio-shortcode .post-thumbnail-wrap,
+.albums-shortcode .post-thumbnail-wrap {
+  position: relative;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -ms-flex: 0 0 auto;
+}
+.related-projects .project-list-media,
+.gallery-carousel-shortcode .rollover {
+  position: relative;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -ms-flex: 0 0 auto;
+}
+.portfolio-shortcode .post-thumbnail,
+.albums-shortcode .post-thumbnail {
+  position: relative;
+  display: block;
+}
+.portfolio-shortcode .post-thumbnail .alignleft,
+.albums-shortcode .post-thumbnail .alignleft {
+  margin: 0;
+}
+.portfolio-shortcode .post-thumbnail .alignnone,
+.albums-shortcode .post-thumbnail .alignnone {
+  margin-bottom: 0;
+}
+.portfolio-shortcode .format-gallery .post-thumbnail {
+  width: 100%;
+}
+.post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img {
+  width: 100%;
+}
+.mobile-false .quick-scale-img.gradient-overlay-layout-list article:hover .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img,
+.mobile-false .quick-scale-img.content-rollover-layout-list article:hover .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img,
+.mobile-false .quick-scale-img.gradient-overlap-layout-list article:hover .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+}
+.mobile-true .quick-scale-img.gradient-overlay-layout-list article.is-clicked .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img,
+.mobile-true .quick-scale-img.content-rollover-layout-list article.is-clicked .post-thumbnail:not(.overlay-placeholder) > .post-thumbnail-rollover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+}
+.mobile-false .gradient-overlap-layout-list.scale-img article:hover .post-thumbnail > .post-thumbnail-rollover img,
+.mobile-true .gradient-overlap-layout-list.scale-img .is-clicked .post-thumbnail > .post-thumbnail-rollover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition: -webkit-transform 4s ease-out;
+  transition: transform 4s ease-out;
+}
+.content-rollover-layout-list.albums-shortcode.show-content .post-entry-wrapper,
+.content-rollover-layout-list.albums-shortcode.show-content .post-entry-content:before {
+  transform: translateY(0) !important;
+  bottom: 0 !important;
+}
+#page .content-rollover-layout-list.albums-shortcode.show-content .entry-excerpt,
+#page .content-rollover-layout-list.albums-shortcode.show-content .post-details {
+  opacity: 1;
+}
+.portfolio-shortcode .post-entry-content,
+.albums-shortcode .post-entry-content {
+  position: relative;
+  z-index: 10;
+}
+.gradient-overlap-layout-list.portfolio-shortcode .post-entry-content,
+.gradient-overlap-layout-list.albums-shortcode .post-entry-content {
+  position: relative;
+  margin-top: -125px;
+  z-index: 1;
+  padding-top: 90px;
+}
+.gradient-overlap-layout-list.portfolio-shortcode .post-entry-content:before,
+.gradient-overlap-layout-list.albums-shortcode .post-entry-content:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 150px;
+  content: "";
+}
+.gradient-overlay-layout-list.portfolio-shortcode .post-entry-content,
+.gradient-overlay-layout-list.albums-shortcode .post-entry-content {
+  position: absolute;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  background: none !important;
+  width: 100%;
+  min-height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+.mobile-true .hover-scale.gradient-overlay-layout-list.portfolio-shortcode .post-entry-content,
+.mobile-true .hover-scale.gradient-overlay-layout-list.albums-shortcode .post-entry-content {
+  opacity: 0;
+}
+.mobile-true .hover-scale.gradient-overlay-layout-list.portfolio-shortcode .is-clicked .post-entry-content,
+.mobile-true .hover-scale.gradient-overlay-layout-list.albums-shortcode .is-clicked .post-entry-content {
+  opacity: 1;
+}
+.mobile-true .hover-scale article.is-clicked .post-entry-content {
+  opacity: 1;
+}
+.content-rollover-layout-list.portfolio-shortcode .post-entry-content,
+.content-rollover-layout-list.albums-shortcode .post-entry-content {
+  height: auto;
+}
+.gradient-overlay-layout-list.hover-fade article .post-entry-content {
+  opacity: 0;
+  visibility: hidden;
+}
+.mobile-false .gradient-overlay-layout-list.hover-fade article:hover .post-entry-content,
+.mobile-true .gradient-overlay-layout-list.hover-fade article.is-clicked .post-entry-content {
+  opacity: 1;
+  visibility: visible;
+}
+@-webkit-keyframes fadeInFromNone {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes fadeInFromNone {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeToNone {
+  0% {
+    opacity: 1;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes fadeToNone {
+  0% {
+    opacity: 1;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.mobile-false .hover-scale .post-entry-content {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+}
+.mobile-false .hover-scale article:hover .post-entry-content {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.hover-grid .post-entry-content,
+.hover-grid-reverse .post-entry-content {
+  opacity: 0;
+}
+.mobile-false .hover-grid article:hover .post-entry-content,
+.mobile-false .hover-grid-reverse article:hover .post-entry-content,
+.mobile-true .hover-grid .is-clicked .post-entry-content,
+.mobile-true .hover-grid-reverse .is-clicked .post-entry-content {
+  opacity: 1;
+}
+.mobile-false .hover-scale .post-thumbnail-rollover:after {
+  display: none;
+}
+.portfolio-shortcode .entry-excerpt {
+  overflow: hidden;
+}
+.portfolio-shortcode .post-entry-content .entry-title a,
+.portfolio-shortcode .post-entry-title-content .entry-title a {
+  -webkit-transition: color 0.35s;
+  transition: color 0.35s;
+}
+.accent-gradient .portfolio-shortcode .post-entry-content .entry-title a,
+.accent-gradient .portfolio-shortcode .post-entry-title-content .entry-title a {
+  -webkit-transition: none;
+  transition: none;
+}
+.portfolio-shortcode .entry-meta,
+.albums-shortcode .entry-meta {
+  padding: 0;
+}
+.portfolio-shortcode .entry-meta a:hover,
+.albums-shortcode .entry-meta a:hover {
+  text-decoration: none;
+}
+.portfolio-shortcode .entry-meta > span a,
+.albums-shortcode .entry-meta > span a {
+  display: inline-block;
+}
+.portfolio-shortcode .entry-meta a:hover,
+.albums-shortcode .entry-meta a:hover {
+  text-decoration: underline;
+}
+.portfolio-shortcode .entry-meta *,
+.albums-shortcode .entry-meta * {
+  color: inherit;
+}
+.portfolio-shortcode .entry-meta > a:after,
+.portfolio-shortcode .entry-meta > span:after,
+.albums-shortcode .entry-meta > a:after,
+.albums-shortcode .entry-meta > span:after {
+  right: 0;
+  width: 3px;
+  height: 3px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  content: "";
+}
+.portfolio-shortcode .entry-meta > .data-link:hover,
+.albums-shortcode .entry-meta > .data-link:hover {
+  text-decoration: none;
+}
+.post-thumbnail-wrap .project-links-container,
+.post-entry-content .project-links-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+.gradient-overlap-layout-list .post-thumbnail-wrap .project-links-container,
+.gradient-overlap-layout-list .post-entry-content .project-links-container {
+  height: calc(100% - 125px);
+}
+.content-rollover-layout-list:not(.content-align-center) .post-thumbnail-wrap .project-links-container,
+.content-rollover-layout-list:not(.content-align-center) .post-entry-content .project-links-container,
+.gradient-overlay-layout-list:not(.content-align-center) .post-thumbnail-wrap .project-links-container,
+.gradient-overlay-layout-list:not(.content-align-center) .post-entry-content .project-links-container {
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+}
+.post-thumbnail-wrap .project-links-container a,
+.post-entry-content .project-links-container a {
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+  opacity: 0;
+  text-align: center;
+  -webkit-transition: opacity 300ms ease;
+  transition: opacity 300ms ease;
+  -webkit-backface-visibility: hidden;
+}
+.post-thumbnail-wrap .project-links-container a:before,
+.post-entry-content .project-links-container a:before,
+.post-thumbnail-wrap .project-links-container a:after,
+.post-entry-content .project-links-container a:after {
+  position: absolute;
+  background: none;
+  border-style: solid;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  box-sizing: border-box;
+  -webkit-border-radius: inherit;
+  border-radius: inherit;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+  -webkit-backface-visibility: hidden;
+}
+.disable-icon-hover-bg .post-thumbnail-wrap .project-links-container a:before,
+.disable-icon-hover-bg .post-entry-content .project-links-container a:before,
+.disable-icon-hover-bg .post-thumbnail-wrap .project-links-container a:after,
+.disable-icon-hover-bg .post-entry-content .project-links-container a:after {
+  -webkit-transition: none;
+  transition: none;
+}
+.post-thumbnail-wrap .project-links-container a:before,
+.post-entry-content .project-links-container a:before,
+.post-thumbnail-wrap .project-links-container a:hover:after,
+.post-entry-content .project-links-container a:hover:after {
+  opacity: 1;
+}
+.post-thumbnail-wrap .project-links-container a:after,
+.post-entry-content .project-links-container a:after,
+.post-thumbnail-wrap .project-links-container a:hover:before,
+.post-entry-content .project-links-container a:hover:before {
+  opacity: 0;
+}
+.post-thumbnail-wrap .project-links-container a:hover:before,
+.post-entry-content .project-links-container a:hover:before,
+.post-thumbnail-wrap .project-links-container a:not(:hover):after,
+.post-entry-content .project-links-container a:not(:hover):after {
+  transition-delay: 0.1s;
+}
+.post-thumbnail-wrap .project-links-container a > span,
+.post-entry-content .project-links-container a > span {
+  position: relative;
+  z-index: 2;
+  -webkit-transition: color 0.25s;
+  transition: color 0.25s;
+}
+.gradient-overlay-layout-list .post-thumbnail-wrap .project-links-container a,
+.gradient-overlay-layout-list .post-entry-content .project-links-container a {
+  opacity: 1;
+}
+.post-thumbnail-wrap .project-links-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.portfolio-shortcode .post-thumbnail:hover > .post-thumbnail-rollover:after,
+.mobile-true .portfolio-shortcode .is-clicked .post-thumbnail > .post-thumbnail-rollover:after,
+.gradient-overlap-layout-list.portfolio-shortcode article:hover .post-thumbnail-rollover:after,
+.mobile-true .gradient-overlap-layout-list.portfolio-shortcode .is-clicked .post-thumbnail-rollover:after {
+  opacity: 1;
+}
+.post-entry-content:hover .project-links-container a,
+.post-thumbnail:hover .project-links-container a,
+.gradient-overlap-layout-list article:hover .project-links-container a {
+  opacity: 1;
+}

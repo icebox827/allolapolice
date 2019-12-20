@@ -1,0 +1,77 @@
+
+.compose-mode .vc_dt_blog_masonry,
+.compose-mode .vc_dt_carousel,
+.compose-mode .vc_dt_blog_carousel,
+.compose-mode .vc_dt_team_carousel,
+.compose-mode .vc_dt_team_masonry,
+.compose-mode .vc_dt_before_after,
+.compose-mode .vc_dt_team,
+.compose-mode .vc_dt_testimonials,
+.compose-mode .vc_dt_slideshow,
+.compose-mode .vc_dt_photos_masonry,
+.compose-mode .vc_dt_photos_jgrid,
+.compose-mode .vc_dt_small_photos,
+.compose-mode .vc_dt_albums,
+.compose-mode .vc_dt_albums_jgrid,
+.compose-mode .vc_dt_albums_scroller,
+.compose-mode .vc_dt_portfolio,
+.compose-mode .vc_dt_portfolio_jgrid,
+.compose-mode .vc_dt_portfolio_slider,
+.compose-mode .vc_dt_testimonials_carousel,
+.compose-mode .vc_dt_testimonials_masonry,
+.compose-mode .vc_dt_products_carousel,
+.compose-mode .vc_dt_products_masonry,
+.compose-mode .vc_dt_blog_posts,
+.compose-mode .vc_dt_blog_scroller,
+.compose-mode .vc_dt_soc_icons {
+	display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-flex-pack: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    text-align: center;
+	padding: 20px;
+	margin-top: 40px;
+	// margin-bottom: 20px;
+	background: url("../images/vc_editor_pattern.png") 0 0 repeat !important;
+}
+.compose-mode .vc_element {
+	margin-top: 40px;
+}
+.compose-mode .vc_dt_single_soc_icon {
+	display: inline-block;
+	margin: 10px;
+}
+.dt_vc-shortcode_dummy {
+	min-width: 200px;
+	padding: 30px 25px 15px 25px;
+	background: #fff;
+	box-sizing: border-box;
+}
+.compose-mode .vc_dt_single_soc_icon .dt_vc-shortcode_dummy {
+	min-width: 100px;
+	padding: 10px 15px 10px 15px;
+}
+.dt_vc-shortcode_dummy h5 {
+	margin-top: 10px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #999999;
+
+}
+.vc_dt_carousel .owl-carousel {
+	display: block;
+}
+.compose-mode .vc_element-name .vc_btn-content {
+    height: auto;
+}

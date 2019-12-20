@@ -1,0 +1,330 @@
+//
+// Theme Variables
+// --------------------------------------------------
+
+
+
+@bottom-divider-bg-color: rgba(56, 57, 58, 1);
+
+/*base variables*/
+
+@base-font-variant: normal; /* constant */
+@base-color-temp: escape(~"@{base-color}");
+@base-color-temp-transparent: escape(~"@{secondary-text-color}");
+@secondary-base-color: @accent-bg-color;
+@h1-font-variant: normal; /* constant */
+@h2-font-variant: normal; /* constant */
+@h3-font-variant: normal; /* constant */
+@h4-font-variant: normal; /* constant */
+@h5-font-variant: normal; /* constant */
+@h6-font-variant: normal; /* constant */
+
+@base-filter-variant: normal; /* constant */
+/*header variables*/
+
+@secondary-color-temp: escape(~"@{secondary-text-color}");
+
+
+@temp-submenu-color: escape(~"@{submenu-color}");
+@temp-submenu-hover-color: escape(~"@{submenu-hover-color}");
+@temp-menu-hover-color: escape(~"@{menu-hover-color}");
+@text-near-logo-color-temp: escape(~"@{text-near-logo-color}");
+@temp-mobile-menu-color: escape(~"@{mobile-menu-color}");
+@menu-font-variant: normal; /* constant */
+@menu-color-temp: escape(~"@{menu-color}");
+@submenu-color-temp: escape(~"@{submenu-color}");
+@submenu-hover-color-temp: escape(~"@{submenu-hover-color}");
+@submenu-active-color-temp: escape(~"@{submenu-active-color}");
+@menu-color-temp-2: fade(@menu-color, 30%);
+@top-icons-bg-color-temp: escape(~"@{top-color}");
+@additional-menu-elements-color-temp: escape(~"@{additional-menu-elements-color}");
+@additional-logo-elements-color-temp:escape(~"@{additional-logo-elements-color}");
+@microwidgets-in-top-line-color-temp:escape(~"@{microwidgets-in-top-line-color}");
+@microwidgets-below-menu-color-temp:escape(~"@{microwidgets-below-menu-color}");
+
+/*divider color*/
+
+@divider-bg-color-ie: @base-color;
+@divider-bg-color-temp: escape(~"@{divider-bg-color}");/* It's important to keep this value in quotes */
+
+@widget-sidebar-divider-bg-color: fade(@widget-sidebar-color, 15%);
+@widget-sidebar-divider-bg-color-ie: @widget-sidebar-color;
+
+/*@strype-1-divider-bg-color: blue;*/
+@strype-1-divider-bg-color-ie: @strype-1-color;
+
+@strype-2-divider-bg-color: blue;
+@strype-2-divider-bg-color-ie: @strype-2-color;
+
+@strype-3-divider-bg-color: blue;
+@strype-3-divider-bg-color-ie: @strype-3-color;
+
+@hamburger-size:54px;
+
+
+/*Buttons*/
+/*@dt-btn-bg-color: @accent-bg-color;
+@dt-btn-bg-color-2: @accent-bg-color-2;
+@dt-btn-color: blue;
+@dt-btn-hover-color: red;
+@dt-btn-hover-bg-color: yellow;
+@dt-btn-hover-bg-color-2: green;*/
+
+@dt-btn-s-font-variant: normal; /* constant */
+@dt-btn-m-font-variant: normal; /* constant */
+@dt-btn-l-font-variant: normal; /* constant */
+
+@dt-btn-xl-font-style: normal;
+@dt-btn-xl-font-variant: normal; /* constant */
+@dt-btn-xl-font-weight: normal;
+@dt-btn-xl-font-size: 18px;
+@dt-btn-xl-line-height: 42px;
+@dt-btn-xl-font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
+@dt-btn-xl-text-transform: none;
+
+
+
+@main-slideshow-bg-attachment: ~"";
+
+@accent-color: rgb(255, 255, 255); /* It's important to keep this value in quotes */
+@accent-bg-color-temp: escape(~"@{accent-bg-color}");
+
+
+
+@backgrounds-color: ~"@{h1-color}";
+@backgrounds-color-temp: escape(~"@{h1-color}");
+@backgrounds-bg-color: @divider-bg-color; /* color of backgrounds for meta information, blockquotes, etc. */
+@backgrounds-bg-color-ie: @divider-bg-color-ie;
+@strype-1-header-color-temp: escape(~"@{strype-1-header-color}");
+
+
+@widget-sidebar-divider-bg-color-temp: escape(~"@{widget-sidebar-divider-bg-color}");
+
+@footer-bg-color-temp: escape(~"@{footer-bg-color}");
+/*@footer-paddings: 44px;*/
+
+
+@widget-footer-color-fade-cap:fade(@widget-footer-color, 12%);
+@widget-footer-color-temp: escape(~"@{widget-footer-color}");
+@widget-footer-header-color-temp: escape(~"@{widget-footer-header-color}");
+@widget-footer-secondary-color: @accent-bg-color;
+@widget-footer-divider-bg-color-temp: escape(~"@{widget-footer-divider-bg-color}");
+
+@widget-footer-divider-bg-color: fade(@widget-footer-color, 15%);
+@bottom-icons-color-temp: escape(~"@{bottom-color}");
+@percent-to-num: (unit(@bg-hover-opacity) / 100);
+
+/*Main overlap gradient*/
+@gr-color1: fade(@page-bg-color, 75%);
+@gr-color2: fade(@page-bg-color, 80%);
+@gr-color3: fade(@page-bg-color, 86%);
+@gr-color4: fade(@page-bg-color, 90%);
+@gr-color5: fade(@page-bg-color, 94%);
+@gr-color6: fade(@page-bg-color, 98%);
+@gr-color7: fade(@page-bg-color, 99%);
+@gr-color8: fade(@page-bg-color, 100%);
+
+/*Header overlap gradient*/
+@gr-hr-color1: fade(@header-bg-color, 75%);
+@gr-hr-color2: fade(@header-bg-color, 80%);
+@gr-hr-color3: fade(@header-bg-color, 86%);
+@gr-hr-color4: fade(@header-bg-color, 90%);
+@gr-hr-color5: fade(@header-bg-color, 94%);
+@gr-hr-color6: fade(@header-bg-color, 98%);
+@gr-hr-color7: fade(@header-bg-color, 99%);
+@gr-hr-color8: fade(@header-bg-color, 100%);
+
+@gr-top-line-color1: fade(@navigation-line-bg, 75%);
+@gr-top-line-color2: fade(@navigation-line-bg, 80%);
+@gr-top-line-color3: fade(@navigation-line-bg, 86%);
+@gr-top-line-color4: fade(@navigation-line-bg, 90%);
+@gr-top-line-color5: fade(@navigation-line-bg, 94%);
+@gr-top-line-color6: fade(@navigation-line-bg, 98%);
+@gr-top-line-color7: fade(@navigation-line-bg, 99%);
+@gr-top-line-color8: fade(@navigation-line-bg, 100%);
+
+@rollover-gr-color1: fade(@rollover-bg-color, 90%);
+@rollover-gr-color2: fade(@rollover-bg-color-2, 90%);
+@rollover-gr-color1-temp: escape(~"@{rollover-gr-color1}");
+@rollover-gr-color2-temp: escape(~"@{rollover-gr-color2}");
+
+
+.custom-mixin-footer-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+	background: none;
+}
+.custom-mixin-footer-accent-bg (@customColor, @color-opacity:100%) when (iscolor(@customColor)) {
+	background: fade(@customColor, @color-opacity);
+}
+.custom-mixin-mega-menu-accent (@customColor) when (iscolor(@customColor)) {
+	color: @customColor !important;
+	background: none;
+}
+/* !Defining basic mixins */
+
+.text-gradient (@startColor: #eee, @endColor: white) when not (@endColor = ~"") {
+	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
+		// -webkit-background-clip: text;
+		// -webkit-text-fill-color: transparent;
+	color: transparent;
+  	-webkit-background-clip: text;
+  	background-clip: text;
+  	 @media all and (-ms-high-contrast: none) {
+     	color: @startColor;
+    }
+}
+.text-gradient-text-fill (@startColor: #eee, @endColor: white) when not (@endColor = ~"") {
+	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+}
+
+.background-gradient-new (@gradient) {
+	//background: @startColor; /* Old browsers */
+	background: -webkit-linear-gradient(@gradient); /* Chrome10+,Safari5.1+ */
+	background: linear-gradient(@gradient); /* W3C */
+}
+
+.background-gradient (@startColor: #eee, @endColor: white) when (isstring(~"@endColor")) {
+	background: @startColor; /* Old browsers */
+	background: -webkit-linear-gradient(@endColor); /* Chrome10+,Safari5.1+ */
+	background: linear-gradient(@endColor); /* W3C */
+}
+
+.background-fade-gradient (@startColor: #eee, @endColor: white, @opacity: 30%) when (iscolor(@endColor)) {
+	.background-gradient( fade( @startColor, @opacity ), fade( @endColor, @opacity ) );
+}
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	box-shadow:         @string;
+}
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	-webkit-border-top-right-radius:    @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius:  @bottomleft;
+	-webkit-border-top-left-radius:     @topleft;
+
+	-moz-border-radius-topright:        @topright;
+	-moz-border-radius-bottomright:     @bottomright;
+	-moz-border-radius-bottomleft:      @bottomleft;
+	-moz-border-radius-topleft:         @topleft;
+
+	border-top-right-radius:            @topright;
+	border-bottom-right-radius:         @bottomright;
+	border-bottom-left-radius:          @bottomleft;
+	border-top-left-radius:             @topleft;
+
+	-moz-background-clip:    padding; 
+	-webkit-background-clip: padding-box; 
+	background-clip:         padding-box; 
+}
+
+.fade-mixin(@bg-color, @bg-opacity) {
+	background-color: fade(@bg-color, @bg-opacity);
+}
+.custom-mixin-fade-color (@customColor, @opacity:100%) when (iscolor(@customColor)) {
+	color: fade(@customColor, @opacity);
+}
+/* !Border radius */
+
+.border-radius (@radius: @border-radius-size) {
+	-webkit-border-radius: @radius;
+	border-radius:         @radius;
+}
+/*Transparent background*/
+.transparent-border-mixin {
+	border-color: @divider-color;
+	.sidebar &,
+	.sidebar-content & {
+		border-color: fade(@widget-sidebar-color, 15%);
+	}
+	.footer & {
+		border-color: fade(@widget-footer-color, 15%);
+	}
+}
+.transparent-bg-mixin(@opacity: 8%) {
+	background-color: fade(@base-color, @opacity);
+	.sidebar &,
+	.sidebar-content & {
+		background-color: fade(@widget-sidebar-color, @opacity);
+	}
+	.footer & {
+		background-color: fade(@widget-footer-color, @opacity);
+	}
+}
+.solid-bg-mixin {
+	background-color: @content-boxes-bg;
+}
+/*Theme Options -> Appearance -> Content boxes -> Decoration: Outline*/
+.outline-decoration {
+	.outline-element-decoration & {
+		.box-shadow (inset 0px 0px 0px 1px @divider-bg-color);
+	}
+}
+/*Theme Options -> Appearance -> Content boxes -> Decoration: Outline*/
+.shadow-decoration {
+	.shadow-element-decoration & {
+		.box-shadow (0 6px 18px rgba(0,0,0,0.1));
+	}
+}
+.accent-bg-mixin {
+	color: #fff;
+	background-color: @accent-bg-color;
+	.accent-gradient & {
+		.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+	}
+	.footer &,
+	.accent-gradient .footer & {
+		.custom-mixin-footer-accent-bg (@widget-footer-accent-color, @color-opacity:100%);
+	}
+}
+.transparent-accent-bg-mixin(@bg-opacity) {
+	background-color: fade(@accent-bg-color, @bg-opacity);
+	.accent-gradient & {
+		.background-fade-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2, @opacity: @bg-opacity);
+	}
+	.footer &,
+	.accent-gradient .footer & {
+		.custom-mixin-footer-accent-bg (@widget-footer-accent-color, @color-opacity:@bg-opacity);
+	}
+}
+.custom-background-gradient (@startColor: #eee, @opacity: 30%) when (iscolor(@startColor)) {
+	background: @startColor;
+	background: -moz-linear-gradient(top,  fade(@startColor, 0%) 0%, fade(@startColor, 90%) 64%, @startColor 83%, @startColor 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  fade(@startColor, 0%) 0%,fade(@startColor, 90%) 64%,@startColor 83%,@startColor 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  fade(@startColor, 0%) 0%,fade(@startColor, 90%) 64%,@startColor 83%,@startColor 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.custom-rollover-gradient (@startColor: #eee) when (iscolor(@startColor)) {
+	background: @startColor;
+	background: -moz-linear-gradient(top,  fade(@startColor, 0%) 0%, @startColor 65%, @startColor 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  fade(@startColor, 0%) 0%, @startColor 65%, @startColor 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  fade(@startColor, 0%) 0%, @startColor 65%, @startColor 100%);
+}
+
+
+
+@additional-menu-elements-font-style: normal;
+@additional-menu-elements-font-variant: normal; /* constant */
+@additional-menu-elements-font-weight: normal;
+
+@additional-logo-elements-font-style: normal;
+@additional-logo-elements-font-weight: normal;
+
+/*menu  next level indicator icons*/
+@menu-active-color-temp: escape(~"@{menu-active-color}");
+@mobile-menu-color-temp: escape(~"@{mobile-menu-color}");
+@mobile-microwidgets-color-temp: escape(~"@{mobile-microwidgets-color}");
+@mobile-menu-font-style: normal;
+@mobile-menu-font-weight: bold;
+@mobile-menu-font-size: 14px;
+@mobile-menu-font-family: 'Lato', Helvetica, Arial, Verdana, sans-serif;
+
+@mobile-menu-text-transform: uppercase;
+@overlay-cursor-color-temp: escape(~"@{overlay-cursor-color}");
+
+@page-vertical-margins: 50px;
+@templates-vertical-margins: 50px;
+@accent-text-color-2: "";
+@accent-bg-filter-switch: "";
+@accent-bg-scroller-arrow: "";

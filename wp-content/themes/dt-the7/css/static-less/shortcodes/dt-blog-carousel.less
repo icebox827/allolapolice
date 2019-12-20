@@ -1,0 +1,116 @@
+ /* #Shortcode carousel
+================================================== */
+
+  .owl-carousel:not(.gradient-overlay-layout-list):not(.content-rollover-layout-list) .post-entry-content {
+    position: relative;
+    z-index: 10;
+}
+.owl-stage {
+  .classic-layout-list[data-auto-height="false"] &,
+  .bottom-overlap-layout-list[data-auto-height="false"] &,
+  .gradient-overlap-layout-list[data-auto-height="false"] & {
+    .flex-display(@display: flex);
+    & .dt-owl-item {
+      .flex-display(@display: flex);
+    }
+  }
+}
+.post-entry-content {
+  .bottom-overlap-layout-list[data-auto-height="false"] &,
+  .gradient-overlap-layout-list[data-auto-height="false"] & {
+    .flex(@columns: 1 0 auto);
+  }
+  .content-rollover-layout-list.owl-carousel & {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      &:hover {
+        cursor: pointer;
+      }
+      & .entry-title {
+        pointer-events:none;
+      }
+    }
+}
+  //IMG
+  .post-thumbnail-wrap {
+    .owl-carousel & {
+      position: relative;
+      width: 100%;
+      .box-sizing (border-box);
+      -ms-flex: 0 0 auto;
+    }
+  }
+  .post-thumbnail {
+    .owl-carousel & {
+      position: relative;
+      display: block;
+      
+
+      & .alignleft {
+        margin: 0;
+      }
+      & .alignnone {
+        margin-bottom: 0;
+      }
+    }
+    .owl-carousel .format-gallery & {
+      width: 100%;
+    }
+  }
+      .fancy-categories,
+      .fancy-date > a,
+      .post-entry-wrapper > * {
+        .owl-carousel & {
+          -webkit-backface-visibility: hidden;
+           transform: translatez(0);
+        }
+      }
+    .entry-excerpt {
+      .owl-carousel & {
+        overflow: hidden;
+      }
+    }
+
+  .post-entry-content .entry-title a,
+  .post-entry-title-content .entry-title a {
+    .owl-carousel & {
+      -webkit-transition: color 0.35s;
+      transition: color 0.35s;
+      .accent-gradient & {
+        -webkit-transition: none;
+        transition: none;
+      }
+    }
+  }
+  
+  .entry-meta {
+    .owl-carousel & {
+      padding: 0;
+      & a:hover {
+        text-decoration: none;
+      }
+      & > span a {
+        display: inline-block;
+      }
+      & a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+    .entry-meta * {
+      .owl-carousel & {
+        color: inherit;
+      }
+    }
+      .entry-meta > a:after,
+      .entry-meta > span:after {
+        .owl-carousel & {
+            right: 0;
+            width: 3px;
+            height: 3px;
+          .vertical-centering;
+            content: "";
+        }
+      }

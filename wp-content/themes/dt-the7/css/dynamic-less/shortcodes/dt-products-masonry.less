@@ -1,0 +1,222 @@
+ /* #Shortcode carousel
+================================================== */
+
+.custom-mixin-text-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+}
+.custom-mixin-text-color-star (@customColor, @color-opacity:100%) when (iscolor(@customColor)) {
+	color: fade(@customColor, @color-opacity);
+}
+.custom-mixin-pagination-gap (@customSize) when (isnumber(@customSize)) {
+	margin-top: @customSize;
+}
+.custom-mixin-fade-bg (@customColor, @opacity:100%) when (iscolor(@customColor)) {
+	background: fade(@customColor, @opacity);
+}
+.custom-mixin-filter-color (@customColor, @opacity) when (iscolor(@customColor)) {
+	color: fade(@customColor, @opacity);
+
+	background: none;
+}
+.custom-mixin-filter-gap (@customSize) when (isnumber(@customSize)) {
+	margin-bottom: @customSize;
+}
+.custom-mixin-fade-border (@customColor, @opacity:100%) when (iscolor(@customColor)) {
+	border-color: fade(@customColor, @opacity);
+}
+
+.woocommerce-product-details__short-description {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color (@post-content-color);
+	}
+}
+.star-rating,
+.star-rating:before { 
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color-star (@post-title-color, 20%);
+	}
+}
+.entry-title,
+.entry-title *,
+.woocom-list-content .price,
+.woocom-list-content .price * {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color (@post-title-color);
+	}
+}
+.woocom-list-content .price del,
+.woocom-list-content .price del * {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color (@price-color);
+	}
+}
+.filter {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-filter-gap (@shortcode-filter-gap);
+		& a,
+		& a * {
+			.custom-mixin-text-color (@post-title-color);
+			color: @shortcode-filter-color;
+		}
+	}
+}
+.filter-categories a {
+	.@{unique-shortcode-class-name} .filter:not(.filter-bg-decoration):not(.filter-underline-decoration) & {
+		&:hover,
+		&.act {
+			.custom-mixin-filter-color (@shortcode-filter-accent, 100%);
+		}
+		
+	}
+	.@{unique-shortcode-class-name} .filter-bg-decoration & {
+		&:not(.act):hover {
+			.custom-mixin-filter-color (@shortcode-filter-accent, 100%);
+		}
+		&.act {
+			color: #fff;
+		}
+	
+		&.act:after {
+			.custom-mixin-fade-bg (@shortcode-filter-accent);
+		}
+	}
+	.@{unique-shortcode-class-name} .filter-underline-decoration & {
+		&:after {
+			.custom-mixin-fade-bg (@shortcode-filter-accent);
+		}
+	}
+}
+.paginator {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-pagination-gap (@shortcode-pagination-gap);
+	}
+}
+.paginator {
+	.@{unique-shortcode-class-name} & {
+		& a,
+		& a * {
+			color: @shortcode-filter-color;
+		}
+		& .button-load-more {
+			.custom-mixin-fade-border (@shortcode-filter-color, @opacity:10%);
+			&:hover {
+				.custom-mixin-fade-border (@shortcode-filter-color, @opacity:21%)
+			}
+		}
+	}
+}
+.paginator:not(.paginator-more-button) a {
+	.@{unique-shortcode-class-name} & {
+		&:after {
+			.custom-mixin-fade-bg (@shortcode-filter-accent, 100%);
+		}
+	}
+}
+
+.dt-css-grid {
+	.@{unique-shortcode-class-name}:not(.resize-by-browser-width) & {
+	  	grid-row-gap: @grid-posts-gap*2;
+	  	grid-column-gap: @grid-posts-gap*2;
+    	grid-template-columns:repeat(auto-fill, minmax(@grid-post-min-width, 1fr));
+	  	.cssgridlegacy.no-cssgrid &,
+	  	.no-cssgridlegacy.no-cssgrid & {
+	  		display: flex;
+	  		flex-flow: row wrap;
+	  		margin: -@grid-posts-gap;
+	  		& .wf-cell {
+	  			flex: 1 0 @grid-post-min-width;
+				min-width: @grid-post-min-width;
+				max-width: 100%;
+				padding: @grid-posts-gap;
+				box-sizing: border-box;
+		  	}
+	  	}
+	}
+	.@{unique-shortcode-class-name}.resize-by-browser-width & {
+		//-ms-grid-columns: 1fr 1fr 1fr;
+		grid-template-columns: repeat(@desktop-columns-num, 1fr);
+	  	grid-template-rows: auto;
+	  	grid-column-gap: @grid-posts-gap*2;
+	  	grid-row-gap: @grid-posts-gap*2;
+	  	.cssgridlegacy.no-cssgrid &,
+	  	.no-cssgridlegacy.no-cssgrid & {
+	  		margin: -@grid-posts-gap;
+	  		& .wf-cell {
+				width: 100%/@desktop-columns-num;
+				padding: @grid-posts-gap;
+		  	}
+	  	}
+	}
+}
+@media screen and (max-width: 1199px){
+	.dt-css-grid {
+		.@{unique-shortcode-class-name}.resize-by-browser-width & {
+			grid-template-columns: repeat(@h-tablet-columns-num, 1fr);
+			.cssgridlegacy.no-cssgrid &,
+	  		.no-cssgridlegacy.no-cssgrid & {
+		  		& .wf-cell {
+					width: 100%/@h-tablet-columns-num;
+			  	}
+		  	}
+		}
+	}
+}
+@media screen and (max-width: 991px){
+	.dt-css-grid {
+		.@{unique-shortcode-class-name}.resize-by-browser-width & {
+			grid-template-columns: repeat(@v-tablet-columns-num, 1fr);
+			.cssgridlegacy.no-cssgrid &,
+	  		.no-cssgridlegacy.no-cssgrid & {
+		  		& .wf-cell {
+					width: 100%/@v-tablet-columns-num;
+			  	}
+		  	}
+		}
+	}
+}
+
+@media screen and (max-width: 767px){
+	.dt-css-grid {
+		.@{unique-shortcode-class-name}.resize-by-browser-width & {
+			grid-template-columns: repeat(@phone-columns-num, 1fr);
+			.cssgridlegacy.no-cssgrid &,
+	  		.no-cssgridlegacy.no-cssgrid & {
+		  		& .wf-cell {
+					width: 100%/@phone-columns-num;
+			  	}
+		  	}
+		}
+	}
+
+}
+@media screen and (max-width: 568px){
+	.mixin (@a) when (isnumber(@a)) and (@a > 528) {
+		grid-template-columns:repeat(auto-fill, minmax(528px, 1fr));
+	}
+	.dt-css-grid {
+		.@{unique-shortcode-class-name}:not(.resize-by-browser-width) & {
+	    	.mixin (@grid-post-min-width);
+		}
+	}
+}
+@media screen and (max-width: 420px){
+	.mixin (@a) when (isnumber(@a)) and (@a > 370) {
+		grid-template-columns:repeat(auto-fill, minmax(100%, 1fr));
+	}
+	.dt-css-grid {
+		.@{unique-shortcode-class-name}:not(.resize-by-browser-width) & {
+	    	.mixin (@grid-post-min-width);
+	    	
+		}
+	}
+}
+@media screen and (max-width: 320px){
+	.mixin (@a) when (isnumber(@a)) and (@a > 280) {
+		grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+	}
+	.dt-css-grid {
+		.@{unique-shortcode-class-name}:not(.resize-by-browser-width) & {
+	    	.mixin (@grid-post-min-width);
+		}
+	}
+}

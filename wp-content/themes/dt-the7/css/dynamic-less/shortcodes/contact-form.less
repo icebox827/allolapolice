@@ -1,0 +1,151 @@
+/* #Contact form
+================================================== */
+.mixin-float-line-height (@a, @b) when ((@a + 10px) > @b) {
+	line-height: @b - 10px;
+}
+less.ph(@color: #ccc) {
+	input::-webkit-input-placeholder { color: @color; }
+	input:-moz-placeholder { color: @color; }
+	textarea::-webkit-input-placeholder { color: @color; }
+	textarea:-moz-placeholder { color: @color; }
+}
+less.ph.focus(@color: #ccc) {
+	input:focus::-webkit-input-placeholder { color: @color; }
+	input:focus:-moz-placeholder { color: @color; }
+	textarea:focus::-webkit-input-placeholder { color: @color; }
+	textarea:focus:-moz-placeholder { color: @color; }
+}
+less.ph(fade(@input-color, 50%));
+less.ph.focus(fade(@input-color, 15%));
+.form-fields label,
+.comment-form label {
+	color: @input-color;
+}
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="range"],
+input[type="password"],
+select,
+textarea,
+.wpcf7-number {
+	
+	color: @input-color;
+	border-top-width: @top-input-border-width;
+	border-right-width: @right-input-border-width;
+	border-bottom-width: @bottom-input-border-width;
+	border-left-width: @left-input-border-width;
+	padding: @top-input-padding @right-input-padding @bottom-input-padding @left-input-padding;
+	border-color: @input-border-color;
+	background-color: @input-bg-color;
+	border-radius: @input-border-radius;
+	.content & {
+		font-size: @base-font-size;
+		line-height: @base-line-height;
+		.mixin-float-line-height (@base-line-height, @input-height)
+	}
+	
+}
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="range"],
+input[type="password"],
+select,
+.wpcf7-number {
+	height: @input-height;
+}
+.formError + input,
+.formError + textarea {
+	border-color: #f55b5f;
+}
+.select-icon(@colour) {
+	 background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="@{colour}" x="0px" y="0px" width="8px" height="8px" viewBox="0 0 386.257 386.257" style="enable-background:new 0 0 386.257 386.257;" xml:space="preserve"><polygon points="0,96.879 193.129,289.379 386.257,96.879 "/></svg>');
+}
+select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none;
+   .select-icon(fade(@input-color, 50%));
+    background-position: calc(100% ~'-' 15px) center;
+    background-repeat: no-repeat;
+}
+.dt-btn {
+	.widget .dt-form &,
+	.dt-form &,
+	.comment-form & {
+		font: @dt-btn-m-font-style @dt-btn-m-font-variant @dt-btn-m-font-weight @dt-btn-m-font-size~"/"@dt-btn-m-font-size + 2 @dt-btn-m-font-family;
+		text-transform: @dt-btn-m-text-transform;
+		.border-radius (@radius: @dt-btn-m-border-radius);
+		padding: @btn-m-padding-top @btn-m-padding-right @btn-m-padding-bottom @btn-m-padding-left;
+		min-height: @input-height;
+		line-height: @input-height;
+		padding-top: 0;
+		padding-bottom: 0;
+		.btn-3d & {
+			min-height: @input-height - 2px;
+			line-height: @input-height - 2px;
+		}
+	}
+}
+input[type="submit"]:not([name="update_cart"]):not(.woocommerce-widget-layered-nav-dropdown__submit),
+.post-password-form input[type="submit"],
+.mc4wp-form input[type="submit"],
+div.mc4wp-form button[type="submit"],
+.tml-submit-wrap input[type="submit"],
+.wpcf7-form input[type="submit"] {
+	font: @dt-btn-m-font-style @dt-btn-m-font-variant @dt-btn-m-font-weight @dt-btn-m-font-size~"/"@dt-btn-m-font-size + 2 @dt-btn-m-font-family;
+	text-transform: @dt-btn-m-text-transform;
+	.border-radius (@radius: @dt-btn-m-border-radius);
+	padding: @btn-m-padding-top @btn-m-padding-right @btn-m-padding-bottom @btn-m-padding-left;
+	min-height: @input-height;
+	line-height: @input-height;
+	padding-top: 0;
+	padding-bottom: 0;
+	.btn-3d & {
+		min-height: @input-height - 2px;
+		line-height: @input-height - 2px;
+	}
+}
+.parentFormundefined,
+.wpcf7-mail-sent-ok,
+.wpcf7-validation-errors {
+	.popup-message-style &,
+	.inline-message-style &  {
+		background: @accent-bg-color;
+	}
+	.popup-message-style.accent-gradient &,
+	.inline-message-style.accent-gradient & {
+		.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+	};
+	& .formErrorContent {
+		font: @base-font-style @base-font-variant @text-big~"/"@text-big-line-height @base-font-family;
+	}
+	#page &,
+	.popup-message-style &,
+	.inline-message-style &  {
+		background: @message-bg-color;
+		color: @message-color !important;
+		border: none;
+		& .formErrorContent,
+		& .formErrorContent a,
+		& .close-message
+		& a {
+			color: @message-color;
+		}
+		&:before {
+			color: @message-color;
+		}
+	}
+}
+.comment-form-cookies-consent label,
+.form-terms-text {
+	.text-small;
+}

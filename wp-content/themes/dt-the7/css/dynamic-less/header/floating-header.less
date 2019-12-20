@@ -1,0 +1,70 @@
+
+/* #Floating header
+================================================== */
+
+//Floating navigation height
+#page .masthead.sticky-on .header-bar,
+#phantom.masthead .header-bar,
+#phantom .ph-wrap {
+	min-height: @float-menu-height;
+}
+
+//Branding
+#phantom .logo-box,
+#phantom .phantom-top-line-logo,
+.phantom-sticky .sticky-on.masthead:not(.side-header) .branding > a,
+.phantom-sticky .sticky-on.masthead:not(.side-header) .branding > img {
+	padding: @floating-logo-top-padding @floating-logo-right-padding @floating-logo-bottom-padding @floating-logo-left-padding;
+}
+.transparent.phantom-sticky .sticky-on.masthead .branding > a,
+.transparent.phantom-sticky .sticky-on.masthead .branding > img {
+	padding: @floating-logo-top-padding @floating-logo-right-padding @floating-logo-bottom-padding @floating-logo-left-padding;
+}
+
+//Decoration
+#phantom {
+	//background: @float-menu-bg;
+	background: @float-menu-bg @floating-header-bg-image @floating-header-bg-repeat @floating-header-bg-position-x @floating-header-bg-position-y;
+	background-size: @floating-header-bg-size;
+	//background-attachment: @floating-header-bg-attachment;
+	.phantom-shadow-decoration & {
+		-webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+		box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+	}
+	.phantom-line-decoration & {
+		border-bottom: 1px solid @float-menu-line-decoration-color;
+	}
+	&.boxed {
+		max-width: @box-width;
+	}
+}
+
+.phantom-line-decoration #phantom {
+	border-bottom: 1px solid @float-menu-line-decoration-color;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+.phantom-shadow-decoration #phantom {
+	-webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
+	border-bottom: none;
+}
+.phantom-disable-decoration #phantom {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border-bottom: none;
+}
+
+/*Bg for Sticky floating*/
+.responsive-off.phantom-sticky .sticky-on.masthead:not(.masthead-mobile) {
+	background: @float-menu-bg !important;
+}
+
+/*Line decoration for Sticky floating*/
+.responsive-off.phantom-line-decoration.phantom-sticky .sticky-on.masthead {
+	border-bottom: 1px solid @float-menu-line-decoration-color;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+

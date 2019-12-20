@@ -1,0 +1,228 @@
+/* OVERLAP HEADER */
+/*Main overlap gradient*/
+@gr-color1: fade(@page-bg-color, 75%);
+@gr-color2: fade(@page-bg-color, 80%);
+@gr-color3: fade(@page-bg-color, 86%);
+@gr-color4: fade(@page-bg-color, 90%);
+@gr-color5: fade(@page-bg-color, 94%);
+@gr-color6: fade(@page-bg-color, 98%);
+@gr-color7: fade(@page-bg-color, 99%);
+@gr-color8: fade(@page-bg-color, 100%);
+
+/*Header overlap gradient*/
+@gr-hr-color1: fade(@header-bg-color, 75%);
+@gr-hr-color2: fade(@header-bg-color, 80%);
+@gr-hr-color3: fade(@header-bg-color, 86%);
+@gr-hr-color4: fade(@header-bg-color, 90%);
+@gr-hr-color5: fade(@header-bg-color, 94%);
+@gr-hr-color6: fade(@header-bg-color, 98%);
+@gr-hr-color7: fade(@header-bg-color, 99%);
+@gr-hr-color8: fade(@header-bg-color, 100%);
+
+@gr-top-line-color1: fade(@navigation-line-bg, 75%);
+@gr-top-line-color2: fade(@navigation-line-bg, 80%);
+@gr-top-line-color3: fade(@navigation-line-bg, 86%);
+@gr-top-line-color4: fade(@navigation-line-bg, 90%);
+@gr-top-line-color5: fade(@navigation-line-bg, 94%);
+@gr-top-line-color6: fade(@navigation-line-bg, 98%);
+@gr-top-line-color7: fade(@navigation-line-bg, 99%);
+@gr-top-line-color8: fade(@navigation-line-bg, 100%);
+
+
+.overlap .masthead:not(.mixed-header):not(.side-header) {
+	background-image: @header-bg-image, -webkit-linear-gradient(bottom,  @gr-hr-color1 0px, @gr-hr-color2 10px, @gr-hr-color3 20px, @gr-hr-color4 30px, @gr-hr-color5 40px, @gr-hr-color6 50px, @gr-hr-color7 60px, @gr-hr-color8 70px); /* Chrome10+,Safari5.1+ */
+	background-image: @header-bg-image, linear-gradient(to top,  @gr-hr-color1 0px, @gr-hr-color2 10px, @gr-hr-color3 20px, @gr-hr-color4 30px, @gr-hr-color5 40px, @gr-hr-color6 50px, @gr-hr-color7 60px, @gr-hr-color8 70px); /* W3C */
+	background-color: transparent;
+
+	background-repeat: @header-bg-repeat;
+	background-position: @header-bg-position-x @header-bg-position-y;
+
+	border-bottom: none;
+	-webkit-box-shadow:  0px 1px 0px 0px rgba(5,38,57, 0.05);
+	box-shadow:  0px 1px 0px 0px rgba(5,38,57, 0.05);
+
+}
+.overlap .masthead.side-header-h-stroke {
+	background-image: -webkit-linear-gradient(bottom,  @gr-top-line-color1 0px, @gr-top-line-color2 10px, @gr-top-line-color3 20px, @gr-top-line-color4 30px, @gr-top-line-color5 40px, @gr-top-line-color6 50px, @gr-top-line-color7 60px, @gr-top-line-color8 70px); /* Chrome10+,Safari5.1+ */
+	background-image: linear-gradient(to top,  @gr-top-line-color1 0px, @gr-top-line-color2 10px, @gr-top-line-color3 20px, @gr-top-line-color4 30px, @gr-top-line-color5 40px, @gr-top-line-color6 50px, @gr-top-line-color7 60px, @gr-top-line-color8 70px); /* W3C */
+	background-color: transparent;
+
+
+	border-bottom: none;
+	-webkit-box-shadow:  0px 1px 0px 0px rgba(5,38,57, 0.05);
+	box-shadow:  0px 1px 0px 0px rgba(5,38,57, 0.05);
+
+}
+@media screen and (max-width: 1024px) {
+	.overlap .masthead:not(.mixed-header):not(.side-header) {
+		background-image: @header-bg-image, -webkit-linear-gradient(bottom,  @gr-hr-color1 0px, @gr-hr-color2 5px, @gr-hr-color3 10px, @gr-hr-color4 15px, @gr-hr-color5 20px, @gr-hr-color6 25px, @gr-hr-color7 30px, @gr-hr-color8 40px); /* Chrome10+,Safari5.1+ */
+		background-image: @header-bg-image, linear-gradient(to top,  @gr-hr-color1 0px, @gr-hr-color2 5px, @gr-hr-color3 10px, @gr-hr-color4 15px, @gr-hr-color5 20px, @gr-hr-color6 25px, @gr-hr-color7 30px, @gr-hr-color8 40px); /* W3C */
+		background-color: transparent;
+
+	}
+	.overlap .masthead.side-header-h-stroke {
+		background-image: -webkit-linear-gradient(bottom,  @gr-top-line-color1 0px, @gr-top-line-color2 5px, @gr-top-line-color3 10px, @gr-top-line-color4 15px, @gr-top-line-color5 20px, @gr-top-line-color6 25px, @gr-top-line-color7 30px, @gr-top-line-color8 40px); /* Chrome10+,Safari5.1+ */
+		background-image: linear-gradient(to top,  @gr-top-line-color1 0px, @gr-top-line-color2 5px, @gr-top-line-color3 10px, @gr-top-line-color4 15px, @gr-top-line-color5 20px, @gr-top-line-color6 25px, @gr-top-line-color7 30px, @gr-top-line-color8 40px); /* W3C */
+		background-color: transparent;
+
+	}
+}
+@media screen and (max-width: 800px) {
+	.overlap .masthead:not(.mixed-header):not(.side-header) {
+		background-image: @header-bg-image, -webkit-linear-gradient(bottom,  @gr-hr-color1 0px, @gr-hr-color2 2px, @gr-hr-color3 4px, @gr-hr-color4 6px, @gr-hr-color5 9px, @gr-hr-color6 13px, @gr-hr-color7 18px, @gr-hr-color8 20px); /* Chrome10+,Safari5.1+ */
+		background-image: @header-bg-image, linear-gradient(to top,  @gr-hr-color1 0px, @gr-hr-color2 2px, @gr-hr-color3 4px, @gr-hr-color4 6px, @gr-hr-color5 9px, @gr-hr-color6 13px, @gr-hr-color7 18px, @gr-hr-color8 20px); /* W3C */
+		background-color: transparent;
+
+	}
+	.overlap .masthead.side-header-h-stroke {
+		background-image: -webkit-linear-gradient(bottom,  @gr-top-line-color1 0px, @gr-top-line-color2 2px, @gr-top-line-color3 4px, @gr-top-line-color4 6px, @gr-top-line-color5 9px, @gr-top-line-color6 13px, @gr-top-line-color7 18px, @gr-top-line-color8 20px); /* Chrome10+,Safari5.1+ */
+		background-image: linear-gradient(to top,  @gr-top-line-color1 0px, @gr-top-line-color2 2px, @gr-top-line-color3 4px, @gr-top-line-color4 6px, @gr-top-line-color5 9px, @gr-top-line-color6 13px, @gr-top-line-color7 18px, @gr-top-line-color8 20px); /* W3C */
+		background-color: transparent;
+
+	}
+}
+.overlap #main {
+	position: relative;
+	z-index: 1;
+}
+.overlap #main {
+	background-image: @page-bg-image, @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y, -moz-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* FF3.6+ */
+	background-image: @page-bg-image, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background-image: @page-bg-image, -webkit-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* Chrome10+,Safari5.1+ */
+	background-image: @page-bg-image, -o-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* Opera 11.10+ */
+	background-image: @page-bg-image, -ms-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* IE10+ */
+	background-image: @page-bg-image, linear-gradient(to bottom,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* W3C */
+
+	background-repeat: @page-bg-repeat;
+	background-attachment: @page-bg-attachment;
+	background-position: @page-bg-position-x @page-bg-position-y;
+	background-size: @page-bg-size;
+	.box-shadow (0px -1px 0px 0px rgba(5,38,57, 0.05));
+}
+.overlap .main-gradient {
+	background-image: @page-bg-image, @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y, -moz-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* FF3.6+ */
+	background-image: @page-bg-image, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background-image: @page-bg-image, -webkit-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* Chrome10+,Safari5.1+ */
+	background-image: @page-bg-image, -o-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* Opera 11.10+ */
+	background-image: @page-bg-image, -ms-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* IE10+ */
+	background-image: @page-bg-image, linear-gradient(to bottom,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 20px, @gr-color5 30px, @gr-color6 50px, @gr-color7 60px, @gr-color8 70px); /* W3C */
+	
+	background-repeat: @page-bg-repeat;
+	background-attachment: @page-bg-attachment;
+	background-position: @page-bg-position-x @page-bg-position-y;
+	background-size: @page-bg-size;
+
+	.box-shadow (0px -1px 0px 0px rgba(5,38,57, 0.05));
+}
+@media screen and (max-width: 1024px) {
+	.overlap #main,
+	.overlap .main-gradient {
+		background-image: @page-bg-image, @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y, -moz-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 15px, @gr-color5 20px, @gr-color6 30px, @gr-color7 35px, @gr-color8 40px); /* FF3.6+ */
+		background-image: @page-bg-image, -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+		background-image: @page-bg-image, -webkit-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 15px, @gr-color5 20px, @gr-color6 30px, @gr-color7 35px, @gr-color8 40px); /* Chrome10+,Safari5.1+ */
+		background-image: @page-bg-image, -o-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 15px, @gr-color5 20px, @gr-color6 30px, @gr-color7 35px, @gr-color8 40px); /* Opera 11.10+ */
+		background-image: @page-bg-image, -ms-linear-gradient(top,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 15px, @gr-color5 20px, @gr-color6 30px, @gr-color7 35px, @gr-color8 40px); /* IE10+ */
+		background-image: @page-bg-image, linear-gradient(to bottom,  @gr-color1 0px, @gr-color2 5px, @gr-color3 10px, @gr-color4 15px, @gr-color5 20px, @gr-color6 30px, @gr-color7 35px, @gr-color8 40px); /* W3C */
+	}
+}
+
+	.overlap .portholeSlider-wrap .rsCapt {
+	  bottom: 115px;
+	}
+	/*WITH OVERLAP HEADER SLIDESHOW*/
+	.overlap #main-slideshow {
+		margin-top: -70px;
+		margin-bottom: -70px;
+	}
+	.overlap #main-slideshow.fixed {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.overlap #page .ls-defaultskin .ls-bottom-slidebuttons,
+	.overlap #page .ls-defaultskin .ls-nav-start,
+	.overlap #page .ls-defaultskin .ls-nav-stop,
+	.overlap #page .ls-defaultskin .ls-nav-sides {
+		top: -97px;
+	}
+	.overlap #page .ls-defaultskin .ls-bottom-slidebuttons {
+		top: -99px;
+	}
+	.overlap #fancy-header,
+	.overlap .page-title {
+		margin-top: -70px;
+		margin-bottom: -70px;
+	}
+		.overlap #fancy-header .wf-wrap,
+		.overlap .page-title .wf-wrap {
+			padding-top: 70px;
+			padding-bottom: 70px;
+		}
+
+@media screen and (max-width: @first-switch) {
+	/*Overlap header*/
+	.overlap.dt-responsive-on #main-slideshow,
+	.overlap.dt-responsive-on #fancy-header,
+	.overlap.dt-responsive-on .page-title {
+		margin-top: -50px;
+		margin-bottom: -50px;
+	}
+		.overlap.dt-responsive-on #fancy-header .wf-wrap,
+		.overlap.dt-responsive-on #fancy-header.fancy-header .wf-wrap {
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		.overlap .page-title .wf-wrap {
+			padding-top: 30px !important;
+			padding-bottom: 30px;
+		}
+	.overlap.dt-responsive-on .rsHomePorthole .rsCapt {
+		bottom: 75px;
+	}
+
+	/*Layer slider & overlap header*/
+	.overlap.dt-responsive-on #page .ls-defaultskin .ls-bottom-slidebuttons,
+	.overlap.dt-responsive-on #page .ls-defaultskin .ls-nav-start,
+	.overlap.dt-responsive-on #page .ls-defaultskin .ls-nav-stop,
+	.overlap.dt-responsive-on #page .ls-defaultskin .ls-nav-sides {
+		top: -67px;
+	}
+	.overlap.dt-responsive-on #page .ls-defaultskin .ls-bottom-slidebuttons {
+		top: -69px;
+	}
+}
+@media screen and (max-width: @second-switch) {
+	.overlap.dt-responsive-on .masthead:not(.mixed-header) {
+		background: @header-bg-color @header-bg-image @header-bg-repeat @header-bg-position-x @header-bg-position-y !important;
+	}
+	.overlap.dt-responsive-on .masthead.mixed-header {
+		background: fade(@navigation-line-bg, 100%) !important;
+	}
+	/*Overlap header*/
+	.overlap.dt-responsive-on #main-slideshow,
+	.overlap.dt-responsive-on #fancy-header,
+	.overlap.dt-responsive-on .page-title {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+@media screen and (min-width: 800px) {
+	.overlap.video-playing.dt-responsive-on #main-slideshow,
+	.overlap.video-playing.dt-responsive-on #fancy-header,
+	.overlap.video-playing.dt-responsive-on .page-title {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+@media screen and (max-width: 800px) {
+	/*Porthole slider*/
+	.overlap.dt-responsive-on .rsHomePorthole .rsCapt {
+		bottom: 45px;
+	}
+}
+@media screen and (min-width: 0px) and (max-width: 760px) {
+	.overlap.dt-responsive-on .rsHomePorthole .rsCapt {
+		bottom: 15px;
+	}
+}
+	/* OVERLAP HEADER:end */
+

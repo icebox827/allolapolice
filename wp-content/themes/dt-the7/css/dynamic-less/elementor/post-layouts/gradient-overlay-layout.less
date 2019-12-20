@@ -1,0 +1,19 @@
+//Post content
+@post-content-overlap: 20px;
+
+.gradient-overlay-layout-list .post-entry-content {
+	-webkit-backface-visibility: hidden;
+	transform: translatez(0);
+}
+.post-entry-content {
+	#page .@{unique-shortcode-class-name}.gradient-overlay-layout-list & {
+		background: @post-content-bg;
+	}
+	.@{unique-shortcode-class-name}.gradient-overlay-layout-list:not(.portfolio-shortcode):not(.albums-shortcode) & {
+		top: @post-content-overlap;
+		right: @post-content-overlap;
+		bottom: @post-content-overlap;
+		left: @post-content-overlap;
+
+	}
+ }

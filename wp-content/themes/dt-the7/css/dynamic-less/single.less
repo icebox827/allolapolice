@@ -1,0 +1,193 @@
+/* #Single
+================================================== */
+/*Comments*/
+.comment-list .comment-body {
+	.shadow-decoration;
+	.outline-decoration;
+	.solid-bg-mixin;
+}
+	.comment-content {
+		.text-normal;
+	}
+	.reply,
+	.comment-meta,
+	#reply-title small {
+		.text-small;
+	}
+	.comment-author,
+	.pingback-title {
+		.text-big;
+	}
+	.comment-author a,
+	.comment-author .fn {
+		color: @h5-color;
+		font: @h5-font-style @h5-font-variant @h5-font-weight @h5-font-size~"/"@h5-line-height @h5-font-family;
+		text-transform: @h5-text-transform;
+	}
+	.comments-title {
+		color: @h3-color;
+		font: @h3-font-style @h3-font-variant @h3-font-weight @h3-font-size~"/"@h3-line-height @h3-font-family;
+		text-transform: @h3-text-transform;
+	}
+	#reply-title small {
+		font: @base-font-style @base-font-variant @base-font-weight @base-font-size~"/"@base-line-height @base-font-family;
+	}
+	.comments-title,
+	.comments-title a,
+	.comment-author a,
+	.comment-author .fn,
+	#reply-title,
+	.fn,
+	.fn a,
+	.pingback-title {
+		.header-color;
+	}
+	.fn a:hover {
+		.color-accent;
+	}
+
+/*!-Entry author*/
+.entry-author {
+	.shadow-decoration;
+	.outline-decoration;
+	.solid-bg-mixin;
+}
+	.entry-author .text-primary {
+		font-size: @base-font-size;
+	}
+
+	.author-link,
+	.author-link:hover,
+	.meta-nav {
+		.color-base-transparent;
+		.text-small;
+	}
+	.author-description h4,
+	.comment-author-name {
+		.h5-size;
+	}
+	
+
+/*!-Meta & tags*/
+.entry-meta,
+.entry-tags,
+.portfolio-categories,
+.author-link {
+	.text-small;
+}
+
+.share-link-description,
+.author-bio {
+	.text-normal;
+}
+	.single .entry-tags a {
+		.transparent-border-mixin;
+	}
+
+
+	.entry-meta:before {
+		width: @base-line-height;
+		height: @base-line-height;
+	}
+	.portfolio-categories > a,
+	.portfolio-categories > span,
+	.entry-meta > a,
+	.entry-meta > span {
+		&:after {
+			background-color: @secondary-text-color;
+			.sidebar-content & {
+				background-color: fade(@widget-sidebar-color, 50%);
+			}
+			.footer & {
+				background-color: fade(@widget-footer-color, 50%);
+			}
+		}
+	}
+	
+
+	.comment-metadata,
+	.comment-metadata a,
+	.entry-meta a,
+	.entry-meta span,
+	.entry-meta a *,
+	.single .entry-tags,
+	.single .entry-tags a {
+		color: @secondary-text-color;
+	}
+	.single .entry-tags a:hover {
+		.header-color;
+	}
+
+
+/*!-Share & link post buttons*/
+
+.share-button.entry-share,
+.btn-project-link,
+.btn-project-link:hover,
+.comment-reply-link,
+.comment-reply-link:hover,
+.share-link-description {
+	.header-color;
+}
+
+.share-link-description {
+	.show-on-hover & {
+		&:before {
+			border-color: fade(@h1-color, 10%);
+		}
+	}
+	.show-on-hover:hover & {
+		&:before {
+			border-color: fade(@h1-color, 21%);
+		}
+	}
+}
+.project-post .btn-project-link {
+	.text-normal;
+	border-color: fade(@h1-color, 10%);
+	&:hover {
+		border-color: fade(@h1-color, 21%);
+	}
+}
+
+/*Gallery*/
+.project-navigation span {
+	.text-normal;
+	line-height: 22px;
+}
+
+/*Single post description*/
+.rsSlide .slider-post-caption,
+.images-list-caption {
+	line-height: @base-line-height;
+}
+.post-navigation .nav-links {
+	.transparent-border-mixin;
+	& i[class^="icomoon-the7"],
+	& [class^="dt-icon-"] {
+		color: fade(@h1-color, 12%);
+	}
+	& a i[class^="icomoon-the7"]:hover,
+	& a [class^="dt-icon-"]:hover {
+		color: fade(@h1-color, 23%);
+	}
+	& a .post-title:hover {
+		.color-accent;
+	}
+}
+.single-related-posts {
+	.transparent-border-mixin;
+}
+.comments-area,
+.single-related-posts,
+.comment-respond {
+	& > h3 {
+		&:after{
+			//.accent-bg-mixin;
+			background-color: @accent-bg-color;
+			.accent-gradient & {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-text-color-2);
+			}
+		}
+	}
+}

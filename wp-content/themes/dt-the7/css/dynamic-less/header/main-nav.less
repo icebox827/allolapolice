@@ -1,0 +1,28 @@
+
+/* #Main menu
+================================================== */
+@import "main-nav/main-menu.less";
+@import "main-nav/menu-decoration-style.less";
+
+/* #Drop down menu
+================================================== */
+@import "main-nav/sub-menu.less";
+
+
+/* #Mobile menu
+================================================== */
+@import "main-nav/mobile-menu.less";
+
+	/* CUSTOM MENU */
+
+		.top-bar .sub-nav li.has-children.act:after,
+		#bottom-bar .sub-nav li.has-children.act:after {
+			color: @accent-bg-color;
+		}
+			.top-bar .sub-nav > ul > li > a,
+			#bottom-bar .sub-nav > ul > li > a {
+				color: @submenu-color;
+				font: @submenu-font-style @submenu-font-variant @submenu-font-weight @submenu-font-size~"/"@submenu-font-size+4 @submenu-font-family;
+			}
+			
+	/* CUSTOM MENU:end */

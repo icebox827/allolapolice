@@ -1,0 +1,50 @@
+ /* #Shortcode carousel
+================================================== */
+@import "dt-carousel.less";
+
+
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+	background: none;
+}
+.custom-mixin-text-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+}
+.custom-mixin-text-color-star (@customColor, @color-opacity:100%) when (iscolor(@customColor)) {
+	color: fade(@customColor, @color-opacity);
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+}
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.custom-mixin-shadow ( @string: "", @customColor) when (iscolor(@customColor)) {
+	-webkit-box-shadow: @string @customColor;
+	box-shadow:         @string @customColor;
+}
+.woocommerce-product-details__short-description {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color (@post-content-color);
+	}
+}
+.star-rating,
+.star-rating:before { 
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color-star (@post-title-color, 20%);
+	}
+}
+.entry-title,
+.entry-title *,
+.woocom-list-content .price,
+.woocom-list-content .price * {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color (@post-title-color);
+	}
+}
+.woocom-list-content .price del,
+.woocom-list-content .price del * {
+	.@{unique-shortcode-class-name} & {
+		.custom-mixin-text-color (@price-color);
+	}
+}

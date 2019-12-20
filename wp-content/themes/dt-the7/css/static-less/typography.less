@@ -1,0 +1,392 @@
+
+/* #Basic typography
+================================================== */
+
+body.responsive-off {
+	min-width: 998px;
+}
+body {
+	overflow-x: hidden;
+	&.responsive-off {
+		overflow-x: auto;
+	}
+}
+
+/* #Headers
+================================================== */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: 10px;
+		clear: both;
+	}
+
+		h1 a,
+		h2 a,
+		h3 a,
+		h4 a,
+		h5 a,
+		h6 a {
+			text-decoration: none;
+		}
+
+	p {
+		margin-bottom: 10px;
+	}
+	a {
+		text-decoration: underline;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+/* #Lists
+================================================== */
+	.content ul,
+	.content ol {
+		margin: 0 0 10px 20px;
+	}
+	.fa-ul li {
+		list-style: none;
+	}
+	.content .widget ul,
+	.content .widget ol {
+		margin: 0 0 0px 0px;
+	}
+	.content ul {
+		list-style: disc outside none;
+	}
+	.content ol {
+		list-style-type: decimal;
+	}
+
+/* #Tables
+================================================== */
+	.content table {
+		border-bottom: 1px solid transparent;
+		width: 100%;
+		margin: 0 0 10px 0;
+	}
+		.content table caption {
+			margin: 10px 0;
+		}
+			.content td,
+			.content th {
+				border-top: 1px solid transparent;
+				padding: 5px 10px 5px 5px;
+			}
+			.content th {
+				text-align: left;
+			}
+
+/* #Images
+================================================== */
+	img[class*="align"],
+	img[class*="wp-image-"],
+	img[class*="attachment-"],
+	.post img,
+	.post .rollover,
+	.post .rollover-video:not(.ts-slide) {
+		max-width: 100%;
+		height: auto;
+	}
+	//.items-grid .alignleft img,
+	.recent-posts .alignleft img {
+		max-width: inherit;
+		height: inherit;
+	}
+	blockquote {
+		padding: 20px 25px;
+		margin: 0 0 10px 0;
+	}
+	.format-status-content {
+		border: none;
+	}
+	.alignleft {
+		float: left;
+		margin: 0 30px 10px 0;
+	}
+	#footer .alignleft,
+	#sidebar .alignleft {
+		margin-right: 20px;
+	}
+	.alignright {
+		float: right;
+		margin: 0 0 10px 30px;
+	}
+	#footer .alignright,
+	#sidebar .alignright {
+		margin-left: 20px;
+	}
+	.aligncenter {
+		display: block;
+		margin: 0 auto 10px auto;
+	}
+	.wp-caption.aligncenter {
+		text-align: center;
+	}
+	.entry-content .wp-block-image.alignfull img {
+	  width: 100vw;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
+	.alignnone {
+		float: none;
+		margin: 0 auto 10px auto;
+	}
+	.shortcode-single-image-wrap.alignnone,
+	.shortcode-single-image-wrap.aligncenter {
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+	.wp-caption {
+		max-width: 100%;
+	}
+
+/* #Dividers & gap
+================================================== */
+.hr-thick,
+.hr-thin,
+.gap-10,
+.gap-20,
+.gap-30,
+.gap-40,
+.vc_empty_space,
+.gap {
+	clear: both;
+}
+.hr-thick {
+	height: 1px;
+	line-height: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 5px;
+	margin-bottom: 1px;
+	margin: 0 auto;
+}
+
+.hr-thin {
+	height: 9px;
+	line-height: 9px;
+	margin: 0 auto;
+	&.hr-left {
+		margin: 0;
+	}
+	&.hr-right {
+		margin: 0 0 0 auto;
+	}
+}
+
+.divider-heder,
+.single .divider-heder,
+.page .divider-heder {
+	margin: 25px 0 36px 0;
+}
+	.layout-list .divider-heder,
+	.layout-masonry .divider-heder {
+		margin: 25px 0 36px 0;
+	}
+
+.divider-comments {
+	margin: 0 0 35px 0;
+}
+
+.divider-post {
+	margin: 10px 0 20px 0;
+}
+.text-centered {
+	text-align: center;
+}
+/* Basic typography: end */
+
+
+/* #Helper styles
+================================================== */
+.text-secondary {
+	a& {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.assistive-text {
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+.assistive-info {
+	text-align: right;
+	color: #fff;
+}
+.wf-clearfix {
+	&:before {
+		content: "";
+		display: table;
+	}
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.ancient-ie & {
+		zoom: 1;
+	}
+}
+
+.wf-container,
+#main-nav,
+#top-bar,
+.header-bottom-bar,
+.layout-list .post {
+	.wf-clearfix;
+}
+
+/* Helper styles: end */
+
+/* #Basic blocks layout
+================================================== */
+
+#page {
+	position: relative;
+	overflow: hidden;
+}
+
+.footer-overlap #page {
+	background: none;
+}
+#page.boxed {
+	max-width: 1320px;
+	margin: 0px auto;
+	-webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+	box-shadow:			0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+	/* !Main */
+	.main-gradient {
+		display: none;
+	}
+
+	#main
+	{
+		padding: 50px 0 50px 0;
+	}
+
+
+/* Basic blocks layout: end */
+
+
+.static-height {
+	position: relative;
+}
+
+.fancy-parallax-bg,
+.page-title-parallax-bg {
+	background-attachment: fixed !important;
+	background-position-x: 50%;
+}
+	
+.fancy-parallax-bg > .wf-wrap,
+.page-title-parallax-bg > .wf-wrap {
+	position: relative;
+}
+.mobile-false .fancy-parallax-bg,
+.mobile-false .page-title-parallax-bg {
+	opacity: 0;
+
+	-webkit-transition: opacity 300ms ease;
+	transition:      opacity 300ms ease;
+}
+
+/*!-Video */
+embed,
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+
+
+/*Video:end*/
+
+/*!-Parallax background for device*/
+.mobile-true .fancy-parallax-bg,
+.mobile-true .page-title-parallax-bg {
+	background-attachment: scroll !important;
+	background-size: auto !important;
+}
+/* background for device:end*/
+
+/*!-Row settings->Full-width content*/
+.full-width-wrap {
+	position: relative;
+	display: block;
+	opacity: 0;
+	-webkit-transition: opacity 400ms ease;
+	transition:      opacity 400ms ease;
+}
+.is-iphone .full-width-wrap {
+	opacity: 1;
+}
+.full-width-wrap > .wf-cell,
+.full-width-wrap > .wpb_column,
+.content .vc_row.full-width-wrap > .wpb_column,
+.full-width-wrap > .wpb_column > .vc_column-inner {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/*!-WP Audio*/
+.mejs-controls .mejs-play:hover button {
+	background-position:0 0;
+}
+.mejs-controls .mejs-pause button,
+.mejs-controls .mejs-pause:hover button {
+	background-position:0 -16px;
+}
+.mejs-controls button {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.mejs-controls .mejs-mute button:hover {
+	background-position:-16px -16px;
+}
+.mejs-controls .mejs-unmute button:hover {
+	background-position:-16px 0;
+}
+/*WP Audio:end*/
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    width: 1px;
+}
+#page .skip-link {
+    background-color: #f1f1f1;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    color: #21759b;
+    display: block;
+    font-family: Montserrat, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    left: -9999em;
+    outline: none;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    text-transform: none;
+    top: -9999em;
+}
+
+/**/
+article.attachment:after,
+article.attachment:before {
+	content: "";
+	display: table;
+	clear: both;
+}

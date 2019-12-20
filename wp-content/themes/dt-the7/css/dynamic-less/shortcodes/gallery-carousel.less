@@ -1,0 +1,65 @@
+/* #Blog list
+================================================== */
+
+
+@import "inline-mixin.less";
+@import "dt-carousel.less";
+
+.rollover-background-gradient(@firstColor, @gradient) when (isstring(~"@gradient")) {
+	background: @firstColor;
+	background: -webkit-linear-gradient(@gradient);
+	background: linear-gradient(@gradient);
+}
+
+//Thumbnail
+figure,
+.rollover,
+img,
+.gallery-rollover {
+	.@{unique-shortcode-class-name} & {
+		border-radius: @media-image-border-radius;
+	}
+}
+.gallery-rollover {
+	.@{unique-shortcode-class-name}.enable-bg-rollover & {
+		.custom-mixin-bg (@portfolio-rollover-bg);
+		.rollover-background-gradient (@portfolio-rollover-bg, @portfolio-rollover-bg-gradient);
+	}
+}
+figure {
+	.@{unique-shortcode-class-name}.enable-img-shadow & {
+		box-shadow: @portfolio-img-shadow;
+	}
+}
+.owl-stage-outer {
+	.@{unique-shortcode-class-name}.enable-img-shadow & {
+		padding: @item-gap + @shadow-v-length 0;
+	}
+}
+figure .rollover:after {
+	.@{unique-shortcode-class-name}.enable-bg-rollover.hover-scale & {
+		.custom-mixin-bg (@portfolio-rollover-bg);
+		.rollover-background-gradient (@portfolio-rollover-bg, @portfolio-rollover-bg-gradient);
+	}
+}
+.gallery-zoom-ico {
+	.@{unique-shortcode-class-name}.gallery-shortcode & {
+		
+		    width: @project-icon-bg-size;
+		    height: @project-icon-bg-size;
+		    line-height: @project-icon-bg-size;
+		    border-radius: @project-icon-border-radius;
+		    margin: -@project-icon-bg-size/2 0 0 -@project-icon-bg-size/2;
+		    border-width: @project-icon-border-width;
+		  	.custom-mixin-border (@project-icon-border-color);
+		    .dt-icon-bg-on& {
+		    	.custom-mixin-bg (@project-icon-bg-color);
+		    }
+		    &:before {
+		    	font-size: @project-icon-size;
+		    	line-height: @project-icon-bg-size;
+		    	.custom-mixin-color (@project-icon-color);
+		    }
+	}
+}
+

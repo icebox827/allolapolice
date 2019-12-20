@@ -1,0 +1,40 @@
+
+	.top-bar,
+	.header-bar,
+	.mobile-header-bar {
+	 	.masthead:not(.side-header):not(.side-header-menu-icon) & {
+			max-width: calc(@content-width ~"-" 88px);
+			margin: 0 auto;
+		}
+		.masthead:not(.side-header).full-width &,
+		.masthead.side-header-menu-icon {
+			max-width: 100%;
+		}
+	}
+	.phantom-sticky .boxed .masthead:not(.side-header).sticky-on {
+		max-width: @box-width;
+	}
+.boxed .top-bar-bg,
+.boxed .classic-header .navigation:before {
+	width: 100%;
+}
+.width-in-pixel .top-bar-bg,
+.width-in-pixel.classic-header .navigation:before {
+	.boxed & {
+		width: @box-width;
+	}
+}
+.top-bar-bg {
+	#phantom.boxed.width-in-pixel & {
+		width: @box-width;
+	}
+}
+.boxed .masthead.full-width:not(.side-header):not(.masthead-mobile) {
+	width: @box-width;
+}
+/*Header height */
+.masthead:not(.side-header):not(.mixed-header) .header-bar,
+.header-space {
+	min-height: @header-height;
+}
+

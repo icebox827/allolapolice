@@ -1,0 +1,63 @@
+/* #Blog list
+================================================== */
+
+.custom-mixin-pagination-gap (@customSize) when (isnumber(@customSize)) {
+	margin-top: @customSize;
+}
+.custom-mixin-filter-gap (@customSize) when (isnumber(@customSize)) {
+	margin-bottom: @customSize;
+}
+.custom-mixin-font-size (@customSize) when (isnumber(@customSize)) {
+	font-size: @customSize;
+}
+.custom-mixin-line-height (@customSize) when (isnumber(@customSize)) {
+	line-height: @customSize;
+}
+.custom-mixin-mob-font-size (@customSize) when (isnumber(@customSize)) {
+	font-size: min(@customSize, 20px);
+}
+.custom-mixin-mob-line-height (@customSize) when (isnumber(@customSize)) {
+	line-height: min(@customSize, 26px);
+}
+.custom-mixin-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor;
+}
+.custom-mixin-filter-color (@customColor, @opacity) when (iscolor(@customColor)) {
+	color: fade(@customColor, @opacity);
+
+	background: none;
+}
+.custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor;
+	-webkit-box-shadow: none;
+	box-shadow:         none;
+}
+.custom-mixin-fade-bg (@customColor, @opacity:100%) when (iscolor(@customColor)) {
+	background: fade(@customColor, @opacity);
+}
+.custom-mixin-border (@customColor) when (iscolor(@customColor)) {
+	border-color: @customColor;
+}
+.custom-mixin-fade-border (@customColor, @opacity:100%) when (iscolor(@customColor)) {
+	border-color: fade(@customColor, @opacity);
+}
+.custom-background-gradient (@startColor: #eee, @opacity: 30%) when (iscolor(@startColor)) {
+	//.background-gradient( fade( @startColor, @opacity ), fade( @endColor, @opacity ) );
+	background: @startColor;
+	background: -moz-linear-gradient(top,  fade(@startColor, 0%) 0%, fade(@startColor, 90%) 64%, @startColor 83%, @startColor 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  fade(@startColor, 0%) 0%,fade(@startColor, 90%) 64%,@startColor 83%,@startColor 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  fade(@startColor, 0%) 0%,fade(@startColor, 90%) 64%,@startColor 83%,@startColor 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.custom-mixin-isString (@rule: "", @customString) when (isstring(@customString)) {
+	@rule: @customString;
+}
+
+.custom-mixin-font-style (@customString) when not(@customString = ~"") {
+	font-style: @customString;
+}
+.custom-mixin-font-weight (@customString) when not(@customString = ~"") {
+	font-weight: @customString;
+}
+.custom-mixin-text-transform (@customString) when not(@customString = ~"") {
+	text-transform: @customString;
+}

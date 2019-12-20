@@ -1,0 +1,21 @@
+a.go-pricing_btn-edit-table {
+    background-color:#00a4f9 !important;
+    border:none !important;
+    border-radius:3px;
+    color:#fff !important;
+    display:inline-block;
+    font-size:13px;
+    font-weight:normal !important;
+    height:31px;
+    line-height:31px !important;
+    margin:0;
+	margin-left:-10px;
+    padding:0 11px;
+    position:relative;
+    text-decoration:none;
+    vertical-align:top;
+}
+a.go-pricing_btn-edit-table:hover {
+    background-color:#2f8ed6; !important;
+    color:#fff !important;
+}
