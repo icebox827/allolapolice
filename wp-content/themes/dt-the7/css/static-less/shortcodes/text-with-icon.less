@@ -60,6 +60,12 @@
 }
 .dt-text-title {
 	grid-area: header;
+	max-width: 100%;
+	.layout-4 & {
+		@media all and (-ms-high-contrast: none) {
+	    	align-self: flex-start;
+		}
+	}
 }
 
 
@@ -68,6 +74,7 @@
 }
 .dt-text-desc {
 	grid-area: desc;
+	max-width: 100%;
 }
 > * {
 	.icon-with-text-shortcode.layout-1 & {
@@ -120,12 +127,18 @@
 		position: relative;
 		order: 0;
 		 align-self: flex-start;
-		 .layout-3& {
+		 .layout-3&,
+		 .layout-5& {
 			align-self: center;
 		}
 	}
 } 
-
+.text-icon,
+.text-icon .icon-inner {
+	@media all and (-ms-high-contrast: none) {
+		//height: 0;
+	}
+}
 :before,
 :after {
 	.text-icon&,

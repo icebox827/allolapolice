@@ -1,6 +1,8 @@
 jQuery(function ($) {
     "use strict";
 
+    var autoSaveTimeout;
+
     function arrayIntersect(a, b) {
         var t;
         if (b.length > a.length) {
@@ -103,17 +105,20 @@ jQuery(function ($) {
     elementor.settings.page.model.on("change", function (settings) {
         var the7Settings = arrayIntersect(Object.keys(settings.changed), the7Elementor.controlsIds);
 
+        clearTimeout(autoSaveTimeout);
         if (the7Settings.length > 0) {
-            elementor.saver.saveAutoSave({
-                onSuccess: function onSuccess() {
-                    elementor.reloadPreview();
-                    elementor.once("preview:loaded", function () {
-                        if(settings.controls[the7Settings[0]]) {
-                            activateEditorPageSettingsSection(settings.controls[the7Settings[0]].section);
-                        }
-                    });
-                }
-            });
+            autoSaveTimeout = setTimeout(function () {
+                elementor.saver.saveAutoSave({
+                    onSuccess: function onSuccess() {
+                        elementor.reloadPreview();
+                        elementor.once("preview:loaded", function () {
+                            if (settings.controls[the7Settings[0]]) {
+                                activateEditorPageSettingsSection(settings.controls[the7Settings[0]].section);
+                            }
+                        });
+                    }
+                });
+            }, 300);
         }
     });
 });

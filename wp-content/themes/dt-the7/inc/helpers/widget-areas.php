@@ -73,6 +73,10 @@ if ( ! function_exists( 'presscore_footer_html_class' ) ) :
 			// default - content_width_line
 		}
 
+		if ( (bool) of_get_option( 'footer-is_fullwidth' ) ) {
+			$output[] = 'full-width';
+		}
+
 		$output = apply_filters( 'presscore_footer_html_class', $output );
 
 		return $output ? sprintf( 'class="%s"', presscore_esc_implode( ' ', array_unique( $output ) ) ) : '';

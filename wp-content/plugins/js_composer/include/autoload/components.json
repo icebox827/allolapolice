@@ -35,8 +35,6 @@
   "vc-image-filters.php": "PHP class for photo effects like Instagram",
   "vc-settings-presets.php": "Logic for settings presets",
   "vc-single-image.php": "add bc for single image",
-  "backend-editor-ie.php": "add ie9 degradation",
-  "frontend-editor-ie.php": "add ie9 degradation",
   "params-to-init.php": "add required init params",
   "bc-access-rules-4.8.php": "BC for roles via filters >= VC 4.8",
   "post-type-default-template.php": "Load default templates",

@@ -13,9 +13,6 @@ defined( 'ABSPATH' ) || exit;
 class The7_Image_Width_Calculator_Config {
 
 	protected $columns = 0;
-	protected $columns_gaps = 0;
-	protected $content_width = 0;
-	protected $side_padding = 0;
 	protected $mobile_side_padding = 0;
 	protected $side_padding_switch = 0;
 	protected $sidebar_width = 0;
@@ -24,6 +21,11 @@ class The7_Image_Width_Calculator_Config {
 	protected $image_is_wide = '';
 	protected $sidebar_enabled = true;
 	protected $sidebar_on_mobile = true;
+
+	// TODO: delete in 9.0.0
+	protected $columns_gaps = 0;
+	protected $content_width = 0;
+	protected $side_padding = 0;
 
 	public function __construct( $config = array() ) {
 		foreach ( $config as $prop => $val ) {

@@ -34,7 +34,7 @@ class The7_Image_BWB_Width_Calculator {
 		$image_w = array();
 		foreach ( $responsive_width as $device => $content_width ) {
 			$masonry_content_width = $content_width;
-			$masonry_content_width_without_padding = $masonry_content_width -= $this->get_content_padding( $content_width ) * 2;
+			$masonry_content_width_without_padding = $masonry_content_width;
 			$masonry_content_width -= $this->get_sidebar_width( $content_width );
 			$columns_gaps = $this->config->get_columns_gaps();
 			$col = $this->get_columns( $device );
@@ -78,8 +78,7 @@ class The7_Image_BWB_Width_Calculator {
 		$sidebar_in_percents = ( false !== strpos( $sidebar_width, '%' ) );
 
 		if ( $sidebar_in_percents ) {
-			$content_padding = $this->get_content_padding( $content_width );
-			$sidebar_width = ($content_width - $content_padding) * absint( $sidebar_width ) * 0.01;
+			$sidebar_width = $content_width * absint( $sidebar_width ) * 0.01;
 		} else {
 			$sidebar_width = absint( $sidebar_width );
 		}
@@ -87,21 +86,6 @@ class The7_Image_BWB_Width_Calculator {
 		$sidebar_gap = $this->config->get_sidebar_gap();
 
 		return ($sidebar_gap  + $sidebar_width - 25);
-	}
-
-	/**
-	 * @param int $content_width
-	 *
-	 * @return int
-	 */
-	protected function get_content_padding( $content_width ) {
-		$side_padding_switch = $this->config->get_side_padding_switch();
-
-		if ( $content_width < $side_padding_switch ) {
-			return $this->config->get_mobile_side_padding();
-		}
-
-		return $this->config->get_side_padding();
 	}
 
 	/**

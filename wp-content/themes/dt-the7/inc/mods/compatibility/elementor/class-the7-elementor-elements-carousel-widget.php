@@ -35,7 +35,7 @@ class The7_Elementor_Elements_Carousel_Widget extends The7_Elementor_Widget_Base
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'The7 Elements Carousel', 'the7mk2' );
+		return __( 'The7 Carousel', 'the7mk2' );
 	}
 
 	/**

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The7 3.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dt-the7-core\n"
-"POT-Creation-Date: 2019-12-03 15:38:23+00:00\n"
+"POT-Creation-Date: 2019-12-30 13:15:36+00:00\n"
 "PO-Revision-Date: 2016-10-06 14:18+0000\n"
 "Last-Translator: admin <forgesupport@ukr.nett>\n"
 "Language-Team: French (France)\n"
@@ -3248,9 +3248,9 @@ msgstr "Archives de portfolio : %s"
 #: mods/portfolio/public/mod-portfolio-helpers.php:159
 #: mods/portfolio/public/mod-portfolio-helpers.php:372
 #: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:242
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:290
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:279
 #: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:296
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:341
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:331
 #, fuzzy
 msgid "Post image"
 msgstr "Images en portrait"
@@ -6167,13 +6167,13 @@ msgid "Photos Scroller"
 msgstr "Photos défilantes "
 
 #: mods/portfolio/public/shortcodes/portfolio/portfolio.php:26
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:941
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:931
 msgctxt "vc inline dummy"
 msgid "Portfolio Masonry & Grid"
 msgstr "Portfolio Maçonnerie & Grille"
 
 # @ the7mk2
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:802
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:791
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Portfolio Carousel"

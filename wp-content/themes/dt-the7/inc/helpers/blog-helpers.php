@@ -662,9 +662,6 @@ if ( ! function_exists( 'the7_calculate_bwb_image_resize_options' ) ) {
 				'columns'             => $columns,
 				'columns_gaps'        => $columns_gap,
 				'content_width'       => of_get_option( 'general-content_width' ),
-				'side_padding'        => of_get_option( 'general-side_content_paddings' ),
-				'mobile_side_padding' => of_get_option( 'general-mobile_side_content_paddings' ),
-				'side_padding_switch' => of_get_option( 'general-switch_content_paddings' ),
 				'sidebar_enabled'     => ( 'disabled' !== $config->get( 'sidebar_position' ) ),
 				'sidebar_on_mobile'   => ( ! $config->get( 'sidebar_hide_on_mobile' ) ),
 				'sidebar_width'       => of_get_option( 'sidebar-width' ),
@@ -677,6 +674,46 @@ if ( ! function_exists( 'the7_calculate_bwb_image_resize_options' ) ) {
 
 		return $img_width_calculator->calculate_options();
 	}
+}
+
+if ( ! function_exists( 'the7_calculate_image_resize_options_for_list_layout' ) ) {
+
+	/**
+	 * Return image resize options for list layout.
+	 *
+	 * @param string $image_width
+	 * @param string $mobile_switch
+	 * @param int    $right_padding
+	 * @param int    $left_padding
+	 * @param bool   $image_is_wide
+	 *
+	 * @return array
+	 *
+	 * @since 8.0.0
+	 */
+	function the7_calculate_image_resize_options_for_list_layout( $image_width, $mobile_switch, $right_padding, $left_padding, $image_is_wide = false ) {
+		$config = presscore_config();
+
+		$image_width_config = new The7_Image_List_Width_Calculator_Config(
+			array(
+				'content_width'     => of_get_option( 'general-content_width' ),
+				'sidebar_enabled'   => ( 'disabled' !== $config->get( 'sidebar_position' ) ),
+				'sidebar_on_mobile' => ( ! $config->get( 'sidebar_hide_on_mobile' ) ),
+				'sidebar_width'     => of_get_option( 'sidebar-width' ),
+				'sidebar_gap'       => of_get_option( 'sidebar-distance_to_content' ),
+				'sidebar_switch'    => of_get_option( 'sidebar-responsiveness' ),
+				'image_is_wide'     => $image_is_wide,
+				'image_width'       => $image_width,
+				'mobile_switch'     => $mobile_switch,
+				'right_padding'     => $right_padding,
+				'left_padding'      => $left_padding,
+			)
+		);
+		$image_width_calc   = new The7_Image_List_Width_Calculator( $image_width_config );
+
+		return $image_width_calc->calculate_options();
+	}
+
 }
 
 if ( ! function_exists( 'the7_calculate_columns_based_image_resize_options' ) ) {

@@ -1061,7 +1061,7 @@ function vc_camel_case( $value ) {
 function vc_icon_element_fonts_enqueue( $font ) {
 	switch ( $font ) {
 		case 'fontawesome':
-			wp_enqueue_style( 'font-awesome' );
+			wp_enqueue_style( 'vc_font_awesome_5' );
 			break;
 		case 'openiconic':
 			wp_enqueue_style( 'vc_openiconic' );

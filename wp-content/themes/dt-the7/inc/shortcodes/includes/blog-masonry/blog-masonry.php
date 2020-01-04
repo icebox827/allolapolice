@@ -107,7 +107,7 @@ if ( ! class_exists( 'DT_Shortcode_BlogMasonry', false ) ):
 				'custom_content_color'           => '',
 				'content_bottom_margin'          => '5px',
 				'read_more_button'               => 'default_link',
-				'read_more_button_text'          => _x( 'Read more', 'the7 shortcode', 'the7mk2' ),
+				'read_more_button_text'          => '',
 				'fancy_date'                     => 'n',
 				'fancy_date_font_color'          => '',
 				'fancy_date_bg_color'            => '',
@@ -271,22 +271,12 @@ if ( ! class_exists( 'DT_Shortcode_BlogMasonry', false ) ):
 					) );
 
 					if ( 'browser_width_based' === $this->get_att( 'responsiveness' ) ) {
-						$img_width_calculator_config = new The7_Image_Width_Calculator_Config( array(
-							'columns' => DT_VCResponsiveColumnsParam::decode_columns( $this->get_att( 'bwb_columns' ) ),
-						    'columns_gaps' => $this->get_att( 'gap_between_posts' ),
-						    'content_width' => of_get_option( 'general-content_width' ),
-						    'side_padding' => of_get_option( 'general-side_content_paddings' ),
-						    'mobile_side_padding' => of_get_option( 'general-mobile_side_content_paddings' ),
-						    'side_padding_switch' => of_get_option( 'general-switch_content_paddings' ),
-						    'sidebar_enabled' => ( 'disabled' !== $config->get( 'sidebar_position' ) ),
-						    'sidebar_on_mobile' => ( ! $config->get( 'sidebar_hide_on_mobile' ) ),
-						    'sidebar_width' => of_get_option( 'sidebar-width' ),
-						    'sidebar_gap' => of_get_option( 'sidebar-distance_to_content' ),
-						    'sidebar_switch' => of_get_option( 'sidebar-responsiveness' ),
-						    'image_is_wide' => ( 'wide' === $config->get( 'post.preview.width' ) && ! $config->get( 'all_the_same_width' ) )
-						) );
-						$img_width_calculator = new The7_Image_BWB_Width_Calculator( $img_width_calculator_config );
-						$thumb_args['options'] = $img_width_calculator->calculate_options();
+						$image_is_wide = ( 'wide' === $config->get( 'post.preview.width' ) && ! $config->get( 'all_the_same_width' ) );
+						$thumb_args['options'] = the7_calculate_bwb_image_resize_options(
+							DT_VCResponsiveColumnsParam::decode_columns( $this->get_att( 'bwb_columns' ) ),
+							$this->get_att( 'gap_between_posts' ),
+							$image_is_wide
+						);
 					} else {
 						$thumb_args['options'] = presscore_set_image_dimesions();
 					}
@@ -317,7 +307,7 @@ if ( ! class_exists( 'DT_Shortcode_BlogMasonry', false ) ):
 				}
 
 				$details_btn_style = $this->get_att( 'read_more_button' );
-				$details_btn_text = $this->get_att( 'read_more_button_text' );
+				$details_btn_text = $this->get_att( 'read_more_button_text', esc_html_x( 'Read more', 'the7 shortcode', 'the7mk2' ) );
 				$details_btn_class = ( 'default_button' === $details_btn_style ? array(
 					'dt-btn-s',
 					'dt-btn',

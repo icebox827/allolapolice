@@ -166,7 +166,7 @@
   'footer-decoration' => 'none',
   'footer-decoration_outline_color' => 'rgba(129,215,66,0.96)',
   'footer-headers_color' => '#eeeeee',
-  'footer-padding' => '50px 15px',
+  'footer-padding' => '50px 20px 15px 20px',
   'footer-paddings-columns' => '25px',
   'footer-primary_text_color' => '#8b8d94',
   'footer-slide-out-mode' => '0',
@@ -230,7 +230,6 @@
   'general-lightbox_arrow_size' => '62px',
   'general-lightbox_overlay_opacity' => 85,
   'general-loader_style' => 'double_circles',
-  'general-mobile_side_content_paddings' => '20px',
   'general-navigation_margin' => '50px',
   'general-next_prev_in_album' => '1',
   'general-page-title-typography' => 
@@ -240,7 +239,7 @@
     'line_height' => '44',
     'text_transform' => 'none',
   ),
-  'general-page_content_margin' => '70px 70px',
+  'general-page_content_margin' => '70px 30px 70px 30px',
   'general-portfolio_thumbnail_proportions' => 
   array (
     'width' => 2,
@@ -259,10 +258,8 @@
   'general-show_breadcrumbs' => '1',
   'general-show_rel_posts' => '1',
   'general-show_titles' => '1',
-  'general-side_content_paddings' => '50px',
   'general-smooth_scroll' => 'off',
   'general-spinner_color' => 'rgba(51,51,51,0.25)',
-  'general-switch_content_paddings' => '778px',
   'general-title_align' => 'center',
   'general-title_bg_color' => 'rgba(0,0,0,0.04)',
   'general-title_bg_fullscreen' => false,
@@ -644,6 +641,7 @@
   'header-inline-is_fullwidth' => '0',
   'header-inline-menu-position' => 'center',
   'header-inline-show_elements' => '1',
+  'header-inline-side-padding' => '20px 20px',
   'header-layout' => 'inline',
   'header-logo-padding' => '0px 5px 0px 0px',
   'header-logo_hd' => 
@@ -806,6 +804,7 @@
   'header-mobile-first_switch-height' => '60px',
   'header-mobile-first_switch-layout' => 'right_left',
   'header-mobile-first_switch-logo' => 'mobile',
+  'header-mobile-first_switch-side-padding' => '20px 20px',
   'header-mobile-floating_navigation' => 'sticky',
   'header-mobile-header-bg-color' => 'rgba(255,255,255,1)',
   'header-mobile-menu-align' => 'right',
@@ -840,6 +839,7 @@
   'header-mobile-second_switch-height' => '60px',
   'header-mobile-second_switch-layout' => 'right_left',
   'header-mobile-second_switch-logo' => 'mobile',
+  'header-mobile-second_switch-side-padding' => '20px 20px',
   'header-mobile-submenu-typography' => 
   array (
     'font_family' => 'Roboto:500',
@@ -1189,7 +1189,7 @@
   'top_bar-line-in-transparent-header' => false,
   'top_bar-line_size' => '1px',
   'top_bar-line_style' => 'solid',
-  'top_bar-padding' => '3px 3px 0px',
+  'top_bar-padding' => '3px 0px 3px 0px',
   'top_bar-typography' => 
   array (
     'font_family' => 'Roboto:500',

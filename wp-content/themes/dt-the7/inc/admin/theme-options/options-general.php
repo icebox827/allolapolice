@@ -30,6 +30,20 @@ $options['general-content_width'] = array(
 	'units' => 'px|%',
 );
 
+$options['general-page_content_margin'] = array(
+	'name'   => _x( 'Margin for pages, posts & templates', 'theme-options', 'the7mk2' ),
+	'id'     => 'general-page_content_margin',
+	'type'   => 'spacing',
+	'std'    => '50px 0px 50px 0px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Top', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+		_x( 'Bottom', 'theme-options', 'the7mk2' ),
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+	),
+);
+
 $options['general-layout'] = array(
 	'name'    => _x( 'Layout', 'theme-options', 'the7mk2' ),
 	'id'      => 'general-layout',

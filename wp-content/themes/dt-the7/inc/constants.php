@@ -12,14 +12,14 @@ define( 'PRESSCORE_VERSION', '0.3.0' );
 define( 'PRESSCORE_THEME_NAME', 'the7' );
 
 if ( ! defined( 'PRESSCORE_DB_VERSION' ) ) {
-	define( 'PRESSCORE_DB_VERSION', '7.9.1' );
+	define( 'PRESSCORE_DB_VERSION', '8.0.0' );
 }
 
 if ( ! defined( 'PRESSCORE_STYLESHEETS_VERSION' ) ) {
-	define( 'PRESSCORE_STYLESHEETS_VERSION', '7.9.1' );
+	define( 'PRESSCORE_STYLESHEETS_VERSION', '8.0.1' );
 }
 
-define( 'THE7_CORE_COMPATIBLE_VERSION', '2.2.0' );
+define( 'THE7_CORE_COMPATIBLE_VERSION', '2.2.3' );
 
 /**
  * Important! Remember to remove trailing slash.

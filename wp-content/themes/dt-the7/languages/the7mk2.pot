@@ -2,9 +2,9 @@
 # This file is distributed under the This WordPress theme is comprised of two parts: (1) The PHP code and integrated HTML are licensed under the GPL license as is WordPress itself.  You will find a copy of the license text in the same directory as this text file. Or you can read it here: http://wordpress.org/about/gpl/ (2) All other parts of the theme including, but not limited to the CSS code, images, and design are licensed according to the license purchased. Read about licensing details here: http://themeforest.net/licenses/regular_extended.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: The7 7.9.1\n"
+"Project-Id-Version: The7 8.0.1\n"
 "Report-Msgid-Bugs-To: https://support.dream-theme.com/\n"
-"POT-Creation-Date: 2019-12-16 13:36:58+00:00\n"
+"POT-Creation-Date: 2019-12-30 14:24:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -936,7 +936,7 @@ msgstr ""
 msgid "Function is deprecated, do not use."
 msgstr ""
 
-#: inc/deprecated-functions.php:716 inc/helpers/html-helpers.php:1981
+#: inc/deprecated-functions.php:716 inc/helpers/html-helpers.php:2010
 msgid "Share this"
 msgstr ""
 
@@ -1166,7 +1166,7 @@ msgstr ""
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: inc/helpers/comments-helpers.php:75 inc/helpers/html-helpers.php:587
+#: inc/helpers/comments-helpers.php:75 inc/helpers/html-helpers.php:616
 msgid "Edit"
 msgstr ""
 
@@ -1186,82 +1186,82 @@ msgstr ""
 msgid "Log in to Reply"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:302
+#: inc/helpers/html-helpers.php:331
 msgid "Tags:"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:366
+#: inc/helpers/html-helpers.php:395
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:366
+#: inc/helpers/html-helpers.php:395
 msgid "1 Comment"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:366
+#: inc/helpers/html-helpers.php:395
 msgid "% Comments"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:413 woocommerce/single-product/meta.php:31
+#: inc/helpers/html-helpers.php:442 woocommerce/single-product/meta.php:31
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/helpers/html-helpers.php:539
+#: inc/helpers/html-helpers.php:568
 #: inc/mods/compatibility/woocommerce/front/mod-wc-template-functions.php:737
 msgid "Details"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:639
+#: inc/helpers/html-helpers.php:668
 msgid "Author:"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:757 inc/helpers/html-helpers.php:1822
+#: inc/helpers/html-helpers.php:786 inc/helpers/html-helpers.php:1851
 msgid "1 image"
 msgid_plural "%s images"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/helpers/html-helpers.php:761
+#: inc/helpers/html-helpers.php:790
 msgid "1 video"
 msgid_plural "%s video"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/helpers/html-helpers.php:917
+#: inc/helpers/html-helpers.php:946
 msgid "View all posts by %s"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:918
+#: inc/helpers/html-helpers.php:947
 msgid "By %s"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:1263
+#: inc/helpers/html-helpers.php:1292
 msgid "All"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:1264
+#: inc/helpers/html-helpers.php:1293
 msgid "There is no categories"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:1826
+#: inc/helpers/html-helpers.php:1855
 msgid "%s video"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:1886 inc/helpers/html-helpers.php:1935
+#: inc/helpers/html-helpers.php:1915 inc/helpers/html-helpers.php:1964
 msgid "Gallery image"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:2080
+#: inc/helpers/html-helpers.php:2109
 msgid "Share on %s"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:2096 inc/static.php:279
+#: inc/helpers/html-helpers.php:2125 inc/static.php:279
 msgid "Tweet"
 msgstr ""
 
-#: inc/helpers/html-helpers.php:2127 inc/static.php:280
+#: inc/helpers/html-helpers.php:2156 inc/static.php:280
 msgid "Pin it"
 msgstr ""
 
@@ -1598,7 +1598,7 @@ msgid "Subtotal"
 msgstr ""
 
 #: inc/mods/compatibility/elementor/class-the7-elementor-elements-carousel-widget.php:38
-msgid "The7 Elements Carousel"
+msgid "The7 Carousel"
 msgstr ""
 
 #: inc/mods/compatibility/elementor/class-the7-elementor-elements-carousel-widget.php:88
@@ -3134,7 +3134,7 @@ msgid "Details link"
 msgstr ""
 
 #: inc/mods/compatibility/elementor/class-the7-elementor-elements-widget.php:41
-msgid "The7 Elements"
+msgid "The7 Masonry & Grid"
 msgstr ""
 
 #: inc/mods/compatibility/elementor/class-the7-elementor-elements-widget.php:185
@@ -3403,52 +3403,74 @@ msgstr ""
 msgid "The7 Icons"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:209
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:237
 msgid "Page header settings"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:216
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:244
 msgid "Page title"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:231
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:259
 msgid "Header style"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:247
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:275
 msgid "Color scheme"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:269
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:297
 msgid "Top bar color"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:287
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:315
 msgid "Transparent background color"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:301
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:329
 msgid "Sidebar settings"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:308
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:336
 msgid "Sidebar position"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:322
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:350
 msgid "Sidebar"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:336
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:364
 msgid "Footer settings"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:343
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:371
 msgid "Hide Widgetized footer"
 msgstr ""
 
-#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:356
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:384
 msgid "Footer widget area"
+msgstr ""
+
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:398
+msgid "Page Margins"
+msgstr ""
+
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:407
+#: inc/shortcodes/vc-bridges/the7-vc-row-bridge.php:37
+msgid "Top margin"
+msgstr ""
+
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:433
+msgid "Right margin"
+msgstr ""
+
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:459
+#: inc/shortcodes/vc-bridges/the7-vc-row-bridge.php:47
+msgid "Bottom margin"
+msgstr ""
+
+#: inc/mods/compatibility/elementor/class-the7-elementor-page-settings.php:485
+msgid "Left margin"
 msgstr ""
 
 #: inc/mods/compatibility/elementor/class-the7-elementor-widgets.php:72
@@ -6621,18 +6643,10 @@ msgstr ""
 msgid "You can use pixels (px) or percents (%)."
 msgstr ""
 
-#: inc/shortcodes/vc-bridges/the7-vc-row-bridge.php:37
-msgid "Top margin"
-msgstr ""
-
 #: inc/shortcodes/vc-bridges/the7-vc-row-bridge.php:38
 msgid ""
 "In pixels; negative values are allowed. if this is <a href=\"%s\" "
 "target=\"_blank\">the first stripe</a>, set -50px."
-msgstr ""
-
-#: inc/shortcodes/vc-bridges/the7-vc-row-bridge.php:47
-msgid "Bottom margin"
 msgstr ""
 
 #: inc/shortcodes/vc-bridges/the7-vc-row-bridge.php:48
@@ -6783,7 +6797,7 @@ msgstr ""
 msgid "Share on Whatsapp"
 msgstr ""
 
-#: inc/static.php:876
+#: inc/static.php:873
 msgid "Post comment"
 msgstr ""
 
@@ -8397,14 +8411,22 @@ msgid "Top aligned left"
 msgstr ""
 
 #: inc/admin/mega-menu-options.php:56
+#: inc/admin/theme-options/options-footer.php:167
+#: inc/admin/theme-options/options-general.php:41
 #: inc/admin/theme-options/options-header/search-micro-widget.php:265
-#: inc/admin/theme-options/options-header.php:190
-#: inc/admin/theme-options/options-header.php:332
-#: inc/admin/theme-options/options-header.php:458
-#: inc/admin/theme-options/options-header.php:603
-#: inc/admin/theme-options/options-header.php:3657
+#: inc/admin/theme-options/options-header.php:94
+#: inc/admin/theme-options/options-header.php:198
+#: inc/admin/theme-options/options-header.php:213
+#: inc/admin/theme-options/options-header.php:289
+#: inc/admin/theme-options/options-header.php:375
+#: inc/admin/theme-options/options-header.php:430
+#: inc/admin/theme-options/options-header.php:512
+#: inc/admin/theme-options/options-header.php:657
+#: inc/admin/theme-options/options-header.php:1494
+#: inc/admin/theme-options/options-header.php:3757
 #: inc/admin/theme-options/options-page-titles.php:38
-#: inc/admin/theme-options-parts.php:338 inc/admin/theme-options-parts.php:700
+#: inc/admin/theme-options-parts.php:338 inc/admin/theme-options-parts.php:416
+#: inc/admin/theme-options-parts.php:716
 #: inc/extensions/options-framework/fields/class-the7-option-field-spacing.php:22
 #: inc/mods/options-wizard/options.php:387
 #: inc/mods/options-wizard/options.php:458
@@ -8418,17 +8440,24 @@ msgid "Right with menu item only"
 msgstr ""
 
 #: inc/admin/mega-menu-options.php:58
+#: inc/admin/theme-options/options-footer.php:169
+#: inc/admin/theme-options/options-general.php:43
 #: inc/admin/theme-options/options-header/search-micro-widget.php:266
-#: inc/admin/theme-options/options-header.php:94
-#: inc/admin/theme-options/options-header.php:127
-#: inc/admin/theme-options/options-header.php:186
-#: inc/admin/theme-options/options-header.php:328
-#: inc/admin/theme-options/options-header.php:454
-#: inc/admin/theme-options/options-header.php:599
-#: inc/admin/theme-options/options-header.php:3653
+#: inc/admin/theme-options/options-header.php:93
+#: inc/admin/theme-options/options-header.php:105
+#: inc/admin/theme-options/options-header.php:138
+#: inc/admin/theme-options/options-header.php:197
+#: inc/admin/theme-options/options-header.php:209
+#: inc/admin/theme-options/options-header.php:288
+#: inc/admin/theme-options/options-header.php:371
+#: inc/admin/theme-options/options-header.php:429
+#: inc/admin/theme-options/options-header.php:508
+#: inc/admin/theme-options/options-header.php:653
+#: inc/admin/theme-options/options-header.php:1496
+#: inc/admin/theme-options/options-header.php:3753
 #: inc/admin/theme-options/options-page-titles.php:34
 #: inc/admin/theme-options-parts.php:270 inc/admin/theme-options-parts.php:330
-#: inc/admin/theme-options-parts.php:701
+#: inc/admin/theme-options-parts.php:415 inc/admin/theme-options-parts.php:717
 #: inc/extensions/options-framework/fields/class-the7-option-field-spacing.php:24
 #: inc/mods/options-wizard/options.php:334
 #: inc/mods/options-wizard/options.php:354
@@ -8453,12 +8482,12 @@ msgstr ""
 #: inc/admin/theme-options/options-buttons.php:252
 #: inc/admin/theme-options/options-buttons.php:299
 #: inc/admin/theme-options/options-buttons.php:346
-#: inc/admin/theme-options/options-general.php:251
-#: inc/admin/theme-options/options-general.php:254
+#: inc/admin/theme-options/options-general.php:265
+#: inc/admin/theme-options/options-general.php:268
 #: inc/admin/theme-options/options-header/search-micro-widget.php:244
-#: inc/admin/theme-options/options-header.php:2646
+#: inc/admin/theme-options/options-header.php:2725
 #: inc/admin/theme-options/options-page-titles.php:568
-#: inc/admin/theme-options-parts.php:639
+#: inc/admin/theme-options-parts.php:655
 msgctxt "theme-options"
 msgid "Border radius"
 msgstr ""
@@ -8469,8 +8498,8 @@ msgstr ""
 #: inc/admin/theme-options/options-buttons.php:293
 #: inc/admin/theme-options/options-buttons.php:340
 #: inc/admin/theme-options/options-footer.php:160
-#: inc/admin/theme-options/options-header.php:2088
-#: inc/admin/theme-options/options-header.php:2897
+#: inc/admin/theme-options/options-header.php:2167
+#: inc/admin/theme-options/options-header.php:2983
 #: inc/admin/theme-options/options-page-titles.php:61
 #: inc/admin/theme-options/options-page-titles.php:504
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:515
@@ -8523,47 +8552,48 @@ msgid "Header below slideshow"
 msgstr ""
 
 #: inc/admin/meta-boxes/metaboxes.php:337
-#: inc/admin/theme-options/options-advanced.php:41
-#: inc/admin/theme-options/options-advanced.php:83
-#: inc/admin/theme-options/options-advanced.php:107
-#: inc/admin/theme-options/options-advanced.php:119
-#: inc/admin/theme-options/options-advanced.php:133
+#: inc/admin/theme-options/options-advanced.php:24
+#: inc/admin/theme-options/options-advanced.php:38
+#: inc/admin/theme-options/options-advanced.php:62
+#: inc/admin/theme-options/options-advanced.php:74
+#: inc/admin/theme-options/options-advanced.php:88
 #: inc/admin/theme-options/options-blog-and-portfolio.php:186
 #: inc/admin/theme-options/options-blog-and-portfolio.php:209
 #: inc/admin/theme-options/options-blog-and-portfolio.php:229
 #: inc/admin/theme-options/options-blog-and-portfolio.php:261
 #: inc/admin/theme-options/options-blog-and-portfolio.php:341
 #: inc/admin/theme-options/options-footer.php:117
-#: inc/admin/theme-options/options-footer.php:217
-#: inc/admin/theme-options/options-general.php:274
-#: inc/admin/theme-options/options-header.php:146
-#: inc/admin/theme-options/options-header.php:213
-#: inc/admin/theme-options/options-header.php:284
-#: inc/admin/theme-options/options-header.php:413
-#: inc/admin/theme-options/options-header.php:522
-#: inc/admin/theme-options/options-header.php:750
-#: inc/admin/theme-options/options-header.php:850
-#: inc/admin/theme-options/options-header.php:920
-#: inc/admin/theme-options/options-header.php:1001
-#: inc/admin/theme-options/options-header.php:1065
-#: inc/admin/theme-options/options-header.php:1165
-#: inc/admin/theme-options/options-header.php:1227
-#: inc/admin/theme-options/options-header.php:1751
-#: inc/admin/theme-options/options-header.php:2152
-#: inc/admin/theme-options/options-header.php:2174
-#: inc/admin/theme-options/options-header.php:2226
-#: inc/admin/theme-options/options-header.php:2436
-#: inc/admin/theme-options/options-header.php:2580
-#: inc/admin/theme-options/options-header.php:2932
-#: inc/admin/theme-options/options-header.php:3112
-#: inc/admin/theme-options/options-header.php:3460
+#: inc/admin/theme-options/options-footer.php:213
+#: inc/admin/theme-options/options-footer.php:237
+#: inc/admin/theme-options/options-general.php:288
+#: inc/admin/theme-options/options-header.php:157
+#: inc/admin/theme-options/options-header.php:236
+#: inc/admin/theme-options/options-header.php:327
+#: inc/admin/theme-options/options-header.php:468
+#: inc/admin/theme-options/options-header.php:576
+#: inc/admin/theme-options/options-header.php:816
+#: inc/admin/theme-options/options-header.php:916
+#: inc/admin/theme-options/options-header.php:986
+#: inc/admin/theme-options/options-header.php:1071
+#: inc/admin/theme-options/options-header.php:1135
+#: inc/admin/theme-options/options-header.php:1235
+#: inc/admin/theme-options/options-header.php:1297
+#: inc/admin/theme-options/options-header.php:1826
+#: inc/admin/theme-options/options-header.php:2231
+#: inc/admin/theme-options/options-header.php:2253
+#: inc/admin/theme-options/options-header.php:2305
+#: inc/admin/theme-options/options-header.php:2515
+#: inc/admin/theme-options/options-header.php:2659
+#: inc/admin/theme-options/options-header.php:3018
+#: inc/admin/theme-options/options-header.php:3198
+#: inc/admin/theme-options/options-header.php:3560
 #: inc/admin/theme-options/options-page-titles.php:142
 #: inc/admin/theme-options/options-page-titles.php:401
 #: inc/admin/theme-options/options-page-titles.php:456
 #: inc/admin/theme-options/options-page-titles.php:622
 #: inc/admin/theme-options/options-sidebar.php:96
 #: inc/admin/theme-options/options-sidebar.php:118
-#: inc/admin/theme-options/options.php:92 inc/admin/theme-options-parts.php:504
+#: inc/admin/theme-options/options.php:92 inc/admin/theme-options-parts.php:520
 #: inc/deprecated-functions.php:430
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:395
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:423
@@ -8574,11 +8604,11 @@ msgid "Enabled"
 msgstr ""
 
 #: inc/admin/meta-boxes/metaboxes.php:338
-#: inc/admin/theme-options/options-advanced.php:42
-#: inc/admin/theme-options/options-advanced.php:84
-#: inc/admin/theme-options/options-advanced.php:108
-#: inc/admin/theme-options/options-advanced.php:120
-#: inc/admin/theme-options/options-advanced.php:134
+#: inc/admin/theme-options/options-advanced.php:25
+#: inc/admin/theme-options/options-advanced.php:39
+#: inc/admin/theme-options/options-advanced.php:63
+#: inc/admin/theme-options/options-advanced.php:75
+#: inc/admin/theme-options/options-advanced.php:89
 #: inc/admin/theme-options/options-blog-and-portfolio.php:190
 #: inc/admin/theme-options/options-blog-and-portfolio.php:213
 #: inc/admin/theme-options/options-blog-and-portfolio.php:233
@@ -8587,8 +8617,9 @@ msgstr ""
 #: inc/admin/theme-options/options-buttons.php:55
 #: inc/admin/theme-options/options-buttons.php:94
 #: inc/admin/theme-options/options-footer.php:121
-#: inc/admin/theme-options/options-footer.php:218
-#: inc/admin/theme-options/options-general.php:278
+#: inc/admin/theme-options/options-footer.php:217
+#: inc/admin/theme-options/options-footer.php:238
+#: inc/admin/theme-options/options-general.php:292
 #: inc/admin/theme-options/options-header/login-micro-widget.php:35
 #: inc/admin/theme-options/options-header/menu-micro-widgets.php:54
 #: inc/admin/theme-options/options-header/menu-micro-widgets.php:138
@@ -8598,33 +8629,33 @@ msgstr ""
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:117
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:155
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:193
-#: inc/admin/theme-options/options-header.php:150
-#: inc/admin/theme-options/options-header.php:217
-#: inc/admin/theme-options/options-header.php:288
-#: inc/admin/theme-options/options-header.php:417
-#: inc/admin/theme-options/options-header.php:526
-#: inc/admin/theme-options/options-header.php:754
-#: inc/admin/theme-options/options-header.php:854
-#: inc/admin/theme-options/options-header.php:924
-#: inc/admin/theme-options/options-header.php:1005
-#: inc/admin/theme-options/options-header.php:1069
-#: inc/admin/theme-options/options-header.php:1169
-#: inc/admin/theme-options/options-header.php:1231
-#: inc/admin/theme-options/options-header.php:1451
-#: inc/admin/theme-options/options-header.php:1566
-#: inc/admin/theme-options/options-header.php:1648
-#: inc/admin/theme-options/options-header.php:1705
-#: inc/admin/theme-options/options-header.php:1755
-#: inc/admin/theme-options/options-header.php:2156
-#: inc/admin/theme-options/options-header.php:2178
-#: inc/admin/theme-options/options-header.php:2230
-#: inc/admin/theme-options/options-header.php:2440
-#: inc/admin/theme-options/options-header.php:2584
-#: inc/admin/theme-options/options-header.php:2928
-#: inc/admin/theme-options/options-header.php:3116
-#: inc/admin/theme-options/options-header.php:3167
-#: inc/admin/theme-options/options-header.php:3461
-#: inc/admin/theme-options/options-header.php:3514
+#: inc/admin/theme-options/options-header.php:161
+#: inc/admin/theme-options/options-header.php:240
+#: inc/admin/theme-options/options-header.php:331
+#: inc/admin/theme-options/options-header.php:472
+#: inc/admin/theme-options/options-header.php:580
+#: inc/admin/theme-options/options-header.php:820
+#: inc/admin/theme-options/options-header.php:920
+#: inc/admin/theme-options/options-header.php:990
+#: inc/admin/theme-options/options-header.php:1075
+#: inc/admin/theme-options/options-header.php:1139
+#: inc/admin/theme-options/options-header.php:1239
+#: inc/admin/theme-options/options-header.php:1301
+#: inc/admin/theme-options/options-header.php:1526
+#: inc/admin/theme-options/options-header.php:1641
+#: inc/admin/theme-options/options-header.php:1723
+#: inc/admin/theme-options/options-header.php:1780
+#: inc/admin/theme-options/options-header.php:1830
+#: inc/admin/theme-options/options-header.php:2235
+#: inc/admin/theme-options/options-header.php:2257
+#: inc/admin/theme-options/options-header.php:2309
+#: inc/admin/theme-options/options-header.php:2519
+#: inc/admin/theme-options/options-header.php:2663
+#: inc/admin/theme-options/options-header.php:3014
+#: inc/admin/theme-options/options-header.php:3202
+#: inc/admin/theme-options/options-header.php:3253
+#: inc/admin/theme-options/options-header.php:3561
+#: inc/admin/theme-options/options-header.php:3614
 #: inc/admin/theme-options/options-page-titles.php:143
 #: inc/admin/theme-options/options-page-titles.php:405
 #: inc/admin/theme-options/options-page-titles.php:460
@@ -8634,9 +8665,9 @@ msgstr ""
 #: inc/admin/theme-options/options.php:93
 #: inc/admin/theme-options/options.php:124
 #: inc/admin/theme-options/options.php:133
-#: inc/admin/theme-options-parts.php:503 inc/admin/theme-options-parts.php:758
-#: inc/admin/theme-options-parts.php:781 inc/admin/theme-options-parts.php:858
-#: inc/admin/theme-options-parts.php:881 inc/deprecated-functions.php:431
+#: inc/admin/theme-options-parts.php:519 inc/admin/theme-options-parts.php:774
+#: inc/admin/theme-options-parts.php:797 inc/admin/theme-options-parts.php:874
+#: inc/admin/theme-options-parts.php:897 inc/deprecated-functions.php:431
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:396
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:424
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:37
@@ -8657,100 +8688,40 @@ msgctxt "theme-options"
 msgid "Advanced Settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:17
-msgctxt "theme-options"
-msgid "Margin for pages, posts & templates"
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:22
-#: inc/admin/theme-options/options-blog-and-portfolio.php:88
-#: inc/admin/theme-options/options-header.php:1844
-#: inc/admin/theme-options/options-header.php:1869
-#: inc/admin/theme-options/options-header.php:2095
-#: inc/admin/theme-options/options-header.php:2904
-#: inc/admin/theme-options/options-page-titles.php:517
-msgctxt "theme-options"
-msgid "Margin"
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:28
-#: inc/admin/theme-options/options-footer.php:166
-#: inc/admin/theme-options/options-footer.php:314
-#: inc/admin/theme-options/options-header.php:115
-#: inc/admin/theme-options/options-header.php:1419
-#: inc/admin/theme-options/options-page-titles.php:67
-#: inc/admin/theme-options/options.php:150
-#: inc/admin/theme-options-parts.php:232
-#: inc/extensions/options-framework/fields/class-the7-option-field-spacing.php:21
-#: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:521
-msgctxt "theme-options"
-msgid "Top"
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:29
-#: inc/admin/theme-options/options-footer.php:167
-#: inc/admin/theme-options/options-footer.php:315
-#: inc/admin/theme-options/options-header.php:116
-#: inc/admin/theme-options/options-header.php:1420
-#: inc/admin/theme-options/options-page-titles.php:68
-#: inc/admin/theme-options/options.php:151
-#: inc/admin/theme-options-parts.php:240
-#: inc/extensions/options-framework/fields/class-the7-option-field-spacing.php:23
-#: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:522
-msgctxt "theme-options"
-msgid "Bottom"
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:33
+#: inc/admin/theme-options/options-advanced.php:16
 #: inc/admin/theme-options/options-page-titles.php:608
 #: inc/admin/theme-options/options-sidebar.php:214
 msgctxt "theme-options"
 msgid "Responsiveness"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:36
+#: inc/admin/theme-options/options-advanced.php:19
 #: inc/admin/theme-options/options-page-titles.php:617
 msgctxt "theme-options"
 msgid "Responsive layout"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:48
-#: inc/admin/theme-options/options-advanced.php:51
-msgctxt "theme-options"
-msgid "Side padding"
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:59
-msgctxt "theme-options"
-msgid "When screen width is less then.."
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:67
-msgctxt "theme-options"
-msgid "..make padding"
-msgstr ""
-
-#: inc/admin/theme-options/options-advanced.php:74
+#: inc/admin/theme-options/options-advanced.php:29
 msgctxt "theme-options"
 msgid "Performance"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:78
+#: inc/admin/theme-options/options-advanced.php:33
 msgctxt "theme-options"
 msgid "Images lazy loading"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:79
+#: inc/admin/theme-options/options-advanced.php:34
 msgctxt "theme-options"
 msgid "Can dramatically reduce page loading speed. Recommended."
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:89
+#: inc/admin/theme-options/options-advanced.php:44
 msgctxt "theme-options"
 msgid "Enable \"scroll-behaviour: smooth\" for next gen browsers"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:94
+#: inc/admin/theme-options/options-advanced.php:49
 #: inc/admin/theme-options/options.php:98
 #: inc/mods/archive-ext/options-archive.php:72
 #: inc/mods/archive-ext/options-archive.php:100
@@ -8761,7 +8732,7 @@ msgctxt "theme-options"
 msgid "Yes"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:95
+#: inc/admin/theme-options/options-advanced.php:50
 #: inc/admin/theme-options/options.php:99
 #: inc/mods/archive-ext/options-archive.php:73
 #: inc/mods/archive-ext/options-archive.php:101
@@ -8772,58 +8743,58 @@ msgctxt "theme-options"
 msgid "No"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:96
+#: inc/admin/theme-options/options-advanced.php:51
 msgctxt "theme-options"
 msgid "On only on pages with parallax"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:102
+#: inc/admin/theme-options/options-advanced.php:57
 msgctxt "theme-options"
 msgid "Images fast resize"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:103
+#: inc/admin/theme-options/options-advanced.php:58
 msgctxt "theme-options"
 msgid "Can slightly reduce page load time."
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:114
+#: inc/admin/theme-options/options-advanced.php:69
 msgctxt "theme-options"
 msgid "Normalize resize event on mobile devices"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:115
+#: inc/admin/theme-options/options-advanced.php:70
 msgctxt "theme-options"
 msgid "Can improve scrolling performance on mobile devices"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:124
+#: inc/admin/theme-options/options-advanced.php:79
 msgctxt "theme-options"
 msgid "SEO"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:128
+#: inc/admin/theme-options/options-advanced.php:83
 msgctxt "theme-options"
 msgid "The7 OpenGraph tags"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:129
+#: inc/admin/theme-options/options-advanced.php:84
 msgctxt "theme-options"
 msgid "It can be safely disabled if any SEO plugin is used."
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:139
-#: inc/admin/theme-options/options-advanced.php:144
+#: inc/admin/theme-options/options-advanced.php:94
+#: inc/admin/theme-options/options-advanced.php:99
 msgctxt "theme-options"
 msgid "Custom CSS"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:155
+#: inc/admin/theme-options/options-advanced.php:110
 msgctxt "theme-options"
 msgid "Custom JavaScript"
 msgstr ""
 
-#: inc/admin/theme-options/options-advanced.php:161
+#: inc/admin/theme-options/options-advanced.php:116
 msgctxt "theme-options"
 msgid "Tracking code (e.g. Google analytics) or arbitrary JavaScript"
 msgstr ""
@@ -8856,15 +8827,15 @@ msgstr ""
 
 #: inc/admin/theme-options/options-blog-and-portfolio.php:27
 #: inc/admin/theme-options/options-footer.php:31
-#: inc/admin/theme-options/options-footer.php:240
-#: inc/admin/theme-options/options-general.php:107
-#: inc/admin/theme-options/options-header.php:1660
-#: inc/admin/theme-options/options-header.php:1837
-#: inc/admin/theme-options/options-header.php:1862
-#: inc/admin/theme-options/options-header.php:2372
-#: inc/admin/theme-options/options-header.php:2516
-#: inc/admin/theme-options/options-header.php:2922
-#: inc/admin/theme-options/options-header.php:3135
+#: inc/admin/theme-options/options-footer.php:260
+#: inc/admin/theme-options/options-general.php:121
+#: inc/admin/theme-options/options-header.php:1735
+#: inc/admin/theme-options/options-header.php:1912
+#: inc/admin/theme-options/options-header.php:1937
+#: inc/admin/theme-options/options-header.php:2451
+#: inc/admin/theme-options/options-header.php:2595
+#: inc/admin/theme-options/options-header.php:3008
+#: inc/admin/theme-options/options-header.php:3221
 #: inc/admin/theme-options/options-page-titles.php:88
 #: inc/admin/theme-options/options-page-titles.php:120
 #: inc/admin/theme-options/options-stripes.php:33
@@ -8874,16 +8845,26 @@ msgid "Background"
 msgstr ""
 
 #: inc/admin/theme-options/options-blog-and-portfolio.php:31
-#: inc/admin/theme-options/options-header.php:2263
+#: inc/admin/theme-options/options-header.php:2342
 msgctxt "theme-options"
 msgid "Underline"
 msgstr ""
 
 #: inc/admin/theme-options/options-blog-and-portfolio.php:51
-#: inc/admin/theme-options/options-header.php:2346
-#: inc/admin/theme-options/options-header.php:2655
+#: inc/admin/theme-options/options-header.php:2425
+#: inc/admin/theme-options/options-header.php:2734
 msgctxt "theme-options"
 msgid "Line size"
+msgstr ""
+
+#: inc/admin/theme-options/options-blog-and-portfolio.php:88
+#: inc/admin/theme-options/options-header.php:1919
+#: inc/admin/theme-options/options-header.php:1944
+#: inc/admin/theme-options/options-header.php:2174
+#: inc/admin/theme-options/options-header.php:2990
+#: inc/admin/theme-options/options-page-titles.php:517
+msgctxt "theme-options"
+msgid "Margin"
 msgstr ""
 
 #: inc/admin/theme-options/options-blog-and-portfolio.php:94
@@ -9110,14 +9091,14 @@ msgid "Top line / Side line / Floating menu button"
 msgstr ""
 
 #: inc/admin/theme-options/options-branding.php:102
-#: inc/admin/theme-options/options-header.php:1733
+#: inc/admin/theme-options/options-header.php:1808
 msgctxt "theme-options"
 msgid "Floating top line"
 msgstr ""
 
 #: inc/admin/theme-options/options-branding.php:161
-#: inc/admin/theme-options/options-header.php:3100
-#: inc/admin/theme-options/options-header.php:3106
+#: inc/admin/theme-options/options-header.php:3186
+#: inc/admin/theme-options/options-header.php:3192
 #: inc/mods/options-wizard/options.php:584
 #: inc/mods/options-wizard/options.php:591
 #: inc/mods/options-wizard/options.php:685
@@ -9126,9 +9107,9 @@ msgid "Floating navigation"
 msgstr ""
 
 #: inc/admin/theme-options/options-branding.php:213
-#: inc/admin/theme-options/options-header.php:3346
-#: inc/admin/theme-options/options-header.php:3421
-#: inc/admin/theme-options-parts.php:443 inc/admin/theme-options-parts.php:457
+#: inc/admin/theme-options/options-header.php:3432
+#: inc/admin/theme-options/options-header.php:3521
+#: inc/admin/theme-options-parts.php:454 inc/admin/theme-options-parts.php:468
 #: inc/mods/options-wizard/options.php:636
 msgctxt "theme-options"
 msgid "Mobile header"
@@ -9164,8 +9145,8 @@ msgid "Transparent header logo"
 msgstr ""
 
 #: inc/admin/theme-options/options-branding.php:322
-#: inc/admin/theme-options/options-footer.php:204
-#: inc/admin/theme-options/options-footer.php:212
+#: inc/admin/theme-options/options-footer.php:224
+#: inc/admin/theme-options/options-footer.php:232
 #: inc/mods/options-wizard/options.php:696
 #: inc/mods/options-wizard/options.php:794
 msgctxt "theme-options"
@@ -9246,8 +9227,8 @@ msgstr ""
 
 #: inc/admin/theme-options/options-buttons.php:29
 #: inc/admin/theme-options/options-footer.php:55
-#: inc/admin/theme-options/options-general.php:164
-#: inc/admin/theme-options/options-header.php:2259
+#: inc/admin/theme-options/options-general.php:178
+#: inc/admin/theme-options/options-header.php:2338
 #: inc/admin/theme-options/options-imagehoovers.php:34
 #: inc/admin/theme-options/options-sidebar.php:161
 #: inc/admin/theme-options/options-stripes.php:116
@@ -9262,10 +9243,10 @@ msgid "3D"
 msgstr ""
 
 #: inc/admin/theme-options/options-buttons.php:37
-#: inc/admin/theme-options/options-general.php:168
-#: inc/admin/theme-options/options-header.php:1570
-#: inc/admin/theme-options/options-header.php:1709
-#: inc/admin/theme-options/options-header.php:3171
+#: inc/admin/theme-options/options-general.php:182
+#: inc/admin/theme-options/options-header.php:1645
+#: inc/admin/theme-options/options-header.php:1784
+#: inc/admin/theme-options/options-header.php:3257
 #: inc/admin/theme-options/options-sidebar.php:165
 #: inc/admin/theme-options/options-stripes.php:120
 #: inc/mods/options-wizard/options.php:256
@@ -9285,35 +9266,35 @@ msgstr ""
 #: inc/admin/theme-options/options-buttons.php:155
 #: inc/admin/theme-options/options-buttons.php:178
 #: inc/admin/theme-options/options-buttons.php:203
-#: inc/admin/theme-options/options-general.php:291
+#: inc/admin/theme-options/options-general.php:305
 #: inc/admin/theme-options/options-header/mega-menu.php:92
 #: inc/admin/theme-options/options-header/mega-menu.php:130
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:80
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:118
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:156
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:194
-#: inc/admin/theme-options/options-header.php:1900
-#: inc/admin/theme-options/options-header.php:2013
-#: inc/admin/theme-options/options-header.php:2051
-#: inc/admin/theme-options/options-header.php:2314
-#: inc/admin/theme-options/options-header.php:2386
-#: inc/admin/theme-options/options-header.php:2456
-#: inc/admin/theme-options/options-header.php:2530
-#: inc/admin/theme-options/options-header.php:2600
-#: inc/admin/theme-options/options-header.php:2822
-#: inc/admin/theme-options/options-header.php:2860
-#: inc/admin/theme-options/options-header.php:2945
-#: inc/admin/theme-options/options-header.php:3020
-#: inc/admin/theme-options/options-header.php:3265
-#: inc/admin/theme-options/options-header.php:3303
-#: inc/admin/theme-options/options-header.php:3578
+#: inc/admin/theme-options/options-header.php:1975
+#: inc/admin/theme-options/options-header.php:2092
+#: inc/admin/theme-options/options-header.php:2130
+#: inc/admin/theme-options/options-header.php:2393
+#: inc/admin/theme-options/options-header.php:2465
+#: inc/admin/theme-options/options-header.php:2535
+#: inc/admin/theme-options/options-header.php:2609
+#: inc/admin/theme-options/options-header.php:2679
+#: inc/admin/theme-options/options-header.php:2908
+#: inc/admin/theme-options/options-header.php:2946
+#: inc/admin/theme-options/options-header.php:3031
+#: inc/admin/theme-options/options-header.php:3106
+#: inc/admin/theme-options/options-header.php:3351
+#: inc/admin/theme-options/options-header.php:3389
+#: inc/admin/theme-options/options-header.php:3678
 #: inc/admin/theme-options/options-imagehoovers.php:60
 #: inc/admin/theme-options/options-imagehoovers.php:118
 #: inc/admin/theme-options/options.php:134
-#: inc/admin/theme-options-parts.php:546 inc/admin/theme-options-parts.php:723
-#: inc/admin/theme-options-parts.php:759 inc/admin/theme-options-parts.php:782
-#: inc/admin/theme-options-parts.php:823 inc/admin/theme-options-parts.php:859
-#: inc/admin/theme-options-parts.php:882
+#: inc/admin/theme-options-parts.php:562 inc/admin/theme-options-parts.php:739
+#: inc/admin/theme-options-parts.php:775 inc/admin/theme-options-parts.php:798
+#: inc/admin/theme-options-parts.php:839 inc/admin/theme-options-parts.php:875
+#: inc/admin/theme-options-parts.php:898
 #: inc/mods/compatibility/edd/options-inject-in-header.php:129
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:170
 msgctxt "theme-options"
@@ -9326,33 +9307,33 @@ msgstr ""
 #: inc/admin/theme-options/options-buttons.php:156
 #: inc/admin/theme-options/options-buttons.php:179
 #: inc/admin/theme-options/options-buttons.php:204
-#: inc/admin/theme-options/options-general.php:292
+#: inc/admin/theme-options/options-general.php:306
 #: inc/admin/theme-options/options-header/mega-menu.php:93
 #: inc/admin/theme-options/options-header/mega-menu.php:131
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:81
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:119
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:157
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:195
-#: inc/admin/theme-options/options-header.php:1901
-#: inc/admin/theme-options/options-header.php:2014
-#: inc/admin/theme-options/options-header.php:2052
-#: inc/admin/theme-options/options-header.php:2315
-#: inc/admin/theme-options/options-header.php:2387
-#: inc/admin/theme-options/options-header.php:2457
-#: inc/admin/theme-options/options-header.php:2531
-#: inc/admin/theme-options/options-header.php:2601
-#: inc/admin/theme-options/options-header.php:2823
-#: inc/admin/theme-options/options-header.php:2861
-#: inc/admin/theme-options/options-header.php:2946
-#: inc/admin/theme-options/options-header.php:3021
-#: inc/admin/theme-options/options-header.php:3242
-#: inc/admin/theme-options/options-header.php:3266
-#: inc/admin/theme-options/options-header.php:3304
-#: inc/admin/theme-options/options-header.php:3579
+#: inc/admin/theme-options/options-header.php:1976
+#: inc/admin/theme-options/options-header.php:2093
+#: inc/admin/theme-options/options-header.php:2131
+#: inc/admin/theme-options/options-header.php:2394
+#: inc/admin/theme-options/options-header.php:2466
+#: inc/admin/theme-options/options-header.php:2536
+#: inc/admin/theme-options/options-header.php:2610
+#: inc/admin/theme-options/options-header.php:2680
+#: inc/admin/theme-options/options-header.php:2909
+#: inc/admin/theme-options/options-header.php:2947
+#: inc/admin/theme-options/options-header.php:3032
+#: inc/admin/theme-options/options-header.php:3107
+#: inc/admin/theme-options/options-header.php:3328
+#: inc/admin/theme-options/options-header.php:3352
+#: inc/admin/theme-options/options-header.php:3390
+#: inc/admin/theme-options/options-header.php:3679
 #: inc/admin/theme-options/options-imagehoovers.php:61
 #: inc/admin/theme-options/options-imagehoovers.php:119
 #: inc/admin/theme-options/options.php:135
-#: inc/admin/theme-options-parts.php:547
+#: inc/admin/theme-options-parts.php:563
 #: inc/mods/compatibility/edd/options-inject-in-header.php:130
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:171
 msgctxt "theme-options"
@@ -9361,30 +9342,30 @@ msgstr ""
 
 #: inc/admin/theme-options/options-buttons.php:58
 #: inc/admin/theme-options/options-buttons.php:97
-#: inc/admin/theme-options/options-general.php:293
+#: inc/admin/theme-options/options-general.php:307
 #: inc/admin/theme-options/options-header/mega-menu.php:94
 #: inc/admin/theme-options/options-header/mega-menu.php:132
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:82
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:158
-#: inc/admin/theme-options/options-header.php:1902
-#: inc/admin/theme-options/options-header.php:2015
-#: inc/admin/theme-options/options-header.php:2053
-#: inc/admin/theme-options/options-header.php:2316
-#: inc/admin/theme-options/options-header.php:2388
-#: inc/admin/theme-options/options-header.php:2458
-#: inc/admin/theme-options/options-header.php:2532
-#: inc/admin/theme-options/options-header.php:2602
-#: inc/admin/theme-options/options-header.php:2824
-#: inc/admin/theme-options/options-header.php:2862
-#: inc/admin/theme-options/options-header.php:2947
-#: inc/admin/theme-options/options-header.php:3022
-#: inc/admin/theme-options/options-header.php:3267
-#: inc/admin/theme-options/options-header.php:3305
-#: inc/admin/theme-options/options-header.php:3580
+#: inc/admin/theme-options/options-header.php:1977
+#: inc/admin/theme-options/options-header.php:2094
+#: inc/admin/theme-options/options-header.php:2132
+#: inc/admin/theme-options/options-header.php:2395
+#: inc/admin/theme-options/options-header.php:2467
+#: inc/admin/theme-options/options-header.php:2537
+#: inc/admin/theme-options/options-header.php:2611
+#: inc/admin/theme-options/options-header.php:2681
+#: inc/admin/theme-options/options-header.php:2910
+#: inc/admin/theme-options/options-header.php:2948
+#: inc/admin/theme-options/options-header.php:3033
+#: inc/admin/theme-options/options-header.php:3108
+#: inc/admin/theme-options/options-header.php:3353
+#: inc/admin/theme-options/options-header.php:3391
+#: inc/admin/theme-options/options-header.php:3680
 #: inc/admin/theme-options/options-imagehoovers.php:62
 #: inc/admin/theme-options/options-imagehoovers.php:120
 #: inc/admin/theme-options/options.php:136
-#: inc/admin/theme-options-parts.php:548
+#: inc/admin/theme-options-parts.php:564
 #: inc/mods/compatibility/edd/options-inject-in-header.php:131
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:172
 msgctxt "theme-options"
@@ -9403,7 +9384,7 @@ msgstr ""
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:188
 #: inc/admin/theme-options/options-page-titles.php:151
 #: inc/admin/theme-options/options-page-titles.php:595
-#: inc/admin/theme-options-parts.php:753 inc/admin/theme-options-parts.php:853
+#: inc/admin/theme-options-parts.php:769 inc/admin/theme-options-parts.php:869
 msgctxt "theme-options"
 msgid "Border color"
 msgstr ""
@@ -9439,13 +9420,13 @@ msgstr ""
 #: inc/admin/theme-options/options-buttons.php:331
 #: inc/admin/theme-options/options-header/mega-menu.php:62
 #: inc/admin/theme-options/options-header/search-micro-widget.php:181
-#: inc/admin/theme-options/options-header.php:1295
-#: inc/admin/theme-options/options-header.php:1333
-#: inc/admin/theme-options/options-header.php:1372
-#: inc/admin/theme-options/options-header.php:1798
-#: inc/admin/theme-options/options-header.php:2777
-#: inc/admin/theme-options/options-header.php:3438
-#: inc/admin/theme-options-parts.php:42 inc/admin/theme-options-parts.php:672
+#: inc/admin/theme-options/options-header.php:1365
+#: inc/admin/theme-options/options-header.php:1403
+#: inc/admin/theme-options/options-header.php:1442
+#: inc/admin/theme-options/options-header.php:1873
+#: inc/admin/theme-options/options-header.php:2856
+#: inc/admin/theme-options/options-header.php:3538
+#: inc/admin/theme-options-parts.php:42 inc/admin/theme-options-parts.php:688
 msgctxt "theme-options"
 msgid "Icon size"
 msgstr ""
@@ -9456,7 +9437,7 @@ msgstr ""
 #: inc/admin/theme-options/options-contact-form.php:52
 #: inc/admin/theme-options/options-header/search-micro-widget.php:252
 #: inc/admin/theme-options/options-page-titles.php:581
-#: inc/admin/theme-options-parts.php:646
+#: inc/admin/theme-options-parts.php:662
 msgctxt "theme-options"
 msgid "Border width"
 msgstr ""
@@ -9492,19 +9473,19 @@ msgid "Input font color"
 msgstr ""
 
 #: inc/admin/theme-options/options-contact-form.php:37
-#: inc/admin/theme-options/options-general.php:72
-#: inc/admin/theme-options/options-general.php:150
+#: inc/admin/theme-options/options-general.php:86
+#: inc/admin/theme-options/options-general.php:164
 #: inc/admin/theme-options/options-header/search-micro-widget.php:238
 #: inc/admin/theme-options/options-header/search-micro-widget.php:285
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:74
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:150
-#: inc/admin/theme-options/options-header.php:1427
-#: inc/admin/theme-options/options-header.php:1528
-#: inc/admin/theme-options/options-header.php:2719
-#: inc/admin/theme-options/options-header.php:3427
-#: inc/admin/theme-options/options-header.php:3467
-#: inc/admin/theme-options/options-header.php:3615
-#: inc/admin/theme-options/options-header.php:3629
+#: inc/admin/theme-options/options-header.php:1502
+#: inc/admin/theme-options/options-header.php:1603
+#: inc/admin/theme-options/options-header.php:2798
+#: inc/admin/theme-options/options-header.php:3527
+#: inc/admin/theme-options/options-header.php:3567
+#: inc/admin/theme-options/options-header.php:3715
+#: inc/admin/theme-options/options-header.php:3729
 #: inc/admin/theme-options/options-page-titles.php:124
 #: inc/admin/theme-options/options-page-titles.php:189
 #: inc/admin/theme-options/options-page-titles.php:557
@@ -9554,7 +9535,7 @@ msgid "Pop-up"
 msgstr ""
 
 #: inc/admin/theme-options/options-contact-form.php:85
-#: inc/admin/theme-options/options-header.php:28
+#: inc/admin/theme-options/options-header.php:27
 #: inc/mods/options-wizard/options.php:288
 msgctxt "theme-options"
 msgid "Inline"
@@ -9823,49 +9804,49 @@ msgid "Footer background &amp; lines"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:23
-#: inc/admin/theme-options/options-footer.php:232
-#: inc/admin/theme-options/options-header.php:1455
-#: inc/admin/theme-options/options-header.php:1652
+#: inc/admin/theme-options/options-footer.php:252
+#: inc/admin/theme-options/options-header.php:1530
+#: inc/admin/theme-options/options-header.php:1727
 #: inc/admin/theme-options/options.php:125
 msgctxt "theme-options"
 msgid "Content-width line"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:27
-#: inc/admin/theme-options/options-footer.php:236
-#: inc/admin/theme-options/options-header.php:1459
-#: inc/admin/theme-options/options-header.php:1656
+#: inc/admin/theme-options/options-footer.php:256
+#: inc/admin/theme-options/options-header.php:1534
+#: inc/admin/theme-options/options-header.php:1731
 #: inc/admin/theme-options/options.php:126
 msgctxt "theme-options"
 msgid "Full-width line"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:40
-#: inc/admin/theme-options/options-footer.php:249
-#: inc/admin/theme-options/options-general.php:110
+#: inc/admin/theme-options/options-footer.php:269
+#: inc/admin/theme-options/options-general.php:124
 #: inc/admin/theme-options/options-header/mega-menu.php:100
 #: inc/admin/theme-options/options-header/mega-menu.php:137
-#: inc/admin/theme-options/options-header.php:1669
-#: inc/admin/theme-options/options-header.php:1692
-#: inc/admin/theme-options/options-header.php:1763
-#: inc/admin/theme-options/options-header.php:1908
-#: inc/admin/theme-options/options-header.php:2021
-#: inc/admin/theme-options/options-header.php:2058
-#: inc/admin/theme-options/options-header.php:2322
-#: inc/admin/theme-options/options-header.php:2394
-#: inc/admin/theme-options/options-header.php:2464
-#: inc/admin/theme-options/options-header.php:2538
-#: inc/admin/theme-options/options-header.php:2608
-#: inc/admin/theme-options/options-header.php:2830
-#: inc/admin/theme-options/options-header.php:2868
-#: inc/admin/theme-options/options-header.php:2977
-#: inc/admin/theme-options/options-header.php:3052
-#: inc/admin/theme-options/options-header.php:3248
-#: inc/admin/theme-options/options-header.php:3273
-#: inc/admin/theme-options/options-header.php:3310
-#: inc/admin/theme-options/options-header.php:3585
+#: inc/admin/theme-options/options-header.php:1744
+#: inc/admin/theme-options/options-header.php:1767
+#: inc/admin/theme-options/options-header.php:1838
+#: inc/admin/theme-options/options-header.php:1983
+#: inc/admin/theme-options/options-header.php:2100
+#: inc/admin/theme-options/options-header.php:2137
+#: inc/admin/theme-options/options-header.php:2401
+#: inc/admin/theme-options/options-header.php:2473
+#: inc/admin/theme-options/options-header.php:2543
+#: inc/admin/theme-options/options-header.php:2617
+#: inc/admin/theme-options/options-header.php:2687
+#: inc/admin/theme-options/options-header.php:2916
+#: inc/admin/theme-options/options-header.php:2954
+#: inc/admin/theme-options/options-header.php:3063
+#: inc/admin/theme-options/options-header.php:3138
+#: inc/admin/theme-options/options-header.php:3334
+#: inc/admin/theme-options/options-header.php:3359
+#: inc/admin/theme-options/options-header.php:3396
+#: inc/admin/theme-options/options-header.php:3685
 #: inc/admin/theme-options/options-stripes.php:36
-#: inc/admin/theme-options-parts.php:553
+#: inc/admin/theme-options-parts.php:569
 #: inc/mods/compatibility/edd/options-inject-in-header.php:142
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:177
 #: inc/mods/options-wizard/options.php:77
@@ -9874,12 +9855,12 @@ msgid "Color"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:47
-#: inc/admin/theme-options/options-general.php:157
-#: inc/admin/theme-options/options-header.php:1446
-#: inc/admin/theme-options/options-header.php:1561
-#: inc/admin/theme-options/options-header.php:1700
-#: inc/admin/theme-options/options-header.php:2253
-#: inc/admin/theme-options/options-header.php:3161
+#: inc/admin/theme-options/options-general.php:171
+#: inc/admin/theme-options/options-header.php:1521
+#: inc/admin/theme-options/options-header.php:1636
+#: inc/admin/theme-options/options-header.php:1775
+#: inc/admin/theme-options/options-header.php:2332
+#: inc/admin/theme-options/options-header.php:3247
 #: inc/admin/theme-options/options-sidebar.php:153
 #: inc/admin/theme-options/options-stripes.php:108
 msgctxt "theme-options"
@@ -9887,15 +9868,15 @@ msgid "Decoration"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:59
-#: inc/admin/theme-options/options-header.php:1574
-#: inc/admin/theme-options/options-header.php:1713
-#: inc/admin/theme-options/options-header.php:3175
+#: inc/admin/theme-options/options-header.php:1649
+#: inc/admin/theme-options/options-header.php:1788
+#: inc/admin/theme-options/options-header.php:3261
 msgctxt "theme-options"
 msgid "Line"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:71
-#: inc/admin/theme-options/options-general.php:179
+#: inc/admin/theme-options/options-general.php:193
 #: inc/admin/theme-options/options-sidebar.php:178
 #: inc/admin/theme-options/options-stripes.php:133
 msgctxt "theme-options"
@@ -9903,12 +9884,12 @@ msgid "Decoration outline color"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:91
-#: inc/admin/theme-options/options-footer.php:258
-#: inc/admin/theme-options/options-general.php:79
-#: inc/admin/theme-options/options-general.php:118
-#: inc/admin/theme-options/options-header.php:1434
-#: inc/admin/theme-options/options-header.php:1535
-#: inc/admin/theme-options/options-header.php:3142
+#: inc/admin/theme-options/options-footer.php:278
+#: inc/admin/theme-options/options-general.php:93
+#: inc/admin/theme-options/options-general.php:132
+#: inc/admin/theme-options/options-header.php:1509
+#: inc/admin/theme-options/options-header.php:1610
+#: inc/admin/theme-options/options-header.php:3228
 #: inc/admin/theme-options/options-page-titles.php:218
 #: inc/admin/theme-options/options-sidebar.php:143
 #: inc/admin/theme-options/options-stripes.php:43
@@ -9941,7 +9922,7 @@ msgid "Content color"
 msgstr ""
 
 #: inc/admin/theme-options/options-footer.php:149
-#: inc/admin/theme-options/options-general.php:208
+#: inc/admin/theme-options/options-general.php:222
 #: inc/admin/theme-options/options-header/mega-menu.php:207
 #: inc/mods/options-wizard/options.php:197
 msgctxt "theme-options"
@@ -9959,22 +9940,50 @@ msgctxt "theme-options"
 msgid "Footer layout"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:174
+#: inc/admin/theme-options/options-footer.php:166
+#: inc/admin/theme-options/options-footer.php:334
+#: inc/admin/theme-options/options-general.php:40
+#: inc/admin/theme-options/options-header.php:126
+#: inc/admin/theme-options/options-header.php:1493
+#: inc/admin/theme-options/options-page-titles.php:67
+#: inc/admin/theme-options/options.php:150
+#: inc/admin/theme-options-parts.php:232
+#: inc/extensions/options-framework/fields/class-the7-option-field-spacing.php:21
+#: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:521
+msgctxt "theme-options"
+msgid "Top"
+msgstr ""
+
+#: inc/admin/theme-options/options-footer.php:168
+#: inc/admin/theme-options/options-footer.php:335
+#: inc/admin/theme-options/options-general.php:42
+#: inc/admin/theme-options/options-header.php:127
+#: inc/admin/theme-options/options-header.php:1495
+#: inc/admin/theme-options/options-page-titles.php:68
+#: inc/admin/theme-options/options.php:151
+#: inc/admin/theme-options-parts.php:240
+#: inc/extensions/options-framework/fields/class-the7-option-field-spacing.php:23
+#: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:522
+msgctxt "theme-options"
+msgid "Bottom"
+msgstr ""
+
+#: inc/admin/theme-options/options-footer.php:176
 msgctxt "theme-options"
 msgid "E.g. 20 pixel padding will give you 40 pixel gap between columns."
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:175
+#: inc/admin/theme-options/options-footer.php:177
 msgctxt "theme-options"
 msgid "Padding between footer columns"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:185
-#: inc/admin/theme-options/options-footer.php:276
+#: inc/admin/theme-options/options-footer.php:187
+#: inc/admin/theme-options/options-footer.php:296
 #: inc/admin/theme-options/options-general.php:23
-#: inc/admin/theme-options/options-general.php:34
-#: inc/admin/theme-options/options-header.php:11
-#: inc/admin/theme-options/options-header.php:13
+#: inc/admin/theme-options/options-general.php:48
+#: inc/admin/theme-options/options-header.php:10
+#: inc/admin/theme-options/options-header.php:12
 #: inc/admin/theme-options/options-page-titles.php:13
 #: inc/admin/theme-options-parts.php:391
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:20
@@ -9987,98 +9996,106 @@ msgctxt "theme-options"
 msgid "Layout"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:186
+#: inc/admin/theme-options/options-footer.php:188
 msgctxt "theme-options"
 msgid "E.g. \"1/4+1/4+1/2\""
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:195
+#: inc/admin/theme-options/options-footer.php:197
 msgctxt "theme-options"
 msgid "Collapse to one column after"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:196
+#: inc/admin/theme-options/options-footer.php:198
 msgctxt "theme-options"
 msgid "Won't have any effect if responsiveness is disabled."
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:209
+#: inc/admin/theme-options/options-footer.php:207
+#: inc/admin/theme-options/options-header.php:151
+#: inc/admin/theme-options/options-header.php:230
+#: inc/admin/theme-options/options-header.php:321
+#: inc/admin/theme-options/options-header.php:462
+msgctxt "theme-options"
+msgid "Full width"
+msgstr ""
+
+#: inc/admin/theme-options/options-footer.php:229
 msgctxt "theme-options"
 msgid "Bottom bar style"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:225
+#: inc/admin/theme-options/options-footer.php:245
 msgctxt "theme-options"
 msgid "Bottom bar background &amp; lines"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:273
+#: inc/admin/theme-options/options-footer.php:293
 msgctxt "theme-options"
 msgid "Bottom bar layout"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:283
-#: inc/admin/theme-options/options-header.php:36
-#: inc/admin/theme-options/options-header.php:1421
+#: inc/admin/theme-options/options-footer.php:303
+#: inc/admin/theme-options/options-header.php:35
 #: inc/mods/options-wizard/options.php:296
 #: inc/mods/options-wizard/options.php:474
 msgctxt "theme-options"
 msgid "Side"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:287
-#: inc/admin/theme-options/options-header.php:32
+#: inc/admin/theme-options/options-footer.php:307
+#: inc/admin/theme-options/options-header.php:31
 #: inc/mods/options-wizard/options.php:292
 msgctxt "theme-options"
 msgid "Split"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:291
+#: inc/admin/theme-options/options-footer.php:311
 #: inc/admin/theme-options/options-page-titles.php:42
 msgctxt "theme-options"
 msgid "Centered"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:301
-#: inc/admin/theme-options/options-header.php:2207
-#: inc/admin/theme-options/options-header.php:3127
+#: inc/admin/theme-options/options-footer.php:321
+#: inc/admin/theme-options/options-header.php:2286
+#: inc/admin/theme-options/options-header.php:3213
 #: inc/admin/theme-options/options-page-titles.php:366
 #: inc/extensions/options-framework/fields/class-the7-option-field-square-size.php:14
 msgctxt "theme-options"
 msgid "Height"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:308
+#: inc/admin/theme-options/options-footer.php:328
 #: inc/admin/theme-options/options-header/search-micro-widget.php:261
-#: inc/admin/theme-options-parts.php:653
+#: inc/admin/theme-options-parts.php:669
 msgctxt "theme-options"
 msgid "Paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:320
+#: inc/admin/theme-options/options-footer.php:340
 msgctxt "theme-options"
 msgid "Enable bottom bar responsive layout after"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:328
+#: inc/admin/theme-options/options-footer.php:348
 msgctxt "theme-options"
 msgid "Enable custom menu responsive layout after"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:336
+#: inc/admin/theme-options/options-footer.php:356
 msgctxt "theme-options"
 msgid "Bottom bar font color"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:339
+#: inc/admin/theme-options/options-footer.php:359
 #: inc/admin/theme-options/options-header/mega-menu.php:179
-#: inc/admin/theme-options/options-header.php:1289
-#: inc/admin/theme-options/options-header.php:1327
-#: inc/admin/theme-options/options-header.php:1366
-#: inc/admin/theme-options/options-header.php:3562
+#: inc/admin/theme-options/options-header.php:1359
+#: inc/admin/theme-options/options-header.php:1397
+#: inc/admin/theme-options/options-header.php:1436
+#: inc/admin/theme-options/options-header.php:3662
 #: inc/admin/theme-options/options-page-titles.php:429
 #: inc/admin/theme-options/options-page-titles.php:490
-#: inc/admin/theme-options-parts.php:36 inc/admin/theme-options-parts.php:541
+#: inc/admin/theme-options-parts.php:36 inc/admin/theme-options-parts.php:557
 #: inc/mods/compatibility/woocommerce/admin/mod-wc-options.php:499
 #: inc/mods/options-wizard/options.php:569
 #: inc/mods/options-wizard/options.php:804
@@ -10086,8 +10103,8 @@ msgctxt "theme-options"
 msgid "Font color"
 msgstr ""
 
-#: inc/admin/theme-options/options-footer.php:345
-#: inc/admin/theme-options/options-footer.php:348
+#: inc/admin/theme-options/options-footer.php:365
+#: inc/admin/theme-options/options-footer.php:368
 msgctxt "theme-options"
 msgid "Text area"
 msgstr ""
@@ -10102,135 +10119,140 @@ msgctxt "theme-options"
 msgid "Content width"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:41
+#: inc/admin/theme-options/options-general.php:34
+msgctxt "theme-options"
+msgid "Margin for pages, posts & templates"
+msgstr ""
+
+#: inc/admin/theme-options/options-general.php:55
 #: inc/mods/options-wizard/options.php:22
 msgctxt "theme-options"
 msgid "Wide"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:45
+#: inc/admin/theme-options/options-general.php:59
 #: inc/mods/options-wizard/options.php:26
 msgctxt "theme-options"
 msgid "Boxed"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:52
+#: inc/admin/theme-options/options-general.php:66
 msgctxt "theme-options"
 msgid "Box width"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:67
+#: inc/admin/theme-options/options-general.php:81
 #: inc/mods/options-wizard/options.php:37
 msgctxt "theme-options"
 msgid "Background under the box"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:91
-#: inc/admin/theme-options/options-header.php:1547
-#: inc/admin/theme-options/options-header.php:3154
+#: inc/admin/theme-options/options-general.php:105
+#: inc/admin/theme-options/options-header.php:1622
+#: inc/admin/theme-options/options-header.php:3240
 #: inc/admin/theme-options/options-page-titles.php:230
 #: inc/mods/options-wizard/options.php:59
 msgctxt "theme-options"
 msgid "Fullscreen "
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:98
-#: inc/admin/theme-options/options-header.php:1554
+#: inc/admin/theme-options/options-general.php:112
+#: inc/admin/theme-options/options-header.php:1629
 #: inc/mods/options-wizard/options.php:66
 msgctxt "theme-options"
 msgid "Fixed background "
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:114
+#: inc/admin/theme-options/options-general.php:128
 msgctxt "theme-options"
 msgid "\"Opacity\" isn't compatible with slide-out footer"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:130
+#: inc/admin/theme-options/options-general.php:144
 msgctxt "theme-options"
 msgid "Fullscreen"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:137
+#: inc/admin/theme-options/options-general.php:151
 msgctxt "theme-options"
 msgid "Fixed background"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:141
+#: inc/admin/theme-options/options-general.php:155
 msgctxt "theme-options"
 msgid "\"Fixed\" setting isn't compatible with \"overlapping\" title area style."
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:147
+#: inc/admin/theme-options/options-general.php:161
 msgctxt "theme-options"
 msgid "Content boxes"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:172
-#: inc/admin/theme-options/options-header.php:2368
-#: inc/admin/theme-options/options-header.php:2512
+#: inc/admin/theme-options/options-general.php:186
+#: inc/admin/theme-options/options-header.php:2447
+#: inc/admin/theme-options/options-header.php:2591
 #: inc/admin/theme-options/options-sidebar.php:169
 #: inc/admin/theme-options/options-stripes.php:124
 msgctxt "theme-options"
 msgid "Outline"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:193
-#: inc/admin/theme-options/options-header.php:2164
-#: inc/admin/theme-options/options-header.php:2168
+#: inc/admin/theme-options/options-general.php:207
+#: inc/admin/theme-options/options-header.php:2243
+#: inc/admin/theme-options/options-header.php:2247
 #: inc/admin/theme-options/options-sidebar.php:67
 #: inc/mods/options-wizard/options.php:749
 msgctxt "theme-options"
 msgid "Dividers"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:196
-#: inc/admin/theme-options/options-header.php:2238
+#: inc/admin/theme-options/options-general.php:210
+#: inc/admin/theme-options/options-header.php:2317
 msgctxt "theme-options"
 msgid "Dividers color"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:205
+#: inc/admin/theme-options/options-general.php:219
 #: inc/mods/options-wizard/options.php:194
 msgctxt "theme-options"
 msgid "Color accent"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:218
+#: inc/admin/theme-options/options-general.php:232
 #: inc/mods/options-wizard/options.php:204
 msgctxt "theme-options"
 msgid "Solid color"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:219
+#: inc/admin/theme-options/options-general.php:233
 #: inc/admin/theme-options/options-header/mega-menu.php:111
 #: inc/admin/theme-options/options-header/mega-menu.php:149
 #: inc/admin/theme-options/options-header/search-micro-widget.php:291
 #: inc/admin/theme-options/options-header/search-micro-widget.php:308
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:99
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:175
-#: inc/admin/theme-options/options-header.php:1919
-#: inc/admin/theme-options/options-header.php:2032
-#: inc/admin/theme-options/options-header.php:2070
-#: inc/admin/theme-options/options-header.php:2333
-#: inc/admin/theme-options/options-header.php:2405
-#: inc/admin/theme-options/options-header.php:2475
-#: inc/admin/theme-options/options-header.php:2549
-#: inc/admin/theme-options/options-header.php:2619
-#: inc/admin/theme-options/options-header.php:2841
-#: inc/admin/theme-options/options-header.php:2879
-#: inc/admin/theme-options/options-header.php:2995
-#: inc/admin/theme-options/options-header.php:3070
-#: inc/admin/theme-options/options-header.php:3284
-#: inc/admin/theme-options/options-header.php:3322
-#: inc/admin/theme-options/options-header.php:3597
+#: inc/admin/theme-options/options-header.php:1994
+#: inc/admin/theme-options/options-header.php:2111
+#: inc/admin/theme-options/options-header.php:2149
+#: inc/admin/theme-options/options-header.php:2412
+#: inc/admin/theme-options/options-header.php:2484
+#: inc/admin/theme-options/options-header.php:2554
+#: inc/admin/theme-options/options-header.php:2628
+#: inc/admin/theme-options/options-header.php:2698
+#: inc/admin/theme-options/options-header.php:2927
+#: inc/admin/theme-options/options-header.php:2965
+#: inc/admin/theme-options/options-header.php:3081
+#: inc/admin/theme-options/options-header.php:3156
+#: inc/admin/theme-options/options-header.php:3370
+#: inc/admin/theme-options/options-header.php:3408
+#: inc/admin/theme-options/options-header.php:3697
 #: inc/admin/theme-options/options-page-titles.php:92
 #: inc/admin/theme-options/options-page-titles.php:186
-#: inc/admin/theme-options-parts.php:568 inc/admin/theme-options-parts.php:725
-#: inc/admin/theme-options-parts.php:741 inc/admin/theme-options-parts.php:784
-#: inc/admin/theme-options-parts.php:800 inc/admin/theme-options-parts.php:825
-#: inc/admin/theme-options-parts.php:841 inc/admin/theme-options-parts.php:884
-#: inc/admin/theme-options-parts.php:900
+#: inc/admin/theme-options-parts.php:584 inc/admin/theme-options-parts.php:741
+#: inc/admin/theme-options-parts.php:757 inc/admin/theme-options-parts.php:800
+#: inc/admin/theme-options-parts.php:816 inc/admin/theme-options-parts.php:841
+#: inc/admin/theme-options-parts.php:857 inc/admin/theme-options-parts.php:900
+#: inc/admin/theme-options-parts.php:916
 #: inc/mods/compatibility/edd/options-inject-in-header.php:161
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:189
 #: inc/mods/options-wizard/options.php:208
@@ -10238,84 +10260,84 @@ msgctxt "theme-options"
 msgid "Gradient"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:264
-#: inc/admin/theme-options/options-general.php:267
+#: inc/admin/theme-options/options-general.php:278
+#: inc/admin/theme-options/options-general.php:281
 msgctxt "theme-options"
 msgid "Beautiful loading"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:285
+#: inc/admin/theme-options/options-general.php:299
 msgctxt "theme-options"
 msgid "Fullscreen overlay color"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:303
+#: inc/admin/theme-options/options-general.php:317
 msgctxt "theme-options"
 msgid "Fullscreen overlay custom color"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:322
+#: inc/admin/theme-options/options-general.php:336
 msgctxt "theme-options"
 msgid "Fullscreen overlay custom gradient"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:341
+#: inc/admin/theme-options/options-general.php:355
 msgctxt "theme-options"
 msgid "Fullscreen overlay opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:365
+#: inc/admin/theme-options/options-general.php:379
 msgctxt "theme-options"
 msgid "Spinner color"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:377
+#: inc/admin/theme-options/options-general.php:391
 msgctxt "theme-options"
 msgid "Loader style"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:382
+#: inc/admin/theme-options/options-general.php:396
 msgctxt "theme-options"
 msgid "Spinner"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:383
+#: inc/admin/theme-options/options-general.php:397
 msgctxt "theme-options"
 msgid "Ring"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:384
+#: inc/admin/theme-options/options-general.php:398
 msgctxt "theme-options"
 msgid "Bars"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:385
+#: inc/admin/theme-options/options-general.php:399
 #: inc/admin/theme-options/options-header/login-micro-widget.php:36
 #: inc/admin/theme-options/options-header/menu-micro-widgets.php:55
 #: inc/admin/theme-options/options-header/menu-micro-widgets.php:139
 #: inc/admin/theme-options/options-header/search-micro-widget.php:41
 #: inc/admin/theme-options/options-header/search-micro-widget.php:150
-#: inc/admin/theme-options/options-header.php:2119
+#: inc/admin/theme-options/options-header.php:2198
 msgctxt "theme-options"
 msgid "Custom"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:398
+#: inc/admin/theme-options/options-general.php:412
 msgctxt "theme-options"
 msgid "Paste HTML code of your custom pre-loader image in the field below."
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:415
+#: inc/admin/theme-options/options-general.php:429
 msgctxt "theme-options"
 msgid "Lightbox"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:418
+#: inc/admin/theme-options/options-general.php:432
 msgctxt "theme-options"
 msgid "Lightbox overlay opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-general.php:430
+#: inc/admin/theme-options/options-general.php:444
 msgctxt "theme-options"
 msgid "Arrow size"
 msgstr ""
@@ -10355,7 +10377,7 @@ msgid "Logout"
 msgstr ""
 
 #: inc/admin/theme-options/options-header/login-micro-widget.php:30
-#: inc/admin/theme-options-parts.php:498
+#: inc/admin/theme-options-parts.php:514
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:31
 msgctxt "theme-options"
 msgid "Graphic icon"
@@ -10373,7 +10395,7 @@ msgid "Use custom logout link"
 msgstr ""
 
 #: inc/admin/theme-options/options-header/login-micro-widget.php:71
-#: inc/admin/theme-options-parts.php:613
+#: inc/admin/theme-options-parts.php:508 inc/admin/theme-options-parts.php:629
 msgctxt "theme-options"
 msgid "Link"
 msgstr ""
@@ -10425,9 +10447,9 @@ msgstr ""
 
 #: inc/admin/theme-options/options-header/mega-menu.php:80
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:61
-#: inc/admin/theme-options/options-header.php:2001
-#: inc/admin/theme-options/options-header.php:2810
-#: inc/admin/theme-options/options-header.php:3236
+#: inc/admin/theme-options/options-header.php:2080
+#: inc/admin/theme-options/options-header.php:2896
+#: inc/admin/theme-options/options-header.php:3322
 #: inc/extensions/options-framework/options-sanitize.php:776
 msgctxt "theme-options"
 msgid "Normal"
@@ -10435,19 +10457,19 @@ msgstr ""
 
 #: inc/admin/theme-options/options-header/mega-menu.php:87
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:137
-#: inc/admin/theme-options/options-header.php:2008
-#: inc/admin/theme-options/options-header.php:2358
-#: inc/admin/theme-options/options-header.php:2817
-#: inc/admin/theme-options/options-header.php:3259
+#: inc/admin/theme-options/options-header.php:2087
+#: inc/admin/theme-options/options-header.php:2437
+#: inc/admin/theme-options/options-header.php:2903
+#: inc/admin/theme-options/options-header.php:3345
 msgctxt "theme-options"
 msgid "Hover"
 msgstr ""
 
 #: inc/admin/theme-options/options-header/mega-menu.php:125
-#: inc/admin/theme-options/options-header.php:2046
-#: inc/admin/theme-options/options-header.php:2502
-#: inc/admin/theme-options/options-header.php:2855
-#: inc/admin/theme-options/options-header.php:3297
+#: inc/admin/theme-options/options-header.php:2125
+#: inc/admin/theme-options/options-header.php:2581
+#: inc/admin/theme-options/options-header.php:2941
+#: inc/admin/theme-options/options-header.php:3383
 msgctxt "theme-options"
 msgid "Active"
 msgstr ""
@@ -10700,9 +10722,9 @@ msgid "Overlay color"
 msgstr ""
 
 #: inc/admin/theme-options/options-header/search-micro-widget.php:290
-#: inc/admin/theme-options-parts.php:724 inc/admin/theme-options-parts.php:760
-#: inc/admin/theme-options-parts.php:783 inc/admin/theme-options-parts.php:824
-#: inc/admin/theme-options-parts.php:860 inc/admin/theme-options-parts.php:883
+#: inc/admin/theme-options-parts.php:740 inc/admin/theme-options-parts.php:776
+#: inc/admin/theme-options-parts.php:799 inc/admin/theme-options-parts.php:840
+#: inc/admin/theme-options-parts.php:876 inc/admin/theme-options-parts.php:899
 msgctxt "theme-options"
 msgid "Mono color"
 msgstr ""
@@ -10712,9 +10734,9 @@ msgstr ""
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:125
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:163
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:201
-#: inc/admin/theme-options-parts.php:730 inc/admin/theme-options-parts.php:765
-#: inc/admin/theme-options-parts.php:789 inc/admin/theme-options-parts.php:830
-#: inc/admin/theme-options-parts.php:865 inc/admin/theme-options-parts.php:889
+#: inc/admin/theme-options-parts.php:746 inc/admin/theme-options-parts.php:781
+#: inc/admin/theme-options-parts.php:805 inc/admin/theme-options-parts.php:846
+#: inc/admin/theme-options-parts.php:881 inc/admin/theme-options-parts.php:905
 msgctxt "theme-options"
 msgid "Choose color"
 msgstr ""
@@ -10746,7 +10768,7 @@ msgid "Icons background size"
 msgstr ""
 
 #: inc/admin/theme-options/options-header/social-icons-micro-widget.php:23
-#: inc/admin/theme-options/options-header.php:1960
+#: inc/admin/theme-options/options-header.php:2035
 msgctxt "theme-options"
 msgid "Icons size"
 msgstr ""
@@ -10822,52 +10844,60 @@ msgctxt "theme-options"
 msgid "Text 5"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:17
+#: inc/admin/theme-options/options-header.php:16
 #: inc/mods/options-wizard/options.php:277
 msgctxt "theme-options"
 msgid "Choose layout"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:24
+#: inc/admin/theme-options/options-header.php:23
 #: inc/mods/options-wizard/options.php:284
 msgctxt "theme-options"
 msgid "Classic"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:40
+#: inc/admin/theme-options/options-header.php:39
 #: inc/mods/options-wizard/options.php:300
 msgctxt "theme-options"
 msgid "Top line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:44
+#: inc/admin/theme-options/options-header.php:43
 #: inc/mods/options-wizard/options.php:304
 msgctxt "theme-options"
 msgid "Side line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:49
-#: inc/admin/theme-options/options-header.php:3522
+#: inc/admin/theme-options/options-header.php:48
+#: inc/admin/theme-options/options-header.php:3622
 #: inc/mods/options-wizard/options.php:308
 msgctxt "theme-options"
 msgid "Floating menu button"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:69
+#: inc/admin/theme-options/options-header.php:68
 msgctxt "theme-options"
 msgid "Classic header layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:81
-#: inc/admin/theme-options/options-header.php:173
-#: inc/admin/theme-options/options-header.php:244
+#: inc/admin/theme-options/options-header.php:80
+#: inc/admin/theme-options/options-header.php:184
+#: inc/admin/theme-options/options-header.php:275
 #: inc/admin/theme-options-parts.php:403
 msgctxt "theme-options"
 msgid "Header height"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:89
-#: inc/admin/theme-options/options-header.php:181
+#: inc/admin/theme-options/options-header.php:88
+#: inc/admin/theme-options/options-header.php:192
+#: inc/admin/theme-options/options-header.php:283
+#: inc/admin/theme-options-parts.php:410
+msgctxt "theme-options"
+msgid "Header padding"
+msgstr ""
+
+#: inc/admin/theme-options/options-header.php:100
+#: inc/admin/theme-options/options-header.php:204
 #: inc/admin/theme-options-parts.php:227
 #: inc/mods/options-wizard/options.php:349
 #: inc/mods/options-wizard/options.php:378
@@ -10876,9 +10906,9 @@ msgctxt "theme-options"
 msgid "Menu position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:98
-#: inc/admin/theme-options/options-header.php:131
-#: inc/admin/theme-options/options-header.php:194
+#: inc/admin/theme-options/options-header.php:109
+#: inc/admin/theme-options/options-header.php:142
+#: inc/admin/theme-options/options-header.php:217
 #: inc/admin/theme-options-parts.php:236 inc/admin/theme-options-parts.php:274
 #: inc/admin/theme-options-parts.php:334
 #: inc/mods/options-wizard/options.php:338
@@ -10888,9 +10918,9 @@ msgctxt "theme-options"
 msgid "Center"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:102
-#: inc/admin/theme-options/options-header.php:198
-#: inc/admin/theme-options/options-header.php:257
+#: inc/admin/theme-options/options-header.php:113
+#: inc/admin/theme-options/options-header.php:221
+#: inc/admin/theme-options/options-header.php:300
 #: inc/mods/options-wizard/options.php:362
 #: inc/mods/options-wizard/options.php:395
 #: inc/mods/options-wizard/options.php:421
@@ -10898,36 +10928,28 @@ msgctxt "theme-options"
 msgid "Justified"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:111
+#: inc/admin/theme-options/options-header.php:122
 msgctxt "theme-options"
 msgid "Menu margin"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:122
+#: inc/admin/theme-options/options-header.php:133
 #: inc/mods/options-wizard/options.php:329
 msgctxt "theme-options"
 msgid "Logo position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:140
-#: inc/admin/theme-options/options-header.php:207
-#: inc/admin/theme-options/options-header.php:278
-#: inc/admin/theme-options/options-header.php:407
-msgctxt "theme-options"
-msgid "Full width"
-msgstr ""
-
-#: inc/admin/theme-options/options-header.php:161
+#: inc/admin/theme-options/options-header.php:172
 msgctxt "theme-options"
 msgid "Inline header layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:227
+#: inc/admin/theme-options/options-header.php:250
 msgctxt "theme-options"
 msgid "Split header layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:238
+#: inc/admin/theme-options/options-header.php:262
 #: inc/mods/options-wizard/options.php:410
 msgctxt "theme-options"
 msgid ""
@@ -10936,1001 +10958,1006 @@ msgid ""
 "and \"Split Menu Right\" locations."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:252
+#: inc/admin/theme-options/options-header.php:295
 msgctxt "theme-options"
 msgid "Menu & microwidgets position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:261
+#: inc/admin/theme-options/options-header.php:304
 #: inc/mods/options-wizard/options.php:425
 msgctxt "theme-options"
 msgid "Menu inside, microwidgets outside"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:265
+#: inc/admin/theme-options/options-header.php:308
 #: inc/mods/options-wizard/options.php:429
 msgctxt "theme-options"
 msgid "Menu inside, microwidgets inside"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:269
+#: inc/admin/theme-options/options-header.php:312
 #: inc/mods/options-wizard/options.php:433
 msgctxt "theme-options"
 msgid "Menu outside, microwidgets outside"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:298
+#: inc/admin/theme-options/options-header.php:341
 msgctxt "theme-options"
 msgid "Side header layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:309
-#: inc/admin/theme-options/options-header.php:580
-#: inc/admin/theme-options/options-header.php:654
+#: inc/admin/theme-options/options-header.php:352
+#: inc/admin/theme-options/options-header.php:634
+#: inc/admin/theme-options/options-header.php:708
 msgctxt "theme-options"
 msgid "Navigation area settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:315
+#: inc/admin/theme-options/options-header.php:358
 msgctxt "theme-options"
 msgid "Header width"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:323
+#: inc/admin/theme-options/options-header.php:366
 #: inc/mods/options-wizard/options.php:449
 msgctxt "theme-options"
 msgid "Header position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:342
-#: inc/admin/theme-options/options-header.php:612
-#: inc/admin/theme-options/options-header.php:689
+#: inc/admin/theme-options/options-header.php:385
+#: inc/admin/theme-options/options-header.php:666
+#: inc/admin/theme-options/options-header.php:749
 msgctxt "theme-options"
 msgid "Navigation area paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:350
-#: inc/admin/theme-options/options-header.php:638
+#: inc/admin/theme-options/options-header.php:393
+#: inc/admin/theme-options/options-header.php:692
 msgctxt "theme-options"
 msgid "Menu settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:360
+#: inc/admin/theme-options/options-header.php:403
 msgctxt "theme-options"
 msgid "Top line layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:373
+#: inc/admin/theme-options/options-header.php:416
 msgctxt "theme-options"
 msgid "Top line height"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:381
-#: inc/admin/theme-options/options-header.php:499
+#: inc/admin/theme-options/options-header.php:424
+msgctxt "theme-options"
+msgid "Top line padding"
+msgstr ""
+
+#: inc/admin/theme-options/options-header.php:436
+#: inc/admin/theme-options/options-header.php:553
 msgctxt "theme-options"
 msgid "Logo & menu button position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:386
-#: inc/admin/theme-options/options-header.php:504
+#: inc/admin/theme-options/options-header.php:441
+#: inc/admin/theme-options/options-header.php:558
 msgctxt "theme-options"
 msgid "Left button + right logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:390
+#: inc/admin/theme-options/options-header.php:445
 msgctxt "theme-options"
 msgid "Left button + centered logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:394
-#: inc/admin/theme-options/options-header.php:508
+#: inc/admin/theme-options/options-header.php:449
+#: inc/admin/theme-options/options-header.php:562
 msgctxt "theme-options"
 msgid "Right button + left logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:398
+#: inc/admin/theme-options/options-header.php:453
 msgctxt "theme-options"
 msgid "Right button + centered logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:429
+#: inc/admin/theme-options/options-header.php:483
 msgctxt "theme-options"
 msgid "Side line layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:441
+#: inc/admin/theme-options/options-header.php:495
 msgctxt "theme-options"
 msgid "Side line width"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:449
+#: inc/admin/theme-options/options-header.php:503
 msgctxt "theme-options"
 msgid "Line position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:467
+#: inc/admin/theme-options/options-header.php:521
 msgctxt "theme-options"
 msgid "Show navigation area"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:472
+#: inc/admin/theme-options/options-header.php:526
 msgctxt "theme-options"
 msgid "Above the line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:476
+#: inc/admin/theme-options/options-header.php:530
 msgctxt "theme-options"
 msgid "Under the line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:487
+#: inc/admin/theme-options/options-header.php:541
 msgctxt "theme-options"
 msgid "Floating menu button layout settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:517
+#: inc/admin/theme-options/options-header.php:571
 msgctxt "theme-options"
 msgid "Floating logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:538
-#: inc/admin/theme-options/options-header.php:555
+#: inc/admin/theme-options/options-header.php:592
+#: inc/admin/theme-options/options-header.php:609
 #: inc/mods/options-wizard/options.php:469
 msgctxt "theme-options"
 msgid "Navigation"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:560
+#: inc/admin/theme-options/options-header.php:614
 msgctxt "theme-options"
 msgid "Side navigation"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:564
+#: inc/admin/theme-options/options-header.php:618
 msgctxt "theme-options"
 msgid "Overlay navigation"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:586
-#: inc/admin/theme-options/options-header.php:660
+#: inc/admin/theme-options/options-header.php:640
+#: inc/admin/theme-options/options-header.php:718
 msgctxt "theme-options"
 msgid "Navigation area width"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:594
-#: inc/admin/theme-options/options-header.php:664
+#: inc/admin/theme-options/options-header.php:648
+#: inc/admin/theme-options/options-header.php:722
 msgctxt "theme-options"
 msgid "Navigation area position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:619
+#: inc/admin/theme-options/options-header.php:673
 msgctxt "theme-options"
 msgid "Animation on opening"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:624
+#: inc/admin/theme-options/options-header.php:678
 msgctxt "theme-options"
 msgid "Fade"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:628
+#: inc/admin/theme-options/options-header.php:682
 msgctxt "theme-options"
 msgid "Slide"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:702
+#: inc/admin/theme-options/options-header.php:762
 msgctxt "theme-options"
 msgid "menu settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:721
-#: inc/admin/theme-options/options-header.php:743
-#: inc/admin/theme-options/options-header.php:843
-#: inc/admin/theme-options/options-header.php:913
-#: inc/admin/theme-options/options-header.php:994
-#: inc/admin/theme-options/options-header.php:1058
-#: inc/admin/theme-options/options-header.php:1158
-#: inc/admin/theme-options/options-header.php:1220
+#: inc/admin/theme-options/options-header.php:787
+#: inc/admin/theme-options/options-header.php:809
+#: inc/admin/theme-options/options-header.php:909
+#: inc/admin/theme-options/options-header.php:979
+#: inc/admin/theme-options/options-header.php:1060
+#: inc/admin/theme-options/options-header.php:1128
+#: inc/admin/theme-options/options-header.php:1228
+#: inc/admin/theme-options/options-header.php:1290
 msgctxt "theme-options"
 msgid "Microwidgets"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:727
-#: inc/admin/theme-options/options-header.php:836
-#: inc/admin/theme-options/options-header.php:906
-#: inc/admin/theme-options/options-header.php:987
-#: inc/admin/theme-options/options-header.php:1051
-#: inc/admin/theme-options/options-header.php:1151
-#: inc/admin/theme-options/options-header.php:1213
+#: inc/admin/theme-options/options-header.php:793
+#: inc/admin/theme-options/options-header.php:902
+#: inc/admin/theme-options/options-header.php:972
+#: inc/admin/theme-options/options-header.php:1053
+#: inc/admin/theme-options/options-header.php:1121
+#: inc/admin/theme-options/options-header.php:1221
+#: inc/admin/theme-options/options-header.php:1283
 msgctxt "theme-options"
 msgid "Microwidgets layout"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:764
-#: inc/admin/theme-options/options-header.php:864
-#: inc/admin/theme-options/options-header.php:934
-#: inc/admin/theme-options/options-header.php:1079
-#: inc/admin/theme-options/options-header.php:1179
-#: inc/admin/theme-options/options-header.php:1241
+#: inc/admin/theme-options/options-header.php:830
+#: inc/admin/theme-options/options-header.php:930
+#: inc/admin/theme-options/options-header.php:1000
+#: inc/admin/theme-options/options-header.php:1149
+#: inc/admin/theme-options/options-header.php:1249
+#: inc/admin/theme-options/options-header.php:1311
 msgctxt "theme-options"
 msgid "Inactive microwidgets"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:768
-#: inc/admin/theme-options/options-header.php:868
-#: inc/admin/theme-options/options-header.php:938
-#: inc/admin/theme-options/options-header.php:1083
+#: inc/admin/theme-options/options-header.php:834
+#: inc/admin/theme-options/options-header.php:934
+#: inc/admin/theme-options/options-header.php:1004
+#: inc/admin/theme-options/options-header.php:1153
 msgctxt "theme-options"
 msgid "Microwidgets in top bar (left)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:772
-#: inc/admin/theme-options/options-header.php:872
-#: inc/admin/theme-options/options-header.php:942
-#: inc/admin/theme-options/options-header.php:1087
+#: inc/admin/theme-options/options-header.php:838
+#: inc/admin/theme-options/options-header.php:938
+#: inc/admin/theme-options/options-header.php:1008
+#: inc/admin/theme-options/options-header.php:1157
 msgctxt "theme-options"
 msgid "Microwidgets in top bar (right)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:776
-#: inc/admin/theme-options/options-header.php:796
-#: inc/admin/theme-options/options-header.php:876
-#: inc/admin/theme-options/options-header.php:888
-#: inc/admin/theme-options/options-header.php:962
-#: inc/admin/theme-options/options-header.php:1031
-#: inc/admin/theme-options/options-header.php:1099
-#: inc/admin/theme-options/options-header.php:1133
-#: inc/admin/theme-options/options-header.php:1183
-#: inc/admin/theme-options/options-header.php:1195
-#: inc/admin/theme-options/options-header.php:1245
-#: inc/admin/theme-options/options-header.php:1257
+#: inc/admin/theme-options/options-header.php:842
+#: inc/admin/theme-options/options-header.php:862
+#: inc/admin/theme-options/options-header.php:942
+#: inc/admin/theme-options/options-header.php:954
+#: inc/admin/theme-options/options-header.php:1028
+#: inc/admin/theme-options/options-header.php:1101
+#: inc/admin/theme-options/options-header.php:1169
+#: inc/admin/theme-options/options-header.php:1203
+#: inc/admin/theme-options/options-header.php:1253
+#: inc/admin/theme-options/options-header.php:1265
+#: inc/admin/theme-options/options-header.php:1315
+#: inc/admin/theme-options/options-header.php:1327
 msgctxt "theme-options"
 msgid "Microwidgets in navigation area"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:780
+#: inc/admin/theme-options/options-header.php:846
 msgctxt "theme-options"
 msgid "Microwidgets near logo (left)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:784
+#: inc/admin/theme-options/options-header.php:850
 msgctxt "theme-options"
 msgid "Microwidgets near logo (right)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:805
-#: inc/admin/theme-options/options-header.php:897
-#: inc/admin/theme-options/options-header.php:1142
-#: inc/admin/theme-options/options-header.php:1204
-#: inc/admin/theme-options/options-header.php:1266
+#: inc/admin/theme-options/options-header.php:871
+#: inc/admin/theme-options/options-header.php:963
+#: inc/admin/theme-options/options-header.php:1212
+#: inc/admin/theme-options/options-header.php:1274
+#: inc/admin/theme-options/options-header.php:1336
 msgctxt "theme-options"
 msgid "Microwidgets area paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:811
+#: inc/admin/theme-options/options-header.php:877
 msgctxt "theme-options"
 msgid "Microwidgets near logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:820
-#: inc/admin/theme-options/options-header.php:971
-#: inc/admin/theme-options/options-header.php:1120
+#: inc/admin/theme-options/options-header.php:886
+#: inc/admin/theme-options/options-header.php:1037
+#: inc/admin/theme-options/options-header.php:1190
 msgctxt "theme-options"
 msgid "Left microwidgets area paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:827
-#: inc/admin/theme-options/options-header.php:978
-#: inc/admin/theme-options/options-header.php:1127
+#: inc/admin/theme-options/options-header.php:893
+#: inc/admin/theme-options/options-header.php:1044
+#: inc/admin/theme-options/options-header.php:1197
 msgctxt "theme-options"
 msgid "Right microwidgets area paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:946
+#: inc/admin/theme-options/options-header.php:1012
 msgctxt "theme-options"
 msgid "Microwidgets in navigation area (left)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:950
+#: inc/admin/theme-options/options-header.php:1016
 msgctxt "theme-options"
 msgid "Microwidgets in navigation area (right)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:995
+#: inc/admin/theme-options/options-header.php:1061
 msgctxt "theme-options"
 msgid ""
 "When enabled, microwidgets can  be rearranged below. You can set them up in "
 "dedicated \"Microwidgets\" tab."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1015
+#: inc/admin/theme-options/options-header.php:1085
 #: inc/admin/theme-options/options.php:147
 msgctxt "theme-options"
 msgid "Inactive elements"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1019
+#: inc/admin/theme-options/options-header.php:1089
 msgctxt "theme-options"
 msgid "Below menu"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1042
+#: inc/admin/theme-options/options-header.php:1112
 msgctxt "theme-options"
 msgid "Area below menu padding"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1091
+#: inc/admin/theme-options/options-header.php:1161
 msgctxt "theme-options"
 msgid "Microwidgets in top line (left)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1095
+#: inc/admin/theme-options/options-header.php:1165
 msgctxt "theme-options"
 msgid "Microwidgets in top line (right)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1111
+#: inc/admin/theme-options/options-header.php:1181
 msgctxt "theme-options"
 msgid "Microwidgets in top line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1272
+#: inc/admin/theme-options/options-header.php:1342
 msgctxt "theme-options"
 msgid "Microwidgets in top bar"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1304
-#: inc/admin/theme-options/options-header.php:1342
-#: inc/admin/theme-options/options-header.php:1381
-#: inc/admin/theme-options/options-header.php:1830
-#: inc/admin/theme-options/options-header.php:1855
-#: inc/admin/theme-options/options-header.php:3449
+#: inc/admin/theme-options/options-header.php:1374
+#: inc/admin/theme-options/options-header.php:1412
+#: inc/admin/theme-options/options-header.php:1451
+#: inc/admin/theme-options/options-header.php:1905
+#: inc/admin/theme-options/options-header.php:1930
+#: inc/admin/theme-options/options-header.php:3549
 #: inc/admin/theme-options-parts.php:49
 msgctxt "theme-options"
 msgid "Icon color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1307
-#: inc/admin/theme-options/options-header.php:1345
-#: inc/admin/theme-options/options-header.php:1384
+#: inc/admin/theme-options/options-header.php:1377
+#: inc/admin/theme-options/options-header.php:1415
+#: inc/admin/theme-options/options-header.php:1454
 #: inc/admin/theme-options-parts.php:52
 msgctxt "theme-options"
 msgid "Leave empty to use font color."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1311
+#: inc/admin/theme-options/options-header.php:1381
 msgctxt "theme-options"
 msgid "Microwidgets in mobile header"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1350
+#: inc/admin/theme-options/options-header.php:1420
 msgctxt "theme-options"
 msgid "Microwidgets in mobile menu"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1399
-#: inc/admin/theme-options-parts.php:458
+#: inc/admin/theme-options/options-header.php:1470
+#: inc/admin/theme-options-parts.php:469
 #: inc/mods/options-wizard/options.php:562
 msgctxt "theme-options"
 msgid "Top bar"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1401
+#: inc/admin/theme-options/options-header.php:1475
 msgctxt "theme-options"
 msgid "Top bar background"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1406
+#: inc/admin/theme-options/options-header.php:1480
 msgctxt "theme-options"
 msgid "Top bar height"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1413
+#: inc/admin/theme-options/options-header.php:1487
 msgctxt "theme-options"
 msgid "Top bar paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1468
-#: inc/admin/theme-options/options-header.php:1599
-#: inc/admin/theme-options/options-header.php:1722
-#: inc/admin/theme-options/options-header.php:3183
+#: inc/admin/theme-options/options-header.php:1543
+#: inc/admin/theme-options/options-header.php:1674
+#: inc/admin/theme-options/options-header.php:1797
+#: inc/admin/theme-options/options-header.php:3269
 msgctxt "theme-options"
 msgid "Line color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1480
+#: inc/admin/theme-options/options-header.php:1555
 #: inc/extensions/options-framework/fields/class-the7-option-field-typography.php:92
 msgctxt "theme-options"
 msgid "Line height"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1492
+#: inc/admin/theme-options/options-header.php:1567
 msgctxt "theme-options"
 msgid "Line style"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1498
+#: inc/admin/theme-options/options-header.php:1573
 #: inc/admin/theme-options/options-page-titles.php:171
 #: inc/admin/theme-options/options-page-titles.php:380
 msgctxt "theme-options"
 msgid "Solid"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1499
+#: inc/admin/theme-options/options-header.php:1574
 #: inc/admin/theme-options/options-page-titles.php:172
 #: inc/admin/theme-options/options-page-titles.php:381
 msgctxt "theme-options"
 msgid "Dotted"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1500
+#: inc/admin/theme-options/options-header.php:1575
 #: inc/admin/theme-options/options-page-titles.php:173
 #: inc/admin/theme-options/options-page-titles.php:382
 msgctxt "theme-options"
 msgid "Dashed"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1501
-#: inc/admin/theme-options/options-header.php:2115
+#: inc/admin/theme-options/options-header.php:1576
+#: inc/admin/theme-options/options-header.php:2194
 #: inc/admin/theme-options/options-page-titles.php:174
 #: inc/admin/theme-options/options-page-titles.php:383
 msgctxt "theme-options"
 msgid "Double"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1512
+#: inc/admin/theme-options/options-header.php:1587
 msgctxt "theme-options"
 msgid "Show line in transparent headers "
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1522
+#: inc/admin/theme-options/options-header.php:1597
 #: inc/admin/theme-options/options-page-titles.php:287
 #: inc/mods/options-wizard/options.php:508
 msgctxt "theme-options"
 msgid "Header"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1524
+#: inc/admin/theme-options/options-header.php:1599
 msgctxt "theme-options"
 msgid "Navigation area appearance"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1631
+#: inc/admin/theme-options/options-header.php:1706
 msgctxt "theme-options"
 msgid "Menu background for \"Classic\" header"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1643
+#: inc/admin/theme-options/options-header.php:1718
 msgctxt "theme-options"
 msgid "Menu background / line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1680
+#: inc/admin/theme-options/options-header.php:1755
 msgctxt "theme-options"
 msgid "Top line or side line appearance"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1745
+#: inc/admin/theme-options/options-header.php:1820
 msgctxt "theme-options"
 msgid "Floating line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1775
-#: inc/admin/theme-options/options-header.php:3338
+#: inc/admin/theme-options/options-header.php:1850
+#: inc/admin/theme-options/options-header.php:3424
 msgctxt "theme-options"
 msgid "Floating top bar "
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1786
+#: inc/admin/theme-options/options-header.php:1861
 msgctxt "theme-options"
 msgid "Hamburger menu appearance"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1802
-#: inc/admin/theme-options/options-header.php:3442
+#: inc/admin/theme-options/options-header.php:1877
+#: inc/admin/theme-options/options-header.php:3542
 msgctxt "theme-options"
 msgid "Small"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1803
-#: inc/admin/theme-options/options-header.php:3443
+#: inc/admin/theme-options/options-header.php:1878
+#: inc/admin/theme-options/options-header.php:3543
 msgctxt "theme-options"
 msgid "Medium"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1804
+#: inc/admin/theme-options/options-header.php:1879
 msgctxt "theme-options"
 msgid "Large"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1810
-#: inc/admin/theme-options/options-header.php:3481
+#: inc/admin/theme-options/options-header.php:1885
+#: inc/admin/theme-options/options-header.php:3581
 msgctxt "theme-options"
 msgid "Background size"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1818
-#: inc/admin/theme-options/options-header.php:3494
+#: inc/admin/theme-options/options-header.php:1893
+#: inc/admin/theme-options/options-header.php:3594
 msgctxt "theme-options"
 msgid "Background border radius"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1826
+#: inc/admin/theme-options/options-header.php:1901
 msgctxt "theme-options"
 msgid "\"Open menu\" button"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1851
+#: inc/admin/theme-options/options-header.php:1926
 msgctxt "theme-options"
 msgid "\"Close menu\" button"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1875
+#: inc/admin/theme-options/options-header.php:1950
 msgctxt "theme-options"
 msgid "Website overlay on navigation opening"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1932
-#: inc/admin/theme-options/options-header.php:2958
-#: inc/admin/theme-options/options-header.php:3033
+#: inc/admin/theme-options/options-header.php:2007
+#: inc/admin/theme-options/options-header.php:3044
+#: inc/admin/theme-options/options-header.php:3119
 msgctxt "theme-options"
 msgid "Opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1942
-#: inc/admin/theme-options/options-header.php:1946
+#: inc/admin/theme-options/options-header.php:2017
+#: inc/admin/theme-options/options-header.php:2021
 msgctxt "theme-options"
 msgid "Menu"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1944
-#: inc/admin/theme-options/options-header.php:3532
+#: inc/admin/theme-options/options-header.php:2019
+#: inc/admin/theme-options/options-header.php:3632
 msgctxt "theme-options"
 msgid "Menu font"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1969
-#: inc/admin/theme-options/options-header.php:2785
+#: inc/admin/theme-options/options-header.php:2044
+#: inc/admin/theme-options/options-header.php:2864
 msgctxt "theme-options"
 msgid "Show next level indicator arrows"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1970
-#: inc/admin/theme-options/options-header.php:2786
+#: inc/admin/theme-options/options-header.php:2045
+#: inc/admin/theme-options/options-header.php:2865
 msgctxt "theme-options"
 msgid ""
 "Icons are always visible if parent menu items are clickable (for side and "
 "overlay headers)."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1977
+#: inc/admin/theme-options/options-header.php:2056
 msgctxt "theme-options"
 msgid "Make parent menu items clickable"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1984
+#: inc/admin/theme-options/options-header.php:2063
 msgctxt "theme-options"
 msgid "Description below menu items"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1997
+#: inc/admin/theme-options/options-header.php:2076
 msgctxt "theme-options"
 msgid "Font colors"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2084
+#: inc/admin/theme-options/options-header.php:2163
 msgctxt "theme-options"
 msgid "Menu items margin & padding"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2104
+#: inc/admin/theme-options/options-header.php:2183
 msgctxt "theme-options"
 msgid "Side margin for first and last menu items"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2105
-#: inc/admin/theme-options/options-header.php:2146
+#: inc/admin/theme-options/options-header.php:2184
+#: inc/admin/theme-options/options-header.php:2225
 msgctxt "theme-options"
 msgid "Works for top headers only"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2111
+#: inc/admin/theme-options/options-header.php:2190
 msgctxt "theme-options"
 msgid "Regular"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2123
+#: inc/admin/theme-options/options-header.php:2202
 msgctxt "theme-options"
 msgid "Remove"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2131
+#: inc/admin/theme-options/options-header.php:2210
 msgctxt "theme-options"
 msgid "Custom margin"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2145
+#: inc/admin/theme-options/options-header.php:2224
 msgctxt "theme-options"
 msgid "Full height & full width links"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2189
+#: inc/admin/theme-options/options-header.php:2268
 msgctxt "theme-options"
 msgid "Divider height (width)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2195
+#: inc/admin/theme-options/options-header.php:2274
 msgctxt "theme-options"
 msgid "100%"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2199
+#: inc/admin/theme-options/options-header.php:2278
 msgctxt "theme-options"
 msgid "Custom (in px)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2220
+#: inc/admin/theme-options/options-header.php:2299
 msgctxt "theme-options"
 msgid "First & last dividers"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2246
+#: inc/admin/theme-options/options-header.php:2325
 msgctxt "theme-options"
 msgid "Decoration styles for horizontal headers"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2267
+#: inc/admin/theme-options/options-header.php:2346
 msgctxt "theme-options"
 msgid "Background / outline / line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2281
+#: inc/admin/theme-options/options-header.php:2360
 msgctxt "theme-options"
 msgid "Direction"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2288
+#: inc/admin/theme-options/options-header.php:2367
 msgctxt "theme-options"
 msgid "Left to right"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2292
+#: inc/admin/theme-options/options-header.php:2371
 msgctxt "theme-options"
 msgid "From center"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2296
+#: inc/admin/theme-options/options-header.php:2375
 msgctxt "theme-options"
 msgid "Upwards"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2300
-#: inc/admin/theme-options/options-header.php:2689
+#: inc/admin/theme-options/options-header.php:2379
+#: inc/admin/theme-options/options-header.php:2768
 msgctxt "theme-options"
 msgid "Downwards"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2308
+#: inc/admin/theme-options/options-header.php:2387
 msgctxt "theme-options"
 msgid "Underline color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2362
+#: inc/admin/theme-options/options-header.php:2441
 msgctxt "theme-options"
 msgid "Hover style"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2380
+#: inc/admin/theme-options/options-header.php:2459
 msgctxt "theme-options"
 msgid "Hover color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2418
+#: inc/admin/theme-options/options-header.php:2497
 msgctxt "theme-options"
 msgid "Hover opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2430
+#: inc/admin/theme-options/options-header.php:2509
 msgctxt "theme-options"
 msgid "Hover line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2451
+#: inc/admin/theme-options/options-header.php:2530
 msgctxt "theme-options"
 msgid "Hover line color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2488
+#: inc/admin/theme-options/options-header.php:2567
 msgctxt "theme-options"
 msgid "Hover line opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2506
+#: inc/admin/theme-options/options-header.php:2585
 msgctxt "theme-options"
 msgid "Active style"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2524
+#: inc/admin/theme-options/options-header.php:2603
 msgctxt "theme-options"
 msgid "Active color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2562
+#: inc/admin/theme-options/options-header.php:2641
 msgctxt "theme-options"
 msgid "Active opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2574
+#: inc/admin/theme-options/options-header.php:2653
 msgctxt "theme-options"
 msgid "Active line"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2595
+#: inc/admin/theme-options/options-header.php:2674
 msgctxt "theme-options"
 msgid "Active line color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2632
+#: inc/admin/theme-options/options-header.php:2711
 msgctxt "theme-options"
 msgid "Active line opacity"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2664
+#: inc/admin/theme-options/options-header.php:2743
 msgctxt "theme-options"
 msgid "Submenu"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2667
+#: inc/admin/theme-options/options-header.php:2746
 msgctxt "theme-options"
 msgid "Submenu for side & overlay navigation"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2679
+#: inc/admin/theme-options/options-header.php:2758
 #: inc/admin/theme-options/options-stripes.php:61
 #: inc/admin/theme-options/options.php:110
-#: inc/admin/theme-options-parts.php:433 inc/deprecated-functions.php:415
+#: inc/admin/theme-options-parts.php:444 inc/deprecated-functions.php:415
 msgctxt "theme-options"
 msgid "Show"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2685
+#: inc/admin/theme-options/options-header.php:2764
 msgctxt "theme-options"
 msgid "Sideways"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2696
+#: inc/admin/theme-options/options-header.php:2775
 msgctxt "theme-options"
 msgid "Submenu & mega menu background color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2725
+#: inc/admin/theme-options/options-header.php:2804
 msgctxt "theme-options"
 msgid "Submenu background settings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2731
+#: inc/admin/theme-options/options-header.php:2810
 msgctxt "theme-options"
 msgid "Submenu background width"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2754
+#: inc/admin/theme-options/options-header.php:2833
 msgctxt "theme-options"
 msgid "Submenu background paddings"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2761
+#: inc/admin/theme-options/options-header.php:2840
 msgctxt "theme-options"
 msgid "Submenu items"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2763
+#: inc/admin/theme-options/options-header.php:2842
 msgctxt "theme-options"
 msgid "Submenu font & icon size"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2793
+#: inc/admin/theme-options/options-header.php:2876
 msgctxt "theme-options"
 msgid "Description below submenu items"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2806
+#: inc/admin/theme-options/options-header.php:2890
 msgctxt "theme-options"
 msgid "Submenu font, icons & descriptions colors"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2893
+#: inc/admin/theme-options/options-header.php:2979
 msgctxt "theme-options"
 msgid "Submenu items margin & padding"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2910
+#: inc/admin/theme-options/options-header.php:2996
 msgctxt "theme-options"
 msgid "Submenu items hover & active background"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:2940
+#: inc/admin/theme-options/options-header.php:3026
 msgctxt "theme-options"
 msgid "Hover background color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3015
+#: inc/admin/theme-options/options-header.php:3101
 msgctxt "theme-options"
 msgid "Active background color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3094
+#: inc/admin/theme-options/options-header.php:3180
 msgctxt "theme-options"
 msgid "Floating header"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3195
+#: inc/admin/theme-options/options-header.php:3281
 #: inc/mods/options-wizard/options.php:614
 msgctxt "theme-options"
 msgid "Effect"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3201
+#: inc/admin/theme-options/options-header.php:3287
 #: inc/mods/options-wizard/options.php:620
 msgctxt "theme-options"
 msgid "Fade on scroll"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3205
+#: inc/admin/theme-options/options-header.php:3291
 #: inc/mods/options-wizard/options.php:624
 msgctxt "theme-options"
 msgid "Slide on scroll"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3209
+#: inc/admin/theme-options/options-header.php:3295
 #: inc/mods/options-wizard/options.php:628
 msgctxt "theme-options"
 msgid "Sticky"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3217
+#: inc/admin/theme-options/options-header.php:3303
 msgctxt "theme-options"
 msgid "Show after scrolling"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3231
+#: inc/admin/theme-options/options-header.php:3317
 msgctxt "theme-options"
 msgid "Floating header menu font colors"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3241
-#: inc/admin/theme-options/options-header.php:3264
-#: inc/admin/theme-options/options-header.php:3302
+#: inc/admin/theme-options/options-header.php:3327
+#: inc/admin/theme-options/options-header.php:3350
+#: inc/admin/theme-options/options-header.php:3388
 msgctxt "theme-options"
 msgid "No change"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3352
-#: inc/admin/theme-options-parts.php:439
+#: inc/admin/theme-options/options-header.php:3438
+#: inc/admin/theme-options-parts.php:450
 msgctxt "theme-options"
 msgid "First header switch point (tablet)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3359
+#: inc/admin/theme-options/options-header.php:3449
 msgctxt "theme-options"
 msgid ""
 "To skip this switch point set the same value as for the second (phone) "
 "point."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3366
-#: inc/admin/theme-options/options-header.php:3401
+#: inc/admin/theme-options/options-header.php:3460
+#: inc/admin/theme-options/options-header.php:3500
 #: inc/admin/theme-options-parts.php:395
 #: inc/mods/options-wizard/options.php:645
 msgctxt "theme-options"
 msgid "Left menu + right logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3370
-#: inc/admin/theme-options/options-header.php:3405
+#: inc/admin/theme-options/options-header.php:3464
+#: inc/admin/theme-options/options-header.php:3504
 #: inc/admin/theme-options-parts.php:396
 #: inc/mods/options-wizard/options.php:649
 msgctxt "theme-options"
 msgid "Left menu + centered logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3374
-#: inc/admin/theme-options/options-header.php:3409
+#: inc/admin/theme-options/options-header.php:3468
+#: inc/admin/theme-options/options-header.php:3508
 #: inc/admin/theme-options-parts.php:397
 #: inc/mods/options-wizard/options.php:653
 msgctxt "theme-options"
 msgid "Right menu + left logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3378
-#: inc/admin/theme-options/options-header.php:3413
+#: inc/admin/theme-options/options-header.php:3472
+#: inc/admin/theme-options/options-header.php:3512
 #: inc/admin/theme-options-parts.php:398
 #: inc/mods/options-wizard/options.php:657
 msgctxt "theme-options"
 msgid "Right menu + centered logo"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3387
-#: inc/admin/theme-options-parts.php:452
+#: inc/admin/theme-options/options-header.php:3482
+#: inc/admin/theme-options-parts.php:463
 msgctxt "theme-options"
 msgid "Second header switch point (phone)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3394
+#: inc/admin/theme-options/options-header.php:3493
 msgctxt "theme-options"
 msgid "To skip this switch point set it to 0."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3423
+#: inc/admin/theme-options/options-header.php:3523
 msgctxt "theme-options"
 msgid "Header background"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3434
+#: inc/admin/theme-options/options-header.php:3534
 msgctxt "theme-options"
 msgid "Menu icon (hamburger)"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3456
+#: inc/admin/theme-options/options-header.php:3556
 msgctxt "theme-options"
 msgid "Icon background"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3471
+#: inc/admin/theme-options/options-header.php:3571
 msgctxt "theme-options"
 msgid "Leave empty to use accent color."
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3505
-#: inc/admin/theme-options/options-header.php:3509
+#: inc/admin/theme-options/options-header.php:3605
+#: inc/admin/theme-options/options-header.php:3609
 msgctxt "theme-options"
 msgid "Floating mobile header"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3518
+#: inc/admin/theme-options/options-header.php:3618
 msgctxt "theme-options"
 msgid "Sticky mobile header"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3529
+#: inc/admin/theme-options/options-header.php:3629
 msgctxt "theme-options"
 msgid "Mobile navigation area"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3548
+#: inc/admin/theme-options/options-header.php:3648
 msgctxt "theme-options"
 msgid "Submenu font"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3566
+#: inc/admin/theme-options/options-header.php:3666
 msgctxt "theme-options"
 msgid "Normal font color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3572
+#: inc/admin/theme-options/options-header.php:3672
 msgctxt "theme-options"
 msgid "Active & hover font color"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3611
+#: inc/admin/theme-options/options-header.php:3711
 msgctxt "theme-options"
 msgid "Menu background"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3623
+#: inc/admin/theme-options/options-header.php:3723
 msgctxt "theme-options"
 msgid "Website overlay on mobile menu opening"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3636
+#: inc/admin/theme-options/options-header.php:3736
 msgctxt "theme-options"
 msgid "Maximum background width"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3644
+#: inc/admin/theme-options/options-header.php:3744
 msgctxt "theme-options"
 msgid "Mobile menu position"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:3648
+#: inc/admin/theme-options/options-header.php:3748
 msgctxt "theme-options"
 msgid "Mobile menu slides from"
 msgstr ""
@@ -12313,8 +12340,8 @@ msgstr ""
 
 #: inc/admin/theme-options/options-stripes.php:65
 #: inc/admin/theme-options/options.php:111
-#: inc/admin/theme-options-parts.php:434 inc/admin/theme-options-parts.php:447
-#: inc/admin/theme-options-parts.php:460 inc/deprecated-functions.php:416
+#: inc/admin/theme-options-parts.php:445 inc/admin/theme-options-parts.php:458
+#: inc/admin/theme-options-parts.php:471 inc/deprecated-functions.php:416
 msgctxt "theme-options"
 msgid "Hide"
 msgstr ""
@@ -12430,13 +12457,13 @@ msgid "Available areas:"
 msgstr ""
 
 #: inc/admin/theme-options/options.php:153
-#: inc/admin/theme-options-parts.php:444
+#: inc/admin/theme-options-parts.php:455
 msgctxt "theme-options"
 msgid "Top bar (left)"
 msgstr ""
 
 #: inc/admin/theme-options/options.php:154
-#: inc/admin/theme-options-parts.php:445
+#: inc/admin/theme-options-parts.php:456
 msgctxt "theme-options"
 msgid "Top bar (right)"
 msgstr ""
@@ -12567,78 +12594,78 @@ msgctxt "theme-options"
 msgid "Switch after"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:429
+#: inc/admin/theme-options-parts.php:440
 msgctxt "theme-options"
 msgid "On desktops"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:446 inc/admin/theme-options-parts.php:459
+#: inc/admin/theme-options-parts.php:457 inc/admin/theme-options-parts.php:470
 msgctxt "theme-options"
 msgid "Mobile navigation"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:490
+#: inc/admin/theme-options-parts.php:501
 #: inc/mods/compatibility/woocommerce/admin/wc-cart-micro-widget-options.php:23
 msgctxt "theme-options"
 msgid "Caption"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:602
+#: inc/admin/theme-options-parts.php:618
 msgctxt "theme-options"
 msgid "Button settings"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:607
+#: inc/admin/theme-options-parts.php:623
 msgctxt "theme-options"
 msgid "Button name"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:609
+#: inc/admin/theme-options-parts.php:625
 msgctxt "theme-options"
 msgid "Button"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:619
+#: inc/admin/theme-options-parts.php:635
 msgctxt "theme-options"
 msgid "Open link in a new tab"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:625
+#: inc/admin/theme-options-parts.php:641
 msgctxt "theme-options"
 msgid "Enable smooth scroll for anchor navigation"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:661
+#: inc/admin/theme-options-parts.php:677
 msgctxt "theme-options"
 msgid "Icon settings"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:666
+#: inc/admin/theme-options-parts.php:682
 msgctxt "theme-options"
 msgid "Show icon"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:695
+#: inc/admin/theme-options-parts.php:711
 msgctxt "theme-options"
 msgid "Icon alignment"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:713
+#: inc/admin/theme-options-parts.php:729
 msgctxt "theme-options"
 msgid "Normal state"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:718 inc/admin/theme-options-parts.php:818
+#: inc/admin/theme-options-parts.php:734 inc/admin/theme-options-parts.php:834
 msgctxt "theme-options"
 msgid "Text & icon color"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:776 inc/admin/theme-options-parts.php:876
+#: inc/admin/theme-options-parts.php:792 inc/admin/theme-options-parts.php:892
 msgctxt "theme-options"
 msgid "Button background color"
 msgstr ""
 
-#: inc/admin/theme-options-parts.php:813
+#: inc/admin/theme-options-parts.php:829
 msgctxt "theme-options"
 msgid "Hover state"
 msgstr ""
@@ -13448,7 +13475,7 @@ msgid "Fancy Title Options"
 msgstr ""
 
 #: inc/admin/meta-boxes/fancy-title-meta-box.php:21
-#: inc/admin/meta-boxes/metaboxes.php:616
+#: inc/admin/meta-boxes/metaboxes.php:630
 msgctxt "backend metabox"
 msgid "Layout"
 msgstr ""
@@ -14522,7 +14549,7 @@ msgid "Custom color"
 msgstr ""
 
 #: inc/admin/meta-boxes/metaboxes.php:119
-#: inc/admin/meta-boxes/metaboxes.php:533
+#: inc/admin/meta-boxes/metaboxes.php:547
 msgctxt "backend metabox"
 msgid "none"
 msgstr ""
@@ -14663,251 +14690,263 @@ msgstr ""
 
 #: inc/admin/meta-boxes/metaboxes.php:478
 msgctxt "backend metabox"
-msgid "Top (in px)"
+msgid "Top (in px or %)"
 msgstr ""
 
 #: inc/admin/meta-boxes/metaboxes.php:479
 #: inc/admin/meta-boxes/metaboxes.php:486
+#: inc/admin/meta-boxes/metaboxes.php:493
+#: inc/admin/meta-boxes/metaboxes.php:500
 msgctxt "backend metabox"
 msgid "Leave empty to use value from theme options."
 msgstr ""
 
 #: inc/admin/meta-boxes/metaboxes.php:485
 msgctxt "backend metabox"
-msgid "Bottom (in px)"
+msgid "Right (in px or %)"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:502
+#: inc/admin/meta-boxes/metaboxes.php:492
+msgctxt "backend metabox"
+msgid "Bottom (in px or %)"
+msgstr ""
+
+#: inc/admin/meta-boxes/metaboxes.php:499
+msgctxt "backend metabox"
+msgid "Left (in px or %)"
+msgstr ""
+
+#: inc/admin/meta-boxes/metaboxes.php:516
 msgctxt "backend metabox"
 msgid "Slideshow Options"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:530
+#: inc/admin/meta-boxes/metaboxes.php:544
 msgctxt "backend metabox"
 msgid "Slideshow(s)"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:533
+#: inc/admin/meta-boxes/metaboxes.php:547
 msgctxt "backend metabox"
 msgid "if non selected, all slideshows will be displayed."
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:533
+#: inc/admin/meta-boxes/metaboxes.php:547
 msgctxt "backend metabox"
 msgid "Edit slideshows"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:544
+#: inc/admin/meta-boxes/metaboxes.php:558
 msgctxt "backend metabox"
 msgid "Slider layout"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:549
+#: inc/admin/meta-boxes/metaboxes.php:563
 msgctxt "backend metabox"
 msgid "full-width"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:550
+#: inc/admin/meta-boxes/metaboxes.php:564
 msgctxt "backend metabox"
 msgid "content-width"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:557
+#: inc/admin/meta-boxes/metaboxes.php:571
 msgctxt "backend metabox"
 msgid "Slider proportions"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:565
+#: inc/admin/meta-boxes/metaboxes.php:579
 msgctxt "backend metabox"
 msgid "Images sizing "
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:570
+#: inc/admin/meta-boxes/metaboxes.php:584
 msgctxt "backend metabox"
 msgid "fit (preserve proportions)"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:571
+#: inc/admin/meta-boxes/metaboxes.php:585
 msgctxt "backend metabox"
 msgid "fill the viewport (crop)"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:578
+#: inc/admin/meta-boxes/metaboxes.php:592
 msgctxt "backend metabox"
 msgid "On page load slideshow is "
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:583
+#: inc/admin/meta-boxes/metaboxes.php:597
 msgctxt "backend metabox"
 msgid "playing"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:584
+#: inc/admin/meta-boxes/metaboxes.php:598
 msgctxt "backend metabox"
 msgid "paused"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:591
+#: inc/admin/meta-boxes/metaboxes.php:605
 msgctxt "backend metabox"
 msgid "Autoslide interval (in milliseconds)"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:599
+#: inc/admin/meta-boxes/metaboxes.php:613
 msgctxt "backend metabox"
 msgid "Hide captions"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:621
+#: inc/admin/meta-boxes/metaboxes.php:635
 msgctxt "backend metabox"
 msgid "Fullscreen slideshow"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:622
+#: inc/admin/meta-boxes/metaboxes.php:636
 msgctxt "backend metabox"
 msgid "Fullscreen slideshow + text area"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:628
+#: inc/admin/meta-boxes/metaboxes.php:642
 msgctxt "backend metabox"
 msgid "Background under slideshow"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:637
+#: inc/admin/meta-boxes/metaboxes.php:651
 msgctxt "backend metabox"
 msgid "Show pixel overlay"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:642
+#: inc/admin/meta-boxes/metaboxes.php:656
 msgctxt "backend metabox"
 msgid "Top padding"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:650
+#: inc/admin/meta-boxes/metaboxes.php:664
 msgctxt "backend metabox"
 msgid "Bottom padding"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:658
+#: inc/admin/meta-boxes/metaboxes.php:672
 msgctxt "backend metabox"
 msgid "Side paddings"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:666
+#: inc/admin/meta-boxes/metaboxes.php:680
 msgctxt "backend metabox"
 msgid "Inactive image transparency (%)"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:673
+#: inc/admin/meta-boxes/metaboxes.php:687
 msgctxt "backend metabox"
 msgid "Thumbnails"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:678
+#: inc/admin/meta-boxes/metaboxes.php:692
 msgctxt "backend metabox"
 msgid "Show by default"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:679
+#: inc/admin/meta-boxes/metaboxes.php:693
 msgctxt "backend metabox"
 msgid "Hide by default"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:680
+#: inc/admin/meta-boxes/metaboxes.php:694
 msgctxt "backend metabox"
 msgid "Disable"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:686
+#: inc/admin/meta-boxes/metaboxes.php:700
 msgctxt "backend metabox"
 msgid "Thumbnails width"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:694
+#: inc/admin/meta-boxes/metaboxes.php:708
 msgctxt "backend metabox"
 msgid "Thumbnails height"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:702
+#: inc/admin/meta-boxes/metaboxes.php:716
 msgctxt "backend metabox"
 msgid "Autoplay"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:707
+#: inc/admin/meta-boxes/metaboxes.php:721
 msgctxt "backend metabox"
 msgid "Play"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:708
+#: inc/admin/meta-boxes/metaboxes.php:722
 msgctxt "backend metabox"
 msgid "Paused"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:714
+#: inc/admin/meta-boxes/metaboxes.php:728
 msgctxt "backend metabox"
 msgid "Autoplay speed"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:723
+#: inc/admin/meta-boxes/metaboxes.php:737
 msgctxt "backend metabox"
 msgid "Landscape images"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:749
+#: inc/admin/meta-boxes/metaboxes.php:763
 msgctxt "backend metabox"
 msgid "Portrait images"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:774
+#: inc/admin/meta-boxes/metaboxes.php:788
 msgctxt "backend metabox"
 msgid "Choose slider "
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:788
+#: inc/admin/meta-boxes/metaboxes.php:802
 msgctxt "backend metabox"
 msgid "Choose slider"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:802
+#: inc/admin/meta-boxes/metaboxes.php:816
 msgctxt "backend metabox"
 msgid "Enable slideshow background and paddings"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:821
+#: inc/admin/meta-boxes/metaboxes.php:835
 msgctxt "backend metabox"
 msgid "Content Area Options"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:829
+#: inc/admin/meta-boxes/metaboxes.php:843
 msgctxt "backend metabox"
 msgid "Display content area"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:834
+#: inc/admin/meta-boxes/metaboxes.php:848
 msgctxt "backend metabox"
 msgid "no"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:835
+#: inc/admin/meta-boxes/metaboxes.php:849
 msgctxt "backend metabox"
 msgid "first page"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:836
+#: inc/admin/meta-boxes/metaboxes.php:850
 msgctxt "backend metabox"
 msgid "all pages"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:843
+#: inc/admin/meta-boxes/metaboxes.php:857
 msgctxt "backend metabox"
 msgid "Content area position"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:848
+#: inc/admin/meta-boxes/metaboxes.php:862
 msgctxt "backend metabox"
 msgid "Before items"
 msgstr ""
 
-#: inc/admin/meta-boxes/metaboxes.php:849
+#: inc/admin/meta-boxes/metaboxes.php:863
 msgctxt "backend metabox"
 msgid "After items"
 msgstr ""
@@ -14957,7 +14996,7 @@ msgctxt "admin status"
 msgid "by %s"
 msgstr ""
 
-#: inc/admin/theme-options/options-header.php:1894
+#: inc/admin/theme-options/options-header.php:1969
 msgctxt "theme options"
 msgid "Color"
 msgstr ""
@@ -15488,7 +15527,7 @@ msgctxt "vc inline dummy"
 msgid "Blog Carousel"
 msgstr ""
 
-#: inc/shortcodes/includes/blog-masonry/blog-masonry.php:864
+#: inc/shortcodes/includes/blog-masonry/blog-masonry.php:854
 msgctxt "vc inline dummy"
 msgid "Blog Masonry & Grid"
 msgstr ""
@@ -15533,9 +15572,9 @@ msgctxt "vc inline dummy"
 msgid "Products Masonry & Grid"
 msgstr ""
 
-#: inc/shortcodes/includes/blog-carousel/blog-carousel.php:102
-#: inc/shortcodes/includes/blog-list/blog-list.php:131
-#: inc/shortcodes/includes/blog-masonry/blog-masonry.php:110
+#: inc/shortcodes/includes/blog-carousel/blog-carousel.php:233
+#: inc/shortcodes/includes/blog-list/blog-list.php:299
+#: inc/shortcodes/includes/blog-masonry/blog-masonry.php:310
 #: inc/shortcodes/vc-bridges/the7-blog-carousel-bridge.php:712
 #: inc/shortcodes/vc-bridges/the7-blog-list-bridge.php:658
 #: inc/shortcodes/vc-bridges/the7-blog-masonry-bridge.php:636

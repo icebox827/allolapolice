@@ -13,23 +13,6 @@ $options[] = array(
 	'id'   => 'advanced-settings',
 );
 
-$options[] = array(
-	'name' => _x( 'Margin for pages, posts & templates', 'theme-options', 'the7mk2' ),
-	'type' => 'block',
-);
-
-$options['general-page_content_margin'] = array(
-	'name'   => _x( 'Margin', 'theme-options', 'the7mk2' ),
-	'id'     => 'general-page_content_margin',
-	'type'   => 'spacing',
-	'std'    => '50px 50px',
-	'units'  => 'px',
-	'fields' => array(
-		_x( 'Top', 'theme-options', 'the7mk2' ),
-		_x( 'Bottom', 'theme-options', 'the7mk2' ),
-	),
-);
-
 $options[] = array( 'name' => _x( 'Responsiveness', 'theme-options', 'the7mk2' ), 'type' => 'block' );
 
 $options['general-responsive'] = array(
@@ -41,34 +24,6 @@ $options['general-responsive'] = array(
 		'1' => _x( 'Enabled', 'theme-options', 'the7mk2' ),
 		'0' => _x( 'Disabled', 'theme-options', 'the7mk2' ),
 	),
-);
-
-$options[] = array( 'type' => 'divider' );
-
-$options[] = array( 'type' => 'title', 'name' => _x( 'Side padding', 'theme-options', 'the7mk2' ) );
-
-$options['general-side_content_paddings'] = array(
-	'name'  => _x( 'Side padding', 'theme-options', 'the7mk2' ),
-	'id'    => 'general-side_content_paddings',
-	'std'   => '40px',
-	'type'  => 'number',
-	'units' => 'px',
-);
-
-$options['general-switch_content_paddings'] = array(
-	'name'  => _x( 'When screen width is less then..', 'theme-options', 'the7mk2' ),
-	'id'    => 'general-switch_content_paddings',
-	'std'   => '640px',
-	'type'  => 'number',
-	'units' => 'px',
-);
-
-$options['general-mobile_side_content_paddings'] = array(
-	'name'  => _x( '..make padding', 'theme-options', 'the7mk2' ),
-	'id'    => 'general-mobile_side_content_paddings',
-	'std'   => '20px',
-	'type'  => 'number',
-	'units' => 'px',
 );
 
 $options[] = array( 'name' => _x( 'Performance', 'theme-options', 'the7mk2' ), 'type' => 'block' );

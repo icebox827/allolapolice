@@ -224,18 +224,6 @@ function dt_stylesheet_make_web_font_object( $font, $defaults = array() ) {
 }
 
 /**
- * Description here.
- *
- */
-function dt_stylesheet_maybe_web_font( $font ) {
-	$font_parts = explode( ':', $font );
-	$font_name = $font_parts[0];
-    $websafe_fonts = array_keys( presscore_options_get_safe_fonts() );
-
-    return ( ! in_array( $font_name, $websafe_fonts ) );
-}
-
-/**
  * Returns array( 'rgba', 'ie_color' ).
  *
  * @param string $color.

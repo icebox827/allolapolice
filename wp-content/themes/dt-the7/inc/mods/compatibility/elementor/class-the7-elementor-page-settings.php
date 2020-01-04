@@ -170,6 +170,24 @@ class The7_Elementor_Page_Settings {
 		return dt_stylesheet_color_hex2rgba( $color, $opacity );
 	}
 
+	public function get_page_margin_post_meta( $post_id, $control ) {
+		$margin = get_post_meta( $post_id, $control['meta'], true );
+		preg_match( '/([-0-9]*)(.*)/', $margin, $matches );
+		list( $_, $size, $unit ) = $matches;
+		$unit = $unit ?: 'px';
+
+		return compact( 'size', 'unit' );
+	}
+
+	public function update_page_margin_post_meta( $post_id, $val, $control ) {
+		$margin = '';
+		if ( $val['size'] !== '' ) {
+			$margin = $val['size'] . $val['unit'];
+		}
+
+		update_post_meta( $post_id, $control['meta'], $margin );
+	}
+
 	/**
 	 * Add scripts to auto save and reload preview.
 	 */
@@ -178,11 +196,21 @@ class The7_Elementor_Page_Settings {
 		wp_enqueue_style( 'the7-elementor-editor' );
 
 		wp_enqueue_script( 'the7-elementor-page-settings', PRESSCORE_ADMIN_URI . '/assets/js/elementor/page-settings.js', [], THE7_VERSION, true );
+
+		$controls_ids = [];
+		foreach ( $this->controls as $id => $control ) {
+			if ( isset( $control['on_change'] ) && $control['on_change'] === 'do_not_reload_page' ) {
+				continue;
+			}
+
+			$controls_ids[] = $id;
+		}
+
 		wp_localize_script(
 			'the7-elementor-page-settings',
 			'the7Elementor',
 			[
-				'controlsIds' => array_keys( $this->controls ),
+				'controlsIds' => $controls_ids,
 			]
 		);
 	}
@@ -360,6 +388,118 @@ class The7_Elementor_Page_Settings {
 							'separator' => 'none',
 							'condition' => [
 								'the7_document_show_footer_wa' => [ '1', '' ],
+							],
+						],
+					],
+				],
+			],
+			'the7_document_margins' => [
+				'args'     => [
+					'label' => __( 'Page Margins', 'the7mk2' ),
+					'tab'   => Controls_Manager::TAB_SETTINGS,
+				],
+				'controls' => [
+					'the7_document_margin_top' => [
+						'meta'    => '_dt_page_overrides_top_margin',
+						'on_save' => [ $this, 'update_page_margin_post_meta' ],
+						'on_read' => [ $this, 'get_page_margin_post_meta' ],
+						'args'    => [
+							'label'      => __( 'Top margin', 'the7mk2' ),
+							'type'       => Controls_Manager::SLIDER,
+							'default'    => [
+								'unit' => 'px',
+								'size' => '',
+							],
+							'size_units' => [ 'px', '%' ],
+							'range'      => [
+								'px' => [
+									'min'  => 0,
+									'max'  => 1000,
+									'step' => 1,
+								],
+								'%' => [
+									'min'  => 0,
+									'max'  => 100,
+									'step' => 1,
+								],
+							],
+						],
+					],
+					'the7_document_margin_right' => [
+						'meta'    => '_dt_page_overrides_right_margin',
+						'on_save' => [ $this, 'update_page_margin_post_meta' ],
+						'on_read' => [ $this, 'get_page_margin_post_meta' ],
+						'args'    => [
+							'label'      => __( 'Right margin', 'the7mk2' ),
+							'type'       => Controls_Manager::SLIDER,
+							'default'    => [
+								'unit' => 'px',
+								'size' => '',
+							],
+							'size_units' => [ 'px', '%' ],
+							'range'      => [
+								'px' => [
+									'min'  => 0,
+									'max'  => 1000,
+									'step' => 1,
+								],
+								'%' => [
+									'min'  => 0,
+									'max'  => 100,
+									'step' => 1,
+								],
+							],
+						],
+					],
+					'the7_document_margin_bottom' => [
+						'meta'    => '_dt_page_overrides_bottom_margin',
+						'on_save' => [ $this, 'update_page_margin_post_meta' ],
+						'on_read' => [ $this, 'get_page_margin_post_meta' ],
+						'args'    => [
+							'label'      => __( 'Bottom margin', 'the7mk2' ),
+							'type'       => Controls_Manager::SLIDER,
+							'default'    => [
+								'unit' => 'px',
+								'size' => '',
+							],
+							'size_units' => [ 'px', '%' ],
+							'range'      => [
+								'px' => [
+									'min'  => 0,
+									'max'  => 1000,
+									'step' => 1,
+								],
+								'%' => [
+									'min'  => 0,
+									'max'  => 100,
+									'step' => 1,
+								],
+							],
+						],
+					],
+					'the7_document_margin_left' => [
+						'meta'    => '_dt_page_overrides_left_margin',
+						'on_save' => [ $this, 'update_page_margin_post_meta' ],
+						'on_read' => [ $this, 'get_page_margin_post_meta' ],
+						'args'    => [
+							'label'      => __( 'Left margin', 'the7mk2' ),
+							'type'       => Controls_Manager::SLIDER,
+							'default'    => [
+								'unit' => 'px',
+								'size' => '',
+							],
+							'size_units' => [ 'px', '%' ],
+							'range'      => [
+								'px' => [
+									'min'  => 0,
+									'max'  => 1000,
+									'step' => 1,
+								],
+								'%' => [
+									'min'  => 0,
+									'max'  => 100,
+									'step' => 1,
+								],
 							],
 						],
 					],

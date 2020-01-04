@@ -1,12 +1,11 @@
 <?php
 /**
- * Header.
+ * Header them options.
+ *
+ * @package The7
  */
 
-// File Security Check
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 $options[] = array( 'name' => _x( 'Layout', 'theme-options', 'the7mk2' ), 'type' => 'heading', 'id' => 'layout' );
 
@@ -82,6 +81,18 @@ $options['header-classic-height'] = array(
 	'std'   => '140px',
 	'type'  => 'number',
 	'units' => 'px',
+);
+
+$options['header-classic-side-padding'] = array(
+	'id'     => 'header-classic-side-padding',
+	'name'   => _x( 'Header padding', 'theme-options', 'the7mk2' ),
+	'type'   => 'spacing',
+	'std'    => '30px 30px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+	),
 );
 
 $options['header-classic-menu-position'] = array(
@@ -176,6 +187,18 @@ $options['header-inline-height'] = array(
 	'units' => 'px',
 );
 
+$options['header-inline-side-padding'] = array(
+	'id'     => 'header-inline-side-padding',
+	'name'   => _x( 'Header padding', 'theme-options', 'the7mk2' ),
+	'type'   => 'spacing',
+	'std'    => '30px 30px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+	),
+);
+
 $options['header-inline-menu-position'] = array(
 	'id'      => 'header-inline-menu-position',
 	'name'    => _x( 'Menu position', 'theme-options', 'the7mk2' ),
@@ -235,7 +258,15 @@ $options[] = array(
 );
 
 $options[] = array(
-	'desc' => sprintf( _x( 'To display split menu You should <a href="%1$s">create</a> two separate custom menus and <a href="%2$s">assign</a> them to "Split Menu Left" and "Split Menu Right" locations.', 'theme-options', 'the7mk2' ), admin_url( 'nav-menus.php' ), admin_url( 'nav-menus.php?action=locations' ) ),
+	'desc' => sprintf(
+		_x(
+			'To display split menu You should <a href="%1$s">create</a> two separate custom menus and <a href="%2$s">assign</a> them to "Split Menu Left" and "Split Menu Right" locations.',
+			'theme-options',
+			'the7mk2'
+		),
+		admin_url( 'nav-menus.php' ),
+		admin_url( 'nav-menus.php?action=locations' )
+	),
 	'type' => 'info',
 );
 
@@ -245,6 +276,18 @@ $options['header-split-height'] = array(
 	'std'   => '100px',
 	'type'  => 'number',
 	'units' => 'px',
+);
+
+$options['header-split-side-padding'] = array(
+	'id'     => 'header-split-side-padding',
+	'name'   => _x( 'Header padding', 'theme-options', 'the7mk2' ),
+	'type'   => 'spacing',
+	'std'    => '30px 30px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+	),
 );
 
 $options['header-split-menu-position'] = array(
@@ -376,6 +419,18 @@ $options['layout-top_line-height'] = array(
 	'units' => 'px',
 );
 
+$options['header-top_line-side-padding'] = array(
+	'id'     => 'header-top_line-side-padding',
+	'name'   => _x( 'Top line padding', 'theme-options', 'the7mk2' ),
+	'type'   => 'spacing',
+	'std'    => '30px 30px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+	),
+);
+
 $options['layout-top_line-logo-position'] = array(
 	'id'      => 'layout-top_line-logo-position',
 	'name'    => _x( 'Logo & menu button position', 'theme-options', 'the7mk2' ),
@@ -419,7 +474,6 @@ $options['layout-top_line-is_fullwidth'] = array(
 		),
 	),
 );
-
 
 
 /**
@@ -655,34 +709,40 @@ $options[] = array(
 	'type' => 'title',
 );
 
-presscore_options_apply_template( $options, 'side-header-content', 'header-overlay', array(
-	'content-width'    => array(
-		'name' => _x( 'Navigation area width', 'theme-options', 'the7mk2' ),
-		'std'  => '400px',
-	),
-	'content-position' => array(
-		'name'    => _x( 'Navigation area position', 'theme-options', 'the7mk2' ),
-		'options' => array(
-			'left'   => array(
-				'src' => '/inc/admin/assets/images/header-overlay-content-position-left.gif',
-			),
-			'center' => array(
-				'src' => '/inc/admin/assets/images/header-overlay-content-position-center.gif',
-			),
-			'right'  => array(
-				'src' => '/inc/admin/assets/images/header-overlay-content-position-right.gif',
+presscore_options_apply_template(
+	$options,
+	'side-header-content',
+	'header-overlay',
+	array(
+		'content-width'    => array(
+			'name' => _x( 'Navigation area width', 'theme-options', 'the7mk2' ),
+			'std'  => '400px',
+		),
+		'content-position' => array(
+			'name'    => _x( 'Navigation area position', 'theme-options', 'the7mk2' ),
+			'options' => array(
+				'left'   => array(
+					'src' => '/inc/admin/assets/images/header-overlay-content-position-left.gif',
+				),
+				'center' => array(
+					'src' => '/inc/admin/assets/images/header-overlay-content-position-center.gif',
+				),
+				'right'  => array(
+					'src' => '/inc/admin/assets/images/header-overlay-content-position-right.gif',
+				),
 			),
 		),
 	),
-), array(
 	array(
 		array(
-			'field'    => 'header_navigation',
-			'operator' => '==',
-			'value'    => 'overlay',
+			array(
+				'field'    => 'header_navigation',
+				'operator' => '==',
+				'value'    => 'overlay',
+			),
 		),
-	),
-) );
+	)
+);
 
 $options['header-overlay-content-padding'] = array(
 	'id'         => 'header-overlay-content-padding',
@@ -703,15 +763,21 @@ $options[] = array(
 	'type' => 'title',
 );
 
-presscore_options_apply_template( $options, 'side-header-menu', 'header-overlay', array(), array(
+presscore_options_apply_template(
+	$options,
+	'side-header-menu',
+	'header-overlay',
+	array(),
 	array(
 		array(
-			'field'    => 'header_navigation',
-			'operator' => '==',
-			'value'    => 'overlay',
+			array(
+				'field'    => 'header_navigation',
+				'operator' => '==',
+				'value'    => 'overlay',
+			),
 		),
-	),
-) );
+	)
+);
 
 $options[] = array( 'type' => 'js_hide_end' );
 
@@ -992,7 +1058,11 @@ $options[] = array(
 $options['header-side-show_elements'] = array(
 	'id'      => 'header-side-show_elements',
 	'name'    => _x( 'Microwidgets', 'theme-options', 'the7mk2' ),
-	'desc'    => _x( 'When enabled, microwidgets can  be rearranged below. You can set them up in dedicated "Microwidgets" tab.', 'theme-options', 'the7mk2' ),
+	'desc'    => _x(
+		'When enabled, microwidgets can  be rearranged below. You can set them up in dedicated "Microwidgets" tab.',
+		'theme-options',
+		'the7mk2'
+	),
 	'type'    => 'images',
 	'class'   => 'small',
 	'std'     => '0',
@@ -1079,14 +1149,14 @@ $options['header-top_line-elements'] = array(
 	'palette_title' => _x( 'Inactive microwidgets', 'theme-options', 'the7mk2' ),
 	'items'         => presscore_options_get_header_layout_elements(),
 	'fields'        => array(
-		'top_bar_left'    => array(
-            'title' => _x( 'Microwidgets in top bar (left)', 'theme-options', 'the7mk2' ),
-            'class' => 'field-blue',
-        ),
-        'top_bar_right'   => array(
-            'title' => _x( 'Microwidgets in top bar (right)', 'theme-options', 'the7mk2' ),
-            'class' => 'field-blue',
-        ),
+		'top_bar_left'   => array(
+			'title' => _x( 'Microwidgets in top bar (left)', 'theme-options', 'the7mk2' ),
+			'class' => 'field-blue',
+		),
+		'top_bar_right'  => array(
+			'title' => _x( 'Microwidgets in top bar (right)', 'theme-options', 'the7mk2' ),
+			'class' => 'field-blue',
+		),
 		'side_top_line'  => array(
 			'title' => _x( 'Microwidgets in top line (left)', 'theme-options', 'the7mk2' ),
 			'class' => 'field-red',
@@ -1396,7 +1466,11 @@ include dirname( __FILE__ ) . '/options-header/text-micro-widgets.php';
 include dirname( __FILE__ ) . '/options-header/menu-micro-widgets.php';
 include dirname( __FILE__ ) . '/options-header/social-icons-micro-widget.php';
 
-$options[] = array( 'name' => _x( 'Top bar', 'theme-options', 'the7mk2' ), 'type' => 'heading', 'id' => 'topbar' );
+$options[] = array(
+	'name' => _x( 'Top bar', 'theme-options', 'the7mk2' ),
+	'type' => 'heading',
+	'id'   => 'topbar',
+);
 
 $options[] = array( 'name' => _x( 'Top bar background', 'theme-options', 'the7mk2' ), 'type' => 'block' );
 
@@ -1413,12 +1487,13 @@ $options['top_bar-padding'] = array(
 	'name'   => _x( 'Top bar paddings', 'theme-options', 'the7mk2' ),
 	'id'     => 'top_bar-padding',
 	'type'   => 'spacing',
-	'std'    => '0px 0px 0px',
-	'units'  => 'px',
+	'std'    => '0px 0px 0px 0px',
+	'units'  => 'px|%',
 	'fields' => array(
 		_x( 'Top', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
 		_x( 'Bottom', 'theme-options', 'the7mk2' ),
-		_x( 'Side', 'theme-options', 'the7mk2' ),
+		_x( 'Left', 'theme-options', 'the7mk2' ),
 	),
 );
 
@@ -1898,7 +1973,7 @@ $options['header-slide_out-overlay-bg-color-style'] = array(
 	'std'     => 'accent',
 	'options' => array(
 		'accent'   => _x( 'Accent', 'theme-options', 'the7mk2' ),
-		'color'    =>_x( 'Custom color', 'theme-options', 'the7mk2' ),
+		'color'    => _x( 'Custom color', 'theme-options', 'the7mk2' ),
 		'gradient' => _x( 'Custom gradient', 'theme-options', 'the7mk2' ),
 	),
 );
@@ -1967,7 +2042,11 @@ $options['header-menu-icon-size'] = array(
 $options['header-menu-show_next_lvl_icons'] = array(
 	'id'   => 'header-menu-show_next_lvl_icons',
 	'name' => _x( 'Show next level indicator arrows', 'theme-options', 'the7mk2' ),
-	'desc' => _x( 'Icons are always visible if parent menu items are clickable (for side and overlay headers).', 'theme-options', 'the7mk2' ),
+	'desc' => _x(
+		'Icons are always visible if parent menu items are clickable (for side and overlay headers).',
+		'theme-options',
+		'the7mk2'
+	),
 	'type' => 'checkbox',
 	'std'  => 1,
 );
@@ -1987,8 +2066,8 @@ $options['header-menu-subtitle-typography'] = array(
 	'id'   => 'header-menu-subtitle-typography',
 	'type' => 'typography',
 	'std'  => array(
-		'font_family'    => 'Arial',
-		'font_size'      => 10,
+		'font_family' => 'Arial',
+		'font_size'   => 10,
 	),
 );
 
@@ -2049,8 +2128,8 @@ $options['header-menu-active_item-font-color-style'] = array(
 	'std'     => 'accent',
 	'options' => array(
 		'accent'   => _x( 'Accent', 'theme-options', 'the7mk2' ),
-		'color'    =>_x( 'Custom color', 'theme-options', 'the7mk2' ),
-		'gradient' =>_x( 'Custom gradient', 'theme-options', 'the7mk2' ),
+		'color'    => _x( 'Custom color', 'theme-options', 'the7mk2' ),
+		'gradient' => _x( 'Custom gradient', 'theme-options', 'the7mk2' ),
 	),
 );
 
@@ -2751,11 +2830,11 @@ $options['header-menu-submenu-bg-width'] = array(
 );
 
 $options['header-menu-submenu-bg-padding'] = array(
-	'name'   => _x( 'Submenu background paddings', 'theme-options', 'the7mk2' ),
-	'id'     => 'header-menu-submenu-bg-padding',
-	'type'   => 'spacing',
-	'std'    => '10px 10px 10px 10px',
-	'units'  => 'px',
+	'name'  => _x( 'Submenu background paddings', 'theme-options', 'the7mk2' ),
+	'id'    => 'header-menu-submenu-bg-padding',
+	'type'  => 'spacing',
+	'std'   => '10px 10px 10px 10px',
+	'units' => 'px',
 );
 
 $options[] = array( 'name' => _x( 'Submenu items', 'theme-options', 'the7mk2' ), 'type' => 'block' );
@@ -2783,7 +2862,11 @@ $options['header-menu-submenu-icon-size'] = array(
 $options['header-menu-submenu-show_next_lvl_icons'] = array(
 	'id'   => 'header-menu-submenu-show_next_lvl_icons',
 	'name' => _x( 'Show next level indicator arrows', 'theme-options', 'the7mk2' ),
-	'desc' => _x( 'Icons are always visible if parent menu items are clickable (for side and overlay headers).', 'theme-options', 'the7mk2' ),
+	'desc' => _x(
+		'Icons are always visible if parent menu items are clickable (for side and overlay headers).',
+		'theme-options',
+		'the7mk2'
+	),
 	'type' => 'checkbox',
 	'std'  => 1,
 );
@@ -2796,14 +2879,17 @@ $options['header-menu-submenu-subtitle-typography'] = array(
 	'id'   => 'header-menu-submenu-subtitle-typography',
 	'type' => 'typography',
 	'std'  => array(
-		'font_family'    => 'Arial',
-		'font_size'      => 10,
+		'font_family' => 'Arial',
+		'font_size'   => 10,
 	),
 );
 
 $options[] = array( 'type' => 'divider' );
 
-$options[] = array( 'name' => _x( 'Submenu font, icons & descriptions colors', 'theme-options', 'the7mk2' ), 'type' => 'title' );
+$options[] = array(
+	'name' => _x( 'Submenu font, icons & descriptions colors', 'theme-options', 'the7mk2' ),
+	'type' => 'title',
+);
 
 $options['header-menu-submenu-font-color'] = array(
 	'id'   => 'header-menu-submenu-font-color',
@@ -3353,70 +3439,84 @@ $options[] = array(
 	'type' => 'block',
 );
 
-presscore_options_apply_template( $options, 'mobile-header', 'header-mobile-first_switch', array(
-	'after'  => array(
-		'std'  => '1024',
-		'desc' => _x( 'To skip this switch point set the same value as for the second (phone) point.', 'theme-options', 'the7mk2' ),
-	),
-	'height' => array( 'std' => '150' ),
-	'layout' => array(
-		'type'    => 'images',
-		'options' => array(
-			'left_right'   => array(
-				'title' => _x( 'Left menu + right logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-l-r.gif',
-			),
-			'left_center'  => array(
-				'title' => _x( 'Left menu + centered logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-l-c.gif',
-			),
-			'right_left'   => array(
-				'title' => _x( 'Right menu + left logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-r-l.gif',
-			),
-			'right_center' => array(
-				'title' => _x( 'Right menu + centered logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-r-c.gif',
+presscore_options_apply_template(
+	$options,
+	'mobile-header',
+	'header-mobile-first_switch',
+	array(
+		'after'  => array(
+			'std'  => '1024',
+			'desc' => _x(
+				'To skip this switch point set the same value as for the second (phone) point.',
+				'theme-options',
+				'the7mk2'
 			),
 		),
-		'class'   => 'small',
-	),
-) );
+		'height' => array( 'std' => '150' ),
+		'layout' => array(
+			'type'    => 'images',
+			'options' => array(
+				'left_right'   => array(
+					'title' => _x( 'Left menu + right logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-l-r.gif',
+				),
+				'left_center'  => array(
+					'title' => _x( 'Left menu + centered logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-l-c.gif',
+				),
+				'right_left'   => array(
+					'title' => _x( 'Right menu + left logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-r-l.gif',
+				),
+				'right_center' => array(
+					'title' => _x( 'Right menu + centered logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-firstswitch-layout-r-c.gif',
+				),
+			),
+			'class'   => 'small',
+		),
+	)
+);
 
 $options[] = array(
 	'name' => _x( 'Second header switch point (phone)', 'theme-options', 'the7mk2' ),
 	'type' => 'block',
 );
 
-presscore_options_apply_template( $options, 'mobile-header', 'header-mobile-second_switch', array(
-	'after'  => array(
-		'std'  => '760',
-		'desc' => _x( 'To skip this switch point set it to 0.', 'theme-options', 'the7mk2' ),
-	),
-	'height' => array( 'std' => '100' ),
-	'layout' => array(
-		'type'    => 'images',
-		'options' => array(
-			'left_right'   => array(
-				'title' => _x( 'Left menu + right logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-l-r.gif',
-			),
-			'left_center'  => array(
-				'title' => _x( 'Left menu + centered logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-l-c.gif',
-			),
-			'right_left'   => array(
-				'title' => _x( 'Right menu + left logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-r-l.gif',
-			),
-			'right_center' => array(
-				'title' => _x( 'Right menu + centered logo', 'theme-options', 'the7mk2' ),
-				'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-r-c.gif',
-			),
+presscore_options_apply_template(
+	$options,
+	'mobile-header',
+	'header-mobile-second_switch',
+	array(
+		'after'  => array(
+			'std'  => '760',
+			'desc' => _x( 'To skip this switch point set it to 0.', 'theme-options', 'the7mk2' ),
 		),
-		'class'   => 'small',
-	),
-) );
+		'height' => array( 'std' => '100' ),
+		'layout' => array(
+			'type'    => 'images',
+			'options' => array(
+				'left_right'   => array(
+					'title' => _x( 'Left menu + right logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-l-r.gif',
+				),
+				'left_center'  => array(
+					'title' => _x( 'Left menu + centered logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-l-c.gif',
+				),
+				'right_left'   => array(
+					'title' => _x( 'Right menu + left logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-r-l.gif',
+				),
+				'right_center' => array(
+					'title' => _x( 'Right menu + centered logo', 'theme-options', 'the7mk2' ),
+					'src'   => '/inc/admin/assets/images/header-mobile-secondswitch-layout-r-c.gif',
+				),
+			),
+			'class'   => 'small',
+		),
+	)
+);
 
 $options[] = array( 'name' => _x( 'Mobile header', 'theme-options', 'the7mk2' ), 'type' => 'block' );
 
@@ -3534,9 +3634,9 @@ $options[] = array(
 );
 
 $options['header-mobile-menu-typography'] = array(
-	'id'      => 'header-mobile-menu-typography',
-	'type'    => 'typography',
-	'std'     => array(
+	'id'   => 'header-mobile-menu-typography',
+	'type' => 'typography',
+	'std'  => array(
 		'font_family'    => 'Arial',
 		'font_size'      => 16,
 		'text_transform' => 'none',

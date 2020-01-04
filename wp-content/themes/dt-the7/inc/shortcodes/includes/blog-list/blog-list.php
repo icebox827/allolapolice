@@ -128,7 +128,7 @@ if ( ! class_exists( 'DT_Shortcode_BlogList', false ) ):
 				'content_line_height'            => '',
 				'content_bottom_margin'          => '5px',
 				'read_more_button'               => 'default_link',
-				'read_more_button_text'          => _x( 'Read more', 'the7 shortcode', 'the7mk2' ),
+				'read_more_button_text'          => '',
 				'show_categories_filter'         => 'n',
 				'show_orderby_filter'            => 'n',
 				'show_order_filter'              => 'n',
@@ -265,24 +265,15 @@ if ( ! class_exists( 'DT_Shortcode_BlogList', false ) ):
 					$layout = $this->get_att( 'layout' );
 					$image_width = ( array_key_exists( $layout, $layout_image_width_map ) ? $layout_image_width_map[ $layout ] : '100%' );
 					$image_paddings = $this->sanitize_paddings( $this->get_att( 'image_paddings' ) );
+					$image_is_wide = ( 'wide' === $config->get( 'post.preview.width' ) && ! $config->get( 'all_the_same_width' ) );
 
-					$image_width_config = new The7_Image_List_Width_Calculator_Config( array(
-						'content_width' => of_get_option( 'general-content_width' ),
-						'side_padding' => of_get_option( 'general-side_content_paddings' ),
-						'mobile_side_padding' => of_get_option( 'general-mobile_side_content_paddings' ),
-						'side_padding_switch' => of_get_option( 'general-switch_content_paddings' ),
-						'sidebar_enabled' => ( 'disabled' !== $config->get( 'sidebar_position' ) ),
-						'sidebar_on_mobile' => ( ! $config->get( 'sidebar_hide_on_mobile' ) ),
-						'sidebar_width' => of_get_option( 'sidebar-width' ),
-						'sidebar_gap' => of_get_option( 'sidebar-distance_to_content' ),
-						'sidebar_switch' => of_get_option( 'sidebar-responsiveness' ),
-						'image_is_wide' => ( 'wide' === $config->get( 'post.preview.width' ) && ! $config->get( 'all_the_same_width' ) ),
-					    'image_width' => $image_width,
-						'mobile_switch' => $this->get_att( 'mobile_switch_width' ),
-					    'right_padding' => $image_paddings[1],
-					    'left_padding' => $image_paddings[3],
-					) );
-					$image_width_calc = new The7_Image_List_Width_Calculator( $image_width_config );
+					$resize_options = the7_calculate_image_resize_options_for_list_layout(
+						$image_width,
+						$this->get_att( 'mobile_switch_width' ),
+						$image_paddings[1],
+						$image_paddings[3],
+						$image_is_wide
+					);
 
 					// Post media.
 					$thumb_args = apply_filters( 'dt_post_thumbnail_args', array(
@@ -290,7 +281,7 @@ if ( ! class_exists( 'DT_Shortcode_BlogList', false ) ):
 						'class'  => 'post-thumbnail-rollover',
 						'href'   => get_permalink(),
 						'wrap'   => '<a %HREF% %CLASS% %CUSTOM%><img %IMG_CLASS% %SRC% %ALT% %IMG_TITLE% %SIZE% />' . $show_icon_zoom . '</a>',
-						'options' => $image_width_calc->calculate_options(),
+						'options' => $resize_options,
 						'echo'   => false,
 					) );
 
@@ -305,7 +296,7 @@ if ( ! class_exists( 'DT_Shortcode_BlogList', false ) ):
 				}
 
 				$details_btn_style = $this->get_att( 'read_more_button' );
-				$details_btn_text = $this->get_att( 'read_more_button_text' );
+				$details_btn_text = $this->get_att( 'read_more_button_text', esc_html_x( 'Read more', 'the7 shortcode', 'the7mk2' ) );
 				$details_btn_class = ('default_button' === $details_btn_style ? array( 'dt-btn-s', 'dt-btn' ) : array());
 
 				presscore_get_template_part( 'shortcodes', 'blog-list/tpl-layout', $this->get_att( 'layout' ), array(

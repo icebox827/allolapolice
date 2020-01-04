@@ -997,3 +997,36 @@ if ( ! function_exists( 'presscore_get_royal_slider' ) ) :
 	}
 
 endif;
+
+if ( ! function_exists( 'presscore_filter_web_fonts' ) ) :
+
+	/**
+	 * @TODO: Remove in 8.1.0
+	 *
+	 * @deprecated 8.0.1
+	 */
+	function presscore_filter_web_fonts( $fonts ) {
+		$web_fonts = array();
+		foreach ( $fonts as $font ) {
+			if ( dt_stylesheet_maybe_web_font( $font ) ) {
+				$web_fonts[] = $font;
+			}
+		}
+
+		return $web_fonts;
+	}
+
+endif;
+
+/**
+ * @TODO: Remove in 8.1.0
+ *
+ * @deprecated 8.0.1
+ */
+function dt_stylesheet_maybe_web_font( $font ) {
+	$font_parts = explode( ':', $font );
+	$font_name = $font_parts[0];
+	$websafe_fonts = array_keys( presscore_options_get_safe_fonts() );
+
+	return ( ! in_array( $font_name, $websafe_fonts ) );
+}

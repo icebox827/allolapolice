@@ -496,12 +496,21 @@ if ( ! function_exists( 'presscore_top_bar_contact_element' ) ) :
 
 			$class = presscore_get_mini_widget_class( $el_id, $class );
 
+			$widget_target = '';
+			if ( of_get_option( $el_id . '-target' ) ) {
+				$widget_target = 'target="_blank"';
+			}
+			$widget_link = of_get_option( $el_id . '-url' ) ? of_get_option( $el_id . '-url' ) : '';
+
 			if(of_get_option( $el_id . '-icon') == 'custom'){
 				$widget_icon = '<i class=" ' . of_get_option( $el_id . '-custom-icon' ) . '"></i>';
 			}
 
-
-			echo '<span class="' . implode( ' ', $class ) . '">' . $widget_icon .  $caption . '</span>';
+			if($widget_link){
+				echo '<a href="' . esc_attr( $widget_link ) . '"  class="' . implode( ' ', $class ) . '">' . $widget_icon .  $caption . '</a>';
+			}else{
+				echo '<span class="' . implode( ' ', $class ) . '">' . $widget_icon .  $caption . '</span>';
+			}
 		}
 	}
 

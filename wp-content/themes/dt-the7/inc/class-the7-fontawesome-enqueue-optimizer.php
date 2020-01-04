@@ -57,7 +57,7 @@ class The7_FontAwesome_Enqueue_Optimizer {
 	 * @return bool
 	 */
 	public function disable_vc_font_awesome( $src, $handle ) {
-		if ( $handle === 'font-awesome' ) {
+		if ( in_array( $handle, array( 'font-awesome', 'vc_font_awesome_5_shims', 'vc_font_awesome_5' ), true ) ) {
 			return false;
 		}
 

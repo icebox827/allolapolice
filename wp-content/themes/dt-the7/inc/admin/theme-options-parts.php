@@ -406,6 +406,17 @@ if ( ! class_exists( 'Presscore_Lib_Options_MobileHeaderTemplate', false ) ) :
 				'units' => 'px',
 			);
 
+			$_fields['side-padding'] = array(
+				'name'   => _x( 'Header padding', 'theme-options', 'the7mk2' ),
+				'type'   => 'spacing',
+				'std'    => '30px 30px',
+				'units'  => 'px|%',
+				'fields' => array(
+					_x( 'Left', 'theme-options', 'the7mk2' ),
+					_x( 'Right', 'theme-options', 'the7mk2' ),
+				),
+			);
+
 			return $_fields;
 		}
 	}
@@ -492,6 +503,11 @@ if ( ! class_exists( 'Presscore_Lib_Options_BasicHeaderElementTemplate', false )
 				'std'      => '',
 				'sanitize' => 'textarea',
 				'divider'  => 'top',
+			);
+			$_fields['url'] = array(
+				'name' => _x( 'Link', 'theme-options', 'the7mk2' ),
+				'type' => 'text',
+				'std'  => '',
 			);
 
 			$_fields['icon'] = array(

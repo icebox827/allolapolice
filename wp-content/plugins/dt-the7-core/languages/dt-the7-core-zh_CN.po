@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DT The7 Core\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dt-the7-core\n"
-"POT-Creation-Date: 2019-12-03 15:38:23+00:00\n"
+"POT-Creation-Date: 2019-12-30 13:15:36+00:00\n"
 "PO-Revision-Date: 2016-12-04 16:56+0000\n"
 "Last-Translator: 刁 可永 <dky@yntcjz.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -3274,9 +3274,9 @@ msgstr "项目归档： %s"
 #: mods/portfolio/public/mod-portfolio-helpers.php:159
 #: mods/portfolio/public/mod-portfolio-helpers.php:372
 #: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:242
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:290
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:279
 #: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:296
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:341
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:331
 #, fuzzy
 msgid "Post image"
 msgstr "肖像图像"
@@ -6208,13 +6208,13 @@ msgid "Photos Scroller"
 msgstr "照片滚动条"
 
 #: mods/portfolio/public/shortcodes/portfolio/portfolio.php:26
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:941
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:931
 msgctxt "vc inline dummy"
 msgid "Portfolio Masonry & Grid"
 msgstr "项目砖石砌体&网格"
 
 # @ the7mk2
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:802
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:791
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Portfolio Carousel"

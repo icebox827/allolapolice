@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php do_action( 'presscore_main_container_begin' ); ?>
 
 	<div class="main-gradient"></div>
-	<div class="wf-wrap">
+	<div class="wf-wrap" <?php the7_main_container_wrap_style() ?>>
 	<div class="wf-container-main">
 
 	<?php do_action( 'presscore_before_content' ); ?>

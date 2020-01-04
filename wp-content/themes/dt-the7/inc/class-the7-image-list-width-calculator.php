@@ -37,17 +37,8 @@ class The7_Image_List_Width_Calculator {
 
 	protected function get_content_width( $base_width ) {
 		$mobile_sidebar_width = $this->get_sidebar_width( $base_width );
-		$mobile_side_padding = $this->get_content_padding( $base_width ) * 2;
 
-		return ( $base_width - $mobile_sidebar_width - $mobile_side_padding );
-	}
-
-	protected function get_content_padding( $content_width ) {
-		if ( $content_width <= $this->config->get_side_padding_switch() ) {
-			return $this->config->get_mobile_side_padding();
-		}
-
-		return $this->config->get_side_padding();
+		return ( $base_width - $mobile_sidebar_width );
 	}
 
 	protected function get_desktop_width() {
@@ -71,8 +62,7 @@ class The7_Image_List_Width_Calculator {
 			return 0;
 		}
 
-		$content_padding = $this->get_content_padding( $content_width );
-		$sidebar_width = $this->sanitize_dimension( $this->config->get_sidebar_width(), ( $content_width - $content_padding ) );
+		$sidebar_width = $this->sanitize_dimension( $this->config->get_sidebar_width(), $content_width );
 		$sidebar_gap = $this->config->get_sidebar_gap();
 
 		return ( $sidebar_gap + $sidebar_width - 25 );

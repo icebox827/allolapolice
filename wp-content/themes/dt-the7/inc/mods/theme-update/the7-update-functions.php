@@ -819,3 +819,10 @@ function the7_update_790_db_version() {
 function the7_update_791_db_version() {
 	The7_Install::update_db_version( '7.9.1' );
 }
+
+/**
+ * Bump db version.
+ */
+function the7_update_800_db_version() {
+	The7_Install::update_db_version( '8.0.0' );
+}

@@ -82,10 +82,6 @@ class Vc_Base {
 			$this,
 			'addMetaData',
 		) );
-		add_action( 'wp_enqueue_scripts', array(
-			$this,
-			'addIEMinimalSupport',
-		) );
 		if ( is_admin() ) {
 			$this->initAdmin();
 		} else {
@@ -354,7 +350,7 @@ class Vc_Base {
 		}
 
 		if ( $id ) {
-			if ( 'true' === vc_get_param( 'preview' ) ) {
+			if ( 'true' === vc_get_param( 'preview' ) && wp_revisions_enabled( get_post( $id ) ) ) {
 				$latest_revision = wp_get_post_revisions( $id );
 				if ( ! empty( $latest_revision ) ) {
 					$array_values = array_values( $latest_revision );
@@ -392,7 +388,7 @@ class Vc_Base {
 		}
 
 		if ( $id ) {
-			if ( 'true' === vc_get_param( 'preview' ) ) {
+			if ( 'true' === vc_get_param( 'preview' ) && wp_revisions_enabled( get_post( $id ) ) ) {
 				$latest_revision = wp_get_post_revisions( $id );
 				if ( ! empty( $latest_revision ) ) {
 					$array_values = array_values( $latest_revision );
@@ -441,7 +437,8 @@ class Vc_Base {
 		wp_register_style( 'nivo-slider-theme', vc_asset_url( 'lib/bower/nivoslider/themes/default/default.min.css' ), array( 'nivo-slider-css' ), WPB_VC_VERSION );
 		wp_register_style( 'prettyphoto', vc_asset_url( 'lib/prettyphoto/css/prettyPhoto.min.css' ), array(), WPB_VC_VERSION );
 		wp_register_style( 'isotope-css', vc_asset_url( 'css/lib/isotope.min.css' ), array(), WPB_VC_VERSION );
-		wp_register_style( 'font-awesome', vc_asset_url( 'lib/bower/font-awesome/css/font-awesome.min.css' ), array(), WPB_VC_VERSION );
+		wp_register_style( 'vc_font_awesome_5_shims', vc_asset_url( 'lib/bower/font-awesome/css/v4-shims.min.css' ), array(), WPB_VC_VERSION );
+		wp_register_style( 'vc_font_awesome_5', vc_asset_url( 'lib/bower/font-awesome/css/all.min.css' ), array( 'vc_font_awesome_5_shims' ), WPB_VC_VERSION );
 		wp_register_style( 'vc_animate-css', vc_asset_url( 'lib/bower/animate-css/animate.min.css' ), array(), WPB_VC_VERSION );
 
 		$front_css_file = vc_asset_url( 'css/js_composer.min.css' );
@@ -459,8 +456,6 @@ class Vc_Base {
 			$custom_css_url = vc_str_remove_protocol( $custom_css_url );
 			wp_register_style( 'js_composer_custom_css', $custom_css_url, array(), WPB_VC_VERSION );
 		}
-
-		wp_register_style( 'vc_lte_ie9', vc_asset_url( 'css/vc_lte_ie9.min.css' ), array(), WPB_VC_VERSION, 'screen' );
 
 		add_action( 'wp_enqueue_scripts', array(
 			$this,
@@ -594,16 +589,6 @@ class Vc_Base {
 	 */
 	public function addMetaData() {
 		echo '<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>' . "\n";
-	}
-
-	/**
-	 * Also add fix for IE8 bootstrap styles from WPExplorer
-	 * @since  4.9
-	 * @access public
-	 */
-	public function addIEMinimalSupport() {
-		wp_enqueue_style( 'vc_lte_ie9' );
-		wp_style_add_data( 'vc_lte_ie9', 'conditional', 'lt IE 9' );
 	}
 
 	/**

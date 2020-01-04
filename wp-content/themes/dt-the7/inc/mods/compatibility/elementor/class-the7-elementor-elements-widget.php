@@ -38,7 +38,7 @@ class The7_Elementor_Elements_Widget extends The7_Elementor_Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'The7 Elements', 'the7mk2' );
+		return __( 'The7 Masonry & Grid', 'the7mk2' );
 	}
 
 	/**

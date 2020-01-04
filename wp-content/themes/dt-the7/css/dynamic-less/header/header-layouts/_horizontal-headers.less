@@ -3,7 +3,7 @@
 	.header-bar,
 	.mobile-header-bar {
 	 	.masthead:not(.side-header):not(.side-header-menu-icon) & {
-			max-width: calc(@content-width ~"-" 88px);
+			max-width: calc(@content-width  ~"-" @header-right-padding ~"-" @header-left-padding);
 			margin: 0 auto;
 		}
 		.masthead:not(.side-header).full-width &,

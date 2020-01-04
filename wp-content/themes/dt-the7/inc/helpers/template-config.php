@@ -516,9 +516,10 @@ function presscore_config_populate_page_overrides() {
 	$config = presscore_config();
 	$post_id = $config->get( 'post_id' );
 
-	$prefix = '_dt_page_overrides_';
-	$config->set( 'page.top_margin', get_post_meta( $post_id, "{$prefix}top_margin", true ) );
-	$config->set( 'page.bottom_margin', get_post_meta( $post_id, "{$prefix}bottom_margin", true ) );
+	$config->set( 'page.top_margin', get_post_meta( $post_id, '_dt_page_overrides_top_margin', true ) );
+	$config->set( 'page.right_margin', get_post_meta( $post_id, '_dt_page_overrides_right_margin', true ) );
+	$config->set( 'page.bottom_margin', get_post_meta( $post_id, '_dt_page_overrides_bottom_margin', true ) );
+	$config->set( 'page.left_margin', get_post_meta( $post_id, '_dt_page_overrides_left_margin', true ) );
 }
 
 ////////////////////////

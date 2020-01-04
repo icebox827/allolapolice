@@ -99,7 +99,7 @@ if ( ! class_exists( 'DT_Shortcode_Blog_Carousel', false ) ) :
 				'custom_content_color'                  => '',
 				'content_bottom_margin'                 => '5px',
 				'read_more_button'                      => 'default_link',
-				'read_more_button_text'                 => _x( 'Read more', 'the7 shortcode', 'the7mk2' ),
+				'read_more_button_text'                 => '',
 				'fancy_date'                            => 'n',
 				'fancy_date_font_color'                 => '',
 				'fancy_date_bg_color'                   => '',
@@ -230,7 +230,7 @@ if ( ! class_exists( 'DT_Shortcode_Blog_Carousel', false ) ) :
 						}
 
 						$details_btn_style = $this->get_att( 'read_more_button' );
-						$details_btn_text = $this->get_att( 'read_more_button_text' );
+						$details_btn_text = $this->get_att( 'read_more_button_text', esc_html_x( 'Read more', 'the7 shortcode', 'the7mk2' ) );
 						$details_btn_class = ('default_button' === $details_btn_style ? array( 'dt-btn-s', 'dt-btn' ) : array());
 
 						presscore_get_template_part( 'shortcodes', 'blog-carousel/tpl-layout', $this->get_att( 'layout' ), array(

@@ -604,11 +604,16 @@ function presscore_action_add_less_vars( The7_Less_Vars_Manager_Interface $less_
 	}
 	$less_vars->add_rgba_color( 'top-bar-icon-color', $top_bar_icon_color );
 
-	$less_vars->add_paddings( array(
-		'top-bar-padding-top',
-		'top-bar-padding-bottom',
-		'top-bar-side-paddings',
-	), of_get_option( 'top_bar-padding' ) );
+	$less_vars->add_paddings(
+		array(
+			'top-bar-padding-top',
+			'top-bar-padding-right',
+			'top-bar-padding-bottom',
+			'top-bar-padding-left',
+		),
+		of_get_option( 'top_bar-padding' ),
+		'px|%'
+	);
 
 	$less_vars->add_rgba_color( 'top-bg-color', of_get_option( 'top_bar-bg-color' ) );
 	$less_vars->add_rgba_color( 'top-bar-line-color', of_get_option( 'top_bar-line-color' ) );
@@ -1025,6 +1030,15 @@ function presscore_action_add_less_vars( The7_Less_Vars_Manager_Interface $less_
 		'left-content-padding',
 	), of_get_option( "{$header_navigation}content-padding" ) );
 
+	$less_vars->add_paddings(
+		array(
+			'header-left-padding',
+			'header-right-padding',
+		),
+		of_get_option( "header-{$header_layout}-side-padding" ),
+		'px|%'
+	);
+
 	$less_vars->add_paddings( array(
 		'classic-menu-top-margin',
 		'classic-menu-bottom-margin',
@@ -1275,8 +1289,10 @@ function presscore_action_add_less_vars( The7_Less_Vars_Manager_Interface $less_
 
 	$less_vars->add_paddings( array(
 		'footer-top-padding',
+		'footer-right-padding',
 		'footer-bottom-padding',
-	), of_get_option( 'footer-padding' ) );
+		'footer-left-padding',
+	), of_get_option( 'footer-padding' ), 'px|%' );
 
 	$less_vars->add_pixel_number( 'widget-footer-padding', of_get_option( 'footer-paddings-columns', '44' ) );
 
@@ -1317,12 +1333,6 @@ function presscore_action_add_less_vars( The7_Less_Vars_Manager_Interface $less_
 	$less_vars->add_number( 'content-width', of_get_option( 'general-content_width' ) );
 
 	$less_vars->add_number( 'box-width', of_get_option( 'general-box_width' ) );
-
-	$less_vars->add_pixel_number( 'side-content-paddings', of_get_option( 'general-side_content_paddings' ) );
-
-	$less_vars->add_pixel_number( 'switch-content-paddings', of_get_option( 'general-switch_content_paddings' ) );
-
-	$less_vars->add_pixel_number( 'mobile-side-content-paddings', of_get_option( 'general-mobile_side_content_paddings' ) );
 
 	$less_vars->add_rgba_color( 'page-bg-color', of_get_option( 'general-bg_color' ) );
 
@@ -1399,8 +1409,10 @@ function presscore_action_add_less_vars( The7_Less_Vars_Manager_Interface $less_
 
 	$less_vars->add_paddings( array(
 		'page-top-margin',
+		'page-right-margin',
 		'page-bottom-margin',
-	), of_get_option( 'general-page_content_margin' ) );
+		'page-left-margin',
+	), of_get_option( 'general-page_content_margin' ), 'px|%' );
 
 	$less_vars->add_pixel_number( 'lightbox-arrow-size', of_get_option( 'general-lightbox_arrow_size', '62' ) );
 
@@ -1430,8 +1442,23 @@ function presscore_action_add_less_vars( The7_Less_Vars_Manager_Interface $less_
 	 */
 
 	$less_vars->add_pixel_number( 'first-switch', of_get_option( 'header-mobile-first_switch-after' ) );
-
+	$less_vars->add_paddings(
+		array(
+			'first-switch-header-padding-left',
+			'first-switch-header-padding-right',
+		),
+		of_get_option( 'header-mobile-first_switch-side-padding' ),
+		'px|%'
+	);
 	$less_vars->add_pixel_number( 'second-switch', of_get_option( 'header-mobile-second_switch-after' ) );
+	$less_vars->add_paddings(
+		array(
+			'second-switch-header-padding-left',
+			'second-switch-header-padding-right',
+		),
+		of_get_option( 'header-mobile-second_switch-side-padding' ),
+		'px|%'
+	);
 	$less_vars->add_rgba_color( 'mobile-header-bg-color', of_get_option( 'header-mobile-header-bg-color' ) );
 
 	$mobile_microwidgets_typography = The7_Option_Field_Typography::sanitize( of_get_option( 'header-mobile-microwidgets-typography' ) );

@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       The7 Elements
  * Description:       This plugin contains The7 custom post types and corresponding Visual Composer elements.
- * Version:           2.2.1
+ * Version:           2.2.3
  * Author:            Dream-Theme
  * Author URI:        http://dream-theme.com/
  * Text Domain:       dt-the7-core
@@ -51,7 +51,7 @@ if ( ! class_exists( 'The7PT_Core' ) ) :
 
 	final class The7PT_Core {
 
-		const THE7_COMPATIBLE_VERSION = '7.8.2';
+		const THE7_COMPATIBLE_VERSION = '8.0.1';
 		const PLUGIN_DB_VERSION = '2.2.0';
 
 		/**
@@ -59,7 +59,7 @@ if ( ! class_exists( 'The7PT_Core' ) ) :
 		 *
 		 * @var string
 		 */
-		private $version = '2.2.1';
+		private $version = '2.2.3';
 
 		/**
 		 * The single instance of the class.

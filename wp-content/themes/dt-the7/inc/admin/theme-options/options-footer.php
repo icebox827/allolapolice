@@ -160,11 +160,13 @@ $options['footer-padding'] = array(
 	'name'   => _x( 'Padding', 'theme-options', 'the7mk2' ),
 	'id'     => 'footer-padding',
 	'type'   => 'spacing',
-	'std'    => '50px 50px',
-	'units'  => 'px',
+	'std'    => '50px 0px 50px 0px',
+	'units'  => 'px|%',
 	'fields' => array(
 		_x( 'Top', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
 		_x( 'Bottom', 'theme-options', 'the7mk2' ),
+		_x( 'Left', 'theme-options', 'the7mk2' ),
 	),
 );
 
@@ -198,6 +200,24 @@ $options['footer-collapse_after'] = array(
 	'std'   => '760px',
 	'type'  => 'number',
 	'units' => 'px',
+);
+
+$options['footer-is_fullwidth'] = array(
+	'id'      => 'footer-is_fullwidth',
+	'name'    => _x( 'Full width', 'theme-options', 'the7mk2' ),
+	'type'    => 'images',
+	'class'   => 'small',
+	'std'     => '0',
+	'options' => array(
+		'1' => array(
+			'title' => _x( 'Enabled', 'theme-options', 'the7mk2' ),
+			'src'   => '/inc/admin/assets/images/footer-is-fullwidth.gif',
+		),
+		'0' => array(
+			'title' => _x( 'Disabled', 'theme-options', 'the7mk2' ),
+			'src'   => '/inc/admin/assets/images/footer-is-normal.gif',
+		),
+	),
 );
 
 $options[] = array(

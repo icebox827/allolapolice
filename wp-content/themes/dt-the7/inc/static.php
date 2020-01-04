@@ -819,20 +819,32 @@ if ( ! function_exists( 'presscore_enqueue_web_fonts' ) ) :
 	 * Web fonts override.
 	 */
 	function presscore_enqueue_web_fonts() {
-		$fonts   = array();
-		$options = _optionsframework_get_clean_options();
+		$fonts         = array();
+		$websafe_fonts = array_keys( presscore_options_get_safe_fonts() );
+		$options       = _optionsframework_get_clean_options();
 		foreach ( $options as $option ) {
-			if ( ! isset( $option['type'] ) || ! in_array( $option['type'], array( 'web_fonts', 'typography' ), true ) ) {
+			if ( ! isset( $option['type'] ) ) {
 				continue;
 			}
 
-			if ( $option['type'] === 'typography' ) {
-				$typography = of_get_option( $option['id'] );
-				$font_obj   = new Presscore_Web_Font( isset( $typography['font_family'] ) ? $typography['font_family'] : '' );
-			} else {
-				$font_obj = new Presscore_Web_Font( of_get_option( $option['id'] ) );
+			$option_type = $option['type'];
+
+			if ( ! in_array( $option_type, array( 'web_fonts', 'typography' ), true ) ) {
+				continue;
 			}
 
+			if ( $option_type === 'typography' ) {
+				$typography  = of_get_option( $option['id'] );
+				$font_family = isset( $typography['font_family'] ) ? $typography['font_family'] : '';
+			} else {
+				$font_family = of_get_option( $option['id'] );
+			}
+
+			if ( in_array( $font_family, $websafe_fonts ) ) {
+				continue;
+			}
+
+			$font_obj = new Presscore_Web_Font( $font_family );
 			$font_obj->add_weight( '600' );
 			$font_obj->add_weight( '700' );
 
@@ -840,24 +852,9 @@ if ( ! function_exists( 'presscore_enqueue_web_fonts' ) ) :
 		}
 
 		$fonts_compressor = new Presscore_Web_Fonts_Compressor();
-		$compressed_fonts = $fonts_compressor->compress_fonts( presscore_filter_web_fonts( $fonts ) );
+		$compressed_fonts = $fonts_compressor->compress_fonts( $fonts );
 
 		wp_enqueue_style( 'dt-web-fonts', dt_make_web_font_uri( $compressed_fonts ), false, THE7_VERSION );
-	}
-
-endif;
-
-if ( ! function_exists( 'presscore_filter_web_fonts' ) ) :
-
-	function presscore_filter_web_fonts( $fonts ) {
-		$web_fonts = array();
-		foreach ( $fonts as $font ) {
-			if ( dt_stylesheet_maybe_web_font( $font ) ) {
-				$web_fonts[] = $font;
-			}
-		}
-
-		return $web_fonts;
 	}
 
 endif;

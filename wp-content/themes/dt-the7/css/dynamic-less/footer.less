@@ -45,6 +45,19 @@
 				line-height: @base-line-height;
 			}
 
+#footer {
+	&.full-width {
+		& > .wf-wrap,
+		#bottom-bar > .wf-wrap {
+			width: 100%;
+		}
+	}
+	& > .wf-wrap,
+	#bottom-bar > .wf-wrap {
+		padding: 0 @footer-right-padding 0 @footer-left-padding;
+	}
+}
+
 /* #Bottom-bar
 ================================================== */
 

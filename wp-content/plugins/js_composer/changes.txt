@@ -1,3 +1,16 @@
+13.12.2019 - ver 6.1.0
+  - Added: Catalan, Ukrainian, Hungarian translations
+  - Update: WordPress 5.3 Compatibility
+  - Update: FontAwesome update to 5.10.2
+  - Update: loop attribute not found rows and order by relevance
+  - Update: PrettyPhoto https support
+  - Fix: RTL controls on backend
+  - Fix: RTL column reverse
+  - Fix: Disabled post revisions desing options
+  - Fix: Save row/section as template
+  - Fix: HoverBox improvements
+  - Remove: IE9 support
+
 17.07.2019 - ver 6.0.5
   - Fix: LESS vendor folder available
   - Fix: All Media in Text Block works properly

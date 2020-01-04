@@ -148,6 +148,9 @@ class The7_Install {
 			'the7_regenerate_fancy_title_css',
 			'the7_update_791_db_version',
 		),
+		'8.0.0' => array(
+			'the7_update_800_db_version',
+		),
 	);
 
     public static function init() {
@@ -353,6 +356,7 @@ class The7_Install {
 			'7.7.2' => 'The7_DB_Patch_070702',
 			'7.7.6' => 'The7_DB_Patch_070706',
 			'7.8.0' => 'The7_DB_Patch_070800',
+			'8.0.0' => 'The7_DB_Patch_080000',
 		);
 
 		$update_options = false;

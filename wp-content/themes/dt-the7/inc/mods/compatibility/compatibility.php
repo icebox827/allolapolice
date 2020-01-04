@@ -50,7 +50,7 @@ if ( defined( 'ULTIMATE_VERSION' ) ) {
 	$ua_adapter->bootstrap();
 }
 
-if ( defined( 'THE7_FEATURE_FLAG_ELEMENTOR_ADAPTER' ) && class_exists( 'Elementor\Plugin' ) ) {
+if ( class_exists( 'Elementor\Plugin' ) ) {
 	require_once $path . '/elementor/class-the7-elementor-compatibility.php';
 	$elemetor_compat = new The7_Elementor_Compatibility();
 	$elemetor_compat->bootstrap();
