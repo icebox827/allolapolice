@@ -161,6 +161,22 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 		ob_start();
 		$this->import_file( $this->content_dir . 'full-content.xml', $import_options );
 		ob_end_clean();
+
+		$widgets = get_option( 'widget_text', array() );
+		if ( $widgets ) {
+			$widgets_str = wp_json_encode( $widgets );
+
+			$url_remap = $this->importer_obj->url_remap;
+			uksort( $url_remap, array( $this->importer_obj, 'cmpr_strlen' ) );
+
+			foreach ( $url_remap as $old_url => $new_url ) {
+				$old_url     = str_replace( '"', '', wp_json_encode( $old_url ) );
+				$new_url     = str_replace( '"', '', wp_json_encode( $new_url ) );
+				$widgets_str = str_replace( $old_url, $new_url, $widgets_str );
+			}
+
+			update_option( 'widget_text', json_decode( $widgets_str, true ) );
+		}
 	}
 
 	/**
@@ -325,7 +341,7 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 	 */
 	public function menu_item_args_filter( $args ) {
 		$home_url  = home_url( '/' );
-		$demo_path = parse_url( $this->demo['link'], PHP_URL_PATH );
+		$demo_path = $this->get_demo_url_path();
 		if ( $demo_path !== '/' ) {
 			$args['menu-item-url'] = preg_replace( "#^{$demo_path}(.*)#", "{$home_url}$1", $args['menu-item-url'] );
 		}
@@ -470,13 +486,6 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 
 				$this->empty_theme_cache();
 			}
-
-			// Import widgets settings.
-			if ( ! empty( $site_meta['widgets_settings'] ) && is_array( $site_meta['widgets_settings'] ) ) {
-				foreach ( $site_meta['widgets_settings'] as $key => $setting ) {
-					update_option( $key, $setting );
-				}
-			}
 		}
 	}
 
@@ -511,6 +520,16 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 		// Import menus.
 		if ( isset( $site_meta['nav_menu_locations'] ) ) {
 			$this->set_menus( $site_meta['nav_menu_locations'] );
+		}
+	}
+
+	public function import_widgets() {
+		$site_meta = $this->get_site_meta();
+
+		if ( ! empty( $site_meta['widgets_settings'] ) && is_array( $site_meta['widgets_settings'] ) ) {
+			foreach ( $site_meta['widgets_settings'] as $widget_id => $settings ) {
+				update_option( $widget_id, $this->filter_widget_settings( $widget_id, $settings ) );
+			}
 		}
 	}
 
@@ -664,6 +683,133 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 		foreach ( (array) $site_meta['revolution_sliders'] as $rev_slider ) {
 			$rev_slider_importer->import_slider( $rev_slider, $this->content_dir . "{$rev_slider}.zip" );
 		}
+	}
+
+	public function import_elementor_settings() {
+		$site_meta = $this->get_site_meta();
+
+		if ( empty( $site_meta['elementor'] ) ) {
+			return;
+		}
+
+		$elementor_settings_to_import = array(
+			'elementor_scheme_color',
+			'elementor_scheme_typography',
+			'elementor_scheme_color-picker',
+			'elementor_cpt_support',
+			'elementor_disable_color_schemes',
+			'elementor_disable_typography_schemes',
+			'elementor_viewport_lg',
+			'elementor_viewport_md',
+		);
+
+		if ( class_exists( 'Elementor\Core\Settings\General\Model' ) ) {
+			$model_controls = Elementor\Core\Settings\General\Model::get_controls_list();
+
+			foreach ( $model_controls as $tab_name => $sections ) {
+
+				foreach ( $sections as $section_name => $section_data ) {
+
+					foreach ( $section_data['controls'] as $control_name => $control_data ) {
+						$elementor_settings_to_import[] = $control_name;
+					}
+				}
+			}
+		}
+
+		$elementor_settings_to_import = array_unique( $elementor_settings_to_import );
+		foreach ( $elementor_settings_to_import as $elementor_setting ) {
+			if ( isset( $site_meta['elementor'][ $elementor_setting ] ) ) {
+				update_option( $elementor_setting, $site_meta['elementor'][ $elementor_setting ] );
+			} else {
+				delete_option( $elementor_setting );
+			}
+		}
+
+		Elementor\Plugin::$instance->files_manager->clear_cache();
+
+		if ( class_exists( 'ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+			\ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_cache()->regenerate();
+		}
+	}
+
+	public function import_tinvwl_settings() {
+		$site_meta = $this->get_site_meta();
+
+		if ( empty( $site_meta['ti_wish_list_settings'] ) ) {
+			return;
+		}
+
+		if ( ! class_exists( 'TInvWL_Admin_Settings_General' ) || ! defined( 'TINVWL_PREFIX' ) ) {
+			return;
+		}
+
+		$ti_settings_object = TInvWL_Admin_Settings_General::instance();
+		$ti_settings_declaration = (array) $ti_settings_object->constructor_data();
+		$settings_to_import      = $site_meta['ti_wish_list_settings'];
+		foreach ( $ti_settings_declaration as $settings_group ) {
+			$option_id = TINVWL_PREFIX . '-' . $settings_group['id'];
+			if ( array_key_exists( $option_id, $settings_to_import ) ) {
+				update_option( $option_id, $settings_to_import[ $option_id ] );
+			}
+		}
+	}
+
+	public function import_woocommerce_settings() {
+		$site_meta = $this->get_site_meta();
+
+		if ( empty( $site_meta['woocommerce'] ) ) {
+			return;
+		}
+
+		if ( ! function_exists( 'WC' ) ) {
+			return;
+		}
+
+		$woocommerce_meta = (array) $site_meta['woocommerce'];
+
+		$woocommerce_page_settings = wp_parse_args(
+			$woocommerce_meta,
+			array(
+				'woocommerce_shop_page_id'      => false,
+				'woocommerce_cart_page_id'      => false,
+				'woocommerce_checkout_page_id'  => false,
+				'woocommerce_myaccount_page_id' => false,
+				'woocommerce_terms_page_id'     => false,
+			)
+		);
+		foreach ( $woocommerce_page_settings as $opt_id => $post_id ) {
+			if ( ! $post_id ) {
+				continue;
+			}
+
+			$imported_post_id = $this->importer_get_processed_post( $post_id );
+			if ( $imported_post_id ) {
+				$post_id = $imported_post_id;
+			}
+
+			update_option( $opt_id, $post_id );
+		}
+
+		$wc_image_settings = array(
+			'woocommerce_single_image_width',
+			'woocommerce_thumbnail_image_width',
+			'woocommerce_thumbnail_cropping',
+			'woocommerce_thumbnail_cropping_custom_width',
+			'woocommerce_thumbnail_cropping_custom_height',
+		);
+
+		$options_to_export = [];
+		foreach ( $wc_image_settings as $wc_option ) {
+			if ( isset( $woocommerce_meta[ $wc_option ] ) ) {
+				update_option( $wc_option, $woocommerce_meta[ $wc_option ] );
+			}
+		}
+
+		// Clear any unwanted data and flush rules.
+		update_option( 'woocommerce_queue_flush_rewrite_rules', 'yes' );
+		WC()->query->init_query_vars();
+		WC()->query->add_endpoints();
 	}
 
 	/**
@@ -917,5 +1063,38 @@ If the problem persists, please don\'t hesitate to contact our <a href="%s" targ
 		$noimage_fname = 'noimage.' . $ext;
 
 		return the7_demo_content_dir_url( 'admin/images/' . $noimage_fname );
+	}
+
+	/**
+	 * @param string $widget_id
+	 * @param array  $settings
+	 *
+	 * @return array
+	 */
+	protected function filter_widget_settings( $widget_id, $settings ) {
+		if ( in_array( $widget_id, array( 'widget_presscore-custom-menu-one', 'widget_presscore-custom-menu-two' ), true ) ) {
+			foreach ( $settings as &$widget_settings ) {
+				if ( isset( $widget_settings['menu'] ) ) {
+					$widget_settings['menu'] = $this->importer_get_processed_terms( $widget_settings['menu'] );
+				}
+			}
+			unset( $widget_settings );
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function get_demo_url() {
+		return $this->demo['link'];
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function get_demo_url_path() {
+		return parse_url( $this->get_demo_url(), PHP_URL_PATH );
 	}
 }

@@ -745,6 +745,21 @@ return array(
 			),
 		),
 		array(
+			'group'      => __( 'Social Links', 'dt-the7-core' ),
+			'heading'    => __( 'Show icon border color', 'dt-the7-core' ),
+			'param_name' => 'soc_icon_border',
+			'type'       => 'dt_switch',
+			'value'      => 'y',
+			'options'    => array(
+				'Yes' => 'y',
+				'No'  => 'n',
+			),
+			'dependency' => array(
+				'element' => 'show_soc_icon',
+				'value'   => 'y',
+			),
+		),
+		array(
 			'group'       => __( 'Social Links', 'dt-the7-core' ),
 			'heading'     => __( 'Icon border color  ', 'dt-the7-core' ),
 			'description' => __( 'Live empty to use accent color.', 'dt-the7-core' ),
@@ -752,7 +767,7 @@ return array(
 			'type'        => 'colorpicker',
 			'value'       => '',
 			'dependency'  => array(
-				'element' => 'show_soc_icon',
+				'element' => 'soc_icon_border',
 				'value'   => 'y',
 			),
 		),
@@ -806,6 +821,21 @@ return array(
 			),
 		),
 		array(
+			'group'      => __( 'Social Links', 'dt-the7-core' ),
+			'heading'    => __( 'Show icon border color', 'dt-the7-core' ),
+			'param_name' => 'soc_icon_border_hover',
+			'type'       => 'dt_switch',
+			'value'      => 'y',
+			'options'    => array(
+				'Yes' => 'y',
+				'No'  => 'n',
+			),
+			'dependency' => array(
+				'element' => 'show_soc_icon',
+				'value'   => 'y',
+			),
+		),
+		array(
 			'group'       => __( 'Social Links', 'dt-the7-core' ),
 			'heading'     => __( 'Icon border color  ', 'dt-the7-core' ),
 			'description' => __( 'Live empty to use accent color.', 'dt-the7-core' ),
@@ -813,7 +843,7 @@ return array(
 			'type'        => 'colorpicker',
 			'value'       => '',
 			'dependency'  => array(
-				'element' => 'show_soc_icon',
+				'element' => 'soc_icon_border_hover',
 				'value'   => 'y',
 			),
 		),

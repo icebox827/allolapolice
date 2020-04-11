@@ -195,8 +195,19 @@ if ( ! class_exists( 'DT_Shortcode_Photos_Carousel', false ) ) :
 							'class'				=> ' rollover-click-target rollover',
 							'img_description'	=> get_the_content(),
 							'title'				=> $thumb_title,
-							'options'			=> presscore_set_image_dimesions(),
 							'wrap'				=> '<a %HREF% %CLASS% %TITLE% data-dt-img-description="%RAW_IMG_DESCRIPTION%"  data-large_image_width="' . $thumb_meta[1] . '" data-large_image_height = "' . $thumb_meta[2]. '" %CUSTOM%><img %IMG_CLASS% %SRC% %ALT% %SIZE% /><span class="gallery-rollover">' . $show_icon_zoom . '</span></a>'
+						);
+
+						$thumb_args['options'] = the7_calculate_bwb_image_resize_options(
+							array(
+								'wide_desktop' => $this->get_att( 'slides_on_wide_desk' ),
+								'laptop'       => $this->get_att( 'slides_on_lapt' ),
+								'desktop'      => $this->get_att( 'slides_on_desk' ),
+								'h_tablet'     => $this->get_att( 'slides_on_h_tabs' ),
+								'v_tablet'     => $this->get_att( 'slides_on_v_tabs' ),
+								'phone'        => $this->get_att( 'slides_on_mob' ),
+							),
+							$this->get_att( 'item_space' )
 						);
 
 						$video_url = presscore_get_image_video_url( $img_id );

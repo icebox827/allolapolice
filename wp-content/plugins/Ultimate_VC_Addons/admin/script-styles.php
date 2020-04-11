@@ -1,112 +1,123 @@
 <?php
-	if(isset($_GET['author']))
-		$author = true;
-	else
-		$author = false;
+/**
+ * Script styles Page
+ *
+ *  @package Script styles Page
+ */
+
+if ( isset( $_GET['author'] ) ) { // PHPCS:ignore:WordPress.Security.NonceVerification.Recommended
+	$author = true;
+} else {
+	$author = false;
+}
 	$author_extend = '';
-	if($author)
-		$author_extend = '&author';
+if ( $author ) {
+	$author_extend = '&author';
+}
 ?>
 
 <div class="wrap about-wrap bsf-page-wrapper ultimate-smooth-scroll bend">
-  <div class="wrap-container">
-    <div class="bend-heading-section ultimate-header">
-      <h1><?php _e( "Ultimate Addons Settings", "ultimate_vc" ); ?></h1>
-      <h3><?php _e( "If optimized option is set to ON, a combined file for all modules in our plugin will be loaded on your website. Use this option if you use Ultimate Addons significantly on your website.", "ultimate_vc" ); ?></h3>
-      <div class="bend-head-logo">
-        <div class="bend-product-ver">
-          <?php _e( "Version", "ultimate_vc" ); echo ' '.ULTIMATE_VERSION; ?>
-        </div>
-      </div>
-    </div><!-- bend-heading section -->
+<div class="wrap-container">
+	<div class="bend-heading-section ultimate-header">
+	<h1><?php esc_html_e( 'Ultimate Addons Settings', 'ultimate_vc' ); ?></h1>
+	<h3><?php esc_html_e( 'If optimized option is set to ON, a combined file for all modules in our plugin will be loaded on your website. Use this option if you use Ultimate Addons significantly on your website.', 'ultimate_vc' ); ?></h3>
+	<div class="bend-head-logo">
+		<div class="bend-product-ver">
+			<?php
+			esc_html_e( 'Version', 'ultimate_vc' );
+			echo ' ' . ULTIMATE_VERSION; // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped
+			?>
+		</div>
+	</div>
+	</div><!-- bend-heading section -->
 
-    <div id="msg"></div>
-    <div id="bsf-message"></div>
+	<div id="msg"></div>
+	<div id="bsf-message"></div>
 
-    <div class="bend-content-wrap">
-      <div class="smile-settings-wrapper">
-	        <h2 class="nav-tab-wrapper">
-		    	<a href="<?php echo admin_url('admin.php?page=about-ultimate'.$author_extend); ?>" data-tab="about-ultimate" class="nav-tab"> <?php echo __('About','ultimate_vc'); ?> </a>
-		    	<a href="<?php echo admin_url('admin.php?page=ultimate-dashboard'.$author_extend); ?>" data-tab="ultimate-modules" class="nav-tab"> <?php echo __('Elements','ultimate_vc'); ?> </a>
-		    	<a href="<?php echo admin_url('admin.php?page=ultimate-smoothscroll'.$author_extend); ?>" data-tab="css-settings" class="nav-tab"> <?php echo __('Smooth Scroll','ultimate_vc'); ?> </a>
-		        <a href="<?php echo admin_url('admin.php?page=ultimate-scripts-and-styles'.$author_extend); ?>" data-tab="css-settings" class="nav-tab nav-tab-active"> <?php echo __('Scripts and Styles','ultimate_vc'); ?> </a>
-		        <?php if($author) : ?>
-					<a href="<?php echo admin_url('admin.php?page=ultimate-debug-settings'); ?>" data-tab="ultimate-debug" class="nav-tab"> Debug </a>
+	<div class="bend-content-wrap">
+	<div class="smile-settings-wrapper">
+			<h2 class="nav-tab-wrapper">
+				<a href="<?php echo admin_url( 'admin.php?page=about-ultimate' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="about-ultimate" class="nav-tab"> <?php echo esc_attr__( 'About', 'ultimate_vc' ); ?> </a>
+				<a href="<?php echo admin_url( 'admin.php?page=ultimate-dashboard' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="ultimate-modules" class="nav-tab"> <?php echo esc_attr__( 'Elements', 'ultimate_vc' ); ?> </a>
+				<a href="<?php echo admin_url( 'admin.php?page=ultimate-smoothscroll' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="css-settings" class="nav-tab"> <?php echo esc_attr__( 'Smooth Scroll', 'ultimate_vc' ); ?> </a>
+				<a href="<?php echo admin_url( 'admin.php?page=ultimate-scripts-and-styles' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="css-settings" class="nav-tab nav-tab-active"> <?php echo esc_attr__( 'Scripts and Styles', 'ultimate_vc' ); ?> </a>
+				<?php if ( $author ) : ?>
+					<a href="<?php echo admin_url( 'admin.php?page=ultimate-debug-settings' ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="ultimate-debug" class="nav-tab"> Debug </a>
 				<?php endif; ?>
-		    </h2>
-      </div><!-- smile-settings-wrapper -->
+			</h2>
+	</div><!-- smile-settings-wrapper -->
 
-      </hr>
+	</hr>
 
 	<div class="container ultimate-content">
-        <div class="col-md-12">
-		    <?php
+		<div class="col-md-12">
+			<?php
 
-			$ultimate_css = get_option('ultimate_css');
-			$ultimate_js = get_option('ultimate_js');
+			$ultimate_css = get_option( 'ultimate_css' );
+			$ultimate_js  = get_option( 'ultimate_js' );
 
-			if($ultimate_css == "enable"){
+			if ( 'enable' == $ultimate_css ) {
 				$ultimate_css = 'checked="checked"';
 			} else {
 				$ultimate_css = '';
 			}
 
-			if($ultimate_js == "enable"){
+			if ( 'enable' == $ultimate_js ) {
 				$ultimate_js = 'checked="checked"';
 			} else {
 				$ultimate_js = '';
 			}
 
 			?>
-		    <div id="css-settings" class="ult-tabs active-tab">
-		        <form method="post" id="css_settings">
-		        	<input type="hidden" name="security" value="<?php echo wp_create_nonce( 'css-settings-setting' ); ?>" />
-		            <input type="hidden" name="action" value="update_css_options" />
-		            <table class="form-table">
-		                <tbody>
-		                    <tr valign="top">
-		                        <th scope="row"><?php echo __("Combined CSS","ultimate_vc"); ?></th>
-		                        <td> <div class="onoffswitch">
-		                        <input type="checkbox" <?php echo $ultimate_css; ?> id="ultimate_css" value="enable" class="onoffswitch-checkbox" name="ultimate_css" />
-		                             <label class="onoffswitch-label" for="ultimate_css">
-		                                <div class="onoffswitch-inner">
-		                                    <div class="onoffswitch-active">
-		                                        <div class="onoffswitch-switch"><?php echo __('ON','ultimate_vc'); ?></div>
-		                                    </div>
-		                                    <div class="onoffswitch-inactive">
-		                                        <div class="onoffswitch-switch"><?php echo __('OFF','ultimate_vc'); ?></div>
-		                                    </div>
-		                                </div>
-		                            </label>
-		                            </div>
-		                        </td>
-		                    </tr>
-		                    <tr valign="top">
-		                        <th scope="row"><?php echo __("Combined JS","ultimate_vc"); ?></th>
-		                        <td> <div class="onoffswitch">
-		                        <input type="checkbox" <?php echo $ultimate_js; ?> id="ultimate_js" value="enable" class="onoffswitch-checkbox" name="ultimate_js" />
-		                             <label class="onoffswitch-label" for="ultimate_js">
-		                                <div class="onoffswitch-inner">
-		                                    <div class="onoffswitch-active">
-		                                        <div class="onoffswitch-switch"><?php echo __('ON','ultimate_vc'); ?></div>
-		                                    </div>
-		                                    <div class="onoffswitch-inactive">
-		                                        <div class="onoffswitch-switch"><?php echo __('OFF','ultimate_vc'); ?></div>
-		                                    </div>
-		                                </div>
-		                            </label>
-		                             </div>
-		                        </td>
-		                    </tr>
-		                </tbody>
-		            </table>
-		        </form>
-		        <p class="submit"><input type="submit" name="submit" id="submit-css-settings" class="button button-primary" value="<?php echo __("Save Changes","ultimate_vc");?>"></p>
-		    </div>
+			<div id="css-settings" class="ult-tabs active-tab">
+				<form method="post" id="css_settings">
+					<input type="hidden" name="security" value="<?php echo esc_attr( wp_create_nonce( 'css-settings-setting' ) ); ?>" />
+					<input type="hidden" name="action" value="update_css_options" />
+					<table class="form-table">
+						<tbody>
+							<tr valign="top">
+								<th scope="row"><?php echo esc_attr__( 'Combined CSS', 'ultimate_vc' ); ?></th>
+								<td> <div class="onoffswitch">
+								<input type="checkbox" <?php echo esc_attr( $ultimate_css ); ?> id="ultimate_css" value="enable" class="onoffswitch-checkbox" name="ultimate_css" />
+									<label class="onoffswitch-label" for="ultimate_css">
+										<div class="onoffswitch-inner">
+											<div class="onoffswitch-active">
+												<div class="onoffswitch-switch"><?php echo esc_attr__( 'ON', 'ultimate_vc' ); ?></div>
+											</div>
+											<div class="onoffswitch-inactive">
+												<div class="onoffswitch-switch"><?php echo esc_attr__( 'OFF', 'ultimate_vc' ); ?></div>
+											</div>
+										</div>
+									</label>
+									</div>
+								</td>
+							</tr>
+							<tr valign="top">
+								<th scope="row"><?php echo esc_attr__( 'Combined JS', 'ultimate_vc' ); ?></th>
+								<td> <div class="onoffswitch">
+								<input type="checkbox" <?php echo esc_attr( $ultimate_js ); ?> id="ultimate_js" value="enable" class="onoffswitch-checkbox" name="ultimate_js" />
+									<label class="onoffswitch-label" for="ultimate_js">
+										<div class="onoffswitch-inner">
+											<div class="onoffswitch-active">
+												<div class="onoffswitch-switch"><?php echo esc_attr__( 'ON', 'ultimate_vc' ); ?></div>
+											</div>
+											<div class="onoffswitch-inactive">
+												<div class="onoffswitch-switch"><?php echo esc_attr__( 'OFF', 'ultimate_vc' ); ?></div>
+											</div>
+										</div>
+									</label>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<p class="submit"><input type="submit" name="submit" id="submit-css-settings" class="button button-primary" value="<?php echo esc_attr__( 'Save Changes', 'ultimate_vc' ); ?>"></p>
+			</div>
 		</div> <!--col-md-12 -->
-      </div> <!-- ultimate-content -->
-    </div> <!-- bend-content-wrap -->
-  </div> <!-- .wrap-container -->
+	</div> <!-- ultimate-content -->
+	</div> <!-- bend-content-wrap -->
+</div> <!-- .wrap-container -->
 </div> <!-- .bend -->
 
 <script type="text/javascript">
@@ -124,9 +135,9 @@ submit_btn.bind('click',function(e){
 			console.log(result);
 			result = jQuery.trim(result);
 			if(result == "success"){
-				jQuery("#msg").html('<div class="updated"><p><?php echo __('Settings updated successfully!','ultimate_vc'); ?></p></div>');
+				jQuery("#msg").html('<div class="updated"><p><?php echo esc_attr__( 'Settings updated successfully!', 'ultimate_vc' ); ?></p></div>');
 			} else {
-				jQuery("#msg").html('<div class="error"><p><?php echo __('No settings were updated.','ultimate_vc'); ?></p></div>');
+				jQuery("#msg").html('<div class="error"><p><?php echo esc_attr__( 'No settings were updated.', 'ultimate_vc' ); ?></p></div>');
 			}
 		}
 	});
@@ -274,10 +285,10 @@ div#msg {
 }
 .onoffswitch-inner:before,
 .onoffswitch-inner:after {
-    display:none
+	display:none
 }
 .onoffswitch-switch {
-    height: initial !important;
+	height: initial !important;
 	color: white !important;
 }
 </style>

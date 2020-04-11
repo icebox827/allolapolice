@@ -116,6 +116,7 @@ class The7_Image_BWB_Width_Calculator {
 		$responsive_points = array(
 			'wide_desktop' => 1450,
 			'desktop'      => $desktop_width,
+			'laptop'       => 1280,
 			'h_tablet'     => 1200,
 			'v_tablet'     => 990,
 			'phone'        => 768,

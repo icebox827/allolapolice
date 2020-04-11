@@ -21,11 +21,7 @@ jQuery( document ).ready( function( $ )
 		var $this = $( this ),
 			$clone_container = $this.closest('.the7-mb-clone'),
 			$color_picker = $this.siblings( '.the7-mb-color-picker' );
-		
-		// Make sure the value is displayed
-		if ( !$this.val() )
-			$this.val( '#' );
-			
+
 		if( typeof jQuery.wp === 'object' && typeof jQuery.wp.wpColorPicker === 'function' ){
 			if( $clone_container.length > 0 )
 			{

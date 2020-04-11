@@ -983,3 +983,23 @@ function of_sanitize_random_double_nonce( $val = '' ) {
 	return $val;
 }
 add_filter( 'of_sanitize_random_double_nonce', 'of_sanitize_random_double_nonce' );
+
+/**
+ * Sanitize multi select option value.
+ *
+ * @param array $val    Option value.
+ * @param array $option Option definition.
+ *
+ * @return array
+ */
+function of_sanitize_multi_select( $val, $option ) {
+	$options = array();
+	if ( isset( $option['options'] ) ) {
+		$options = (array) $option['options'];
+	}
+	$white_list = array_keys( $options );
+
+	return array_filter( array_intersect( (array) $val, $white_list ) );
+}
+
+add_filter( 'of_sanitize_multi_select', 'of_sanitize_multi_select', 10, 2 );

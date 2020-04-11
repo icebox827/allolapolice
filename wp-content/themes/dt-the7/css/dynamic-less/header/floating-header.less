@@ -28,11 +28,7 @@
 	background-size: @floating-header-bg-size;
 	//background-attachment: @floating-header-bg-attachment;
 	.phantom-shadow-decoration & {
-		-webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
 		box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
-	}
-	.phantom-line-decoration & {
-		border-bottom: 1px solid @float-menu-line-decoration-color;
 	}
 	&.boxed {
 		max-width: @box-width;
@@ -40,17 +36,29 @@
 }
 
 .phantom-line-decoration #phantom {
-	border-bottom: 1px solid @float-menu-line-decoration-color;
-	-webkit-box-shadow: none !important;
+	border-bottom: @float-menu-line-decoration-size solid @float-menu-line-decoration-color;
 	box-shadow: none !important;
 }
+.phantom-content-width-line-decoration #phantom .ph-wrap {
+	position: relative;
+	//border-bottom: @float-menu-line-decoration-size solid @float-menu-line-decoration-color;
+	box-shadow: none !important;
+	&:after {
+		position: absolute;
+		bottom: 0;
+		left: auto;
+		right: auto;
+		content: "";
+		width: calc(100% ~'-' @header-right-padding ~'-' @header-left-padding);
+		height: @float-menu-line-decoration-size;
+		background: @float-menu-line-decoration-color;
+	}
+}
 .phantom-shadow-decoration #phantom {
-	-webkit-box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.07);
 	border-bottom: none;
 }
 .phantom-disable-decoration #phantom {
-	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 	border-bottom: none;
 }
@@ -62,8 +70,7 @@
 
 /*Line decoration for Sticky floating*/
 .responsive-off.phantom-line-decoration.phantom-sticky .sticky-on.masthead {
-	border-bottom: 1px solid @float-menu-line-decoration-color;
-	-webkit-box-shadow: none !important;
+	border-bottom: @float-menu-line-decoration-size solid @float-menu-line-decoration-color;
 	box-shadow: none !important;
 }
 

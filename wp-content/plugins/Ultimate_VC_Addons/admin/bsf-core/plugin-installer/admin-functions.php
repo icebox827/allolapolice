@@ -77,7 +77,7 @@ if ( ! function_exists( 'get_bundled_plugins' ) ) {
 		$request = wp_remote_post(
 			$path, array(
 				'body'    => $data,
-				'timeout' => '30',
+				'timeout' => '10',
 			)
 		);
 
@@ -87,7 +87,7 @@ if ( ! function_exists( 'get_bundled_plugins' ) ) {
 			$request = wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '30',
+					'timeout' => '8',
 				)
 			);
 		}
@@ -131,41 +131,18 @@ if ( ! function_exists( 'get_bundled_plugins' ) ) {
 		}
 	}
 }
-// add_action('init', 'bsf_network_get_bundled_products');
-// if(!function_exists('bsf_network_get_bundled_products')) {
-// function bsf_network_get_bundled_products() {
+
 if ( false === get_site_transient( 'bsf_get_bundled_products' ) ) {
-	global $bsf_theme_template;
-	$proceed = true;
-
-	if ( phpversion() > 5.2 ) {
-		$bsf_local_transient_bundled = get_option( 'bsf_local_transient_bundled' );
-
-		if ( $bsf_local_transient_bundled != false ) {
-			$datetime1   = new DateTime();
-			$date_string = gmdate( 'Y-m-d\TH:i:s\Z', $bsf_local_transient_bundled );
-			$datetime2   = new DateTime( $date_string );
-
-			$interval = $datetime1->diff( $datetime2 );
-			$elapsed  = $interval->format( '%h' );
-			$elapsed  = $elapsed + ( $interval->days * 24 );
-			if ( $elapsed <= 168 || $elapsed <= '168' ) {
-				$proceed = false;
-			}
-		}
-	}
-
-	if ( $proceed ) {
+	if ( true === bsf_time_since_last_versioncheck( 168, 'bsf_local_transient_bundled' ) ) {
 		global $ultimate_referer;
 		$ultimate_referer = 'on-bundled-products-transient-delete';
 		$template         = ( is_multisite() ) ? $bsf_theme_template : get_template();
 		get_bundled_plugins( $template );
 		update_option( 'bsf_local_transient_bundled', current_time( 'timestamp' ) );
-		set_site_transient( 'bsf_get_bundled_products', true, 7 * 24 * 60 * 60 );
+		set_site_transient( 'bsf_get_bundled_products', true, WEEK_IN_SECONDS );
 	}
 }
-	// }
-// }
+
 if ( ! function_exists( 'install_bsf_product' ) ) {
 	function install_bsf_product( $install_id ) {
 

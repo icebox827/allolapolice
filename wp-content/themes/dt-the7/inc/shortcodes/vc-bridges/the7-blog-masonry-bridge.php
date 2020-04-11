@@ -935,7 +935,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'standard',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 			'group' => __( 'Pagination & Categorization', 'the7mk2' ),
 		),
 		// -- JavaScript pages.
@@ -962,7 +962,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'js_pagination',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 			'group' => __( 'Pagination & Categorization', 'the7mk2' ),
 		),
 		// -- js Load more.
@@ -989,7 +989,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'js_more',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 			'group' => __( 'Pagination & Categorization', 'the7mk2' ),
 		),
 		// -- js Infinite scroll.
@@ -1016,7 +1016,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'js_lazy_loading',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 			'group' => __( 'Pagination & Categorization', 'the7mk2' ),
 		),
 		// Posts offset.

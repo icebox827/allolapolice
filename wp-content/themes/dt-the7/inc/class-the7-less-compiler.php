@@ -57,6 +57,28 @@ class The7_Less_Compiler {
 	}
 
 	/**
+	 * Proxy for the7_lessc->setImportDir.
+	 *
+	 * @since 8.3.0
+	 *
+	 * @param $import_dir
+	 */
+	public function set_import_dir( $import_dir ) {
+		$this->lessc->setImportDir( $import_dir );
+	}
+
+	/**
+	 * Proxy for the7_lessc->setVariables.
+	 *
+	 * @since 8.3.0
+	 *
+	 * @param $less_vars
+	 */
+	public function set_variables( $less_vars ) {
+		$this->lessc->setVariables( $less_vars );
+	}
+
+	/**
 	 * Compile less to css.
 	 *
 	 * @param string $source_file Source file.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DT The7 Core\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dt-the7-core\n"
-"POT-Creation-Date: 2019-12-30 13:15:36+00:00\n"
+"POT-Creation-Date: 2020-04-01 12:26:09+00:00\n"
 "PO-Revision-Date: 2016-12-04 16:56+0000\n"
 "Last-Translator: 刁 可永 <dky@yntcjz.com>\n"
 "Language-Team: Chinese (China)\n"
@@ -18,10 +18,6 @@ msgstr ""
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: includes/class-the7pt-admin.php:86
-msgid "Settings"
-msgstr "设置"
 
 #: includes/class-the7pt-admin.php:180
 msgid ""
@@ -403,46 +399,46 @@ msgstr "行目标高度（px）"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1593
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1602
 #: mods/portfolio/public/shortcodes/mod-portfolio-scroller-bridge.php:123
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:883
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:894
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:905
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:916
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:927
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:939
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:950
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:963
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:976
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:988
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1000
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1011
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1023
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1038
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1050
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1065
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1077
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1088
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1100
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1115
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1127
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1142
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1155
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1166
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1178
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1194
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1210
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1222
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1235
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1246
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1258
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1274
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1290
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1302
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1315
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1327
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1343
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1352
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1361
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1370
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:913
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:924
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:935
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:946
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:957
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:969
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:980
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:993
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1006
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1018
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1030
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1041
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1053
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1068
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1080
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1095
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1107
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1118
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1130
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1145
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1157
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1172
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1185
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1196
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1208
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1224
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1240
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1252
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1265
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1276
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1288
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1304
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1320
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1332
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1345
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1357
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1373
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1382
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1391
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1400
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:921
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:932
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:943
@@ -820,10 +816,10 @@ msgstr "排序方式："
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1119
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1146
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:88
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:863
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:891
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:918
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:945
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:893
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:921
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:948
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:975
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:91
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:835
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:891
@@ -849,10 +845,10 @@ msgstr "文章数量："
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1128
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1155
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:93
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:872
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:900
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:927
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:954
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:902
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:930
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:957
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:984
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:96
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:844
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:900
@@ -1022,7 +1018,7 @@ msgstr "图像尺寸"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1184
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:239
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:159
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:951
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:981
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:174
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:219
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:990
@@ -1041,7 +1037,7 @@ msgstr "宽度（px）"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1197
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:239
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:159
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:964
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:994
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:174
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:219
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1003
@@ -1619,14 +1615,14 @@ msgstr ""
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:497
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:592
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:683
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1356
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1371
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:391
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:466
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:579
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:349
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:423
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:536
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1078
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1108
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:551
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:737
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:902
@@ -1644,10 +1640,10 @@ msgstr "图标颜色"
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:703
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:576
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:501
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1360
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1375
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:395
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:353
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1082
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1112
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:555
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:495
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1040
@@ -1954,9 +1950,9 @@ msgstr "图标大小（以像素为单位）"
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:892
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:968
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:737
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:798
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:813
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:694
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:755
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:770
 #, fuzzy
 msgid "Icon color"
 msgstr "图标颜色"
@@ -2010,25 +2006,25 @@ msgstr "图标颜色"
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:998
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1035
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:738
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:750
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:784
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:765
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:799
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:811
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:845
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1013
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1040
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1067
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1090
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1117
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1144
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1448
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1460
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:814
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:841
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:875
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1043
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1070
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1097
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1120
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1147
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1174
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1478
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1490
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:695
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:707
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:741
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:722
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:756
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:768
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:802
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:771
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:798
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:832
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1052
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1079
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1106
@@ -2126,7 +2122,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1027
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:534
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1116
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:884
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:914
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:922
 #, fuzzy
 msgid "Show arrows"
@@ -2136,7 +2132,7 @@ msgstr "显示作者"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1038
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:545
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1127
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:895
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:925
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:933
 #, fuzzy
 msgid "Arrow Icon"
@@ -2157,7 +2153,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1071
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:578
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1160
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:928
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:958
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:966
 msgid "Arrow icon size"
 msgstr ""
@@ -2166,7 +2162,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1084
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:591
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1173
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:940
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:970
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:979
 #, fuzzy
 msgid "Arrow Background"
@@ -2176,7 +2172,7 @@ msgstr "图标背景"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1121
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:628
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1210
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:977
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1007
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1016
 #, fuzzy
 msgid "Arrow border radius"
@@ -2185,7 +2181,7 @@ msgstr "边框半径（以px为单位）"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1133
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:640
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1222
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:989
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1019
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1028
 msgid "Arrow border width"
 msgstr ""
@@ -2193,7 +2189,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1145
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:652
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1234
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1001
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1031
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1040
 #, fuzzy
 msgid "Color Setting"
@@ -2203,7 +2199,7 @@ msgstr "设置"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1156
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:663
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1245
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1012
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1042
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1051
 #, fuzzy
 msgid "Arrow icon color"
@@ -2213,7 +2209,7 @@ msgstr "图标颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1168
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:675
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1257
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1024
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1054
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1063
 #, fuzzy
 msgid "Show arrow border color"
@@ -2223,7 +2219,7 @@ msgstr "图标悬停颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1183
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:690
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1272
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1039
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1069
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1078
 #, fuzzy
 msgid "Arrow border color"
@@ -2233,7 +2229,7 @@ msgstr "图标悬停颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1195
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:702
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1284
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1051
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1081
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1090
 #, fuzzy
 msgid "Show arrow background"
@@ -2243,7 +2239,7 @@ msgstr "图标背景"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1210
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:717
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1299
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1066
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1096
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1105
 #, fuzzy
 msgid "Arrow background color"
@@ -2252,7 +2248,7 @@ msgstr "背景颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1222
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:729
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1311
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1078
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1108
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1117
 msgid "Hover Color Setting"
 msgstr ""
@@ -2260,7 +2256,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1233
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:740
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1322
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1089
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1119
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1128
 msgid "Arrow icon color hover"
 msgstr ""
@@ -2269,7 +2265,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1245
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:752
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1334
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1101
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1131
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1141
 #, fuzzy
 msgid "Show arrow border color hover"
@@ -2278,7 +2274,7 @@ msgstr "图标悬停颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1260
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:767
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1349
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1116
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1146
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1156
 msgid "Arrow border color hover "
 msgstr ""
@@ -2287,7 +2283,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1272
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:779
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1361
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1128
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1158
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1168
 #, fuzzy
 msgid "Show arrow background hover"
@@ -2297,7 +2293,7 @@ msgstr "图像悬停背景颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1287
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:794
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1376
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1143
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1173
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1183
 #, fuzzy
 msgid "Arrow background hover color"
@@ -2306,7 +2302,7 @@ msgstr "背景悬停颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1300
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:807
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1389
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1156
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1186
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1196
 msgid "Right Arrow Position"
 msgstr ""
@@ -2318,8 +2314,8 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:898
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1400
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1480
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1167
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1247
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1197
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1277
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1207
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1287
 #, fuzzy
@@ -2335,9 +2331,9 @@ msgstr "顶部内边距："
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1412
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1492
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1714
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1179
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1259
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1482
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1209
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1289
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1512
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1219
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1299
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1521
@@ -2353,9 +2349,9 @@ msgstr ""
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1428
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1508
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1730
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1195
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1275
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1498
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1225
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1305
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1528
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1235
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1315
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1537
@@ -2371,9 +2367,9 @@ msgstr ""
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1444
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1524
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1746
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1211
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1291
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1514
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1241
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1321
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1544
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1251
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1331
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1553
@@ -2389,9 +2385,9 @@ msgstr ""
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1456
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1536
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1758
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1223
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1303
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1526
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1253
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1333
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1556
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1263
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1343
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1565
@@ -2401,7 +2397,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1380
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:887
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1469
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1236
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1266
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1276
 msgid "Left Arrow Position"
 msgstr ""
@@ -2409,7 +2405,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1460
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:967
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1549
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1316
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1346
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1356
 #, fuzzy
 msgid "Arrows responsiveness"
@@ -2428,8 +2424,8 @@ msgstr "响应性"
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1003
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1576
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1585
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1344
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1353
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1374
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1383
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1383
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1392
 msgid "Enable if browser width is less then "
@@ -2438,7 +2434,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1505
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1012
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1594
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1362
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1392
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1401
 msgid "Left arrow horizontal offset"
 msgstr ""
@@ -2446,7 +2442,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1514
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1021
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1603
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1371
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1401
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1410
 msgid "Right arrow horizontal offset"
 msgstr ""
@@ -2487,18 +2483,18 @@ msgstr ""
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1729
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1745
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1757
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1380
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1391
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1403
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1422
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1434
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1446
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1458
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1470
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1481
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1497
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1513
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1525
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1410
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1421
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1433
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1452
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1464
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1476
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1488
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1500
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1511
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1527
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1543
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1555
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1419
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1430
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1442
@@ -2518,7 +2514,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1524
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1031
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1613
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1381
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1411
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1420
 #, fuzzy
 msgid "Show bullets"
@@ -2527,7 +2523,7 @@ msgstr "显示标题"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1535
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1042
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1624
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1392
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1422
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1431
 msgid "Bullets Style, Size & Color"
 msgstr ""
@@ -2535,7 +2531,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1547
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1054
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1636
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1404
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1434
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1443
 msgid "Choose bullets style"
 msgstr ""
@@ -2543,7 +2539,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1566
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1073
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1655
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1423
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1453
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1462
 msgid "Bullets size"
 msgstr ""
@@ -2552,7 +2548,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1578
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1085
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1667
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1435
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1465
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1474
 #, fuzzy
 msgid "Gap between bullets"
@@ -2562,7 +2558,7 @@ msgstr "图像之间的间距（px）"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1590
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1097
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1679
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1447
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1477
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1486
 #, fuzzy
 msgid "Bullets color"
@@ -2572,7 +2568,7 @@ msgstr "背景颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1602
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1109
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1691
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1459
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1489
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1498
 #, fuzzy
 msgid "Bullets hover color"
@@ -2582,7 +2578,7 @@ msgstr "图标悬停颜色"
 #: mods/albums/public/shortcodes/mod-albums-carousel-bridge.php:1614
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1121
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1703
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1471
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1501
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1510
 #, fuzzy
 msgid "Bullets Position"
@@ -2593,9 +2589,9 @@ msgstr "位置："
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:716
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1188
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1770
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1373
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1538
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1095
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1388
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1568
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1125
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1577
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1053
 msgid "CSS box"
@@ -2607,9 +2603,9 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:718
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:1190
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1772
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1375
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1540
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1097
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1390
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1570
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1127
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1579
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1055
 #, fuzzy
@@ -2726,7 +2722,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:704
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:712
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1041
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:840
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:870
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:812
 #, fuzzy
 msgid "Pagination"
@@ -2783,30 +2779,31 @@ msgstr "动画"
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1325
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1338
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1347
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1353
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1361
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1369
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:844
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:859
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:873
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:887
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:901
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:914
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:928
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:941
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:955
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:968
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:979
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:995
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1008
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1024
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1037
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1051
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1058
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1069
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1075
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1083
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1091
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1362
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1368
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1376
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1384
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:874
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:889
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:903
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:917
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:931
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:944
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:958
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:971
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:985
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:998
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1009
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1025
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1038
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1054
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1067
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1081
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1088
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1099
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1105
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1113
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1121
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:816
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:831
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:845
@@ -2833,7 +2830,7 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-albums-masonry-bridge-new.php:937
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:500
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1048
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:847
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:877
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:819
 msgid "Pagination mode"
 msgstr ""
@@ -2848,10 +2845,10 @@ msgstr ""
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1105
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1132
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1159
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:877
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:904
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:931
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:958
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:907
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:934
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:961
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:988
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:849
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:904
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:959
@@ -2872,10 +2869,10 @@ msgstr "在一页上显示的项目数："
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1114
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1141
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1168
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:886
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:913
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:940
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:967
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:916
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:943
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:970
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:997
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:858
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:913
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:968
@@ -2890,8 +2887,8 @@ msgstr ""
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:598
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1184
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1213
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:983
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1012
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1013
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1042
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:862
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:917
 #, fuzzy
@@ -2908,9 +2905,9 @@ msgstr "显示分页中的所有页面："
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1199
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1228
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1242
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:998
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1027
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1041
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1028
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1057
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1071
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:877
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:932
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:972
@@ -2929,9 +2926,9 @@ msgstr "显示相册描述"
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1237
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1251
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1346
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1007
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1036
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1050
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1037
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1066
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1080
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:886
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:941
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:981
@@ -2946,7 +2943,7 @@ msgstr ""
 # @ the7mk2
 #: mods/albums/public/shortcodes/mod-albums-masonry-bridge-new.php:1179
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1291
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1061
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1091
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1019
 #, fuzzy
 msgid "Show categories filter"
@@ -2982,7 +2979,7 @@ msgstr "显示相册描述"
 
 #: mods/albums/public/shortcodes/mod-albums-masonry-bridge-new.php:1238
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:693
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1350
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1365
 #, fuzzy
 msgid "Color Settings"
 msgstr "设置"
@@ -2990,8 +2987,8 @@ msgstr "设置"
 # @ the7mk2
 #: mods/albums/public/shortcodes/mod-albums-masonry-bridge-new.php:1252
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:707
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1364
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1086
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1379
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1116
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1044
 #, fuzzy
 msgid "Accent color"
@@ -2999,8 +2996,8 @@ msgstr "图标颜色"
 
 #: mods/albums/public/shortcodes/mod-albums-masonry-bridge-new.php:1256
 #: mods/albums/public/shortcodes/mod-gallery-masonry-bridge.php:711
-#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1368
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1090
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1383
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1120
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1048
 msgid "Leave empty to use accent color."
 msgstr ""
@@ -3132,12 +3129,12 @@ msgid "Leave empty to use default hover color."
 msgstr ""
 
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:556
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:906
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:936
 msgid "Choose icon for \"Next Arrow\""
 msgstr ""
 
 #: mods/albums/public/shortcodes/mod-photos-carousel-bridge.php:567
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:917
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:947
 msgid "Choose icon  for \"Prev Arrow\""
 msgstr ""
 
@@ -3273,10 +3270,10 @@ msgstr "项目归档： %s"
 # @ the7mk2
 #: mods/portfolio/public/mod-portfolio-helpers.php:159
 #: mods/portfolio/public/mod-portfolio-helpers.php:372
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:242
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:279
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:296
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:331
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:243
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:280
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:300
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:335
 #, fuzzy
 msgid "Post image"
 msgstr "肖像图像"
@@ -3473,16 +3470,16 @@ msgstr ""
 # @ the7mk2
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:933
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:858
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:871
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:828
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:901
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:858
 #, fuzzy
 msgid "Gap between icons"
 msgstr "图像之间的间距（px）"
 
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:942
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:867
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:859
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:816
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:889
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:846
 msgid "Gap below icons"
 msgstr ""
 
@@ -3507,6 +3504,10 @@ msgstr "正常"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1058
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:901
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:982
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:749
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:825
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:706
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:782
 #, fuzzy
 msgid "Show icon border color"
 msgstr "图标悬停颜色"
@@ -3516,10 +3517,10 @@ msgstr "图标悬停颜色"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1073
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:912
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:997
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:749
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:810
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:706
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:767
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:764
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:840
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:721
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:797
 #, fuzzy
 msgid "Icon border color  "
 msgstr "图标悬停颜色"
@@ -3529,10 +3530,10 @@ msgstr "图标悬停颜色"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1086
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:925
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1010
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:761
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:822
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:718
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:779
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:776
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:852
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:733
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:809
 #, fuzzy
 msgid "Show icon background"
 msgstr "图标背景"
@@ -3542,18 +3543,18 @@ msgstr "图标背景"
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1102
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:937
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1027
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:776
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:837
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:733
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:794
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:791
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:867
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:748
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:824
 #, fuzzy
 msgid "Icon background color"
 msgstr "图标背景"
 
 #: mods/portfolio/public/shortcodes/mod-portfolio-carousel-bridge.php:1027
 #: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:950
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:788
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:745
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:803
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:760
 msgid "Hover"
 msgstr ""
 
@@ -3574,6 +3575,11 @@ msgstr "项目对齐网格"
 #, fuzzy
 msgid "Portfolio Masonry and Grid"
 msgstr "项目砖石砌体&网格"
+
+#: mods/portfolio/public/shortcodes/mod-portfolio-masonry-bridge.php:1350
+#, fuzzy
+msgid "Enable url navigation"
+msgstr "项目导航"
 
 # @ the7mk2
 #: mods/portfolio/public/shortcodes/mod-portfolio-old-masonry-bridge.php:14
@@ -3679,13 +3685,13 @@ msgid "Team Carousel"
 msgstr "团队分类"
 
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:96
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:972
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1002
 #, fuzzy
 msgid "Teammates offset"
 msgstr "团队成员"
 
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:102
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:978
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1008
 msgid ""
 "Offset for team query (i.e. 2 means, teammates will be displayed starting "
 "from the third mate)."
@@ -3887,16 +3893,18 @@ msgstr ""
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:726
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:736
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:748
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:760
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:763
 #: mods/team/public/shortcodes/mod-team-carousel-bridge.php:775
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:787
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:797
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:809
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:821
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:836
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:848
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:858
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:870
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:790
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:802
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:812
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:824
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:839
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:851
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:866
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:878
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:888
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:900
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:599
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:610
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:625
@@ -3907,16 +3915,18 @@ msgstr ""
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:683
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:693
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:705
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:717
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:720
 #: mods/team/public/shortcodes/mod-team-masonry-bridge.php:732
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:744
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:754
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:766
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:778
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:793
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:805
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:815
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:827
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:747
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:759
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:769
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:781
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:796
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:808
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:823
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:835
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:845
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:857
 #, fuzzy
 msgid "Social Links"
 msgstr "显示链接"
@@ -3942,13 +3952,13 @@ msgstr "显示链接图标："
 msgid "Icon Background"
 msgstr "图标背景"
 
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:849
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:806
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:879
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:836
 msgid "Icons gaps"
 msgstr ""
 
 # @ the7mk2
-#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1328
+#: mods/team/public/shortcodes/mod-team-carousel-bridge.php:1358
 #: mods/testimonials/public/shortcodes/mod-testimonials-carousel-bridge.php:1367
 #, fuzzy
 msgid "Arrows behaviour"
@@ -3964,13 +3974,13 @@ msgid " Leave empty to use accent text color."
 msgstr ""
 
 # @ the7mk2
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1054
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1084
 #: mods/testimonials/public/shortcodes/mod-testimonials-masonry-bridge.php:1012
 #, fuzzy
 msgid "Categorization"
 msgstr "分类"
 
-#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1072
+#: mods/team/public/shortcodes/mod-team-masonry-bridge.php:1102
 #, fuzzy
 msgid "Color settings"
 msgstr "设置"
@@ -4328,7 +4338,7 @@ msgstr "显示推荐的数量"
 
 #: mods/testimonials/public/shortcodes/testimonials-carousel/testimonials-carousel.php:430
 #: mods/testimonials/public/shortcodes/testimonials-masonry/testimonials-masonry.php:508
-#: mods/testimonials/public/templates/testimonials-post.php:75
+#: mods/testimonials/public/templates/testimonials-post.php:51
 msgid "read more"
 msgstr "阅读更多"
 
@@ -4339,8 +4349,8 @@ msgstr "项目元素"
 
 #. Description of the plugin/theme
 msgid ""
-"This plugin contains The7 custom post types and corresponding Visual "
-"Composer elements."
+"This plugin contains The7 custom post types and corresponding page builder "
+"elements."
 msgstr ""
 
 # @ the7mk2
@@ -4575,6 +4585,12 @@ msgstr " &mdash; 所有的推荐（所有分类）将显示在此页面上。"
 msgctxt "backend"
 msgid " &mdash; choose Testimonials category(s) to be shown on this page."
 msgstr " &mdash; 选择要在此页面上显示的“推荐”分类。"
+
+#: includes/class-the7pt-admin.php:86
+#, fuzzy
+msgctxt "admin"
+msgid "Settings"
+msgstr "设置"
 
 # @ the7mk2
 #: includes/theme-options/modules.php:13
@@ -6175,14 +6191,14 @@ msgctxt "vc inline dummy"
 msgid "Albums Scroller"
 msgstr "相册滚动条"
 
-#: mods/albums/public/shortcodes/gallery-masonry/gallery-masonry.php:513
+#: mods/albums/public/shortcodes/gallery-masonry/gallery-masonry.php:523
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Gallery masonry & grid"
 msgstr "砖石砌体&网格"
 
 # @ the7mk2
-#: mods/albums/public/shortcodes/photos-carousel/photos-carousel.php:571
+#: mods/albums/public/shortcodes/photos-carousel/photos-carousel.php:582
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Photos Carousel"
@@ -6208,13 +6224,13 @@ msgid "Photos Scroller"
 msgstr "照片滚动条"
 
 #: mods/portfolio/public/shortcodes/portfolio/portfolio.php:26
-#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:931
+#: mods/portfolio/public/shortcodes/portfolio-masonry/portfolio-masonry.php:937
 msgctxt "vc inline dummy"
 msgid "Portfolio Masonry & Grid"
 msgstr "项目砖石砌体&网格"
 
 # @ the7mk2
-#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:791
+#: mods/portfolio/public/shortcodes/portfolio-carousel/portfolio-carousel.php:792
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Portfolio Carousel"
@@ -6245,13 +6261,13 @@ msgctxt "vc inline dummy"
 msgid "Team (old)"
 msgstr "团队别名"
 
-#: mods/team/public/shortcodes/team-carousel/team-carousel.php:647
+#: mods/team/public/shortcodes/team-carousel/team-carousel.php:658
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Team Carousel"
 msgstr "团队分类"
 
-#: mods/team/public/shortcodes/team-masonry/team-masonry.php:645
+#: mods/team/public/shortcodes/team-masonry/team-masonry.php:657
 #, fuzzy
 msgctxt "vc inline dummy"
 msgid "Team Masonry & Grid"

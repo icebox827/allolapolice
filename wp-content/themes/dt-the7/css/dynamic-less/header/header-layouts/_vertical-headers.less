@@ -1,4 +1,5 @@
 
+
 .header-side-left:not(.sticky-header) #page {
 	.no-cssgridlegacy.no-cssgrid & {
 		padding-left: @header-side-width;
@@ -25,6 +26,9 @@
 /*Header width*/
 .side-header {
 	width: @header-side-width;
+	// & .header-scrollbar-wrap {
+	// 	width: calc(100% ~'-' 15px);
+	// }
 	.header-side-left:not(.sticky-header) & {
 		.no-cssgridlegacy.no-cssgrid & {
 			margin-left: -@header-side-width;
@@ -38,6 +42,9 @@
 	}
 	.sticky-header & {
 		width: @header-slide-out-width;
+		// & .header-scrollbar-wrap {
+		// 	width: calc(100% ~'-' 15px);
+		// }
 	}
 }
 #page {
@@ -62,7 +69,11 @@
 		}
 		padding: @top-content-padding @right-content-padding @bottom-content-padding @left-content-padding;
 	}
-		
+	// .header-scrollbar-wrap {
+	// 	.overlay-navigation & {
+	// 		width: calc(100vw ~'-' 13px);
+	// 	}
+	// }	
 		/*Area below menu*/
 		.side-header .header-bar .mini-widgets {
 			padding: @menu-area-below-padding-top @menu-area-below-padding-right @menu-area-below-padding-bottom @menu-area-below-padding-left;

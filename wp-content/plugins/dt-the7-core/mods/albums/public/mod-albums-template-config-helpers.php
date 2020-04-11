@@ -30,7 +30,7 @@ if ( ! function_exists( 'presscore_congif_populate_albums_vars' ) ) :
 		}
 
 		if ( ! $config->get( 'display' ) ) {
-			$display = get_post_meta( $post_id, '_dt_albums_display', true );
+			$display = (array) get_post_meta( $post_id, '_dt_albums_display', true );
 			if ( ! isset( $display['terms_ids'] ) ) {
 				$display['terms_ids'] = null;
 			}

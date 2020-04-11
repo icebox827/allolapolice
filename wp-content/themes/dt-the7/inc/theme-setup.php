@@ -432,3 +432,12 @@ function the7_rest_api_init() {
 	$the7_mail_controller->register_routs();
 }
 add_action( 'rest_api_init', 'the7_rest_api_init' );
+
+/**
+ * Return post types with default meta boxes.
+ *
+ * @return array
+ */
+function presscore_get_pages_with_basic_meta_boxes() {
+	return apply_filters( 'presscore_pages_with_basic_meta_boxes', array( 'page', 'post' ) );
+}

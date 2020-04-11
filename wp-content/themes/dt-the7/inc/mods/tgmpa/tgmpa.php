@@ -21,7 +21,7 @@ if ( ! class_exists( 'Presscore_Modules_TGMPAModule', false ) ) :
 		public static function execute() {
 			if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				include dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
-			} elseif ( ! defined( 'DOING_AJAX' ) && is_admin() ) {
+			} elseif ( is_admin() ) {
 				self::init_the7_tgmpa();
 			} else {
 				return;
@@ -208,9 +208,13 @@ if ( ! class_exists( 'Presscore_Modules_TGMPAModule', false ) ) :
 		protected static function inject_plugins_update_information( $transient ) {
 			global $the7_tgmpa;
 
-			if ( ! $the7_tgmpa && class_exists( 'Presscore_Modules_TGMPAModule' ) ) {
-				Presscore_Modules_TGMPAModule::init_the7_tgmpa();
-				Presscore_Modules_TGMPAModule::register_plugins_action();
+			if ( ! $the7_tgmpa ) {
+				return $transient;
+			}
+
+			// Overcome "Manage WP" plugin ajax call.
+			if ( empty( $the7_tgmpa->plugins ) ) {
+				self::register_plugins_action();
 			}
 
 			if ( ! is_object( $transient ) ) {
@@ -219,14 +223,15 @@ if ( ! class_exists( 'Presscore_Modules_TGMPAModule', false ) ) :
 			}
 
 			foreach ( $the7_tgmpa->plugins as $slug => $plugin ) {
-				if ( ! $the7_tgmpa->is_the7_plugin( $slug )) {
+				if ( ! $the7_tgmpa->is_the7_plugin( $slug ) ) {
 					continue;
 				}
-				else if (!$the7_tgmpa->is_plugin_updatetable( $slug )){
-				    $file_path = $plugin['file_path'];
-				    unset($transient->response[ $file_path ]);
-				    continue;
-                }
+
+				$file_path = $plugin['file_path'];
+				if ( ! $the7_tgmpa->is_plugin_updatetable( $slug ) ) {
+					unset( $transient->response[ $file_path ] );
+					continue;
+				}
 
 				$plugin_ver = $the7_tgmpa->get_plugin_minimum_version( $slug );
 				$source     = $the7_tgmpa->get_download_url( $slug );
@@ -236,7 +241,6 @@ if ( ! class_exists( 'Presscore_Modules_TGMPAModule', false ) ) :
 					$source = $the7_tgmpa->add_plugin_version_query_arg( $source, $slug, $plugin_ver );
 				}
 
-				$file_path = $plugin['file_path'];
 				if ( empty( $transient->response[ $file_path ] ) ) {
 					$transient->response[ $file_path ] = new stdClass;
 				}

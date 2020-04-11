@@ -49,6 +49,52 @@ class The7_Background_Updater extends WP_Background_Process {
 	}
 
 	/**
+	 * Handle
+	 *
+	 * Pass each queue item to the task handler, while remaining
+	 * within server memory and time limit constraints.
+	 */
+	protected function handle() {
+		$this->lock_process();
+
+		do {
+			$batch = $this->get_batch();
+
+			foreach ( $batch->data as $key => $value ) {
+				$task = $this->task( $value );
+
+				if ( false !== $task ) {
+					$batch->data[ $key ] = $task;
+					break;
+				} else {
+					unset( $batch->data[ $key ] );
+				}
+
+				if ( $this->time_exceeded() || $this->memory_exceeded() ) {
+					// Batch limits reached.
+					break;
+				}
+			}
+
+			// Update or delete current batch.
+			if ( ! empty( $batch->data ) ) {
+				$this->update( $batch->key, $batch->data );
+			} else {
+				$this->delete( $batch->key );
+			}
+		} while ( ! $this->time_exceeded() && ! $this->memory_exceeded() && ! $this->is_queue_empty() );
+
+		$this->unlock_process();
+
+		// Start next batch or complete process.
+		if ( ! $this->is_queue_empty() ) {
+			$this->dispatch();
+		} else {
+			$this->complete();
+		}
+	}
+
+	/**
 	 * Schedule fallback event.
 	 */
 	protected function schedule_event() {

@@ -4,9 +4,23 @@
 
 	<rule ref="PHPCompatibility"/>
 	<config name="testVersion" value="5.2-"/>
+	<rule ref="PHPCompatibility">
+		<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
+		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict" />
+	</rule>
 
-	<!-- <rule ref="WordPress-Core" />
-	<rule ref="WordPress-Docs" /> -->
+	<rule ref="PHPCompatibility">
+	 	<exclude name="WordPress.PHP.StrictComparisons.LooseComparison" />
+		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict" />
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="Generic.Files.OneObjectStructurePerFile.MultipleFound" />
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" />
+	</rule>
+
+	<rule ref="WordPress-Core" />
+ 	<rule ref="WordPress-Docs" />
+	<rule ref="WordPress-Extra" />
 
 	<!-- Check all PHP files in directory tree by default. -->
 	<arg name="extensions" value="php"/>

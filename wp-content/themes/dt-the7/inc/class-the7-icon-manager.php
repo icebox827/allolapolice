@@ -28,6 +28,7 @@ class The7_Icon_Manager {
 		add_action( 'wp_ajax_the7_icons_manager_add_zipped_font', array( __CLASS__, 'add_zipped_font' ) );
 		add_action( 'wp_ajax_the7_icons_manager_remove_zipped_font', array( __CLASS__, 'remove_zipped_font' ) );
 		add_action( 'wp_ajax_the7_icons_manager_add_font_awesome', array( __CLASS__, 'add_font_awesome' ) );
+		add_action( 'wp_ajax_the7_icons_manager_add_ua_default_icons', array( __CLASS__, 'add_ua_default_icons' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_icon_fonts' ) );
 	}
 
@@ -82,9 +83,10 @@ class The7_Icon_Manager {
 			'the7IconManagerLocal',
 			array(
 				'nonces' => array(
-					'add_zipped_font'      => wp_create_nonce( 'the7-add-zipped-fonts-nonce' ),
-					'remove_zipped_font'   => wp_create_nonce( 'the7-remove-zipped-fonts-nonce' ),
-					'add_add_font_awesome' => wp_create_nonce( 'the7-add-font-awesome-nonce' ),
+					'add_zipped_font'          => wp_create_nonce( 'the7-add-zipped-fonts-nonce' ),
+					'remove_zipped_font'       => wp_create_nonce( 'the7-remove-zipped-fonts-nonce' ),
+					'add_add_font_awesome'     => wp_create_nonce( 'the7-add-font-awesome-nonce' ),
+					'add_add_ua_default_icons' => wp_create_nonce( 'the7-add-ua-default-icons-nonce' ),
 				),
 				'text'   => array(
 					'error'   => array(
@@ -142,7 +144,7 @@ class The7_Icon_Manager {
 					<?php echo esc_html_x( 'Upload New Icons', 'admin', 'the7mk2' ); ?>
 					</a>&nbsp;<span class="spinner"></span>
 
-				<?php if ( ! self::is_fontawesome_enabled() ) { ?>
+					<?php if ( ! self::is_fontawesome_enabled() ) { ?>
 						<a href="#the7_install_fa" class="add-new-h2 the7_add_fontawesome" data-fa-type="fa4">
 							<?php echo esc_html_x( 'Install Font Awesome 4', 'admin', 'the7mk2' ); ?>
 						</a>
@@ -150,6 +152,15 @@ class The7_Icon_Manager {
 							<?php echo esc_html_x( 'Install Font Awesome 5', 'admin', 'the7mk2' ); ?>
 						</a>
 					<?php } ?>
+
+					<?php
+					if ( class_exists( 'Ultimate_VC_Addons', false ) && ! self::is_ua_default_icons_installed() ) {
+						printf(
+							'<a href="#the7_install_bsf_default_icons" class="add-new-h2 the7-add-ua-default-font">%s</a>',
+							esc_html_x( 'Install UA default icons', 'admin', 'the7mk2' )
+						);
+					}
+					?>
 				</h1>
 				<div id="msg"></div>
 			<?php
@@ -240,13 +251,19 @@ class The7_Icon_Manager {
 			check_ajax_referer( 'the7-add-zipped-fonts-nonce', 'security' );
 
 			if ( ! current_user_can( apply_filters( 'the7_file_upload_capability', 'switch_themes' ) ) ) {
-				throw new Exception( __( "Using this feature is reserved for Super Admins. You unfortunately don't have the necessary permissions.", 'the7mk2' ) );
+				throw new Exception(
+					_x(
+						"Using this feature is reserved for Super Admins. You unfortunately don't have the necessary permissions.",
+						'admin',
+						'the7mk2'
+					)
+				);
 			}
 
 			self::load_wp_filesystem();
 
 			if ( ! isset( $_POST['values']['id'] ) ) {
-				throw new Exception( __( 'Unable to get attachment id.', 'the7mk2' ) );
+				throw new Exception( _x( 'Unable to get attachment id.', 'admin', 'the7mk2' ) );
 			}
 
 			$tmp_dir    = self::get_tmp_dir();
@@ -262,7 +279,7 @@ class The7_Icon_Manager {
 			);
 			$unzipped   = self::zip_flatten( get_attached_file( $attachment['id'] ), $tmp_dir, $filter );
 			if ( ! $unzipped ) {
-				throw new Exception( __( 'Unable to unzip icons archive.', 'the7mk2' ) );
+				throw new Exception( _x( 'Unable to unzip icons archive.', 'admin', 'the7mk2' ) );
 			}
 
 			$installed_fonts = (array) $wp_filesystem->dirlist( $font_dir );
@@ -285,20 +302,33 @@ class The7_Icon_Manager {
 			check_ajax_referer( 'the7-remove-zipped-fonts-nonce', 'security' );
 
 			if ( ! current_user_can( apply_filters( 'the7_file_upload_capability', 'switch_themes' ) ) ) {
-				throw new Exception( __( "Using this feature is reserved for Super Admins. You unfortunately don't have the necessary permissions.", 'the7mk2' ) );
+				throw new Exception(
+					_x(
+						"Using this feature is reserved for Super Admins. You unfortunately don't have the necessary permissions.",
+						'admin',
+						'the7mk2'
+					)
+				);
 			}
 
-			$font         = sanitize_text_field( wp_unslash( $_POST['del_font'] ) );
+			$font = sanitize_text_field( wp_unslash( $_POST['del_font'] ) );
+
+			$is_font_awesome = in_array( $font, array( 'Font-Awesome-4', 'Font-Awesome-5' ), true );
+			$is_ua_default_icons = $font === 'Defaults';
+
 			$return_value = 'the7_icon_font_removed';
-			if ( in_array( $font, array( 'Font-Awesome-4', 'Font-Awesome-5' ), true ) ) {
-				self::disable_fontawesome();
+			if ( $is_font_awesome || $is_ua_default_icons ) {
 				$return_value .= '_with_reload';
+			}
+
+			if ( $is_font_awesome ) {
+				self::disable_fontawesome();
 			} else {
 				self::load_wp_filesystem();
 
 				$list = self::load_iconfont_list();
 				if ( ! isset( $list[ $font ] ) ) {
-					throw new Exception( __( 'Was not able to remove Font.', 'the7mk2' ) );
+					throw new Exception( _x( 'Was not able to remove Font.', 'admin', 'the7mk2' ) );
 				}
 
 				$font_to_delete = $list[ $font ];
@@ -324,8 +354,9 @@ class The7_Icon_Manager {
 
 			if ( ! current_user_can( apply_filters( 'the7_file_upload_capability', 'switch_themes' ) ) ) {
 				throw new Exception(
-					__(
+					_x(
 						"Using this feature is reserved for Super Admins. You unfortunately don't have the necessary permissions.",
+						'admin',
 						'the7mk2'
 					)
 				);
@@ -334,6 +365,35 @@ class The7_Icon_Manager {
 			$type = isset( $_POST['type'] ) ? $_POST['type'] : 'fa5';
 			$type === 'fa5' ? self::enable_fontawesome5() : self::enable_fontawesome4();
 			die( 'the7_icon_font_added: FontAwesome' );
+		} catch ( Exception $e ) {
+			echo $e->getMessage();
+			die();
+		}
+	}
+
+	/**
+	 * Add UA default icons.
+	 */
+	public function add_ua_default_icons() {
+		try {
+			check_ajax_referer( 'the7-add-ua-default-icons-nonce', 'security' );
+
+			if ( ! current_user_can( apply_filters( 'the7_file_upload_capability', 'switch_themes' ) ) ) {
+				throw new Exception(
+					_x(
+						"Using this feature is reserved for Super Admins. You unfortunately don't have the necessary permissions.",
+						'admin',
+						'the7mk2'
+					)
+				);
+			}
+
+			if ( class_exists( 'AIO_Icon_Manager' ) ) {
+				$ua_icons_manager = new AIO_Icon_Manager();
+				$ua_icons_manager->AIO_move_fonts();
+				die( 'the7_icon_font_added: Defaults' );
+			}
+			die( _x( 'Seems that Ultimate VC Addons plugin is inactive. Please, activate it and try again.', 'admin', 'the7mk2' ) );
 		} catch ( Exception $e ) {
 			echo $e->getMessage();
 			die();
@@ -788,6 +848,17 @@ class The7_Icon_Manager {
 		$icons = get_option( 'smile_fonts' );
 
 		return $icons ? (array) $icons : array();
+	}
+
+	/**
+	 * Return true if UA Default icons is installed.
+	 *
+	 * @return bool
+	 */
+	public static function is_ua_default_icons_installed() {
+		$installed_icons = self::get_custom_icons();
+
+		return array_key_exists( 'Defaults', $installed_icons );
 	}
 
 	public static function is_fontawesome_enabled() {

@@ -30,11 +30,15 @@ abstract class The7_Elementor_Widget_Base extends Widget_Base {
 			add_filter( 'dt_of_get_option-general-images_lazy_loading', '__return_false' );
 			echo $this->generate_inline_css();
 		} else {
-			echo $this->get_css();
+			echo $this->get_css( $this->get_current_post_id() );
 		}
 		echo '</style>';
 	}
 
+	/**
+	 * @return false|string
+	 * @throws \Exception
+	 */
 	protected function generate_inline_css() {
 		$less_file = $this->get_less_file_name();
 
@@ -47,6 +51,12 @@ abstract class The7_Elementor_Widget_Base extends Widget_Base {
 		return $lessc->compile_file( $less_file, $this->get_less_imports() );
 	}
 
+	/**
+	 * @param null $post_id
+	 *
+	 * @return bool
+	 * @throws \Exception
+	 */
 	public function save_css( $post_id = null ) {
 		global $post;
 
@@ -55,12 +65,17 @@ abstract class The7_Elementor_Widget_Base extends Widget_Base {
 			$widgets_css                    = (array) get_post_meta( $post_id, self::WIDGET_CSS_CACHE_ID, true );
 			$widgets_css[ $this->get_id() ] = $this->generate_inline_css();
 			$widgets_css                    = array_filter( $widgets_css );
-			update_post_meta( $post_id, self::WIDGET_CSS_CACHE_ID, $widgets_css );
+			update_metadata( 'post', $post_id, self::WIDGET_CSS_CACHE_ID, $widgets_css );
 		}
 
 		return true;
 	}
 
+	/**
+	 * @param null $post_id
+	 *
+	 * @return string
+	 */
 	public function get_css( $post_id = null ) {
 		global $post;
 
@@ -75,7 +90,7 @@ abstract class The7_Elementor_Widget_Base extends Widget_Base {
 	}
 
 	public static function delete_widgets_css_cache( $post_id ) {
-		delete_post_meta( $post_id, self::WIDGET_CSS_CACHE_ID );
+		delete_metadata( 'post', $post_id, self::WIDGET_CSS_CACHE_ID );
 	}
 
 	/**
@@ -87,6 +102,9 @@ abstract class The7_Elementor_Widget_Base extends Widget_Base {
 		return [ PRESSCORE_THEME_DIR . '/css/dynamic-less/elementor' ];
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function get_less_vars() {
 		$less_vars = new The7_Elementor_Less_Vars_Decorator( the7_get_new_shortcode_less_vars_manager() );
 
@@ -99,25 +117,59 @@ abstract class The7_Elementor_Widget_Base extends Widget_Base {
 		// Do nothing.
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function get_less_imports() {
 		return [];
 	}
 
+	/**
+	 * @return bool|string
+	 */
 	protected function get_less_file_name() {
 		return false;
 	}
 
+	/**
+	 * @param $dim
+	 *
+	 * @return string
+	 */
 	protected function combine_dimensions( $dim ) {
 		$units = $dim['unit'];
 
 		return "{$dim['top']}{$units} {$dim['right']}{$units} {$dim['bottom']}{$units} {$dim['left']}{$units}";
 	}
 
+	/**
+	 * @param array $val
+	 * @param int   $default
+	 *
+	 * @return int|string
+	 */
 	protected function combine_slider_value( $val, $default = 0 ) {
 		if ( empty( $val['size'] ) || ! isset( $val['unit'] ) ) {
 			return $default;
 		}
 
 		return $val['size'] . $val['unit'];
+	}
+
+	/**
+	 * @return false|int
+	 */
+	protected function get_current_post_id() {
+		// Elementor Pro >= 2.9.1
+		if ( class_exists( 'ElementorPro\Core\Utils' ) ) {
+			return \ElementorPro\Core\Utils::get_current_post_id();
+		}
+
+		// Elementor Pro < 2.9.1
+		if ( class_exists( 'ElementorPro\Classes\Utils' ) ) {
+			return \ElementorPro\Classes\Utils::get_current_post_id();
+		}
+
+		return get_the_ID();
 	}
 }

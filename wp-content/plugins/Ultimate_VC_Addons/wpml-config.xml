@@ -273,5 +273,13 @@
 				<attribute>ribbon_msg</attribute>
 			</attributes>
 		</shortcode>
+		<shortcode>
+			<tag>ultimate_dual_color</tag>
+			<attributes>
+				<attribute>dual_before_txt</attribute>
+				<attribute>dual_high_txt</attribute>
+				<attribute>dual_after_txt</attribute>
+			</attributes>
+		</shortcode>
 	</shortcodes>
 </wpml-config>

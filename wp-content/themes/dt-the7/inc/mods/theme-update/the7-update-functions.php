@@ -331,7 +331,10 @@ function the7_update_693_migrate_custom_menu_widgets() {
 		'widget_presscore-custom-menu-2' => 'widget_presscore-custom-menu-two',
 	);
 	foreach ( $widget_settings as $old_id => $new_id ) {
-		update_option( $new_id, get_option( $old_id ) );
+		$old_value = get_option( $old_id );
+		if ( $old_value && ! get_option( $new_id ) ) {
+			update_option( $new_id, $old_value );
+		}
 	}
 }
 
@@ -432,7 +435,7 @@ function the7_update_730_fancy_title_responsiveness_settings() {
 			}
 		}
 
-		The7_Fancy_Title_CSS::generate_css_for_post( $post->post_id );
+		the7_update_post_css_on_save( $post->post_id );
 	}
 }
 
@@ -825,4 +828,122 @@ function the7_update_791_db_version() {
  */
 function the7_update_800_db_version() {
 	The7_Install::update_db_version( '8.0.0' );
+}
+
+/**
+ * Bump db version.
+ */
+function the7_update_810_db_version() {
+	The7_Install::update_db_version( '8.1.0' );
+}
+
+/**
+ * Bump db version.
+ */
+function the7_update_820_db_version() {
+	The7_Install::update_db_version( '8.2.0' );
+}
+
+/**
+ * Ensure that post padding have units.
+ */
+function the7_update_830_fix_post_padding_meta() {
+	global $wpdb;
+
+	$query         = "select post_id, meta_key, meta_value from $wpdb->postmeta where meta_key like '_dt_page_overrides_%' and meta_value != ''";
+	$paddings_meta = $wpdb->get_results( $query );
+
+	foreach ( $paddings_meta as $padding_meta ) {
+		$meta_value = $padding_meta->meta_value;
+		if ( $meta_value === (string) intval( $meta_value ) ) {
+			update_post_meta( $padding_meta->post_id, $padding_meta->meta_key, $meta_value . 'px' );
+		}
+	}
+}
+
+/**
+ * Duplicate post padding to post mobile padding.
+ */
+function the7_update_830_migrate_post_mobile_padding() {
+	global $wpdb;
+
+	$query         = "select post_id, meta_key, meta_value from $wpdb->postmeta where meta_key like '_dt_page_overrides_%' and meta_value != ''";
+	$paddings_meta = $wpdb->get_results( $query );
+
+	$padding_to_mobile = array(
+		'_dt_page_overrides_top_margin'    => '_dt_mobile_page_padding_top',
+		'_dt_page_overrides_right_margin'  => '_dt_mobile_page_padding_right',
+		'_dt_page_overrides_bottom_margin' => '_dt_mobile_page_padding_bottom',
+		'_dt_page_overrides_left_margin'   => '_dt_mobile_page_padding_left',
+	);
+
+	foreach ( $paddings_meta as $padding_meta ) {
+		$padding_meta_key = $padding_meta->meta_key;
+
+		if ( ! array_key_exists( $padding_meta_key, $padding_to_mobile ) ) {
+			continue;
+		}
+
+		$mobile_meta_key = $padding_to_mobile[ $padding_meta_key ];
+		$post_id         = $padding_meta->post_id;
+		if ( metadata_exists( 'post', $post_id, $mobile_meta_key ) ) {
+			continue;
+		}
+
+		update_post_meta( $post_id, $mobile_meta_key, $padding_meta->meta_value );
+	}
+}
+
+/**
+ * Bump db version.
+ */
+function the7_update_830_db_version() {
+	The7_Install::update_db_version( '8.3.0' );
+}
+
+/**
+ * Bump db version.
+ */
+function the7_update_840_db_version() {
+	The7_Install::update_db_version( '8.4.0' );
+}
+
+function the7_update_850_migrate_post_footer_visibility() {
+	global $wpdb;
+
+	$posts_with_empty_footer_meta = $wpdb->get_results( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_dt_footer_show' AND meta_value = ''" );
+	if ( empty( $posts_with_empty_footer_meta ) ) {
+		return false;
+	}
+
+	$posts = wp_list_pluck( $posts_with_empty_footer_meta, 'post_id' );
+	foreach ( $posts as $post_id ) {
+		update_post_meta( $post_id, '_dt_footer_show', '1' );
+	}
+}
+
+function the7_update_850_db_version() {
+	The7_Install::update_db_version( '8.5.0' );
+}
+
+function the7_update_8502_migrate_post_footer_source_for_elementor() {
+	global $wpdb;
+
+	$posts_without_footer_source = $wpdb->get_results( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_elementor_edit_mode' AND meta_value = 'builder'" );
+	if ( empty( $posts_without_footer_source ) ) {
+		return false;
+	}
+
+	$posts = wp_list_pluck( $posts_without_footer_source, 'post_id' );
+	foreach ( $posts as $post_id ) {
+		add_metadata( 'post', $post_id, '_dt_footer_elementor_source', 'the7', true );
+	}
+}
+
+function the7_update_8502_db_version() {
+	The7_Install::update_db_version( '8.5.0.2' );
+}
+
+function the7_update_860_db_version() {
+	The7_Install::update_db_version( '8.6.0' );
 }

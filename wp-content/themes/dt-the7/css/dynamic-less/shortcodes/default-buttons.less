@@ -39,14 +39,10 @@
 
 .mixin-shadow-style() {
   .btn-shadow& {
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
-
-    -webkit-transition: -webkit-box-shadow 0.2s ease-out, opacity 0.45s;
     transition: box-shadow 0.2s ease-out, opacity 0.45s;
 
     &:hover {
-      -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
       box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     }
   }
@@ -65,16 +61,15 @@
 .mixin-custom-settings() when (ispixel(@btn-border-radius)) {
   border-radius: @btn-border-radius;
   font-size: @btn-font-size;
+  line-height: @btn-font-size + 2;
 
   .mixin-shadow-style();
   .mixin-3d-style(@btn-bg-color, @btn-bg-color-hover);
 
   .btn-flat& {
-    -webkit-box-shadow: none;
     box-shadow: none;
 
     &:hover {
-      -webkit-box-shadow: none;
       box-shadow: none;
     }
   }
@@ -162,7 +157,14 @@
 #@{unique-shortcode-class-name} {
   .mixin-custom-settings();
   .mixin-link-settings();
+  &.ico-right-side > i {
+    margin-right: 0px;
+    margin-left: @btn-icon-gap;
+  }
 
+  & > i {
+    margin-right: @btn-icon-gap;
+  }
   & * {
     vertical-align: middle;
   }

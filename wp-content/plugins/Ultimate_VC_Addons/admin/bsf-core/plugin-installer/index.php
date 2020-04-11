@@ -1,7 +1,7 @@
 <?php
-	$action = ( isset( $_GET['action'] ) && $_GET['action'] === 'install' ) ? $_GET['action'] : '';
+	$action = isset( $_GET['action'] ) ? sanitize_text_field($_GET['action']) : '';
 if ( $action === 'install' ) {
-	$request_product_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : '';
+	$request_product_id = ( isset( $_GET['id'] ) ) ? intval($_GET['id']) : '';
 	if ( $request_product_id !== '' ) {
 		?>
 				<div class="clear"></div>
@@ -48,7 +48,7 @@ if ( isset( $_GET['page'] ) ) {
 
 ?>
 <div class="clear"></div>
-<div class="wrap about-wrap bsf-sp-screen bend <?php echo 'extension-installer-' . $product_id; ?>">
+<div class="wrap about-wrap bsf-sp-screen bend <?php echo( htmlentities('extension-installer-' . $product_id , ENT_QUOTES,  "utf-8")); ?>">
 
 	<div class="bend-heading-section extension-about-header">
 
@@ -341,7 +341,7 @@ if ( isset( $_GET['page'] ) ) {
 			<p class="bsf-text-light"><em><?php echo __( 'No extensions available yet!', 'bsf' ); ?></em></p>
 
 			<div class="bsf-cp-rem-bundle" style="margin-top: 30px;">
-				<a class="button-primary" href="<?php echo $reset_bundled_url; ?>">Refresh Bundled Products</a>
+				<a class="button-primary" href="<?php echo( htmlentities($reset_bundled_url, ENT_QUOTES,  "utf-8" )); ?>">Refresh Bundled Products</a>
 			</div>
 		</div>
 

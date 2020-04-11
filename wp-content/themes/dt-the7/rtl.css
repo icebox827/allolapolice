@@ -1,5 +1,5 @@
 /*
-Theme Name: presscore
+Theme Name: The7
 
 Adding support for language written in a Right To Left (RTL) direction is easy -
 it's just a matter of overwriting all the horizontal positioning attributes
@@ -9,10 +9,167 @@ http://codex.wordpress.org/Right_to_Left_Language_Support
 
 */
 
-/*
-body {
-	direction: rtl;
-	unicode-bidi: embed;
-}
-*/
 .dt-mobile-header {transform: translate3d(100%, 0, 0);}
+.microwidget-btn.btn-icon-align-left i, .mini-contacts i, .mini-login a i, .mini-login i, .mini-nav .customSelectInner i {
+	margin-left: 5px;
+}
+.masthead:not(.side-header) .mini-widgets > .last, .masthead:not(.side-header) .mini-widgets > :last-child, .masthead:not(.side-header) .mobile-mini-widgets > .last, .masthead:not(.side-header) .mobile-mini-widgets > :last-child, .side-header .top-bar .mini-widgets > .last, .side-header .top-bar .mini-widgets > :last-child, .side-header .top-bar .mobile-mini-widgets > .last, .side-header .top-bar .mobile-mini-widgets > :last-child, .side-header-h-stroke .mini-widgets > .last, .side-header-h-stroke .mini-widgets > :last-child, .side-header-h-stroke .mobile-mini-widgets > .last, .side-header-h-stroke .mobile-mini-widgets > :last-child {
+	margin-left: 0;
+}
+.sub-nav, .vc_progress_bar .vc_single_bar .vc_bar, .standard-arrow li::after, .standard-arrow li::before, .st-accordion li > a::after, .st-accordion li > a::before, .product .related.products > h2::after, .product .upsells.products > h2::after, .cross-sells > h2::after, .woocommerce div.product div.summary > .price::after, .standard-number-list li::before, .custom-menu.show-arrow a::before, .widget_presscore-custom-menu-one .custom-menu.show-arrow a::after, .widget_shopping_cart .cart_list li a.remove, .shopping-cart-inner .cart_list li a.remove, .checkout-page-title .checkout-step:before {
+	right: 0px;
+}
+.masthead:not(.sub-downwards) .sub-nav li.has-children a::after, .standard-arrow li::after, .custom-menu.show-arrow a::before, .widget_presscore-custom-menu-one .custom-menu.show-arrow a::after {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+}
+.standard-arrow li, .standard-number-list li {
+	padding-right: 24px;
+	padding-left: 0px;
+}
+#footer .alignleft, #sidebar .alignleft, .related-product > li .product-thumbnail {
+	margin-left: 20px;
+}
+.st-accordion li > a {
+	padding-right: 25px;
+}
+.product div.images {
+	direction: ltr;
+}
+.wc-img-hover .woocom-project img.back-image {
+	right: auto;
+}
+.wc-ico-cart > .counter {
+	margin-right: 10px;
+}
+.rectangular-counter-style .wc-ico-cart > .counter::before {
+	border-left-width:4px;
+}
+.shopping-cart-inner::before {
+	right: 20px;
+}
+.woocommerce-tabs .tabs li {
+	float: right;
+	margin-left: 40px;
+}
+.woocommerce-tabs .tabs li:first-child {
+	margin-right: 0;
+	margin-left: 40px;
+}
+.product form.cart div.quantity {
+	float: right;
+	margin: 0 0 0 15px;
+}
+.product form.cart .button, .custom-categories span.item-name, .wpb_tabs .wpb_tabs_nav li {
+	float: right;
+}
+.woocommerce-cart-wrap .quantity .minus, .woocommerce-variation-add-to-cart .quantity .minus, .product .quantity .minus {
+	border-left: none !important;
+	border-right: 1px solid rgba(51,51,51,0.11) !important;
+}
+.woocommerce-cart-wrap .quantity .plus, .woocommerce-variation-add-to-cart .quantity .plus, .product .quantity .plus {
+	border-right: none !important;
+	border-left: 1px solid rgba(51,51,51,0.11) !important;
+}
+.single-product .share-link-description, .woocommerce-Reviews .comment-notes, .shopping-cart-inner, .content th {
+	text-align: right;
+}
+.product table.variations .reset_variations {
+	left: 0px;
+	right: auto;
+}
+select:not(.elementor-field) {
+	background-position: 15px center;
+}
+.single-related-posts .items-grid > .related-item {
+	padding: 0 0px 25px 25px;
+}
+.items-grid .alignleft {
+	margin: 5px 0px 5px 20px;
+}
+.custom-categories span.item-num {
+	float: left;
+	margin-right: 10px;
+}
+.show-arrow.custom-menu a {
+	padding-left: 0px;
+	padding-right: 23px;
+}
+.content .searchform .submit, .widget .searchform .submit, .widget .searchsubmit {
+	left: 11px;
+	right: auto;
+}
+.wc-ico-cart i {
+	margin-left: 5px;
+	margin-right: 0px;
+}
+.breadcrumbs li::before, .fancy-header .breadcrumbs li::before {
+	right: 0;
+	text-align: right;
+}
+.breadcrumbs li {
+	padding-right: 12px;
+	padding-left: 0px;
+	margin-right: 8px;
+	margin-left: 0px;
+}
+.buttons a.button {
+	float: right;
+	margin: 0 0px 15px 10px;
+}
+.product_list_widget img, .woocommerce .wf-cell .product_list_widget img {
+	float: right;
+	margin: 5px 0px 5px 20px;
+}
+.checkout-page-title {
+	margin-right: -2000px;
+}
+.checkout-page-title .checkout-step:after {
+	right: calc(50% + 40px);
+}
+.woocommerce-cart-wrap .cart-collaterals {
+	margin-right: 50px;
+	margin-left: 0px;
+}
+.woocommerce-cart-wrap .coupon:before, .wc-coupon-wrap .coupon:before {
+	right: 15px;
+}
+.woocommerce-cart-wrap .coupon, .wc-coupon-wrap .coupon {
+	padding-left: 10px;
+	padding-right: 0px;
+}
+.cart td.actions .coupon .input-text {
+	float: right;
+	margin: 0 0px 0px 10px;
+}
+.woocommerce-cart-wrap .coupon input[type="text"], .wc-coupon-wrap .coupon input[type="text"] {
+	padding-right: 35px;
+}
+.woocommerce-cart-wrap .update-cart-button i {
+	padding-left: 5px;
+	padding-right: 0px;
+}
+.woocommerce-cart-wrap table.cart th.product-name {
+	right: -38px;
+}
+.woocommerce-cart-wrap .product-subtotal {
+	text-align: left;
+}
+.wc-order-review {
+	margin-right: 50px;
+	margin-left:0px;
+}
+.content .woocommerce-checkout-review-order-table td.product-name, .content .woocommerce-checkout-review-order-table .order-total th.product-name {
+	padding-left: 10px;
+	padding-right: 0px;
+}
+.showcoupon-tag, .showlogin-tag {
+	margin-left: 10px;
+	margin-right: 0px;
+}
+.showcoupon-tag i, .showlogin-tag i {
+	margin: 2px 0 0 5px;
+	float: right;
+}

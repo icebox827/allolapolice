@@ -8,7 +8,7 @@ if ( ! function_exists( 'bsf_generate_rand_token' ) ) {
 		$length          = 32;
 		for ( $n = 1; $n < $length; $n++ ) {
 			$whichCharacter = rand( 0, strlen( $validCharacters ) - 1 );
-			$myKeeper      .= $validCharacters{$whichCharacter};
+			$myKeeper      .= $validCharacters[$whichCharacter];
 		}
 		return $myKeeper;
 	}
@@ -23,15 +23,15 @@ if ( ! function_exists( 'bsf_register_product_callback' ) ) {
 
 		$bsf_product_plugins = $bsf_product_themes = array();
 
-		$type          = isset( $_POST['type'] ) ? $_POST['type'] : '';
-		$product       = isset( $_POST['product'] ) ? $_POST['product'] : '';
-		$id            = isset( $_POST['id'] ) ? $_POST['id'] : '';
-		$bsf_username  = isset( $_POST['bsf_username'] ) ? $_POST['bsf_username'] : '';
-		$bsf_useremail = isset( $_POST['bsf_useremail'] ) ? $_POST['bsf_useremail'] : '';
-		$purchase_key  = isset( $_POST['purchase_key'] ) ? $_POST['purchase_key'] : '';
-		$version       = isset( $_POST['version'] ) ? $_POST['version'] : '';
-		$step          = isset( $_POST['step'] ) ? $_POST['step'] : '';
-		$product_name  = isset( $_POST['product_name'] ) ? $_POST['product_name'] : '';
+		$type          = isset( $_POST['type'] ) ? sanitize_text_field($_POST['type']) : '';
+		$product       = isset( $_POST['product'] ) ? sanitize_text_field($_POST['product']) : '';
+		$id            = isset( $_POST['id'] ) ? intval($_POST['id']) : '';
+		$bsf_username  = isset( $_POST['bsf_username'] ) ? sanitize_text_field($_POST['bsf_username']) : '';
+		$bsf_useremail = isset( $_POST['bsf_useremail'] ) ? sanitize_email($_POST['bsf_useremail']) : '';
+		$purchase_key  = isset( $_POST['purchase_key'] ) ? sanitize_text_field($_POST['purchase_key']) : '';
+		$version       = isset( $_POST['version'] ) ? sanitize_text_field($_POST['version']) : '';
+		$step          = isset( $_POST['step'] ) ? sanitize_text_field($_POST['step']) : '';
+		$product_name  = isset( $_POST['product_name'] ) ? sanitize_text_field($_POST['product_name']) : '';
 		$token         = bsf_generate_rand_token();
 
 		if ( ! empty( $brainstrom_products ) ) :
@@ -84,7 +84,7 @@ if ( ! function_exists( 'bsf_register_product_callback' ) ) {
 		$request = wp_remote_post(
 			$path, array(
 				'body'    => $data,
-				'timeout' => '30',
+				'timeout' => '10',
 			)
 		);
 
@@ -94,7 +94,7 @@ if ( ! function_exists( 'bsf_register_product_callback' ) ) {
 			$request 	= wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '30',
+					'timeout' => '8',
 				)
 			);
 		}
@@ -135,11 +135,11 @@ if ( ! function_exists( 'bsf_register_product_callback' ) ) {
 
 			update_option( 'brainstrom_products', $brainstrom_products );
 
-			echo json_encode( $result );
+			wp_send_json( $result );
 
 		} else {
 			$arr = array( 'response' => $request->get_error_message() );
-			echo json_encode( $arr );
+            wp_send_json( $arr );
 		}
 
 		wp_die();
@@ -154,13 +154,13 @@ if ( ! function_exists( 'bsf_deregister_product_callback' ) ) {
 
 		$bsf_product_plugins = $bsf_product_themes = array();
 
-		$type          = isset( $_POST['type'] ) ? $_POST['type'] : '';
-		$product       = isset( $_POST['product'] ) ? $_POST['product'] : '';
-		$id            = isset( $_POST['id'] ) ? $_POST['id'] : '';
-		$bsf_useremail = isset( $_POST['bsf_useremail'] ) ? $_POST['bsf_useremail'] : '';
-		$purchase_key  = isset( $_POST['purchase_key'] ) ? $_POST['purchase_key'] : '';
-		$version       = isset( $_POST['version'] ) ? $_POST['version'] : '';
-		$product_name  = isset( $_POST['product_name'] ) ? $_POST['product_name'] : '';
+		$type          = isset( $_POST['type'] ) ? sanitize_text_field($_POST['type']) : '';
+		$product       = isset( $_POST['product'] ) ? sanitize_text_field($_POST['product']) : '';
+		$id            = isset( $_POST['id'] ) ? intval($_POST['id']) : '';
+		$bsf_useremail = isset( $_POST['bsf_useremail'] ) ? sanitize_email($_POST['bsf_useremail']) : '';
+		$purchase_key  = isset( $_POST['purchase_key'] ) ? sanitize_text_field($_POST['purchase_key']) : '';
+		$version       = isset( $_POST['version'] ) ? sanitize_text_field($_POST['version']) : '';
+		$product_name  = isset( $_POST['product_name'] ) ? sanitize_text_field($_POST['product_name']) : '';
 		$token         = bsf_generate_rand_token();
 
 		if ( trim( $purchase_key ) == '' ) {
@@ -220,7 +220,7 @@ if ( ! function_exists( 'bsf_deregister_product_callback' ) ) {
 		$request = wp_remote_post(
 			$path, array(
 				'body'    => $data,
-				'timeout' => '30',
+				'timeout' => '10',
 			)
 		);
 
@@ -230,7 +230,7 @@ if ( ! function_exists( 'bsf_deregister_product_callback' ) ) {
 			$request = wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '30',
+					'timeout' => '8',
 				)
 			);
 		}
@@ -238,14 +238,14 @@ if ( ! function_exists( 'bsf_deregister_product_callback' ) ) {
 		if ( ! is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
 			$result = json_decode( $request['body'] );
 			// $result->message_html = 'Site deactivated!<br/>'.$result->message_html;
-			echo json_encode( $result );
+			wp_send_json( $result );
 		} else {
 			$res['response'] = array(
 				'title'        => 'Error',
 				'message_html' => 'Site deactivated!<br/> Error while communicating with server' . $request->get_error_message(),
 			);
 			$res['proceed']  = true;
-			echo json_encode( $res );
+            wp_send_json( $res );
 		}
 
 		wp_die();
@@ -258,11 +258,11 @@ if ( ! function_exists( 'bsf_register_user_callback' ) ) {
 
 		$brainstrom_users = ( get_option( 'brainstrom_users' ) ) ? get_option( 'brainstrom_users' ) : array();
 
-		$bsf_username          = isset( $_POST['bsf_username'] ) ? $_POST['bsf_username'] : '';
-		$bsf_useremail         = isset( $_POST['bsf_useremail'] ) ? $_POST['bsf_useremail'] : '';
-		$bsf_useremail_reenter = isset( $_POST['bsf_useremail_reenter'] ) ? $_POST['bsf_useremail_reenter'] : '';
+		$bsf_username          = isset( $_POST['bsf_username'] ) ? sanitize_text_field($_POST['bsf_username']) : '';
+		$bsf_useremail         = isset( $_POST['bsf_useremail'] ) ? sanitize_email($_POST['bsf_useremail']) : '';
+		$bsf_useremail_reenter = isset( $_POST['bsf_useremail_reenter'] ) ? sanitize_email($_POST['bsf_useremail_reenter']) : '';
 
-		$subscribe = isset( $_POST['ultimate_user_receive'] ) ? $_POST['ultimate_user_receive'] : '';
+		$subscribe = isset( $_POST['ultimate_user_receive'] ) ? sanitize_text_field($_POST['ultimate_user_receive']) : '';
 
 		$token = bsf_generate_rand_token();
 
@@ -273,8 +273,7 @@ if ( ! function_exists( 'bsf_register_user_callback' ) ) {
 			);
 			$response['proceed']  = false;
 
-			echo json_encode( $response );
-			wp_die();
+			wp_send_json($response);
 		}
 
 		$domain = substr( strrchr( $bsf_useremail, '@' ), 1 );
@@ -289,8 +288,7 @@ if ( ! function_exists( 'bsf_register_user_callback' ) ) {
 					'message_html' => 'Please enter valid email address, username and password will sent to your provided email address',
 				);
 				$response['proceed']  = false;
-				echo json_encode( $response );
-				wp_die();
+				wp_send_json($response);
 			}
 		}
 
@@ -309,7 +307,7 @@ if ( ! function_exists( 'bsf_register_user_callback' ) ) {
 		$request = wp_remote_post(
 			$path, array(
 				'body'    => $data,
-				'timeout' => '60',
+				'timeout' => '10',
 			)
 		);
 
@@ -318,7 +316,7 @@ if ( ! function_exists( 'bsf_register_user_callback' ) ) {
 			$request = wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '60',
+					'timeout' => '8',
 				)
 			);
 		}
@@ -354,13 +352,11 @@ if ( ! function_exists( 'bsf_register_user_callback' ) ) {
 				$ultimate_referer = 'on-user-register';
 				bsf_check_product_update();
 			}
-			echo json_encode( $result );
+			wp_send_json($result);
 		} else {
 			$arr = array( 'response' => $request->get_error_message() );
-			echo json_encode( $arr );
+            wp_send_json($arr);
 		}
-
-		wp_die();
 	}//end bsf_register_user_callback()
 }
 
@@ -633,109 +629,6 @@ if ( ! function_exists( 'bsf_notices' ) ) {
 		}
 	}
 }
-
-if ( ! function_exists( 'bsf_grant_developer_access' ) ) {
-	function bsf_grant_developer_access( $action ) {
-		$brainstrom_users = ( get_option( 'brainstrom_users' ) ) ? get_option( 'brainstrom_users' ) : array();
-
-		if ( empty( $brainstrom_users ) ) {
-			return false;
-		}
-
-		global $current_user;
-		$user  = $current_user->user_login;
-		$email = $current_user->user_email;
-
-		// $token = bin2hex(openssl_random_pseudo_bytes(32));
-		$token = bsf_generate_rand_token();
-		$url   = wp_nonce_url( get_site_url() . '/wp-login.php?developer_access=true&access_id=' . $user . '&access_token=' . $token );
-
-		$subject = $message = $vc_version = '';
-
-		$username = ( isset( $brainstrom_users[0]['name'] ) ) ? $brainstrom_users[0]['name'] : $user;
-
-		$response = bsf_allow_developer_access( $username, $url, $action );
-		if ( $response ) {
-			if ( $action === 'grant' ) {
-				update_option( 'developer_access', true );
-				$interval = time() + ( 15 * 24 * 60 * 60 );
-				update_option( 'access_time', $interval );
-				update_option( 'access_token', $token );
-				// echo '<div class="updated"><p>'.$response.'</p></div>';
-			} else {
-				$interval = time() - ( 10000 );
-				update_option( 'access_time', $interval );
-				if ( update_option( 'developer_access', false ) ) {
-					// echo __("Access Revoked!",'bsf');
-				} else {
-					?>
-					<div class="error"><p><?php echo __( 'Something went wrong. Please try again!', 'bsf' ); ?></p></div>
-					<?php
-				}
-			}
-		} else {
-			echo '<div class="error"><p>Something went wrong. Please try again.</p></div>';
-			update_option( 'developer_access', false );
-			$interval = time();
-			update_option( 'access_time', $interval );
-		}
-	}
-}
-if ( ! function_exists( 'bsf_allow_developer_access' ) ) {
-	function bsf_allow_developer_access( $username, $url, $process ) {
-
-		$path    = bsf_get_api_url() . '?referer=allow-developer-access';
-		$new_url = $url;
-		$user    = $username;
-		$request = wp_remote_post(
-			$path, array(
-				'body'    => array(
-					'action'    => 'give_developer_access',
-					'userid'    => $user,
-					'login_url' => $new_url,
-					'site_url'  => get_site_url(),
-					'process'   => $process,
-				),
-				'timeout' => '30',
-			)
-		);
-		if ( ! is_wp_error( $request ) || wp_remote_retrieve_response_code( $request ) === 200 ) {
-			return ( $request['body'] );
-		}
-	}
-}
-if ( ! function_exists( 'bsf_process_developer_login' ) ) {
-	function bsf_process_developer_login() {
-		$basename = basename( $_SERVER['SCRIPT_NAME'] );
-		if ( $basename == 'wp-login.php' ) {
-			$interval = get_option( 'access_time' );
-			$now      = time();
-			if ( $interval <= $now ) {
-				update_option( 'developer_access', false );
-			}
-			require_once ABSPATH . 'wp-includes/pluggable.php';
-
-			if ( isset( $_GET['access_token'] ) ) {
-				$access       = get_option( 'developer_access' );
-				$access_token = get_option( 'access_token' );
-				$verify_token = $_GET['access_token'];
-				$verified     = ( $access_token === $verify_token ) ? true : false;
-				if ( isset( $_GET['developer_access'] ) && $access && $verified ) {
-					$user_login = $_GET['access_id'];
-					$user       = get_user_by( 'login', $user_login );
-					$user_id    = $user->ID;
-					wp_set_current_user( $user_id, $user_login );
-					wp_set_auth_cookie( $user_id );
-					$redirect_to = user_admin_url();
-					setcookie( 'DeveloperAccess', 'active', time() + 86400 );
-					wp_safe_redirect( $redirect_to );
-					exit();
-				}
-			}
-		}
-	}
-}
-bsf_process_developer_login();
 
 if ( ! function_exists( 'bsf_get_free_products' ) ) {
 	function bsf_get_free_products() {

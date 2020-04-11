@@ -79,34 +79,44 @@
         }
 
         function onEditSettings(changedModel, widgetModel) {
-            if (changedModel.attributes.panel.activeSection === "content_section") {
-                setTimeout(function(model, panel) {
-                    var $postTypeSelect = panel.$el.find("[data-setting='post_type']");
-                    var $taxonomySelect = panel.$el.find("[data-setting='taxonomy']");
-                    var $termsSelect = panel.$el.find("[data-setting='terms']");
-
-                    // On post type change.
-                    $postTypeSelect.on("change", function () {
-                        var widgetType = model.attributes.widgetType;
-                        var taxonomies = getTaxonomiesOptions(widgetType, $(this).val());
-
-                        appendOptionsTo($taxonomySelect, taxonomies, null);
-                        model.setSetting(taxonomies[0].value);
-                        $taxonomySelect.trigger("change");
-                    });
-
-                    // On taxonomy change.
-                    $taxonomySelect.on("change", function () {
-                        var widgetType = model.attributes.widgetType;
-
-                        $termsSelect[0].options.length = 0;
-                        appendOptionsTo($termsSelect, getTermsOptions(widgetType, $(this).val()), null);
-                        model.setSetting("terms", []);
-                    });
-
-                    fillTermsTaxonomy(model, $termsSelect, $taxonomySelect);
-                }, 350, this.model, this.panel);
+            if (!changedModel.attributes.panel) {
+                return;
             }
+
+            if (changedModel.attributes.panel.activeSection !== "content_section") {
+                return;
+            }
+
+            setTimeout(function(model, panel) {
+                var $postTypeSelect = panel.$el.find("[data-setting='post_type']");
+                var $taxonomySelect = panel.$el.find("[data-setting='taxonomy']");
+                var $termsSelect = panel.$el.find("[data-setting='terms']");
+
+                // On post type change.
+                $postTypeSelect.on("change", function () {
+                    var widgetType = model.attributes.widgetType;
+                    var taxonomies = getTaxonomiesOptions(widgetType, $(this).val());
+
+                    if (!taxonomies[0]) {
+                        return;
+                    }
+
+                    appendOptionsTo($taxonomySelect, taxonomies, null);
+                    model.setSetting(taxonomies[0].value);
+                    $taxonomySelect.trigger("change");
+                });
+
+                // On taxonomy change.
+                $taxonomySelect.on("change", function () {
+                    var widgetType = model.attributes.widgetType;
+
+                    $termsSelect[0].options.length = 0;
+                    appendOptionsTo($termsSelect, getTermsOptions(widgetType, $(this).val()), null);
+                    model.setSetting("terms", []);
+                });
+
+                fillTermsTaxonomy(model, $termsSelect, $taxonomySelect);
+            }, 350, this.model, this.panel);
         }
 
         elementor.hooks.addAction("panel/open_editor/widget", function (panel, model, view) {
@@ -138,6 +148,10 @@
             $postTypeSelect.on("change", function () {
                 var widgetType = model.attributes.widgetType;
                 var taxonomies = getTaxonomiesOptions(widgetType, $(this).val());
+
+                if (!taxonomies[0]) {
+                    return;
+                }
 
                 appendOptionsTo($taxonomySelect, taxonomies, null);
                 model.setSetting(taxonomies[0].value);

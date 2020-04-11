@@ -11,12 +11,10 @@
 	border-color: @customColor;
 }
 .box-shadow (@string) {
-	-webkit-box-shadow: @string;
 	box-shadow:         @string;
 }
 a {
 	.dt-shortcode-icon.@{unique-shortcode-class-name} & {
-		//margin-right: @soc-icon-gap-between;
 		.custom-mixin-margin-right (@soc-icon-gap-between);
 	}
 }

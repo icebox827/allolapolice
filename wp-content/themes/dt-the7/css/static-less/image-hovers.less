@@ -55,7 +55,6 @@
 	.hover-style-one .rollover-thumbnails,
 	.hover-style-one .rollover-project > a:after,
 	.hover-style-three .rollover-project > a:after {
-		-webkit-transition: all 450ms ease;
 		transition:      all 450ms ease;
 	}
 
@@ -159,9 +158,7 @@
 .filter-grayscale-static embed,
 .filter-grayscale-static object {
 	-webkit-filter: grayscale(100%);
-	-moz-filter: grayscale(100%);
 	-ms-filter: grayscale(100%);
-	-o-filter: grayscale(100%);
 	filter: grayscale(100%);
 	filter: gray; /* IE 6-9 */
 
@@ -186,7 +183,6 @@
 .mobile-false .filter-grayscale-static embed,
 .mobile-false .filter-grayscale-static object {
 	-webkit-backface-visibility: visible !important;
-	//-webkit-transform: inherit !important;	
 }
 
 /* .filter-grayscale img:hover, */
@@ -220,9 +216,7 @@
 .filter-grayscale #branding-bottom img,
 .filter-grayscale-static #branding-bottom img {
 	-webkit-filter: grayscale(0%);
-	-moz-filter: grayscale(0%);
 	-ms-filter: grayscale(0%);
-	-o-filter: grayscale(0%);
 	filter: grayscale(0%);
 	filter: none;
 	filter: transparent;
@@ -243,7 +237,6 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    -webkit-transition: opacity 400ms ease;
     transition: opacity 400ms ease;
     .gallery-shortcode figure:hover & {
     	opacity: 1;
@@ -256,7 +249,6 @@
 	.blog-shortcode &,
 	.blog-carousel-shortcode & {
 		opacity: 0;
-		 -webkit-transition: opacity 400ms ease;
 	    transition: opacity 400ms ease;
     }
     .blog-shortcode .post-thumbnail-rollover:hover &,
@@ -313,14 +305,12 @@
 .rollover img,
 .post-thumbnail-rollover img {
 	.quick-scale-img & {
-		-webkit-transition: -webkit-transform 0.25s ease-out, opacity 0.25s;
 		transition: transform 0.25s ease-out, opacity 0.25s;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
 	}
 	&.lazy-load,
 	&.blog-thumb-lazy-load {
-        -webkit-transition:  transform 0.25s ease-out, opacity 0.25s;
         transition:  transform 0.25s ease-out, opacity 0.25s;
     }
 		
@@ -328,7 +318,6 @@
 .rollover img,
 .post-thumbnail-rollover img {
 	.scale-img & {
-		-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.35s;
 		transition: transform 0.3s ease-out, opacity 0.35s;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
@@ -336,7 +325,6 @@
 	&.lazy-load,
 	&.so-lazy-load,
 	&.blog-thumb-lazy-load {
-        -webkit-transition:  transform 0.3s ease-out, opacity 0.35s;
         transition:  transform 0.3s ease-out, opacity 0.35s;
     }
 }
@@ -344,19 +332,15 @@
 .mobile-false .scale-img article:hover .rollover img,
 .mobile-false .scale-img .post-thumbnail:not(.overlay-placeholder):hover > .post-thumbnail-rollover img,
 .scale-img .on-hover .post-thumbnail > .post-thumbnail-rollover img {
-	  -webkit-transform: scale(1.2);
-	          transform: scale(1.2);
-	  -webkit-transition: -webkit-transform 4s ease-out;
-	          transition: transform 4s ease-out;
+      transform: scale(1.2);
+      transition: transform 4s ease-out;
 }
 .mobile-false .quick-scale-img figure:hover .rollover img,
 .mobile-false .quick-scale-img article:hover .rollover img,
 .mobile-false .quick-scale-img .post-thumbnail:not(.overlay-placeholder):hover > .post-thumbnail-rollover img,
 .quick-scale-img .on-hover .post-thumbnail > .post-thumbnail-rollover img {
-	  -webkit-transform: scale(1.2);
-	          transform: scale(1.2);
-	  -webkit-transition: -webkit-transform 0.25s ease-out;
-	          transition: transform 0.25s ease-out;
+      transform: scale(1.2);
+      transition: transform 0.25s ease-out;
 }
 
 /* #Scale In
@@ -364,7 +348,6 @@
 .mobile-false .hover-scale.gallery-shortcode .rollover-content {
     background: none !important;
     background-color: transparent;
-    -webkit-transform: scale(1);
     transform: scale(1);
 }
 .hover-scale.gallery-shortcode .post,
@@ -382,17 +365,13 @@
 	content: "";
 	.static-border-radius;
 	padding-bottom: 100%;
-	-webkit-transform: scale(0);
-			transform: scale(0);
-	-webkit-transition: -webkit-transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
-			transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+	transform: scale(0);
+	transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
 }
 .hover-scale.gallery-shortcode .rollover:after {
 	padding-bottom: 100%;
-	-webkit-transform: scale(0);
-			transform: scale(0);
-	-webkit-transition: -webkit-transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
-			transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
+	transform: scale(0);
+	transition: transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.4s;
 }
 .hover-scale.gallery-shortcode .ratio-2 .rollover:after {
 	top: -50%;
@@ -416,45 +395,32 @@
 	.mobile-false .hover-scale.gallery-shortcode .post:hover .rollover:after,
 	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked .rollover:after {
 		opacity: 1;
-		-webkit-transform: scale(1.42);
-				transform: scale(1.42);
+		transform: scale(1.42);
 	}
 	.mobile-false .hover-scale.gallery-shortcode .post.ratio_3-2:hover .rollover:after,
 	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_3-2 .rollover:after {
-		-webkit-transform: scale(1.2);
-				transform: scale(1.2);
+		transform: scale(1.2);
 	}
 	.mobile-false .hover-scale.gallery-shortcode .post.ratio_0-5:hover .rollover:after,
 	.mobile-false .hover-scale  article.ratio_0-5:hover:after {
-		-webkit-transform: scale(2.5);
-				transform: scale(2.5);
+		transform: scale(2.5);
 	}
 	.mobile-false .hover-scale.gallery-shortcode .post.ratio_4-3:hover .rollover:after,
 	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_4-3 .rollover:after {
-		-webkit-transform: scale(1.5);
-				transform: scale(1.5);
+		transform: scale(1.5);
 	}
 	.mobile-false .hover-scale.gallery-shortcode .post.ratio_3-4:hover .rollover:after,
 	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_3-4 .rollover:after {
-		-webkit-transform: scale(2);
-				transform: scale(2);
+		transform: scale(2);
 	}
 	.mobile-false .hover-scale.gallery-shortcode .post.ratio_2-3:hover .rollover:after,
 	.mobile-true .hover-scale.gallery-shortcode .post.is-clicked.ratio_2-3 .rollover:after {
-		-webkit-transform: scale(2);
-				transform: scale(2);
+		transform: scale(2);
 	}
 
 .mobile-false .hover-scale .rollover-content {
 	background: none !important;
 	background-color: transparent;
-	-webkit-transform: scale(0);
-			transform: scale(0);
-	-webkit-transition: -webkit-transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s;
-			transition: transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s;
+	transform: scale(0);
+	transition: transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.25s;
 }
-	// .mobile-false .hover-scale .rollover-project:hover .rollover-content {
-	// 	opacity: 1;
-	// 	-webkit-transform: scale(1);
-	// 			transform: scale(1);
-	// }

@@ -1,7 +1,6 @@
 // Flexbox display
 // flex or inline-flex
 .flex-display(@display: flex) {
-  display: ~"-webkit-@{display}";
   display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
   display: ~"-ms-@{display}"; // IE11
   display: @display;
@@ -11,7 +10,6 @@
 // - applies to: flex items
 // <positive-number>, initial, auto, or none
 .flex(@columns: initial) {
-  -webkit-flex: @columns;
   -ms-flex: @columns;
   flex: @columns;
 }
@@ -20,7 +18,6 @@
 // - applies to: flex containers
 // row | row-reverse | column | column-reverse
 .flex-direction(@direction: row) {
-  -webkit-flex-direction: @direction;
   -ms-flex-direction: @direction;
   flex-direction: @direction;
 }
@@ -29,7 +26,6 @@
 // - applies to: flex containers
 // nowrap | wrap | wrap-reverse
 .flex-wrap(@wrap: nowrap) {
-  -webkit-flex-wrap: @wrap;
   -ms-flex-wrap: @wrap;
   flex-wrap: @wrap;
 }
@@ -38,7 +34,6 @@
 // - applies to: flex containers
 // <flex-direction> || <flex-wrap>
 .flex-flow(@flow) {
-  -webkit-flex-flow: @flow;
   -ms-flex-flow: @flow;
   flex-flow: @flow;
 }
@@ -47,7 +42,6 @@
 // - applies to: flex items
 // <integer>
 .flex-order(@order: 0) {
-  -webkit-order: @order;
   -ms-flex-order: @order;
   order: @order;
 }
@@ -56,7 +50,6 @@
 // - applies to: flex items
 // <number>
 .flex-grow(@grow: 0) {
-  -webkit-flex-grow: @grow;
   -ms-flex-positive: @grow;
   -ms-flex-grow: @grow;
   flex-grow: @grow;
@@ -66,7 +59,6 @@
 // - applies to: flex item shrink factor
 // <number>
 .flex-shrink(@shrink: 1) {
-  -webkit-flex-shrink: @shrink;
   -ms-flex-negative: @shrink;
   -ms-flex-shrink: @shrink;
   flex-shrink: @shrink;
@@ -77,7 +69,6 @@
 // - applies to: flex itemsnitial main size of the flex item
 // <width>
 .flex-basis(@width: auto) {
-  -webkit-flex-basis: @width;
   -ms-flex-preferred-size: @width;
   -ms-flex-basis: @width;
   flex-basis: @width;
@@ -87,7 +78,6 @@
 // - applies to: flex containers
 // flex-start | flex-end | center | space-between | space-around
 .justify-content(@justify: flex-start) {
-  -webkit-justify-content: @justify;
   -ms-flex-pack: @justify;
   -ms-justify-content: @justify;
   justify-content: @justify;
@@ -97,7 +87,6 @@
 // - applies to: multi-line flex containers
 // flex-start | flex-end | center | space-between | space-around | stretch
 .align-content(@align: stretch) {
-  -webkit-align-content: @align;
   -ms-align-content: @align;
   align-content: @align;
 }
@@ -106,7 +95,6 @@
 // - applies to: flex containers
 // flex-start | flex-end | center | baseline | stretch
 .align-items(@align: stretch) {
-  -webkit-align-items: @align;
   -ms-align-items: @align;
   -ms-flex-align: @align;
   align-items: @align;
@@ -116,7 +104,6 @@
 // - applies to: flex items
 // auto | flex-start | flex-end | center | baseline | stretch
 .align-self(@align: auto) {
-  -webkit-align-self: @align;
   -ms-align-self: @align;
   -ms-flex-item-align: @align;
   align-self: @align;
@@ -246,12 +233,10 @@
 
 //border radius mixin
 .static-border-radius (@radius: 50%) {
-  -webkit-border-radius: @radius;
   border-radius:         @radius;
 }
 
 //box sizing mixin
 .box-sizing (@string) {
-  -webkit-box-sizing: @string;
   box-sizing:         @string;
 }

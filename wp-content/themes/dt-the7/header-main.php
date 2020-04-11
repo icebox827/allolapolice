@@ -14,12 +14,12 @@ defined( 'ABSPATH' ) || exit;
 
 <?php if ( presscore_is_content_visible() ) : ?>
 
-<div id="main" <?php presscore_main_container_classes(); ?> <?php presscore_main_container_style(); ?> >
+<div id="main" <?php presscore_main_container_classes(); ?>>
 
 	<?php do_action( 'presscore_main_container_begin' ); ?>
 
 	<div class="main-gradient"></div>
-	<div class="wf-wrap" <?php the7_main_container_wrap_style() ?>>
+	<div class="wf-wrap">
 	<div class="wf-container-main">
 
 	<?php do_action( 'presscore_before_content' ); ?>

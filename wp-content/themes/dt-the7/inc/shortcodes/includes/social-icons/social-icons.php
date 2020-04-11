@@ -91,7 +91,10 @@ if ( ! class_exists( 'DT_Shortcode_SocialIcons', false ) ) {
 
 			$target_blank = apply_filters( 'dt_sanitize_flag', $target_blank ) ? '_blank' : '';
 
-			$output = presscore_get_social_icon( $icon, $link, $social_icons[ $icon ], $classes, $target_blank );
+			// translators: %s : icon name
+			$icon_title = sprintf( __( '%s page opens in new window', 'the7mk2' ), $social_icons[ $icon ] );
+
+			$output = presscore_get_social_icon( $icon, $link, $icon_title, $classes, $target_blank );
 
 			return $output; 
 		}

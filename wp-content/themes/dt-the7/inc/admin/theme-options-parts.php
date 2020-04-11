@@ -381,7 +381,7 @@ if ( ! class_exists( 'Presscore_Lib_Options_MobileHeaderTemplate', false ) ) :
 			$_fields = array();
 
 			$_fields['after'] = array(
-				'name'  => _x( 'Switch after', 'theme-options', 'the7mk2' ),
+				'name'  => _x( 'Breakpoint', 'theme-options', 'the7mk2' ),
 				'std'   => '1024px',
 				'type'  => 'number',
 				'units' => 'px',
@@ -407,7 +407,7 @@ if ( ! class_exists( 'Presscore_Lib_Options_MobileHeaderTemplate', false ) ) :
 			);
 
 			$_fields['side-padding'] = array(
-				'name'   => _x( 'Header padding', 'theme-options', 'the7mk2' ),
+				'name'   => _x( 'Header paddings', 'theme-options', 'the7mk2' ),
 				'type'   => 'spacing',
 				'std'    => '30px 30px',
 				'units'  => 'px|%',
@@ -447,7 +447,7 @@ if ( ! class_exists( 'Presscore_Lib_Options_HeaderElementMobileLayoutTemplate', 
 			);
 
 			$_fields['first-header-switch'] = array(
-				'name'    => _x( 'First header switch point (tablet)', 'theme-options', 'the7mk2' ),
+				'name'    => _x( 'Tablet breakpoint', 'theme-options', 'the7mk2' ),
 				'type'    => 'radio',
 				'std'     => 'near_logo',
 				'options' => array(
@@ -460,7 +460,7 @@ if ( ! class_exists( 'Presscore_Lib_Options_HeaderElementMobileLayoutTemplate', 
 			);
 
 			$_fields['second-header-switch'] = array(
-				'name'    => _x( 'Second header switch point (phone)', 'theme-options', 'the7mk2' ),
+				'name'    => _x( 'Phone breakpoint', 'theme-options', 'the7mk2' ),
 				'type'    => 'radio',
 				'std'     => 'in_menu',
 				'divider' => 'bottom',
@@ -700,6 +700,17 @@ if ( ! class_exists( 'Presscore_Lib_Options_HeaderElementButtonTemplate', false 
 				'name'       => 'Select icon',
 				'type'       => 'icons_picker',
 				'std'        => false,
+				'dependency' => array(
+					'field'    => 'icon',
+					'operator' => '==',
+					'value'    => '1',
+				),
+			);
+			$_fields['icon_gap'] = array(
+				'name'  => _x( 'Icon gap', 'theme-options', 'the7mk2' ),
+				'std'   => '5px',
+				'type'  => 'number',
+				'units' => 'px',
 				'dependency' => array(
 					'field'    => 'icon',
 					'operator' => '==',

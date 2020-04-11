@@ -2,10 +2,6 @@
 defined( 'ABSPATH' ) || exit;
 
 $config = presscore_config();
-$css    = The7_Fancy_Title_CSS::get_css_for_post( $config->get( 'post_id' ) );
-if ( $css ) {
-	echo '<style id="the7-fancy-title-css" type="text/css">' . "\n$css\n" . '</style>';
-}
 
 // Title.
 $title = '';

@@ -81,6 +81,14 @@
 						editor.insertContent( '[dt_simple_login_form ' + attr.join(' ') + ']' );
 					}
 				},
+
+				// Year.
+				{
+					text: 'Year',
+					onclick: function() {
+						editor.insertContent( '[dt_year]' );
+					}
+				},
 			]
 
 		} );

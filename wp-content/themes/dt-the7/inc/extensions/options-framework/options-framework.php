@@ -800,7 +800,7 @@ function optionsframework_sanitize_options_values( $options, $values, $defaults_
 		$id = preg_replace( '/(\W!-)/', '', strtolower( $option['id'] ) );
 
 		// Set checkbox to false if it wasn't sent in the $_POST
-		if ( ! isset( $values[ $id ] ) && in_array( $option['type'], array( 'checkbox', 'switch' ), true ) ) {
+		if ( ! isset( $values[ $id ] ) && in_array( $option['type'], array( 'checkbox', 'switch', 'multi_select' ), true ) ) {
 			$values[ $id ] = false;
 		}
 
@@ -1019,10 +1019,10 @@ function optionsframework_save_options_via_ajax() {
         $admin_dynamic_css = presscore_get_admin_dynamic_stylesheets_list();
 
 	    presscore_regenerate_dynamic_css( array_merge( $dynamic_css, $admin_dynamic_css ) );
+	    do_action( 'optionsframework_options_saved' );
     } catch ( Exception $e ) {
         wp_send_json_error( array( 'msg' => $e->getMessage() ) );
     }
-
 	wp_send_json_success( array( 'msg' => 'Options saved!' ) );
 }
 

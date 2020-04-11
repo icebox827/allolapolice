@@ -9,6 +9,10 @@
 	}
 	z-index: 101;
 	width: 400px;
+	// & .header-scrollbar-wrap {
+	// 	position: relative;
+	// 	min-height: 100%;
+	// }
 	&.content-left {
 		.justify-content(@justify: flex-start);
 		.ie-flex-justify-content(flex-start);
@@ -24,7 +28,6 @@
 		right: 0;
 	}
 }
-
 
 .side-header .header-bar {
 	display: flex;
@@ -58,6 +61,7 @@
 	.mobile-header-scrollbar-wrap & {
 		margin: 0;
 	}
+
 	.fade-header-animation .header-scrollbar-wrap &,
 	.overlay-navigation .header-scrollbar-wrap & {
 		display: none;
@@ -85,6 +89,7 @@
 	}
 
 }
+
 .side-header .main-nav {
 	.flex(@columns: 10 1 auto);
 	display: flex;
@@ -204,8 +209,6 @@
 }
 .mCSB_scrollTools {
 	opacity: 0;
-
-	-webkit-transition: opacity 0.4s;
 	transition:			opacity 0.4s;
 }
 .masthead:hover .mCSB_scrollTools {

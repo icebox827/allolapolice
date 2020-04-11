@@ -69,6 +69,7 @@ if ( ! class_exists( 'DT_Shortcode_Icon_Text', false ) ) {
 				'default_btn_hover' => 'y',
 				'default_btn_border_hover' => 'y',
 				'default_btn_border_hover_color' => '',
+				'icon_gap'						 => '8px',
 				'link_font_size'				 => '14px',
 				'link_font_style' 				 => ':bold:',
 				'link_icon_size'				 => '11px',
@@ -502,7 +503,7 @@ if ( ! class_exists( 'DT_Shortcode_Icon_Text', false ) ) {
 				$less_vars->add_pixel_number( 'btn-icon-size', $this->get_att( 'icon_size' ) );
 				$less_vars->add_pixel_number( 'btn-font-size', $this->get_att( 'font_size' ) );
 				$less_vars->add_pixel_number( 'btn-border-radius', $this->get_att( 'border_radius' ) );
-
+				$less_vars->add_pixel_number( 'btn-icon-gap', $this->get_att( 'icon_gap' ) );
 				$less_vars->add_keyword( 'btn-color', $this->get_att( 'text_color' ) );
 				$less_vars->add_keyword( 'btn-bg-color', 'none' );
 				if ( $this->get_flag( 'default_btn_bg' ) ) {
@@ -572,11 +573,11 @@ if ( ! class_exists( 'DT_Shortcode_Icon_Text', false ) ) {
 					$less_vars->add_pixel_number( 'link-border-width', 0 );
 					$less_vars->add_pixel_number( 'link-pi', $border_width );
 				}
+				$less_vars->add_keyword( 'link-border-color-hover', $this->get_att( 'link_border_color' ) );
 
 				if ( $this->get_flag( 'link_hover' ) ) {
 					$less_vars->add_keyword( 'link-color-hover', $this->get_att( 'link_text_hover_color' ) );
 					
-					$less_vars->add_keyword( 'link-border-color-hover', $this->get_att( 'link_border_color' ) );
 
 					// Take care of border width on hover.
 					$less_vars->add_pixel_number( 'btn-border-width-hover', $border_width );

@@ -394,6 +394,12 @@ body.testimonials {
 .team-author-name a {
   text-decoration: none;
 }
+.wf-container .team-author-name a {
+  font-weight: bold;
+}
+.wf-container .team-author-name {
+  font-weight: bold;
+}
 .dt-team-shortcode .team-media.apply-max-width {
   -webkit-align-self: flex-start;
   -ms-align-self: flex-start;

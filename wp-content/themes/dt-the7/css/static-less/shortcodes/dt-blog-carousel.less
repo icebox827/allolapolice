@@ -12,6 +12,7 @@
     .flex-display(@display: flex);
     & .dt-owl-item {
       .flex-display(@display: flex);
+      flex-shrink: 0;
     }
   }
 }
@@ -76,10 +77,8 @@
   .post-entry-content .entry-title a,
   .post-entry-title-content .entry-title a {
     .owl-carousel & {
-      -webkit-transition: color 0.35s;
       transition: color 0.35s;
       .accent-gradient & {
-        -webkit-transition: none;
         transition: none;
       }
     }

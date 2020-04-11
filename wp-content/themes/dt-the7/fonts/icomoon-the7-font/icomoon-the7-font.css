@@ -850,11 +850,13 @@
   content: "\f138";
 }
 .telegram .soc-font-icon:before,
+.icomoon-the7-font-telegram:before,
 .icon-telegram:before,
 .dt-icon-telegram:before {
   content: "\f136";
 }
 .yelp .soc-font-icon:before,
+.icomoon-the7-font-yelp:before,
 .icon-yelp:before,
 .dt-icon-yelp:before {
   content: "\f137";
@@ -980,4 +982,28 @@
 }
 .dt-icon-the7-arrow-03:before {
   content: "\f003";
+}
+.dt-icon-the7-settings:before {
+  content: "\ea012";
+}
+.dt-icon-the7-plus-041:before {
+  content: "\ef041";
+}
+.dt-icon-the7-arrow-531:before {
+  content: "\f0531";
+}
+.dt-icon-the7-arrow-532:before {
+  content: "\f0532";
+}
+.dt-icon-the7-arrow-551:before {
+  content: "\f0551";
+}
+.dt-icon-the7-arrow-552:before {
+  content: "\f0552";
+}
+.dt-icon-the7-arrow-35-1:before {
+  content: "\f0351";
+}
+.dt-icon-the7-arrow-35-2:before {
+  content: "\f0352";
 }

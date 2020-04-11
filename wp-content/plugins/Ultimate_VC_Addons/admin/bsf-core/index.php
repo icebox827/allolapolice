@@ -35,7 +35,7 @@ if ( ! defined( 'BSF_UPDATER_SHORTNAME' ) ) {
 
 if ( ! defined( 'BSF_UPDATER_VERSION' ) ) {
 	global $bsf_core_version;
-	define( 'BSF_UPDATER_VERSION', $bsf_core_version );
+	define( 'BSF_UPDATER_VERSION', sanitize_text_field( $bsf_core_version ) );
 }
 
 // Do not initialize graupi in the customizer.
@@ -46,11 +46,12 @@ if ( isset( $_GET['customize_theme'] ) || is_customize_preview() ) {
 /* product registration */
 require_once 'includes/helpers.php';
 require_once 'includes/system-info.php';
+
 require_once 'auto-update/admin-functions.php';
 require_once 'auto-update/updater.php';
 require_once 'BSF_License_Manager.php';
 require_once 'BSF_Update_Manager.php';
-require_once 'class-bsf-core-update.php';
+require_once 'classes/class-bsf-core-update.php';
 
 if ( defined( 'WP_CLI' ) ) {
 	require 'BSF_WP_CLI_Command.php';
@@ -821,7 +822,7 @@ if ( ! function_exists( 'bsf_set_options' ) ) {
 				global $ultimate_referer;
 				$ultimate_referer = 'on-force-check-update-update-core';
 				bsf_check_product_update();
-				set_transient( 'bsf_check_product_updates', true, 2 * 24 * 60 * 60 );
+				set_transient( 'bsf_check_product_updates', true, 2 * DAY_IN_SECONDS );
 				update_option( 'bsf_local_transient', current_time( 'timestamp' ) );
 
 			} else {
@@ -829,16 +830,8 @@ if ( ! function_exists( 'bsf_set_options' ) ) {
 				global $ultimate_referer;
 				$ultimate_referer = 'on-force-check-update';
 				bsf_check_product_update();
-				set_transient( 'bsf_check_product_updates', true, 2 * 24 * 60 * 60 );
+				set_transient( 'bsf_check_product_updates', true, 2 * DAY_IN_SECONDS );
 				update_option( 'bsf_local_transient', current_time( 'timestamp' ) );
-
-				if ( is_multisite() ) {
-					$redirect = network_admin_url( 'update-core.php#brainstormforce-products' );
-				} else {
-					$redirect = admin_url( 'update-core.php#brainstormforce-products' );
-				}
-
-				echo '<script type="text/javascript">window.location = "' . $redirect . '";</script>';
 
 			}
 		}
@@ -914,15 +907,16 @@ if ( ! function_exists( 'bsf_set_options' ) ) {
 			$ultimate_referer = 'on-refresh-bundled-products';
 			delete_option( 'brainstrom_bundled_products' );
 			get_bundled_plugins();
-			set_site_transient( 'bsf_get_bundled_products', true, 7 * 24 * 60 * 60 );
+			set_site_transient( 'bsf_get_bundled_products', true, WEEK_IN_SECONDS );
 			update_option( 'bsf_local_transient_bundled', current_time( 'timestamp' ) );
 
-			$redirect = isset( $_GET['redirect'] ) ? urldecode( esc_attr( $_GET['redirect'] ) ) : '';
+			$redirect = isset( $_GET['redirect'] ) ? esc_url_raw( urldecode( esc_attr( $_GET['redirect'] ) ) ) : '';
 
-			if ( $redirect != '' ) {
-
+			if ( $redirect != '' && filter_var( $redirect, FILTER_VALIDATE_URL ) ) {
 				$redirect = add_query_arg( 'bsf-reload-page', '', $redirect );
-				echo '<script type="text/javascript">window.location = "' . $redirect . '";</script>';
+				
+				wp_safe_redirect( $redirect );
+				exit;
 			}
 		}
 

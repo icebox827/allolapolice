@@ -98,7 +98,7 @@ function dt_stylesheet_color_hex2rgba( $color, $opacity = 0 ) {
 
     $rgb_array = dt_stylesheet_color_hex2rgb( $color, true );
 
-    return sprintf( 'rgba(%d,%d,%d,%s)', $rgb_array[0], $rgb_array[1], $rgb_array[2], dt_stylesheet_get_opacity( $opacity ) );
+    return sprintf( 'rgba(%d,%d,%d,%s)', $rgb_array[0], $rgb_array[1], $rgb_array[2], dt_stylesheet_get_opacity( (int) $opacity ) );
 }
 
 function dt_stylesheet_color_rgba2rgb( $rgba ) {

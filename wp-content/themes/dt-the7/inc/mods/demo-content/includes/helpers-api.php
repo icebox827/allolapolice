@@ -27,7 +27,7 @@ function the7_demo_content_dir_url( $path = '' ) {
  * @return boolean
  */
 function the7_demo_content_wc_is_active() {
-	return class_exists( 'Woocommerce', false );
+	return class_exists( 'WooCommerce', false );
 }
 
 if ( ! function_exists( 'the7_is_debug_on' ) ) {

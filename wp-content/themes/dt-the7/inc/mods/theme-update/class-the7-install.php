@@ -145,11 +145,38 @@ class The7_Install {
 			'the7_update_790_db_version',
 		),
 		'7.9.1' => array(
-			'the7_regenerate_fancy_title_css',
+			'the7_regenerate_post_css',
 			'the7_update_791_db_version',
 		),
 		'8.0.0' => array(
 			'the7_update_800_db_version',
+		),
+		'8.1.0' => array(
+			'the7_update_810_db_version',
+		),
+		'8.2.0' => array(
+			'the7_update_820_db_version',
+		),
+		'8.3.0' => array(
+			'the7_update_830_fix_post_padding_meta',
+			'the7_update_830_migrate_post_mobile_padding',
+			'the7_regenerate_post_css',
+			'the7_update_830_db_version',
+		),
+		'8.4.0' => array(
+			'the7_regenerate_post_css',
+			'the7_update_840_db_version',
+		),
+		'8.5.0' => array(
+			'the7_update_850_migrate_post_footer_visibility',
+			'the7_update_850_db_version',
+		),
+		'8.5.0.2' => array(
+			'the7_update_8502_migrate_post_footer_source_for_elementor',
+			'the7_update_8502_db_version',
+		),
+		'8.6.0' => array(
+			'the7_update_860_db_version',
 		),
 	);
 
@@ -357,6 +384,9 @@ class The7_Install {
 			'7.7.6' => 'The7_DB_Patch_070706',
 			'7.8.0' => 'The7_DB_Patch_070800',
 			'8.0.0' => 'The7_DB_Patch_080000',
+			'8.1.0' => 'The7_DB_Patch_080100',
+			'8.2.0' => 'The7_DB_Patch_080200',
+			'8.6.0' => 'The7_DB_Patch_080600',
 		);
 
 		$update_options = false;

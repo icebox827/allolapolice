@@ -71,7 +71,7 @@ if ( ! class_exists( 'Presscore_Modules_Compatibility_BBPress', false ) ) :
 				remove_filter( 'bbp_no_breadcrumb', '__return_true', 20 );
 
 				$html = bbp_get_breadcrumb( array(
-					'before' => $args['beforeBreadcrumbs'] . '<ol' . $args['listAttr'] . ' xmlns:v="http://rdf.data-vocabulary.org/#">',
+					'before' => $args['beforeBreadcrumbs'] . '<ol' . $args['listAttr'] . ' itemscope itemtype="https://schema.org/BreadcrumbList">',
 					'after' => '</ol>' . $args['afterBreadcrumbs'],
 					'sep' => $args['delimiter'] ? $args['delimiter'] : ' ',
 					'pad_sep' => false,

@@ -222,6 +222,9 @@ if ( ! class_exists( 'The7_TGMPA' ) ) {
 			}
 
 			$plugin_name = strtolower( $installed_plugins[ $plugin_file_path ]['Name'] );
+			if ( $plugin_name === 'pro elements' ) {
+				return true;
+			}
 
 			return strpos( $plugin_name, 'the7' ) === 0;
 		}

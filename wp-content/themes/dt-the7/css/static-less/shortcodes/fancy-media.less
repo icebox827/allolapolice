@@ -33,7 +33,6 @@
 		.centering-mixin;
 		z-index: 10;
 		opacity: 0;
-		-webkit-transition: all 450ms ease;
     	transition: all 450ms ease;
 	}
 
@@ -44,7 +43,6 @@
 }
 .shortcode-single-image-wrap img {
 	.quick-scale-img& {
-		-webkit-transition: -webkit-transform 0.25s ease-out, opacity 0.25s;
 		transition: transform 0.25s ease-out, opacity 0.25s;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
@@ -52,21 +50,16 @@
 }
 .shortcode-single-image-wrap:hover img {
 	.mobile-false .scale-img& {
-	  -webkit-transform: scale(1.2);
-	          transform: scale(1.2);
-	  -webkit-transition: -webkit-transform 4s ease-out;
-	          transition: transform 4s ease-out;
+		transform: scale(1.2);
+		transition: transform 4s ease-out;
 	}
 	.mobile-false .quick-scale-img& {
-		  -webkit-transform: scale(1.2);
-		          transform: scale(1.2);
-		  -webkit-transition: -webkit-transform 0.25s ease-out;
-		          transition: transform 0.25s ease-out;
+		transform: scale(1.2);
+		transition: transform 0.25s ease-out;
 	}
 }
 
 .mobile-false .shortcode-single-image-wrap .rollover-video:hover .rollover-icon {
-	-webkit-transform: scale(1.2);
 	transform: scale(1.2);
 }
 .shortcode-single-image-wrap .rollover-video .video-icon {
@@ -80,7 +73,6 @@
 	top: 0;
 	left: 0;
 	opacity: 1;
-	-webkit-transform: scale(1);
     transform: scale(1);
 }
 .shortcode-single-image-wrap .rollover-video .video-icon {

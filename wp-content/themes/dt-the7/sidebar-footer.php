@@ -13,14 +13,14 @@ $footer_sidebar = presscore_validate_footer_sidebar( presscore_config()->get( 'f
 
 $show_sidebar    = presscore_config()->get( 'footer_show' ) && is_active_sidebar( $footer_sidebar );
 $show_bottom_bar = apply_filters( 'presscore_show_bottom_bar', presscore_config()->get( 'template.bottom_bar.enabled' ) );
-
-if ( $show_sidebar || $show_bottom_bar ) : ?>
+$replace_footer = apply_filters( 'presscore_replace_footer', false ) ;
+if ( $show_sidebar || $show_bottom_bar || $replace_footer ) : ?>
 
 	<!-- !Footer -->
 	<footer id="footer" <?php echo presscore_footer_html_class( 'footer' ); ?>>
 
 		<?php
-		if ( $show_sidebar ) :
+		if ( $show_sidebar || $replace_footer ) :
 			$sidebar_layout = presscore_get_sidebar_layout_parser( presscore_config()->get( 'template.footer.layout' ) );
 			$sidebar_layout->add_sidebar_columns();
 			?>
@@ -30,7 +30,9 @@ if ( $show_sidebar || $show_bottom_bar ) : ?>
 					<div class="wf-container">
 						<?php
 						do_action( 'presscore_before_footer_widgets' );
-						dynamic_sidebar( $footer_sidebar );
+                        if (!$replace_footer){
+	                        dynamic_sidebar( $footer_sidebar );
+                        }
 						?>
 					</div><!-- .wf-container -->
 				</div><!-- .wf-container-footer -->

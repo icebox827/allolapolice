@@ -33,7 +33,7 @@ class Color {
     	if ( self::_isRGB( $color ) ) {
     		// rgb and rgba
 		    list( $this->_rgb, $this->_opacity ) = self::_checkRGB( $color );
-		    $this->_hex = self::rgbToHex( $this->_rgb );
+			$this->_hex = self::rgbToHex( $this->_rgb );
 	    } else {
     		// hex
 		    $hex = self::_checkHex( $color );
@@ -506,8 +506,9 @@ class Color {
     private static function _checkRGB( $rgb ) {
         $rgb_str = str_replace( array( 'rgb(', 'rgba(', ')' ), '', $rgb );
         $rgb_arr = explode( ',', $rgb_str );
-        $rgb = array_combine( array( 'R', 'G', 'B' ) , array_slice( $rgb_arr, 0, 3 ) );
-        $rgb = array_map( 'trim', $rgb );
+		$rgb_arr = array_map( 'trim', $rgb_arr );
+
+		$rgb = array_combine( array( 'R', 'G', 'B' ) , array_slice( $rgb_arr, 0, 3 ) );
         $rgb = array_map( 'intval', $rgb );
 
         $opacity = 100;

@@ -11,7 +11,6 @@
         "icomoon-the7-font-the7-mail-07",
         "icomoon-the7-font-the7-mail-08",
         "icomoon-the7-font-the7-mail-09",
-        "icomoon-the7-font-the7-phone-00",
         "icomoon-the7-font-the7-phone-01",
         "icomoon-the7-font-the7-phone-02",
         "icomoon-the7-font-the7-phone-03",
@@ -77,6 +76,14 @@
         "icomoon-the7-font-the7-sort-01",
         "icomoon-the7-font-the7-sort-02",
         "icomoon-the7-font-the7-sort-03",
+        "dt-icon-the7-settings",
+        "dt-icon-the7-plus-041",
+        "dt-icon-the7-arrow-531",
+        "dt-icon-the7-arrow-532",
+        "dt-icon-the7-arrow-551",
+        "dt-icon-the7-arrow-552",
+        "dt-icon-the7-arrow-35-1",
+        "dt-icon-the7-arrow-35-2",
         "icomoon-the7-font-the7-social-04",
         "icomoon-the7-font-the7-tag-05",
         "icomoon-the7-font-the7-tag-06",
@@ -205,6 +212,8 @@
         "icomoon-the7-font-whatsapp",
         "icomoon-the7-font-viber",
         "icomoon-the7-font-xing",
-        "icomoon-the7-font-youtube"
+        "icomoon-the7-font-youtube",
+        "icomoon-the7-font-telegram",
+        "icomoon-the7-font-yelp"
     ]
 }

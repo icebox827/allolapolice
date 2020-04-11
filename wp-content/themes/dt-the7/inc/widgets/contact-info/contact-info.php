@@ -101,9 +101,10 @@ class Presscore_Inc_Widgets_ContactInfo extends WP_Widget {
 					continue;
 				}
 
-				$title = ( isset( self::$social_icons[ $class ] ) ? self::$social_icons[ $class ] : '' );
+				// translators: %s : icon name
+				$icon_title = sprintf( __( '%s page opens in new window', 'the7mk2' ), self::$social_icons[ $class ] );
 
-				echo presscore_get_social_icon( $class, $link, $title );
+				echo presscore_get_social_icon( $class, $link, $icon_title );
 			}
 
 			echo '</div>';

@@ -141,6 +141,7 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 					break;
 			}
 
+
 			echo $button_html;
 		}
 
@@ -353,11 +354,11 @@ if ( ! class_exists( 'DT_Shortcode_Default_Button', false ) ) {
 					$less_vars->add_pixel_number( 'link-pi', $border_width );
 				}
 
+				$less_vars->add_keyword( 'link-border-color-hover', $this->get_att( 'link_border_color' ) );
+
 				if ( $this->get_flag( 'link_hover' ) ) {
 					$less_vars->add_keyword( 'link-color-hover', $this->get_att( 'link_text_hover_color' ) );
 					
-					$less_vars->add_keyword( 'link-border-color-hover', $this->get_att( 'link_border_color' ) );
-
 					// Take care of border width on hover.
 					$less_vars->add_pixel_number( 'btn-border-width-hover', $border_width );
 					if ( ! $this->get_flag( 'default_btn_border_hover' ) ) {

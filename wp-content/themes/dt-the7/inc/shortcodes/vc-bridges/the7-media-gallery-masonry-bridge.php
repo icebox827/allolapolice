@@ -469,7 +469,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'   => 'js_pagination',
 			),
-			'description'      => __( 'Leave empty to use number from wp settings.', 'the7mk2' ),
+			'description'      => __( 'Leave empty to use value from the WP Reading settings.', 'the7mk2' ),
 			'group'            => __( 'Pagination', 'the7mk2' ),
 		),
 		array(
@@ -511,7 +511,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'   => 'js_more',
 			),
-			'description'      => __( 'Leave empty to use number from wp settings.', 'the7mk2' ),
+			'description'      => __( 'Leave empty to use value from the WP Reading settings.', 'the7mk2' ),
 			'group'            => __( 'Pagination', 'the7mk2' ),
 		),
 		array(
@@ -538,7 +538,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'   => 'js_lazy_loading',
 			),
-			'description'      => __( 'Leave empty to use number from wp settings.', 'the7mk2' ),
+			'description'      => __( 'Leave empty to use value from the WP Reading settings.', 'the7mk2' ),
 			'group'            => __( 'Pagination', 'the7mk2' ),
 		),
 		array(

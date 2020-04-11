@@ -1,3 +1,24 @@
+3.19.4 - 12 March 2020
+- Improvement: Updated Dual Color Heading element code for WPML compatibility.
+- Fix: PHP Notice of $icon_img variable is not defined.
+- Fix: Interactive Banner Captions come over the sticky header while scrolling.
+- Fix: PHP Notice of $img_width variable is not defined.
+- Fix: The hover text color of button2 stopped working for Dual button.
+- Fix: PHP Notice of $icon_size variable is not defined.
+- Fix: Rendering issue when background is not set for flip-box.
+- Fix: PHP Notice of $icon_border_radius variable is not defined.
+- Fix: Update the strings inside the modules.
+- Fix: PHP Notice of $icon_border_spacing variable is not defined.
+
+3.19.3 - 20 Feb 2020
+- Improvement: Compatibility with latest WordPress PHP_CodeSniffer rules.
+
+3.19.2 - 03 Feb 2020
+- Improvement: Hardened the security of the plugin.
+
+3.19.1 - 22 Jan 2020
+- Security Fix: Cross-site scripting (XSS) vulnerability.
+
 3.19.0 - 30 July 2019
 - New: Introducing Dual Color Heading Element.
 - Improvement: Added the Extra class option for the Hotspot item.

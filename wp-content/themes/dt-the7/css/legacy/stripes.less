@@ -2,7 +2,6 @@
 
 //mixins dynamic
 .box-shadow (@string) {
-	-webkit-box-shadow: @string;
 	box-shadow:         @string;
 }
 .custom-rollover-gradient (@startColor: #eee) when (iscolor(@startColor)) {
@@ -206,8 +205,6 @@
 }
 .mobile-false .stripe-parallax-bg {
 	opacity: 0;
-
-	-webkit-transition: opacity 300ms ease;
 	transition:      opacity 300ms ease;
 }
 /*****************************************************
@@ -752,66 +749,54 @@ a.clear-form,
 	.stripe .sidebar-content.solid-bg & {
 		&:not(.act):not(:hover),
 		&:not(.act):hover {
-			-webkit-box-shadow: inset 0 0 0 2px fade(@widget-sidebar-color, 35%);
 			box-shadow:         inset 0 0 0 2px fade(@widget-sidebar-color, 35%);
 		}
 		&.act {
-			-webkit-box-shadow: inset 0 0 0 20px fade(@widget-sidebar-color, 35%);
 			box-shadow:         inset 0 0 0 20px fade(@widget-sidebar-color, 35%);
 		}
 	}
 	.stripe-style-1 & {
 		&:not(.act):not(:hover),
 		&:not(.act):hover {
-			-webkit-box-shadow: inset 0 0 0 2px fade(@strype-1-color, 35%);
 			box-shadow:         inset 0 0 0 2px fade(@strype-1-color, 35%);
 		}
 		&.act {
-			-webkit-box-shadow: inset 0 0 0 20px fade(@strype-1-color, 35%);
 			box-shadow:         inset 0 0 0 20px fade(@strype-1-color, 35%);
 		}
 	}
 	.stripe-style-2 & {
 		&:not(.act):not(:hover),
 		&:not(.act):hover {
-			-webkit-box-shadow: inset 0 0 0 2px fade(@strype-2-color, 35%);
 			box-shadow:         inset 0 0 0 2px fade(@strype-2-color, 35%);
 		}
 		&.act {
-			-webkit-box-shadow: inset 0 0 0 20px fade(@strype-2-color, 35%);
 			box-shadow:         inset 0 0 0 20px fade(@strype-2-color, 35%);
 		}
 	}
 	.stripe-style-3 & {
 		&:not(.act):not(:hover),
 		&:not(.act):hover {
-			-webkit-box-shadow: inset 0 0 0 2px fade(@strype-3-color, 35%);
 			box-shadow:         inset 0 0 0 2px fade(@strype-3-color, 35%);
 		}
 		&.act {
-			-webkit-box-shadow: inset 0 0 0 20px fade(@strype-3-color, 35%);
 			box-shadow:         inset 0 0 0 20px fade(@strype-3-color, 35%);
 		}
 	}
 	.stripe-style-4 & {
 		&:not(.act):not(:hover),
 		&:not(.act):hover {
-			-webkit-box-shadow: inset 0 0 0 2px fade(@strype-4-color, 35%);
 			box-shadow:         inset 0 0 0 2px fade(@strype-4-color, 35%);
 		}
 		&.act {
-			-webkit-box-shadow: inset 0 0 0 20px fade(@strype-4-color, 35%);
 			box-shadow:         inset 0 0 0 20px fade(@strype-4-color, 35%);
 		}
 	}
 	.stripe-style-5 & {
 		&:not(.act):not(:hover),
 		&:not(.act):hover {
-			-webkit-box-shadow: inset 0 0 0 2px fade(@strype-5-color, 35%);
 			box-shadow:         inset 0 0 0 2px fade(@strype-5-color, 35%);
 		}
 		&.act {
-			-webkit-box-shadow: inset 0 0 0 20px fade(@strype-5-color, 35%);
 			box-shadow:         inset 0 0 0 20px fade(@strype-5-color, 35%);
 		}
 	}

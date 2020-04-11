@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.6.0
+ * @version 4.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -25,11 +25,12 @@ if ( $max_value && $min_value === $max_value ) {
 	<?php
 } else {
 	/* translators: %s: Quantity. */
-	$label = ! empty( $args['product_name'] ) ? sprintf( __( '%s quantity', 'the7mk2' ), wp_strip_all_tags( $args['product_name'] ) ) : __( 'Quantity', 'the7mk2' );
+	$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'the7mk2' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'the7mk2' );
 	$qty_end = '<input type="button" value="+" class="plus button is-form">';
 	$qty_start = '<input type="button" value="-" class="minus button is-form">';
 	?>
 	<div class="quantity buttons_added">
+		<?php do_action( 'woocommerce_before_quantity_input_field' ); ?>
 		<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $label ); ?></label>
 		<?php echo $qty_start; ?>
 		<input
@@ -43,8 +44,10 @@ if ( $max_value && $min_value === $max_value ) {
 				value="<?php echo esc_attr( $input_value ); ?>"
 				title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'the7mk2' ); ?>"
 				size="4"
+				placeholder="<?php echo esc_attr( $placeholder ); ?>"
 				inputmode="<?php echo esc_attr( $inputmode ); ?>" />
 		<?php echo $qty_end; ?>
+		<?php do_action( 'woocommerce_after_quantity_input_field' ); ?>
 	</div>
 	<?php
 }

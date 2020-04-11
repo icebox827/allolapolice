@@ -1,6 +1,17 @@
 <?php
-if(!function_exists('ultimate_get_icon_position_json')){
-	function ultimate_get_icon_position_json(){
+/**
+ * Ultimate Function file
+ *
+ *  @package Ultimate Function file
+ */
+
+if ( ! function_exists( 'ultimate_get_icon_position_json' ) ) {
+	/**
+	 * Function that display the icon in different positions.
+	 *
+	 * @method ultimate_get_icon_position_json
+	 */
+	function ultimate_get_icon_position_json() {
 		$json = '{
 			"Display Text and Icon - Always":{
 				"Icon_at_Left":"ubtn-sep-icon-at-left",
@@ -22,8 +33,12 @@ if(!function_exists('ultimate_get_icon_position_json')){
 		return $json;
 	}
 }
-
-function ultimate_get_banner2_json(){
+/**
+ * Function that display the banner in different styles.
+ *
+ * @method ultimate_get_banner2_json
+ */
+function ultimate_get_banner2_json() {
 	$json = '{
 		"Long_Text":{
 			"Style_1":"style1",
@@ -46,8 +61,13 @@ function ultimate_get_banner2_json(){
 	}';
 	return $json;
 }
-if(!function_exists('ultimate_get_animation_json')){
-	function ultimate_get_animation_json(){
+if ( ! function_exists( 'ultimate_get_animation_json' ) ) {
+	/**
+	 * Function that display the animation json in different styles.
+	 *
+	 * @method ultimate_get_animation_json
+	 */
+	function ultimate_get_animation_json() {
 		$json = '{
 		  "attention_seekers": {
 			"No Animation": true,
@@ -173,105 +193,96 @@ if(!function_exists('ultimate_get_animation_json')){
 		return $json;
 	}
 }
+/**
+ * GetBrowser funtion.
+ *
+ * @method ult_getBrowser
+ */
+function ult_getBrowser() { // PHPCS:ignore:WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
+	$u_agent  = $_SERVER['HTTP_USER_AGENT'];
+	$bname    = 'Unknown';
+	$platform = 'Unknown';
+	$version  = '';
+	$ub       = '';
 
-function ult_getBrowser() 
-{ 
-    $u_agent = $_SERVER['HTTP_USER_AGENT']; 
-    $bname = 'Unknown';
-    $platform = 'Unknown';
-    $version= "";
-	$ub = "";
+	// First get the platform?
+	if ( preg_match( '/linux/i', $u_agent ) ) {
+		$platform = 'linux';
+	} elseif ( preg_match( '/macintosh|mac os x/i', $u_agent ) ) {
+		$platform = 'mac';
+	} elseif ( preg_match( '/windows|win32/i', $u_agent ) ) {
+		$platform = 'windows';
+	}
 
-    //First get the platform?
-    if (preg_match('/linux/i', $u_agent)) {
-        $platform = 'linux';
-    }
-    elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
-        $platform = 'mac';
-    }
-    elseif (preg_match('/windows|win32/i', $u_agent)) {
-        $platform = 'windows';
-    }
-    
-    // Next get the name of the useragent yes seperately and for good reason
-    if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent)) 
-    { 
-        $bname = 'Internet Explorer'; 
-        $ub = "MSIE"; 
-    } 
-    elseif(preg_match('/Firefox/i',$u_agent)) 
-    { 
-        $bname = 'Mozilla Firefox'; 
-        $ub = "Firefox"; 
-    } 
-    elseif(preg_match('/Chrome/i',$u_agent)) 
-    { 
-        $bname = 'Google Chrome'; 
-        $ub = "Chrome"; 
-    } 
-    elseif(preg_match('/Safari/i',$u_agent)) 
-    { 
-        $bname = 'Apple Safari'; 
-        $ub = "Safari"; 
-    } 
-    elseif(preg_match('/Opera/i',$u_agent)) 
-    { 
-        $bname = 'Opera'; 
-        $ub = "Opera"; 
-    } 
-    elseif(preg_match('/Netscape/i',$u_agent)) 
-    { 
-        $bname = 'Netscape'; 
-        $ub = "Netscape"; 
-    } 
-    
-    // finally get the correct version number
-    $known = array('Version', $ub, 'other');
-    $pattern = '#(?<browser>' . join('|', $known) .
-    ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
-    if (!preg_match_all($pattern, $u_agent, $matches)) {
-        // we have no matching number just continue
-    }
-    
-    // see how many we have
-    $i = count($matches['browser']);
-    if ($i != 1) {
-        //we will have two since we are not using 'other' argument yet
-        //see if version is before or after the name
-        if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
-            $version= $matches['version'][0];
-        }
-        else {
-            $version= $matches['version'][1];
-        }
-    }
-    else {
-        $version= $matches['version'][0];
-    }
-    
-    // check if we have a number
-    if ($version==null || $version=="") {$version="?";}
-    
-    return array(
-        // 'userAgent' => $u_agent,
-        'name'      => $bname,
-         'version'   => $version,
-        // 'platform'  => $platform,
-        // 'pattern'    => $pattern
-    );
-} 
+	// Next get the name of the useragent yes seperately and for good reason.
+	if ( preg_match( '/MSIE/i', $u_agent ) && ! preg_match( '/Opera/i', $u_agent ) ) {
+		$bname = 'Internet Explorer';
+		$ub    = 'MSIE';
+	} elseif ( preg_match( '/Firefox/i', $u_agent ) ) {
+		$bname = 'Mozilla Firefox';
+		$ub    = 'Firefox';
+	} elseif ( preg_match( '/Chrome/i', $u_agent ) ) {
+		$bname = 'Google Chrome';
+		$ub    = 'Chrome';
+	} elseif ( preg_match( '/Safari/i', $u_agent ) ) {
+		$bname = 'Apple Safari';
+		$ub    = 'Safari';
+	} elseif ( preg_match( '/Opera/i', $u_agent ) ) {
+		$bname = 'Opera';
+		$ub    = 'Opera';
+	} elseif ( preg_match( '/Netscape/i', $u_agent ) ) {
+		$bname = 'Netscape';
+		$ub    = 'Netscape';
+	}
 
-function ult_prepareAtts( $atts ) {
+	// finally get the correct version number.
+	$known   = array( 'Version', $ub, 'other' );
+	$pattern = '#(?<browser>' . join( '|', $known ) .
+	')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+	if ( ! preg_match_all( $pattern, $u_agent, $matches ) ) { //PHPCS:ignore:Generic.CodeAnalysis.EmptyStatement.DetectedIf
+		// we have no matching number just continue.
+	}
+
+	// see how many we have.
+	$i = count( $matches['browser'] );
+	if ( 1 != $i ) {
+		// we will have two since we are not using 'other' argument yet.
+		// see if version is before or after the name.
+		if ( strripos( $u_agent, 'Version' ) < strripos( $u_agent, $ub ) ) {
+			$version = $matches['version'][0];
+		} else {
+			$version = $matches['version'][1];
+		}
+	} else {
+		$version = $matches['version'][0];
+	}
+
+	// check if we have a number.
+	if ( null == $version || '' == $version ) {
+		$version = '?';}
+
+	return array(
+		'name'    => $bname,
+		'version' => $version,
+	);
+}
+/**
+ * Funtion that prepare the array.
+ *
+ * @param array $atts represts module attribuits.
+ * @method ult_prepareAtts
+ */
+function ult_prepareAtts( $atts ) { // PHPCS:ignore:WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
 	if ( isset( $atts ) ) {
-			$return = str_replace( array(
-				//'`{`',
-				//'`}`',
-				'``',
-			), array(
-				//'[',
-				//']',
-				'"',
-			), $atts );
+			$return = str_replace(
+				array(
+					'``',
+				),
+				array(
+					'"',
+				),
+				$atts
+			);
 	}
 	return $return;
 }

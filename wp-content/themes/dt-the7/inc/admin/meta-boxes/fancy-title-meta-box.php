@@ -131,10 +131,11 @@ $DT_META_BOXES['dt_page_box-fancy_header_options'] = array(
 			),
 		),
 		array(
-			'name' => _x( 'Custom title', 'backend metabox', 'the7mk2' ),
-			'id'   => "{$prefix}title",
-			'type' => 'text',
-			'std'  => '',
+			'name'           => _x( 'Custom title', 'backend metabox', 'the7mk2' ),
+			'id'             => "{$prefix}title",
+			'type'           => 'text',
+			'std'            => '',
+			'save_in_preset' => false,
 		),
 		array(
 			'name'     => _x( 'Font size', 'backend metabox', 'the7mk2' ),
@@ -155,10 +156,10 @@ $DT_META_BOXES['dt_page_box-fancy_header_options'] = array(
 
 		),
 		array(
-			'name' => _x( 'Text transformation', 'backend metabox', 'the7mk2' ),
-			'id'   => "{$prefix}text_transform",
-			'type' => 'select',
-			'std'  => 'none',
+			'name'    => _x( 'Text transformation', 'backend metabox', 'the7mk2' ),
+			'id'      => "{$prefix}text_transform",
+			'type'    => 'select',
+			'std'     => 'none',
 			'options' => array(
 				'none'       => 'None',
 				'uppercase'  => 'Uppercase',
@@ -193,10 +194,11 @@ $DT_META_BOXES['dt_page_box-fancy_header_options'] = array(
 			'top_divider' => true,
 		),
 		array(
-			'name' => _x( 'Subtitle', 'backend metabox', 'the7mk2' ),
-			'id'   => "{$prefix}subtitle",
-			'type' => 'text',
-			'std'  => '',
+			'name'           => _x( 'Subtitle', 'backend metabox', 'the7mk2' ),
+			'id'             => "{$prefix}subtitle",
+			'type'           => 'text',
+			'std'            => '',
+			'save_in_preset' => false,
 		),
 		array(
 			'name'     => _x( 'Font size', 'backend metabox', 'the7mk2' ),
@@ -215,10 +217,10 @@ $DT_META_BOXES['dt_page_box-fancy_header_options'] = array(
 			'sanitize' => 'font_size',
 		),
 		array(
-			'name' => _x( 'Text transformation', 'backend metabox', 'the7mk2' ),
-			'id'   => "{$prefix}subtitle_text_transform",
-			'type' => 'select',
-			'std'  => 'none',
+			'name'    => _x( 'Text transformation', 'backend metabox', 'the7mk2' ),
+			'id'      => "{$prefix}subtitle_text_transform",
+			'type'    => 'select',
+			'std'     => 'none',
 			'options' => array(
 				'none'       => 'None',
 				'uppercase'  => 'Uppercase',
@@ -257,6 +259,17 @@ $DT_META_BOXES['dt_page_box-fancy_header_options'] = array(
 			'id'   => "{$prefix}bg_color",
 			'type' => 'color',
 			'std'  => '#222222',
+		),
+		array(
+			'name'        => _x( 'Background image origin', 'backend metabox', 'the7mk2' ),
+			'id'          => "{$prefix}bg_image_origin",
+			'type'        => 'radio',
+			'std'         => 'custom',
+			'hide_fields' => array( 'featured_image' => array( "{$prefix}bg_image" ) ),
+			'options'     => array(
+				'custom'         => _x( 'Custom', 'backend metabox', 'the7mk2' ),
+				'featured_image' => _x( 'Featured Image', 'backend metabox', 'the7mk2' ),
+			),
 		),
 		array(
 			'name'             => _x( 'Background image', 'backend metabox', 'the7mk2' ),

@@ -55,6 +55,11 @@
  backface-visibility: hidden;
 }
 
+.flip-box-wrap .flip-box .ifb-flip-box.ifb-hover .ifb-front *{
+    -webkit-backface-visibility: unset !important;
+    backface-visibility: unset !important;
+}
+
 .flip-box-wrap .ifb-back {
     position: absolute;
     top: 0;

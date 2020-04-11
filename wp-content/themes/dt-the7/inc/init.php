@@ -69,7 +69,6 @@ require_once PRESSCORE_DIR . '/deprecated-functions.php';
 require_once PRESSCORE_EXTENSIONS_DIR . '/core-functions.php';
 require_once PRESSCORE_EXTENSIONS_DIR . '/stylesheet-functions.php';
 require_once PRESSCORE_EXTENSIONS_DIR . '/dt-pagination.php';
-require_once PRESSCORE_EXTENSIONS_DIR . '/presscore-web-fonts-compressor.php';
 
 require_once PRESSCORE_DIR . '/vendor/lessphp/the7_lessc.inc.php';
 require_once PRESSCORE_EXTENSIONS_DIR . '/less-vars/less-functions.php';
@@ -133,7 +132,6 @@ if ( is_admin() ) {
 	require_once locate_template( 'inc/admin/load-meta-boxes.php' );
 
 	The7_Theme_Auto_Deactivation::add_hooks();
-	The7_Fancy_Title_CSS::bootstrap();
 } else {
 	$fa_enqueue_optimizer = new The7_FontAwesome_Enqueue_Optimizer();
 	$fa_enqueue_optimizer->run();

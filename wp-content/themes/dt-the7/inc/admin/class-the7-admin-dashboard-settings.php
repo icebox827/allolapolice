@@ -27,6 +27,10 @@ class The7_Admin_Dashboard_Settings {
 			'type' => 'checkbox',
 			'std'  => false,
 		),
+		'web-fonts-display-swap' => array(
+			'type' => 'checkbox',
+			'std'  => false,
+		),
 		'silence-purchase-notification' => array(
 			'type' => 'checkbox',
 			'std'  => false,

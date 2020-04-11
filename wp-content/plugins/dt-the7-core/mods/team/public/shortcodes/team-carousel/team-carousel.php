@@ -107,10 +107,12 @@ if ( ! class_exists( 'DT_Shortcode_Team_Carousel', false ) ) :
 				'soc_icon_border_width'	=> '0',
 				'soc_icon_border_radius'=> '100px',
 				'soc_icon_color' => 'rgba(255,255,255,1)',
+				'soc_icon_border'	=> 'y',
 				'soc_icon_border_color'	=> '',
 				'soc_icon_bg' => 'y',
 				'soc_icon_bg_color'	=> '',
 				'soc_icon_color_hover' => 'rgba(255,255,255,0.75)',
+				'soc_icon_border_hover'	=> 'y',
 				'soc_icon_border_color_hover' => '',
 				'soc_icon_bg_hover' => 'y',
 				'soc_icon_bg_color_hover' => '',
@@ -332,7 +334,16 @@ if ( ! class_exists( 'DT_Shortcode_Team_Carousel', false ) ) :
 			if($this->atts['arrow_icon_border_hover'] === 'y'){
 				$class[] = 'dt-arrow-hover-border-on';
 			}
-
+			if($this->atts['soc_icon_border'] === 'y'){
+				$class[] = 'dt-icon-border-on';
+			}else{
+				$class[] = 'dt-icon-border-off';
+			};
+			if($this->atts['soc_icon_border_hover'] === 'y'){
+				$class[] = 'dt-icon-border-hover-on';
+			}else{
+				$class[] = 'dt-icon-border-hover-off';
+			};
 			if($this->atts['soc_icon_bg_hover'] === 'y'){
 				$class[] = 'dt-icon-hover-bg-on';
 			}else{

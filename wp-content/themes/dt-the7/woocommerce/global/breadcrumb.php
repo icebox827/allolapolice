@@ -23,17 +23,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! empty( $breadcrumb ) ) {
 
+	echo '<div class="assistive-text">' . esc_html( __( 'You are here:', 'the7mk2' ) ) . '</div>';
+
 	echo $wrap_before;
 
 	foreach ( $breadcrumb as $key => $crumb ) {
 
 		echo $before;
 
+		$crumb_name = '<span itemprop="name">' . esc_html( $crumb[0] ) . '</span>';
 		if ( ! empty( $crumb[1] ) && sizeof( $breadcrumb ) !== $key + 1 ) {
-			echo '<a rel="v:url" property="v:title" href="' . esc_url( $crumb[1] ) . '" title="' . esc_attr( strip_tags( $crumb[0] ) ) . '">' . esc_html( $crumb[0] ) . '</a>';
+			echo '<a itemprop="item" href="' . esc_url( $crumb[1] ) . '" title="' . esc_attr( strip_tags( $crumb[0] ) ) . '">' . $crumb_name . '</a>';
 		} else {
-			echo esc_html( $crumb[0] );
+			echo $crumb_name;
 		}
+
+		echo '<meta itemprop="position" content="' . ($key + 1) . '" />';
 
 		echo $after;
 

@@ -375,12 +375,18 @@ if ( ! class_exists( 'The7_RW_Meta_Box' ) )
 
 			// Display label and input in DIV and allow user-defined classes to be appended
 			$classes = array( 'the7-mb-field', "the7-mb-{$field['type']}-wrapper" );
-			if ( 'hidden' === $field['type'] )
+			if ( 'hidden' === $field['type'] ) {
 				$classes[] = 'hidden';
-			if ( !empty( $field['required'] ) )
+			}
+			if ( ! empty( $field['required'] ) ) {
 				$classes[] = 'required';
-			if ( !empty( $field['class'] ) )
+			}
+			if ( ! empty( $field['class'] ) ) {
 				$classes[] = $field['class'];
+			}
+			if ( isset( $field['save_in_preset'] ) && $field['save_in_preset'] === false ) {
+				$classes[] = 'dont-save-in-preset';
+			}
 
 			return sprintf(
 				$before . '<div class="%s"%s>%s</div>' . $after,

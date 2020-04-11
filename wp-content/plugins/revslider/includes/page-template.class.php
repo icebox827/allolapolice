@@ -1,8 +1,8 @@
 <?php
 /**
  * @author    ThemePunch <info@themepunch.com>
- * @link      http://www.themepunch.com/
- * @copyright 2016 ThemePunch
+ * @link      https://www.themepunch.com/
+ * @copyright 2019 ThemePunch
  */
 
 if( !defined( 'ABSPATH') ) exit();
@@ -27,8 +27,8 @@ class RevSliderPageTemplate {
 
 		if( null == self::$instance ) {
 			self::$instance = new RevSliderPageTemplate();
-		} 
-
+		}
+		
 		return self::$instance;
 
 	} 
@@ -70,6 +70,15 @@ class RevSliderPageTemplate {
 		
 		// Fix for WP 4.7
 		add_filter( 'theme_page_templates', array($this, 'register_project_templates_new' ) );
+
+		// Add filters to the attributes metabox to inject templates to all posts
+		$types = get_post_types( [], 'objects' );
+		foreach ( $types as $type => $values ) {
+			if ( isset( $type ) ) {
+				$type_name = 'theme_' . $type . '_templates';
+				add_filter( $type_name , array( $this, 'add_post_templates' ));
+			}
+		}
 		
 	} 
 
@@ -77,9 +86,22 @@ class RevSliderPageTemplate {
 	// Adds our template to the new post templates setting (WP >= 4.7)
 	public function register_project_templates_new( $post_templates ) {
 	    
-	    $post_templates = array_merge( $post_templates, $this->templates );
+		$post_templates = array_merge( $post_templates, $this->templates );
 	 
 	    return $post_templates;
+	}
+
+
+	public function  add_post_templates( $templates ) {
+
+		$my_virtual_templates = array(
+			'../public/views/revslider-page-template.php' => 'Slider Revolution Blank Template',
+		);
+
+		// Merge with any templates already available
+		$templates = array_merge( $templates, $my_virtual_templates );
+	
+		return $templates;
 	}
 
 
@@ -148,4 +170,5 @@ class RevSliderPageTemplate {
 
 	}
 }
+
 ?>

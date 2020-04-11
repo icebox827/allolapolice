@@ -82,8 +82,8 @@ class The7PT_Admin {
 	 * @return array
 	 */
 	public static function add_plugin_action_links( $links = array() ) {
-		if ( defined( 'PRESSCORE_THEME_NAME' ) && current_user_can( 'edit_theme_options' ) ) {
-			$links['the7pt_modules'] = '<a href="' . esc_url( 'admin.php?page=of-blog-and-portfolio-menu#admin-options-group-5' ) . '">' . __( 'Settings', 'dt-the7-core' ) . '</a>';
+		if ( defined( 'THE7_VERSION' ) && current_user_can( 'edit_theme_options' ) ) {
+			$links['the7pt_modules'] = '<a href="' . esc_url( 'admin.php?page=of-blog-and-portfolio-menu' ) . '">' . _x( 'Settings', 'admin', 'dt-the7-core' ) . '</a>';
 		}
 
 		return $links;

@@ -388,7 +388,7 @@ $DT_META_BOXES[] = array(
 				'custom' => _x( 'Custom', 'backend metabox', 'the7mk2' ),
 			),
 			'hide_fields'	=> array(
-				'default'	=> array("{$prefix}favicon"),
+				'default'	=> array("{$prefix}favicon", "{$prefix}favicon_hd"),
 			)
 		),
 

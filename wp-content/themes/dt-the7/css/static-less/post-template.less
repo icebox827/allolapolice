@@ -80,7 +80,7 @@
 		.portfolio .slider-simple.owl-carousel img {
 			max-width: none;
 		}
-		.mobile-true .post img.iso-lazy-load {
+		.mobile-true .post img.iso-lazy-load:not(.blog-thumb-lazy-load-show) {
 			width: 100%;
 		}
 		.blog.layout-list .post .blog-media img {
@@ -455,16 +455,9 @@
 			border: 3px solid #fff;
 			border-right-color: rgba(0, 0, 0, 0) !important;
 			border-left-color: rgba(0, 0, 0, 0) !important;
-			-webkit-animation: dt-posts-loader-rotation 1s linear infinite;
 			animation: dt-posts-loader-rotation 1s linear infinite;
 			content: '';
 		}
-
-
-@-webkit-keyframes dt-posts-loader-rotation {
-	0% { -webkit-transform: rotate(0deg); }
-	100% { -webkit-transform: rotate(359deg); }
-}
 @keyframes dt-posts-loader-rotation {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(359deg); }

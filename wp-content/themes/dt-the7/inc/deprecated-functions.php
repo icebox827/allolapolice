@@ -555,12 +555,6 @@ if ( ! function_exists( 'presscore_display_share_buttons_for_image' ) ) :
 	 *
 	 */
 	function presscore_display_share_buttons_for_image( $place = '', $options = array() ) {
-		_doing_it_wrong(
-			__FUNCTION__,
-			sprintf( __( 'Function is deprecated, use %s instead.' ), 'the7_display_image_share_buttons' ),
-			'7.8.0'
-		);
-
 		$default_options = array(
 			'class' => array( 'album-share-overlay' ),
 		);
@@ -582,12 +576,6 @@ if ( ! function_exists( 'presscore_get_share_buttons_list' ) ) :
 	 */
 	function presscore_get_share_buttons_list( $place, $post_id = null ) {
 		global $post;
-
-		_doing_it_wrong(
-			__FUNCTION__,
-			sprintf( __( 'Function is deprecated, use %s instead.' ), 'the7_get_share_buttons_list' ),
-			'7.8.0'
-		);
 
 		$buttons = of_get_option( 'social_buttons-' . $place, array() );
 
@@ -684,12 +672,6 @@ if ( ! function_exists( 'presscore_display_share_buttons' ) ) :
 	 * @return string
 	 */
 	function presscore_display_share_buttons( $place = '', $options = array() ) {
-		_doing_it_wrong(
-			__FUNCTION__,
-			__( 'Function is deprecated, do not use.' ),
-			'7.8.0'
-		);
-
 		$default_options = array(
 			'echo'			=> true,
 			'class'			=> array( 'project-share-overlay' ),
@@ -745,12 +727,6 @@ if ( ! function_exists( 'presscore_display_new_share_buttons' ) ) :
 	 * @return string
 	 */
 	function presscore_display_new_share_buttons( $place = '', $options = array() ) {
-		_doing_it_wrong(
-			__FUNCTION__,
-			__( 'Function is deprecated, do not use.' ),
-			'7.8.0'
-		);
-
 		$default_options = array(
 			'echo'			=> true,
 			'class'			=> array( 'single-share-box' ),
@@ -796,12 +772,6 @@ if ( ! function_exists( 'presscore_display_share_buttons_for_post' ) ) :
 	 * @param array  $options Options.
 	 */
 	function presscore_display_share_buttons_for_post( $place = '', $options = array() ) {
-		_doing_it_wrong(
-			__FUNCTION__,
-			sprintf( __( 'Function is deprecated, use %s instead.' ), 'the7_display_post_share_buttons' ),
-			'7.8.0'
-		);
-
 		$post_id = null;
 		if ( isset( $options['id'] ) ) {
 			$post_id = $options['id'];
@@ -998,35 +968,87 @@ if ( ! function_exists( 'presscore_get_royal_slider' ) ) :
 
 endif;
 
-if ( ! function_exists( 'presscore_filter_web_fonts' ) ) :
+/**
+ * @TODO: Remove in 8.2.0
+ *
+ * @deprecated 8.1.0
+ */
+function dt_make_web_font_uri( $font ) {
+	if ( !$font ) {
+		return false;
+	}
+
+	return '//fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font );
+}
+
+/**
+ * @TODO: Remove in 8.2.0
+ *
+ * @deprecated 8.1.0
+ */
+function dt_get_google_fonts( $font = '', $effect = '' ) {
+	if ( ! $font ) {
+		return;
+	}
+
+	?>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=<?php echo str_replace( ' ', '+', $font ); ?>">
+	<?php
+}
+
+if ( ! function_exists( 'presscore_main_container_style' ) ) :
 
 	/**
-	 * @TODO: Remove in 8.1.0
+	 * Print main container inline style if any.
 	 *
-	 * @deprecated 8.0.1
+	 * @deprecated 8.4.0
 	 */
-	function presscore_filter_web_fonts( $fonts ) {
-		$web_fonts = array();
-		foreach ( $fonts as $font ) {
-			if ( dt_stylesheet_maybe_web_font( $font ) ) {
-				$web_fonts[] = $font;
+	function presscore_main_container_style() {
+		$config = presscore_config();
+
+		$padding = array(
+			'padding-top'    => $config->get( 'page.top_margin' ),
+			'padding-bottom' => $config->get( 'page.bottom_margin' ),
+		);
+
+		$style = array();
+		foreach ( $padding as $prop => $val ) {
+			if ( $val !== '' ) {
+				if ( ! preg_match( '/.*(px|%)$/', $val ) ) {
+					$val .= 'px';
+				}
+
+				$style[ $prop ] = $val;
 			}
 		}
 
-		return $web_fonts;
+		echo presscore_get_inline_style_attr( $style );
 	}
 
 endif;
 
-/**
- * @TODO: Remove in 8.1.0
- *
- * @deprecated 8.0.1
- */
-function dt_stylesheet_maybe_web_font( $font ) {
-	$font_parts = explode( ':', $font );
-	$font_name = $font_parts[0];
-	$websafe_fonts = array_keys( presscore_options_get_safe_fonts() );
+if ( ! function_exists( 'the7_main_container_wrap_style' ) ) {
 
-	return ( ! in_array( $font_name, $websafe_fonts ) );
+	/**
+	 * Pront horizontal padding for content area.
+	 *
+	 * @deprecated 8.4.0
+	 */
+	function the7_main_container_wrap_style() {
+		$config = presscore_config();
+
+		$padding = array(
+			'padding-right'  => $config->get( 'page.right_margin' ),
+			'padding-left'   => $config->get( 'page.left_margin' ),
+		);
+
+		$style = array();
+		foreach ( $padding as $prop => $val ) {
+			if ( $val !== '' ) {
+				$style[ $prop ] = $val;
+			}
+		}
+
+		echo presscore_get_inline_style_attr( $style );
+	}
 }

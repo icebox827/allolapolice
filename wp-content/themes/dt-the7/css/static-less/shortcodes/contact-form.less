@@ -1,23 +1,23 @@
 
 /* #Basic forms style
 ================================================== */
-input[type="text"],
-input[type="search"],
-input[type="tel"],
-input[type="url"],
-input[type="email"],
-input[type="number"],
-input[type="date"],
-input[type="range"],
-input[type="password"],
-select,
-textarea,
+input[type="text"]:not(.elementor-field):not(.searchform-s),
+.widget_search input[type="text"].searchform-s,
+input[type="search"]:not(.elementor-field),
+input[type="tel"]:not(.elementor-field),
+input[type="url"]:not(.elementor-field),
+input[type="email"]:not(.elementor-field),
+input[type="number"]:not(.elementor-field),
+input[type="date"]:not(.elementor-field),
+input[type="range"]:not(.elementor-field),
+input[type="password"]:not(.elementor-field),
+select:not(.elementor-field),
+textarea:not(.elementor-field),
 .wpcf7-number {
-	padding: 5px 15px 5px 15px;
 	margin-bottom: 10px;
 	
-	border: 1px solid #e0e1e1;
-	outline: none;
+	border-style: solid;
+	
 	.box-sizing (border-box);
 }
 input[type="button"] {
@@ -69,8 +69,8 @@ textarea {
 	-webkit-appearance:	none;
 	-moz-appearance:	none;
 	-ms-appearance:		none;
-	-o-appearance:		none;
 	appearance:			none;
+	outline: none;
 }
 
 .form-fields > span {
@@ -158,18 +158,11 @@ textarea {
 	    padding: 15px 20px 15px 65px;
 	    z-index: 9999;
 	    overflow: hidden;
-	     -webkit-transform: translate3d(200px, -50%, 0);
-        -ms-transform: translate3d(200px, -50%, 0);
         transform: translate3d(200px, -50%, 0);
-         -webkit-animation: slide-in-message, slide-out-message;
         animation: slide-in-message, slide-out-message;
-        -webkit-animation-duration: 1.2s, 1.1s;
         animation-duration: 1.2s, 1.1s;
-       -webkit-animation-delay: .4s, 9s;
         animation-delay: .4s, 9s;
-        -webkit-animation-fill-mode: forwards;
         animation-fill-mode: forwards;
-        -webkit-animation-timing-function: ease;
         animation-timing-function: ease;
 	    font-weight: bold;
 	    box-sizing: border-box;
@@ -182,11 +175,15 @@ textarea {
 	    	left: 0;
 	    	width: 65px;
 	    	height: 100%;
-	    	font-family: 'Font Awesome 5 Free';
-		  	font-weight: 900;
-		  	font-size: 28px;
+	    	font-family: 'icomoon-the7-font';
+		    speak: none;
+		    font-style: normal;
+		    font-weight: normal;
+		    font-variant: normal;
+		    text-transform: none;
+		  	font-size: 18px;
 		  	line-height: 1;
-	    	content: "\f06a";
+	    	content: "\eb00";
 	    }
 	    & .wpcf7-not-valid-tip-text,
 	    & .wpcf7-valid-tip-text {
@@ -199,7 +196,7 @@ textarea {
 
 	 &:before {
 	 	.popup-message-style #page & {
-	 		content: "\f058";
+	 		content: "\ea09";
 	 	}
 	 }
 }
@@ -240,4 +237,10 @@ input.wpcf7-validates-as-required.wpcf7-not-valid {
 #wp-comment-cookies-consent,
 .the7-form-terms {
 	margin-right: 5px;
+}
+.wpcf7 .wf-cell {
+    padding: 0 15px 0 15px;
+}
+.wpcf7 .wf-container {
+    margin: 0 -15px 0 -15px;
 }

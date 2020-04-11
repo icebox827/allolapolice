@@ -101,7 +101,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$response = wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '30',
+					'timeout' => '10',
 				)
 			);
 
@@ -111,7 +111,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				$response = wp_remote_post(
 					$path, array(
 						'body'    => $data,
-						'timeout' => '30',
+						'timeout' => '8',
 					)
 				);
 			}
@@ -127,6 +127,9 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 					unset( $result['message'] );
 
 					$this->bsf_update_product_info( $product_id, $result );
+		
+					do_action( 'bsf_deactivate_license_'.$product_id.'_after_success', $result, $response, $_POST );
+
 				} else {
 					$_POST['bsf_license_deactivation']['success'] = $result['success'];
 					$_POST['bsf_license_deactivation']['message'] = $result['message'];
@@ -193,9 +196,10 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$response = wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '30',
+					'timeout' => '10',
 				)
 			);
+
 
 			// Try to make a second request to unsecure URL.
 			if ( is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) !== 200 ) {
@@ -203,7 +207,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				$response = wp_remote_post(
 					$path, array(
 						'body'    => $data,
-						'timeout' => '30',
+						'timeout' => '8',
 					)
 				);
 			}
@@ -218,6 +222,8 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 					unset( $result['success'] );
 
 					$this->bsf_update_product_info( $product_id, $result );
+					
+					do_action( 'bsf_activate_license_'.$product_id.'_after_success', $result, $response, $_POST );
 				} else {
 					$_POST['bsf_license_activation']['success'] = $result['success'];
 					$_POST['bsf_license_activation']['message'] = $result['message'];
@@ -355,7 +361,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$response = wp_remote_post(
 				$path, array(
 					'body'    => $data,
-					'timeout' => '30',
+					'timeout' => '10',
 				)
 			);
 
@@ -365,7 +371,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				$response = wp_remote_post(
 					$path, array(
 						'body'    => $data,
-						'timeout' => '30',
+						'timeout' => '8',
 					)
 				);
 			}
@@ -376,9 +382,13 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				// Check if status received from API is true.
 				if ( isset( $response_body['status'] ) && true === $response_body['status'] ) {
 					$license_status = '1';
+				} else {
+					$license_status = '0';
 				}
+
 			}
 
+			// Cache the license status for two hours in a transient.
 			wp_cache_set( $cache_key, $license_status );
 
 			return (bool) $license_status;

@@ -228,9 +228,6 @@ if ( ! function_exists( 'presscore_get_category_list' ) ) :
 			( ( count( $data['terms'] ) == 1 && !empty( $data['other_count'] ) ) ||
 			count( $data['terms'] ) > 1 )
 		) {
-			if ( !empty( $args['item_class'] ) ) {
-				$args['item_class'] = 'class="' . esc_attr($args['item_class']) . '"';
-			}
 
 			$replace_list = array( '%HREF%', '%CLASS%', '%TERM_DESC%', '%TERM_NICENAME%', '%TERM_SLUG%', '%TERM_ID%', '%COUNT%', '%CATEGORY_ID%' );
 
@@ -252,6 +249,8 @@ if ( ! function_exists( 'presscore_get_category_list' ) ) :
 				if ( in_array( (string) $args['current'], array( (string) $term->term_id, (string) $term->slug ), true ) ) {
 					$item_class[] = $args['act_class'];
 				}
+
+				$item_class[] = (string) $term->slug;
 
 				if ( $item_class ) {
 					$item_class = sprintf( 'class="%s"', esc_attr( implode( ' ', $item_class ) ) );
@@ -350,7 +349,7 @@ if ( ! function_exists( 'presscore_get_category_list' ) ) :
 			$config         = presscore_config();
 			$filter_request = $config->get( 'request_display' );
 			if ( $filter_request === null ) {
-				$filter_request           = $config->get( 'display' );
+				$filter_request           = (array) $config->get( 'display' );
 				$filter_request['select'] = 'all';
 			}
 
@@ -993,20 +992,30 @@ if ( ! function_exists( 'presscore_lazy_loading_enabled' ) ) :
 
 endif;
 
-if ( ! function_exists( 'presscore_theme_color_meta' ) ) :
+if ( ! function_exists( 'the7_theme_accent_color' ) ) :
 
 	/**
-	 * Display "theme-color" meta. Uses accent color.
+	 * Return simplified accent color.
 	 */
-	function presscore_theme_color_meta() {
+	function the7_theme_accent_color() {
 		if ( 'gradient' === of_get_option( 'general-accent_color_mode' ) ) {
 			$color = of_get_option( 'general-accent_bg_color_gradient' );
 			$color = isset( $color[0] ) ? $color[0] : '#ffffff';
 		} else {
 			$color = of_get_option( 'general-accent_bg_color' );
 		}
+        return $color;
+	}
 
-		printf( '<meta name="theme-color" content="%s"/>', $color );
+endif;
+
+if ( ! function_exists( 'presscore_theme_color_meta' ) ) :
+
+	/**
+	 * Display "theme-color" meta. Uses accent color.
+	 */
+	function presscore_theme_color_meta() {
+		printf( '<meta name="theme-color" content="%s"/>', the7_theme_accent_color() );
 	}
 
 endif;

@@ -20,20 +20,22 @@ if ( ! class_exists( 'Presscore_Modules_AdminIconsBarModule', false ) ) :
 		 * Execute module.
 		 */
 		public static function execute() {
-			if ( ! is_admin() ) {
-				return;
+			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_front_styles' ) );
+
+			if ( is_admin() ) {
+				add_action( 'init', 'add_thickbox' );
+				add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_scripts' ) );
+				add_action( 'wp_before_admin_bar_render', array( __CLASS__, 'add_custom_toolbar_action' ), 20 );
+				add_action( 'wp_ajax_icons_bar', array( __CLASS__, 'ajax_response_action' ) );
 			}
-
-			add_action( 'wp_before_admin_bar_render', array( __CLASS__, 'add_custom_toolbar_action' ) , 20 );
-
-			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_scripts_action' ) );
-
-			add_action( 'init', 'add_thickbox' );
-
-			add_action( 'wp_ajax_icons_bar', array( __CLASS__, 'ajax_response_action' ) );
 		}
 
-		public static function enqueue_admin_scripts_action() {
+		public static function enqueue_front_styles() {
+			the7_register_style( 'the7-fontello', PRESSCORE_THEME_URI . '/fonts/fontello/css/fontello' );
+			wp_enqueue_style( 'the7-fontello' );
+		}
+
+		public static function enqueue_admin_scripts() {
 			$font_css_url = str_replace( get_theme_root(), get_theme_root_uri(), locate_template( self::CSS_PATH, false ) );
 			$font_css_url = apply_filters( 'presscore_admin_icons_bar_font_css_url', $font_css_url );
 			if ( $font_css_url ) {

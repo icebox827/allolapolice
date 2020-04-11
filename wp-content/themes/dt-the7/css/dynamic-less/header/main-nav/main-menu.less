@@ -7,12 +7,14 @@
 .masthead:not(.side-header).dividers.surround .main-nav > li:last-child:after {
 	border-color: @menu-tem-divider-color;
 	height: @menu-tem-divider-height;
+	border-width: @menu-item-divider-width;
 }
 
 .side-header.dividers .main-nav > li:before,
 .side-header.dividers.surround .main-nav > li:last-child:after {
 	border-color: @menu-tem-divider-color;
 	width:  @menu-tem-divider-height;
+	border-width: @menu-item-divider-width;
 }
 /* MENU ITEMS MARGINS & PADDINGS*/
 .main-nav > li > a {
@@ -140,12 +142,12 @@
 		}
 	}
 	.sub-sideways .main-nav.level-arrows-on > li.has-children > a:after {
-		color: fade(@menu-color, 27%);
+		color: fade(@menu-color, 20%);
 	}
 	.sub-downwards .main-nav.level-arrows-on > li.has-children > a:after,
 	.sub-downwards .next-level-button,
 	.sub-downwards .main-nav > li.menu-item-language > a:after {
-		color: fade(@menu-color, 27%);
+		color: fade(@menu-color, 20%);
 	}
 	.top-header .main-nav.level-arrows-on > li.has-children:not(.act) > a:hover .menu-text:after,
 	.top-header .main-nav.level-arrows-on > li.dt-hovered.has-children:not(.act) > a .menu-text:after {
@@ -183,7 +185,7 @@
 	#main-nav > .menu-item > a > i {
 		line-height: @main-menu-icon-size;
 	}
-	.main-nav .sub-nav > .menu-item > a > i {
+	.main-nav .sub-nav > .menu-item > a i {
 		font-size: @sub-menu-icon-size;
 	}
 

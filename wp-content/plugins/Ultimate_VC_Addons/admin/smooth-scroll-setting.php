@@ -1,113 +1,124 @@
 <?php
-	if(isset($_GET['author']))
-		$author = true;
-	else
-		$author = false;
+/**
+ * Smoth Scroll Page
+ *
+ *  @package Smoth Scroll Page
+ */
+
+if ( isset( $_GET['author'] ) ) { // PHPCS:ignore:WordPress.Security.NonceVerification.Recommended
+	$author = true;
+} else {
+	$author = false;
+}
 	$author_extend = '';
-	if($author)
-		$author_extend = '&author';
+if ( $author ) {
+	$author_extend = '&author';
+}
 ?>
 
 <div class="wrap about-wrap bsf-page-wrapper ultimate-smooth-scroll bend">
-  <div class="wrap-container">
-    <div class="bend-heading-section ultimate-header">
-      <h1><?php _e( "Ultimate Addons Settings", "ultimate_vc" ); ?></h1>
-      <h3><?php _e( "The smooth scroll will change the built-in scroll effect of browsers. It is mostly used in combination with parallax effects.", "ultimate_vc" ); ?></h3>
-      <div class="bend-head-logo">
-        <div class="bend-product-ver">
-          <?php _e( "Version", "ultimate_vc" ); echo ' '.ULTIMATE_VERSION; ?>
-        </div>
-      </div>
-    </div><!-- bend-heading section -->
+<div class="wrap-container">
+	<div class="bend-heading-section ultimate-header">
+	<h1><?php esc_html_e( 'Ultimate Addons Settings', 'ultimate_vc' ); ?></h1>
+	<h3><?php esc_html_e( 'The smooth scroll will change the built-in scroll effect of browsers. It is mostly used in combination with parallax effects.', 'ultimate_vc' ); ?></h3>
+	<div class="bend-head-logo">
+		<div class="bend-product-ver">
+			<?php
+			esc_html_e( 'Version', 'ultimate_vc' );
+			echo ' ' . ULTIMATE_VERSION; // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped
+			?>
+		</div>
+	</div>
+	</div><!-- bend-heading section -->
 
-    <div id="msg"></div>
-    <div id="bsf-message"></div>
+	<div id="msg"></div>
+	<div id="bsf-message"></div>
 
-    <div class="bend-content-wrap">
-      <div class="smile-settings-wrapper">
-	        <h2 class="nav-tab-wrapper">
-		    	<a href="<?php echo admin_url('admin.php?page=about-ultimate'.$author_extend); ?>" data-tab="about-ultimate" class="nav-tab"> <?php echo __('About','ultimate_vc'); ?> </a>
-		    	<a href="<?php echo admin_url('admin.php?page=ultimate-dashboard'.$author_extend); ?>" data-tab="ultimate-modules" class="nav-tab"> <?php echo __('Elements','ultimate_vc'); ?> </a>
-		    	<a href="<?php echo admin_url('admin.php?page=ultimate-smoothscroll'.$author_extend); ?>" data-tab="css-settings" class="nav-tab nav-tab-active"> <?php echo __('Smooth Scroll','ultimate_vc'); ?> </a>
-		        <a href="<?php echo admin_url('admin.php?page=ultimate-scripts-and-styles'.$author_extend); ?>" data-tab="css-settings" class="nav-tab"> <?php echo __('Scripts and Styles','ultimate_vc'); ?> </a>
-		        <?php if($author) : ?>
-					<a href="<?php echo admin_url('admin.php?page=ultimate-debug-settings'); ?>" data-tab="ultimate-debug" class="nav-tab"> Debug </a>
+	<div class="bend-content-wrap">
+	<div class="smile-settings-wrapper">
+			<h2 class="nav-tab-wrapper">
+				<a href="<?php echo admin_url( 'admin.php?page=about-ultimate' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="about-ultimate" class="nav-tab"> <?php echo esc_attr__( 'About', 'ultimate_vc' ); ?> </a>
+				<a href="<?php echo admin_url( 'admin.php?page=ultimate-dashboard' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="ultimate-modules" class="nav-tab"> <?php echo esc_attr__( 'Elements', 'ultimate_vc' ); ?> </a>
+				<a href="<?php echo admin_url( 'admin.php?page=ultimate-smoothscroll' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="css-settings" class="nav-tab nav-tab-active"> <?php echo esc_attr__( 'Smooth Scroll', 'ultimate_vc' ); ?> </a>
+				<a href="<?php echo admin_url( 'admin.php?page=ultimate-scripts-and-styles' . $author_extend ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="css-settings" class="nav-tab"> <?php echo esc_attr__( 'Scripts and Styles', 'ultimate_vc' ); ?> </a>
+				<?php if ( $author ) : ?>
+					<a href="<?php echo admin_url( 'admin.php?page=ultimate-debug-settings' ); // PHPCS:ignore:WordPress.Security.EscapeOutput.OutputNotEscaped ?>" data-tab="ultimate-debug" class="nav-tab"> Debug </a>
 				<?php endif; ?>
-		    </h2>
-      </div><!-- smile-settings-wrapper -->
+			</h2>
+	</div><!-- smile-settings-wrapper -->
 
-      </hr>
+	</hr>
 
 	<div class="container ultimate-content">
-        <div class="col-md-12">
-		    <?php
-			$ultimate_smooth_scroll = esc_html( get_option( 'ultimate_smooth_scroll' ) );
-			$ultimate_smooth_scroll_options = get_option('ultimate_smooth_scroll_options');
+		<div class="col-md-12">
+			<?php
+			$ultimate_smooth_scroll         = esc_html( get_option( 'ultimate_smooth_scroll' ) );
+			$ultimate_smooth_scroll_options = get_option( 'ultimate_smooth_scroll_options' );
 
 			$checked = '';
 
-			if( $ultimate_smooth_scroll == "enable" ){
+			if ( 'enable' == $ultimate_smooth_scroll ) {
 				$ultimate_smooth_scroll_attr = 'checked="checked"';
 			} else {
 				$ultimate_smooth_scroll_attr = '';
 			}
 
 			?>
-		    <div id="ultimate-settings" class="ult-tabs active-tab">
-		    <form method="post" id="ultimate_settings">
-		    	<input type="hidden" name="security" value="<?php echo wp_create_nonce( 'smooth-scroll-setting' ); ?>" />
-		    	<input type="hidden" name="action" value="update_ultimate_options" />
-		    	<table class="form-table">
-		        	<tbody>
-		                <tr valign="top">
-		                	<th scope="row"><?php echo __("Smooth Scroll","ultimate_vc"); ?></th>
-		                    <td>
-		                    	<div class="onoffswitch">
-			                    	<input type="checkbox" <?php echo $ultimate_smooth_scroll_attr; ?> id="ultimate_smooth_scroll" value="enable" class="onoffswitch-checkbox" name="ultimate_smooth_scroll" />
-			                        <label class="onoffswitch-label" for="ultimate_smooth_scroll">
-			                            <div class="onoffswitch-inner">
-			                                <div class="onoffswitch-active">
-			                                    <div class="onoffswitch-switch"><?php echo __('ON','ultimate_vc'); ?></div>
-			                                </div>
-			                                <div class="onoffswitch-inactive">
-			                                    <div class="onoffswitch-switch"><?php echo __('OFF','ultimate_vc'); ?></div>
-			                                </div>
-			                            </div>
-			                        </label>
-		                        </div>
-		                    </td>
-		                </tr>
-		                <tr class="ult-smooth-options" style="<?php echo ($ultimate_smooth_scroll !== 'enable') ? 'display:none' : '' ?>">
-		                	<th><label>Step: </label></th>
-		                	<td>
-		                        <div id="ult-smooth-options" >
-		                        	<div>
-		                        		<input type="number" name="ultimate_smooth_scroll_options[step]" value="<?php echo ( isset($ultimate_smooth_scroll_options['step'] ) ) ? esc_html( $ultimate_smooth_scroll_options['step'] ) : '' ?>" placeholder="80" />
-		                        		<span class="dashicons dashicons-editor-help bsf-has-tip" title="The speed of the scrolling effect with a mouse wheel." data-position="right"></span>
-		                        	</div>
-		                        </div>
+			<div id="ultimate-settings" class="ult-tabs active-tab">
+			<form method="post" id="ultimate_settings">
+				<input type="hidden" name="security" value="<?php echo esc_attr( wp_create_nonce( 'smooth-scroll-setting' ) ); ?>" />
+				<input type="hidden" name="action" value="update_ultimate_options" />
+				<table class="form-table">
+					<tbody>
+						<tr valign="top">
+							<th scope="row"><?php echo esc_attr__( 'Smooth Scroll', 'ultimate_vc' ); ?></th>
+							<td>
+								<div class="onoffswitch">
+									<input type="checkbox" <?php echo esc_attr( $ultimate_smooth_scroll_attr ); ?> id="ultimate_smooth_scroll" value="enable" class="onoffswitch-checkbox" name="ultimate_smooth_scroll" />
+									<label class="onoffswitch-label" for="ultimate_smooth_scroll">
+										<div class="onoffswitch-inner">
+											<div class="onoffswitch-active">
+												<div class="onoffswitch-switch"><?php echo esc_attr__( 'ON', 'ultimate_vc' ); ?></div>
+											</div>
+											<div class="onoffswitch-inactive">
+												<div class="onoffswitch-switch"><?php echo esc_attr__( 'OFF', 'ultimate_vc' ); ?></div>
+											</div>
+										</div>
+									</label>
+								</div>
 							</td>
-		                </tr>
-		                <tr class="ult-smooth-options" style="<?php echo ($ultimate_smooth_scroll !== 'enable') ? 'display:none' : '' ?>">
-		                	<th><label>Scroll Speed: </label></th>
-		                	<td>
-		                		<div id="ult-smooth-options">
-		                        	<div>
-		                        		<input type="number" name="ultimate_smooth_scroll_options[speed]" value="<?php echo ( isset( $ultimate_smooth_scroll_options['speed'] ) ) ? esc_html( $ultimate_smooth_scroll_options['speed'] ) : '' ?>" placeholder="480" />
-		                        		<span class="dashicons dashicons-editor-help bsf-has-tip" title="The speed of the scrolling effect." data-position="right"></span>
-		                        	</div>
-		                        </div>
-		                	</td>
-		                </tr>
-		            </tbody>
-		        </table>
-		    </form>
-			<p class="submit"><input type="submit" name="submit" id="submit-settings" class="button button-primary" value="<?php echo __("Save Changes","ultimate");?>"></p>
-		    </div>
+						</tr>
+						<tr class="ult-smooth-options" style="<?php echo ( 'enable' !== $ultimate_smooth_scroll ) ? 'display:none' : ''; ?>">
+							<th><label>Step: </label></th>
+							<td>
+								<div id="ult-smooth-options" >
+									<div>
+										<input type="number" name="ultimate_smooth_scroll_options[step]" value="<?php echo ( isset( $ultimate_smooth_scroll_options['step'] ) ) ? esc_html( $ultimate_smooth_scroll_options['step'] ) : ''; ?>" placeholder="80" />
+										<span class="dashicons dashicons-editor-help bsf-has-tip" title="The speed of the scrolling effect with a mouse wheel." data-position="right"></span>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr class="ult-smooth-options" style="<?php echo ( 'enable' !== $ultimate_smooth_scroll ) ? 'display:none' : ''; ?>">
+							<th><label>Scroll Speed: </label></th>
+							<td>
+								<div id="ult-smooth-options">
+									<div>
+										<input type="number" name="ultimate_smooth_scroll_options[speed]" value="<?php echo ( isset( $ultimate_smooth_scroll_options['speed'] ) ) ? esc_html( $ultimate_smooth_scroll_options['speed'] ) : ''; ?>" placeholder="480" />
+										<span class="dashicons dashicons-editor-help bsf-has-tip" title="The speed of the scrolling effect." data-position="right"></span>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<p class="submit"><input type="submit" name="submit" id="submit-settings" class="button button-primary" value="<?php echo esc_attr__( 'Save Changes', 'ultimate' ); ?>"></p>
+			</div>
 		</div> <!--col-md-12 -->
-      </div> <!-- ultimate-content -->
-    </div> <!-- bend-content-wrap -->
-  </div> <!-- .wrap-container -->
+	</div> <!-- ultimate-content -->
+	</div> <!-- bend-content-wrap -->
+</div> <!-- .wrap-container -->
 </div> <!-- .bend -->
 
 <script type="text/javascript">
@@ -126,9 +137,9 @@ submit_btn.bind('click',function(e){
 			result = jQuery.trim(result);
 			console.log(result);
 			if(result == "success"){
-				jQuery("#msg").html('<div class="updated"><p><?php echo __('Settings updated successfully!','ultimate_vc'); ?></p></div>');
+				jQuery("#msg").html('<div class="updated"><p><?php echo esc_attr__( 'Settings updated successfully!', 'ultimate_vc' ); ?></p></div>');
 			} else {
-				jQuery("#msg").html('<div class="error"><p><?php echo __('No settings were updated.','ultimate_vc'); ?></p></div>');
+				jQuery("#msg").html('<div class="error"><p><?php echo esc_attr__( 'No settings were updated.', 'ultimate_vc' ); ?></p></div>');
 			}
 		}
 	});
@@ -293,10 +304,10 @@ div#msg {
 }
 .onoffswitch-inner:before,
 .onoffswitch-inner:after {
-    display:none
+	display:none
 }
 .onoffswitch-switch {
-    height: initial !important;
+	height: initial !important;
 	color: white !important;
 }
 </style>

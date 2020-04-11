@@ -24,6 +24,13 @@ $options[]            = array(
 	'type' => 'info',
 );
 
+if ( class_exists( 'Elementor\Plugin' ) ) {
+	$options[]            = array(
+		'desc' => _x( 'Settings below do not work with pages created with Elementor.', 'theme-options', 'the7mk2' ),
+		'type' => 'info',
+	);
+}
+
 $options[] = array(
 	'name' => _x( 'Archives', 'theme-options', 'the7mk2' ),
 	'type' => 'heading',

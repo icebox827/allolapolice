@@ -268,59 +268,6 @@ if ( ! function_exists( 'presscore_main_container_classes' ) ) :
 
 endif;
 
-if ( ! function_exists( 'presscore_main_container_style' ) ) :
-
-	/**
-	 * Print main container inline style if any.
-	 */
-	function presscore_main_container_style() {
-		$config = presscore_config();
-
-		$padding = array(
-			'padding-top'    => $config->get( 'page.top_margin' ),
-			'padding-bottom' => $config->get( 'page.bottom_margin' ),
-		);
-
-		$style = array();
-		foreach ( $padding as $prop => $val ) {
-			if ( $val !== '' ) {
-				if ( ! preg_match( '/.*(px|%)$/', $val ) ) {
-					$val .= 'px';
-				}
-
-				$style[ $prop ] = $val;
-			}
-		}
-
-		echo presscore_get_inline_style_attr( $style );
-	}
-
-endif;
-
-if ( ! function_exists( 'the7_main_container_wrap_style' ) ) {
-
-	/**
-	 * Pront horizontal padding for content area.
-	 */
-	function the7_main_container_wrap_style() {
-		$config = presscore_config();
-
-		$padding = array(
-			'padding-right'  => $config->get( 'page.right_margin' ),
-			'padding-left'   => $config->get( 'page.left_margin' ),
-		);
-
-		$style = array();
-		foreach ( $padding as $prop => $val ) {
-			if ( $val !== '' ) {
-				$style[ $prop ] = $val;
-			}
-		}
-
-		echo presscore_get_inline_style_attr( $style );
-	}
-}
-
 if ( ! function_exists( 'presscore_get_post_tags_html' ) ) :
 
 	function presscore_get_post_tags_html() {
@@ -2186,4 +2133,20 @@ function the7_get_share_buttons_list( $place, $post_id = null ) {
 	}
 
 	return (array) apply_filters( 'the7_get_share_buttons_list', $share_buttons, $place, $post_id, $buttons );
+}
+
+/**
+ * @since 8.3.0
+ *
+ * @param int $post_id
+ *
+ * @return string
+ * @throws Exception
+ */
+function the7_generate_post_css( $post_id ) {
+	return The7_Post_CSS_Generator::generate_css_for_post(
+		$post_id,
+		the7_get_new_shortcode_less_vars_manager(),
+		new The7_Less_Compiler()
+	);
 }

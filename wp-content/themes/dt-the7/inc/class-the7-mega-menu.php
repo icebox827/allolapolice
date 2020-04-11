@@ -299,9 +299,9 @@ class The7_Mega_Menu {
 				case 'icon':
 					$inline_style = $this->dt_get_icon_padding_inline_style( $item );
 					if ( $inline_style ) {
-						$inline_style = ' style="' . esc_attr( $inline_style ) . '"';
+						$inline_style = 'style="' . esc_attr( $inline_style ) . '"';
 					}
-					$image_html = '<i class="' . esc_attr( $item->the7_mega_menu['menu-item-icon'] ) . '"' . $inline_style . '></i>';
+					$image_html = '<i class="fa-fw ' . esc_attr( $item->the7_mega_menu['menu-item-icon'] ) . '" ' . $inline_style . ' ></i>';
 					break;
 				case 'image':
 					if ( empty( $item->the7_mega_menu['menu-item-image'][1] ) ) {

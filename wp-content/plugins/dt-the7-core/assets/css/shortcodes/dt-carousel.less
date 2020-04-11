@@ -82,7 +82,7 @@
 
 /*Arrows*/
 .owl-nav {
-    .@{unique-shortcode-class-name} & {
+    .@{unique-shortcode-class-name}.owl-carousel & {
         & a {
             width: @arrow-width;
             height: @arrow-height;
@@ -226,7 +226,7 @@
 }
 @media screen and (max-width:@hide-arrows-switch){
 	 .owl-nav {
-		.@{unique-shortcode-class-name}.hide-arrows & {
+		.@{unique-shortcode-class-name}.hide-arrows.owl-carousel & {
 			& a {
 				display: none;
 			}
@@ -235,7 +235,7 @@
 }
 @media screen and (max-width:@reposition-arrows-switch){
 	 .owl-nav {
-		.@{unique-shortcode-class-name}.reposition-arrows & {
+		.@{unique-shortcode-class-name}.reposition-arrows.owl-carousel & {
 			& .owl-prev {
 				.nav-v-position(@arrow-left-v-position, @l-arrow-v-position);
 				.nav-h-position(@arrow-left-h-position,@arrow-left-h-position-mobile);

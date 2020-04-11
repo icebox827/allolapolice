@@ -1,12 +1,9 @@
 <?php
 /**
- * General.
+ * "General Appearance" theme options.
  */
 
-// File Security Check
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Heading definition.
@@ -20,7 +17,10 @@ $options[] = array(
 /**
  * Layout.
  */
-$options[] = array( 'name' => _x( 'Layout', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Layout', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-content_width'] = array(
 	'name'  => _x( 'Content width', 'theme-options', 'the7mk2' ),
@@ -28,20 +28,6 @@ $options['general-content_width'] = array(
 	'std'   => '1200px',
 	'type'  => 'number',
 	'units' => 'px|%',
-);
-
-$options['general-page_content_margin'] = array(
-	'name'   => _x( 'Margin for pages, posts & templates', 'theme-options', 'the7mk2' ),
-	'id'     => 'general-page_content_margin',
-	'type'   => 'spacing',
-	'std'    => '50px 0px 50px 0px',
-	'units'  => 'px|%',
-	'fields' => array(
-		_x( 'Top', 'theme-options', 'the7mk2' ),
-		_x( 'Right', 'theme-options', 'the7mk2' ),
-		_x( 'Bottom', 'theme-options', 'the7mk2' ),
-		_x( 'Left', 'theme-options', 'the7mk2' ),
-	),
 );
 
 $options['general-layout'] = array(
@@ -116,9 +102,56 @@ $options['general-boxed_bg_fixed'] = array(
 );
 
 /**
+ * Main area (content & sidebar).
+ */
+$options[] = array(
+	'name' => _x( 'Main area (content & sidebar)', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
+
+$options['general-page_content_margin'] = array(
+	'name'   => _x( 'Paddings', 'theme-options', 'the7mk2' ),
+	'id'     => 'general-page_content_margin',
+	'type'   => 'spacing',
+	'std'    => '50px 50px 50px 50px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Top', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+		_x( 'Bottom', 'theme-options', 'the7mk2' ),
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+	),
+);
+
+$options['general-switch_content_paddings'] = array(
+	'name'  => _x( 'Mobile breakpoint', 'theme-options', 'the7mk2' ),
+	'id'    => 'general-switch_content_paddings',
+	'type'  => 'number',
+	'std'   => '778px',
+	'units' => 'px',
+);
+
+$options['general-page_content_mobile_margin'] = array(
+	'name'   => _x( 'Mobile paddings', 'theme-options', 'the7mk2' ),
+	'id'     => 'general-page_content_mobile_margin',
+	'type'   => 'spacing',
+	'std'    => '50px 20px 50px 20px',
+	'units'  => 'px|%',
+	'fields' => array(
+		_x( 'Top', 'theme-options', 'the7mk2' ),
+		_x( 'Right', 'theme-options', 'the7mk2' ),
+		_x( 'Bottom', 'theme-options', 'the7mk2' ),
+		_x( 'Left', 'theme-options', 'the7mk2' ),
+	),
+);
+
+/**
  * Background.
  */
-$options[] = array( 'name' => _x( 'Background', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Background', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-bg_color'] = array(
 	'name' => _x( 'Color', 'theme-options', 'the7mk2' ),
@@ -158,7 +191,10 @@ $options['general-bg_fixed'] = array(
 /**
  * Content boxes.
  */
-$options[] = array( 'name' => _x( 'Content boxes', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Content boxes', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-content_boxes_bg_color'] = array(
 	'name' => _x( 'Background color', 'theme-options', 'the7mk2' ),
@@ -204,7 +240,10 @@ $options['general-content_boxes_decoration_outline_color'] = array(
 /**
  * Dividers.
  */
-$options[] = array( 'name' => _x( 'Dividers', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Dividers', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['dividers-color'] = array(
 	'name' => _x( 'Dividers color', 'theme-options', 'the7mk2' ),
@@ -216,7 +255,10 @@ $options['dividers-color'] = array(
 /**
  * Color accent.
  */
-$options[] = array( 'name' => _x( 'Color accent', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Color accent', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-accent_color_mode'] = array(
 	'name'      => _x( 'Accent color', 'theme-options', 'the7mk2' ),
@@ -229,7 +271,7 @@ $options['general-accent_color_mode'] = array(
 		'gradient' => 'general-accent_color_mode-gradient',
 	),
 	'options'   => array(
-		'color' => _x( 'Solid color', 'theme-options', 'the7mk2' ),
+		'color'    => _x( 'Solid color', 'theme-options', 'the7mk2' ),
 		'gradient' => _x( 'Gradient', 'theme-options', 'the7mk2' ),
 	),
 );
@@ -262,7 +304,10 @@ $options['general-accent_bg_color_gradient'] = array(
 /**
  * Border radius.
  */
-$options[] = array( 'name' => _x( 'Border radius', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Border radius', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-border_radius'] = array(
 	'name'  => _x( 'Border radius', 'theme-options', 'the7mk2' ),
@@ -275,7 +320,10 @@ $options['general-border_radius'] = array(
 /**
  * Beautiful loading.
  */
-$options[] = array( 'name' => _x( 'Beautiful loading', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Beautiful loading', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-beautiful_loading'] = array(
 	'name'    => _x( 'Beautiful loading', 'theme-options', 'the7mk2' ),
@@ -426,7 +474,10 @@ $options[] = array( 'type' => 'js_hide_end' );
 /**
  * Lightbox.
  */
-$options[] = array( 'name' => _x( 'Lightbox', 'theme-options', 'the7mk2' ), 'type' => 'block' );
+$options[] = array(
+	'name' => _x( 'Lightbox', 'theme-options', 'the7mk2' ),
+	'type' => 'block',
+);
 
 $options['general-lightbox_overlay_opacity'] = array(
 	'name'    => _x( 'Lightbox overlay opacity', 'theme-options', 'the7mk2' ),

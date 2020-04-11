@@ -85,6 +85,7 @@ $presscore_shortcodes = array(
 	'media-gallery-carousel',
 	'icon',
 	'text-with-icon',
+	'year',
 );
 
 if ( dt_is_woocommerce_enabled() ) {

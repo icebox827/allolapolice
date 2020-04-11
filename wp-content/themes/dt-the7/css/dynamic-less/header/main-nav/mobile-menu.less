@@ -1,9 +1,16 @@
 
+.custom-mixin-toggle-bg (@customColor) when (iscolor(@customColor)) {
+	background: @customColor !important;
+}
+.disable-mobile-animation-bg(@bg-color, @bg-color2) when not (@bg-color = @bg-color2) {
+	transition:  0.2s linear;
+} 
 .masthead.masthead-mobile-header,
 .masthead.masthead-mobile-header:not(.mixed-header) {
 	background: @mobile-header-bg-color;
 }
-.mobile-sticky-header-overlay {
+.mobile-sticky-header-overlay,
+.mobile-sticky-sidebar-overlay {
 	background-color: @mobile-overlay-bg-color;
 }
 .dt-mobile-header {
@@ -12,35 +19,234 @@
 	.right-mobile-menu .show-mobile-header & {
 		right: @mobile-menu-width
 	}
+	
+	& .mobile-header-scrollbar-wrap {
+		width: calc(@mobile-menu-width ~'-' 13px );
+		padding: @header-mobile-menu-top-padding @header-mobile-menu-right-padding @header-mobile-menu-bottom-padding @header-mobile-menu-left-padding;
+		box-sizing: border-box;
+		.admin-bar & {
+			padding-top:  @header-mobile-menu-top-padding + 32px;
+		}
+	}
+}
+@media screen and (max-width: 782px){
+	.admin-bar .dt-mobile-header .mobile-header-scrollbar-wrap {
+	    padding-top: @header-mobile-menu-top-padding + 46px;
+	}
+}
+html:not(.touchevents) .dt-mobile-header::-webkit-scrollbar-thumb
+{
+	background: fade(@mobile-menu-color, 20%);
+	border-color: @mobile-menu-bg-color;
+}
+html:not(.touchevents) .dt-mobile-header::-webkit-scrollbar-track
+{
+	background-color: @mobile-menu-bg-color;
+}
+.mobile-header-bar {
+ 	.masthead:not(.side-header):not(.side-header-menu-icon) & {
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+	.masthead:not(.side-header).full-width &,
+	.masthead.side-header-menu-icon {
+		max-width: 100%;
+	}
 }
 .custom-mixin-bg (@customColor) when (iscolor(@customColor)) {
 	background: @customColor !important;
 }
-.dt-mobile-menu-icon {
-	
-	&:not(.floating-btn) {
-		.mobile-menu-icon-bg-on & {
-			background-color: @accent-bg-color;
-			.accent-gradient & {
-				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+.custom-mixin-toggle-color (@customColor) when (iscolor(@customColor)) {
+	color: @customColor !important;
+	background: none;
+}
+.custom-mixin-toggle-border (@customColor, @borderWidth: 0) when (iscolor(@customColor)) {
+	border: @borderWidth solid @customColor;
+}
+
+	.dt-mobile-menu-icon {
+		padding: @toggle-mobile-padding-top @toggle-mobile-padding-right @toggle-mobile-padding-bottom @toggle-mobile-padding-left;
+
+		& .menu-toggle-caption {
+			font: @mobile-menu-caption-font-style @mobile-base-font-variant @mobile-menu-caption-font-weight @mobile-menu-caption-font-size~"/"@mobile-menu-caption-font-size + 4 @mobile-menu-caption-font-family;
+			text-transform: @mobile-menu-caption-text-transform;
+			word-spacing: normal;
+			.mobile-left-caption & {
+				margin-right: @mobile-menu-caption-gap;
 			}
-			.custom-mixin-bg (@mobile-toggle-menu-bg-color);
-			width: @mobile-hamburger-bg-size;
-			height: @mobile-hamburger-bg-size;
-			.border-radius (@radius: @mobile-toggle-menu-border-radius);
+			.mobile-right-caption & {
+				margin-left: @mobile-menu-caption-gap;
+			}
 		}
+		&:not(.floating-btn) {
+
+			margin: @toggle-mobile-margin-top @toggle-mobile-margin-right @toggle-mobile-margin-bottom @toggle-mobile-margin-left;
+			&:before {
+				.mobile-menu-icon-bg-on & {
+					background-color: @accent-bg-color;
+					.accent-gradient & {
+						.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+					}
+					.custom-mixin-bg (@mobile-toggle-menu-bg-color);
+					.disable-mobile-animation-bg(@mobile-toggle-menu-bg-color, @mobile-toggle-menu-bg-hover-color);
+				}
+				.mobile-menu-icon-border-enable & {
+					border: @mobile-hamburger-border-width solid @accent-bg-color;
+					.custom-mixin-toggle-border (@mobile-toggle-menu-border-color, @mobile-hamburger-border-width);
+				}
+			}
+			&:after {
+				.mobile-menu-icon-hover-bg-on & {
+					background-color: @accent-bg-color;
+					.accent-gradient & {
+						.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+					}
+					.custom-mixin-bg (@mobile-toggle-menu-bg-hover-color);
+					.disable-mobile-animation-bg(@mobile-toggle-menu-bg-color, @mobile-toggle-menu-bg-hover-color);
+				}
+				.mobile-menu-icon-hover-border-enable & {
+					border: @mobile-hamburger-border-width solid @accent-bg-color;
+					.custom-mixin-toggle-border (@mobile-toggle-menu-border-hover-color, @mobile-hamburger-border-width);
+				}
+			}
+			&:not(:hover) {
+				
+				& .menu-toggle-caption {
+					color: @accent-bg-color;
+					.custom-mixin-toggle-color (@toggle-mobile-menu-caption-color);
+				}
+				& .menu-line {
+					.animate-color-mobile-menu-icon &,
+					.two-line-mobile-menu-icon & {
+						background-color: @mobile-toggle-menu-color;
+						background-color: @accent-bg-color;
+						.accent-gradient & {
+							.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+						}
+						.custom-mixin-bg (@mobile-toggle-menu-color);
+					}
+				}
+			}
+			& .menu-line:before {
+				background-color: @accent-bg-color;
+				.accent-gradient & {
+					.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+				}
+				.custom-mixin-bg (@mobile-toggle-menu-color);
+				.disable-mobile-animation-bg(@mobile-toggle-menu-color, @mobile-toggle-menu-hover-color);
+			}
+			& .menu-line:after {	
+				background-color: @accent-bg-color;
+				.accent-gradient & {
+					.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+				}
+				.custom-mixin-bg (@mobile-toggle-menu-hover-color);
+				.disable-mobile-animation-bg(@mobile-toggle-menu-color, @mobile-toggle-menu-hover-color);
+			}
+			&:hover {
+				& .menu-toggle-caption {
+					color: @accent-bg-color;
+					.custom-mixin-toggle-color (@toggle-mobile-menu-caption-color-hover);
+				}
+				& .menu-line {
+					.masthead:not(.animate-color-mobile-menu-icon):not(.two-line-mobile-menu-icon) & {
+						background-color: @accent-bg-color;
+						.accent-gradient & {
+							.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+						}
+						.custom-mixin-bg (@mobile-toggle-menu-hover-color);
+					}
+					.animate-color-mobile-menu-icon &,
+					.two-line-mobile-menu-icon & {
+
+						background-color: @accent-bg-color;
+						.accent-gradient& {
+							.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+						}
+						.custom-mixin-bg (@mobile-toggle-menu-color);
+					}
+				}
+				& .menu-line:after {	
+					.animate-color-mobile-menu-icon &,
+					.dots-mobile-menu-icon &,
+					.h-dots-mobile-menu-icon &,
+					.two-line-mobile-menu-icon & {
+						background-color: @accent-bg-color;
+						.accent-gradient & {
+							.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+						}
+						.custom-mixin-bg (@mobile-toggle-menu-hover-color);
+					}
+				}
+			}
+			
+			
+			.border-radius (@radius: @mobile-toggle-menu-border-radius);
+		//}
 	}
+}
+.custom-mixin-padding-top (@customPadding) when (@customPadding < 10) {
+	 padding-top: 10px
+}
+.custom-mixin-padding-right (@customPadding) when (@customPadding < 10) {
+	 padding-right: 10px
+}
+.custom-mixin-padding-bottom (@customPadding) when (@customPadding < 10) {
+	 padding-bottom: 10px
+}
+.custom-mixin-padding-left (@customPadding) when (@customPadding < 10) {
+	 padding-left: 10px
+}
+.floating-mobile-menu-icon .dt-mobile-menu-icon.floating-btn {
+	.custom-mixin-padding-top (@toggle-mobile-padding-top);
+	.custom-mixin-padding-right (@toggle-mobile-padding-right);
+	.custom-mixin-padding-bottom (@toggle-mobile-padding-bottom);
+	.custom-mixin-padding-left (@toggle-mobile-padding-left);
 }
 .floating-mobile-menu-icon .dt-mobile-menu-icon.floating-btn {
 	.border-radius;
 }
 .dt-close-mobile-menu-icon {
-	.show-mobile-header & {
-		left: @mobile-menu-width - 30;
+	& .mobile-menu-close-caption {
+		font: @close-mobile-menu-caption-font-style @close-mobile-base-font-variant @close-mobile-menu-caption-font-weight @close-mobile-menu-caption-font-size~"/"@close-mobile-menu-caption-font-size + 4 @close-mobile-menu-caption-font-family;
+		text-transform: @close-mobile-menu-caption-text-transform;
+		word-spacing: normal;
+		.mobile-close-left-caption & {
+			margin-right: @close-mobile-menu-caption-gap;
+		}
+		.mobile-close-right-caption & {
+			margin-left: @close-mobile-menu-caption-gap;
+		}
+
 	}
-	.right-mobile-menu .show-mobile-header & {
+	&:not(:hover) {
+		& .mobile-menu-close-caption {
+			color: @accent-bg-color;
+			.custom-mixin-toggle-color (@close-mobile-menu-caption-color);
+		}
+	}
+	&:hover {
+		& .mobile-menu-close-caption {
+			color: @accent-bg-color;
+			.custom-mixin-toggle-color (@close-mobile-menu-caption-color-hover);
+		}
+	}
+	.left-mobile-menu-close-icon & {
+		left: 0;
+	}
+	.right-mobile-menu-close-icon & {
+		right:  0;
+	}
+	.center-mobile-menu-close-icon & {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.ouside-mobile-menu-close-icon & {
+		left: @mobile-menu-width;
+	}
+	.right-mobile-menu.ouside-mobile-menu-close-icon & {
+		right: @mobile-menu-width;
 		left: auto;
-		right: 0;
 	}
 }
 @media screen and (max-width: @mobile-menu-width) {
@@ -57,15 +263,6 @@
 		right: 100%;
 	}
 }
-.dt-mobile-menu-icon .lines,
-.dt-mobile-menu-icon .lines:before,
-.dt-mobile-menu-icon .lines:after {
-	background-color: @mobile-toggle-menu-color;
-	// .mixed-header &,
-	// .classic-header & {
-	// 	background-color: @additional-logo-elements-color;
-	// }
-}
 /*Mobile-branding*/
 .mobile-branding > a,
 .mobile-branding > img {
@@ -81,11 +278,19 @@
 	}
 }
 /*Mobile menu*/
+
 .mobile-main-nav > li > a {
-	padding: @mobile-menu-font-size/2 + 8 30px @mobile-menu-font-size/2 + 8 0;
+	padding: @mobile-menu-font-size*0.65 30px @mobile-menu-font-size*0.65 0;
+	
+	.mobile-menu-show-divider & {
+		padding: @mobile-menu-font-size*0.95 30px @mobile-menu-font-size*0.95 0;
+	}
 }
 .dt-mobile-header .next-level-button {
-	padding: @mobile-menu-font-size/2 + 8 0;
+	padding: @mobile-menu-font-size*0.65 0;
+	.mobile-menu-show-divider& {
+		padding: @mobile-menu-font-size*0.95 0;
+	}
 	top: 0;
 	line-height: @mobile-menu-font-size+4;
 }
@@ -132,14 +337,14 @@
 	.mobile-main-nav > li.has-children > a:after,
 	.mobile-main-nav .next-level-button,
 	.mobile-main-nav > li.menu-item-language > a:after {
-		color: fade(@mobile-menu-color, 27%);
+		color: fade(@mobile-menu-color, 17%);
 	}
-	.mobile-main-nav > li:before {
-		border-color: fade(@mobile-menu-color, 8%);
+	.mobile-menu-show-divider .mobile-main-nav > li:before {
+		border-bottom: @mobile-menu-divider-height solid @mobile-menu-divider-color;
 	}
 		.mobile-main-nav .sub-nav > li > a,
 		#page .mobile-main-nav .sub-nav li {
-			padding: (@mobile-sub-menu-font-size - 4)/2 + 2 0px (@mobile-sub-menu-font-size - 4)/2 + 2 0;
+			padding: @mobile-sub-menu-font-size*0.4 0px @mobile-sub-menu-font-size*0.4 0;
 		}
 			.dt-mobile-header .mobile-main-nav li .sub-nav > li > a .menu-text {
 				font: @mobile-sub-menu-font-style @mobile-sub-menu-font-variant @mobile-sub-menu-font-weight @mobile-sub-menu-font-size~"/"@mobile-sub-menu-font-size+4 @mobile-sub-menu-font-family;
@@ -161,12 +366,11 @@
 		.mobile-main-nav .sub-nav.level-arrows-on li.has-children.act > a:after,
 		.mobile-main-nav .sub-nav li.has-children a:after,
 		.mobile-main-nav .sub-nav .next-level-button {
-			color: fade(@mobile-menu-color, 27%);
+			color: fade(@mobile-menu-color, 17%);
 		}
 		.mobile-main-nav .sub-nav .next-level-button {
 			padding: (@mobile-sub-menu-font-size - 4)/2 + 2 0;
 			top: 0;
-			//top: (@mobile-sub-menu-font-size - 4)/2 + 2;
 			line-height: @mobile-sub-menu-font-size+4;
 		}
 		.mobile-main-nav .sub-nav .next-level-button:before {
@@ -178,6 +382,55 @@
 		.mobile-main-nav .sub-nav > li.has-children > a {
 			max-width: calc(100% ~'-' 30px);
 		}
-.dt-close-mobile-menu-icon span {
-	.accent-bg-mixin;
+.dt-close-mobile-menu-icon {
+	padding: @toggle-mobile-menu-close-padding-top @toggle-mobile-menu-close-padding-right @toggle-mobile-menu-close-padding-bottom @toggle-mobile-menu-close-padding-left;
+	margin: @toggle-mobile-menu-close-top-margin @toggle-mobile-menu-close-right-margin @toggle-mobile-menu-close-bottom-margin @toggle-mobile-menu-close-left-margin;
+
+	&:before {
+		.mobile-hamburger-close-bg-enable & {
+			background-color: @accent-bg-color;
+			.accent-gradient& {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+			.custom-mixin-toggle-bg (@toggle-mobile-menu-close-bg-color);
+			
+			.disable-mobile-animation-bg(@toggle-mobile-menu-close-bg-color, @toggle-mobile-menu-hover-bg-color);
+		}
+		.mobile-hamburger-close-border-enable & {
+			border: @hamburger-mobile-close-border-width solid @accent-bg-color;
+			.custom-mixin-toggle-border (@toggle-mobile-menu-close-border-color, @hamburger-mobile-close-border-width);
+		}
+	}
+	&:after {
+		.mobile-hamburger-close-bg-hover-enable & {
+			background-color: @accent-bg-color;
+			.accent-gradient& {
+				.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+			}
+			.custom-mixin-toggle-bg (@toggle-mobile-menu-hover-bg-color);
+
+			.disable-mobile-animation-bg(@toggle-mobile-menu-close-bg-color, @toggle-mobile-menu-hover-bg-color);
+		}
+		.mobile-hamburger-close-border-hover-enable & {
+			border: @hamburger-mobile-close-border-width solid @accent-bg-color;
+			.custom-mixin-toggle-border (@toggle-mobile-menu-close-border-color-hover, @hamburger-mobile-close-border-width);
+		}
+	}
+	& span:after {
+		background-color: @accent-bg-color;
+		.accent-gradient & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+		.custom-mixin-toggle-bg (@toggle-mobile-menu-close-hover-color);
+		.disable-mobile-animation-bg(@toggle-mobile-menu-close-hover-color, @toggle-mobile-menu-close-color);
+	}
+	border-radius: @hamburger-mobile-close-border-radius;
+	& span:before {
+		background-color: @accent-bg-color;
+		.accent-gradient & {
+			.background-gradient (@startColor: @accent-bg-color, @endColor: @accent-bg-color-2);
+		}
+		.custom-mixin-toggle-bg (@toggle-mobile-menu-close-color);
+		.disable-mobile-animation-bg(@toggle-mobile-menu-close-hover-color, @toggle-mobile-menu-close-color);
+	}
 }

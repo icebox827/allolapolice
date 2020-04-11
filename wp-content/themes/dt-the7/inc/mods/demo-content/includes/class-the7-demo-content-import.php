@@ -137,10 +137,11 @@ class The7_Demo_Content_Import extends WP_Import {
 	 */
 	public function cache_processed_data() {
 		$data = array(
-			'processed_authors'    => $this->processed_authors,
-			'processed_terms'      => $this->processed_terms,
-			'processed_posts'      => $this->processed_posts,
-			'featured_images'      => $this->featured_images,
+			'processed_authors' => $this->processed_authors,
+			'processed_terms'   => $this->processed_terms,
+			'processed_posts'   => $this->processed_posts,
+			'featured_images'   => $this->featured_images,
+			'url_remap'         => $this->url_remap,
 		);
 		set_transient( self::THE7_PROCESSED_DATA_KEY, $data, 1200 );
 	}

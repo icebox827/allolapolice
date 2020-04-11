@@ -74,6 +74,10 @@ class The7PT_Install {
 			'presscore_refresh_dynamic_css',
 			'the7pt_set_db_version_2_2_0',
 		),
+		'2.2.4'   => array(
+			'the7_mass_regenerate_short_codes_inline_css',
+			'the7pt_set_db_version_2_2_4',
+		),
 	);
 
 	public static function init() {

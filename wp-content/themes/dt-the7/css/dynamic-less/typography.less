@@ -34,9 +34,8 @@ body.page,
 .header-width (@customSize) when (ispercentage(@customSize)) {
 	max-width: @customSize;
 }
-.top-bar,
-.header-bar,
-.mobile-header-bar {
+
+.header-bar {
  	.masthead:not(.side-header):not(.side-header-menu-icon) & {
 		max-width: calc(@content-width ~"-" @header-right-padding ~"-" @header-left-padding);
 		.header-width (@content-width);
@@ -119,7 +118,7 @@ body.page,
 }
 
 	.wf-container {
-		margin: 0 @page-right-margin 0 @page-left-margin;
+		margin: 0 -@page-right-margin 0 -@page-left-margin;
 	}
 	.wf-cell,
 .wf-usr-cell
@@ -407,9 +406,10 @@ a:hover {
 #footer > .wf-wrap {
 	width: @content-width;
 }
-.ph-wrap {
-	max-width:  @content-width - 88;
-}
+
+// .ph-wrap {
+// 	max-width:  @content-width - 88;
+// }
 #phantom.full-width .ph-wrap.boxed {
 	max-width: 100%;
 }
@@ -426,7 +426,8 @@ a:hover {
 #phantom .ph-wrap.boxed,
 .boxed .top-bar.line-content:before,
 .boxed .classic-header.content-width-line .navigation:before {
-	max-width: @content-width - 88;
+	max-width: calc(@content-width ~"-" @header-right-padding ~"-" @header-left-padding);
+	
 }
 .boxed .full-width .top-bar.line-content:before,
 .boxed .classic-header.full-width.content-width-line .navigation:before {
@@ -455,9 +456,30 @@ body {
 /* #General -> Appearance -> Background
 ================================================== */
 #page {
+
 	background: @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y;
 	background-size: @page-bg-size;
 	background-attachment: @page-bg-attachment;
+	.fixed-page-bg & {
+		background: none;
+	}
+	&:after {
+		.fixed-page-bg & {
+			content:"";
+			position:fixed;
+			top:0;
+			height:100vh;
+			left:0;
+			right:0;
+			z-index:-1;
+			background: @page-bg-color @page-bg-image @page-bg-repeat @page-bg-position-x @page-bg-position-y;
+			background-size: @page-bg-size;
+		}
+	}
+}
+.fixed-page-bg #page.boxed:after {
+	max-width: @box-width;
+	margin: 0 auto;
 }
 	.footer-overlap .page-inner {
 		background: @page-bg-color @page-bg-image @page-bg-repeat @page-bg-attachment @page-bg-position-x @page-bg-position-y;

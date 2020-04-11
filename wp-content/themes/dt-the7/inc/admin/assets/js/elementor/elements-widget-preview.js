@@ -597,7 +597,9 @@
         }
 
         precessEffects($dataAttrContainer.find(".wf-cell"), $dataAttrContainer.hasClass("loading-effect-none"));
-        $dataAttrContainer.find(".paginator a").on("click", function(e) {
+
+        // Stub anchors.
+        $dataAttrContainer.find("a").on("click", function(e) {
             e.preventDefault();
 
             return false;

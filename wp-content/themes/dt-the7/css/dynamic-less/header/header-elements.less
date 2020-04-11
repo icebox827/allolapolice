@@ -61,6 +61,11 @@ input.field {
 .overlay-search-microwidget .search-icon i {
 	color: @mw-search-color;
 }
+
+.searchform input::-moz-placeholder {
+	color: @mw-search-color !important;
+	opacity: 1;
+}
 .searchform input[type=text],
 .mini-search .field::placeholder,
 .overlay-search-microwidget .field::placeholder {
@@ -110,18 +115,18 @@ input.field {
 		// 	.icon-gap-general (@additional-menu-elements-font-size);
 		// }
 	}
-	&:hover i {
-		.custom-mixin-fade-color (@additional-menu-elements-icon-color, @opacity:70%);
-	}
+	// &:hover i {
+	// 	.custom-mixin-fade-color (@additional-menu-elements-icon-color, @opacity:70%);
+	// }
 	.branding & {
 		& i {
 			font-size: @additional-logo-elements-icon-size;
 			color: @additional-logo-elements-icon-color;
 			//.icon-gap (@additional-logo-elements-font-size);
 		}
-		&:hover i {
-			.custom-mixin-fade-color (@additional-logo-elements-icon-color, @opacity:70%);
-		}
+		// &:hover i {
+		// 	.custom-mixin-fade-color (@additional-logo-elements-icon-color, @opacity:70%);
+		// }
 	}
 	.mixed-header & {
 		& i {
@@ -129,9 +134,9 @@ input.field {
 			color: @microwidgets-in-top-line-icon-color;
 		}
 
-		&:hover i {
-			.custom-mixin-fade-color (@microwidgets-in-top-line-icon-color, @opacity:70%);
-		}
+		// &:hover i {
+		// 	.custom-mixin-fade-color (@microwidgets-in-top-line-icon-color, @opacity:70%);
+		// }
 	}
 	.masthead .top-bar & {
 		& i {
@@ -140,9 +145,9 @@ input.field {
 			//.icon-gap (@top-bar-font-size);
 		}
 
-		&:hover i {
-			.custom-mixin-fade-color (@top-bar-icon-color, @opacity:70%);
-		}
+		// &:hover i {
+		// 	.custom-mixin-fade-color (@top-bar-icon-color, @opacity:70%);
+		// }
 	}
 
 	// .mixed-header .header-bar & {
@@ -157,9 +162,9 @@ input.field {
 			//.icon-gap (@mobile-menu-microwidgets-font-size);
 		}
 
-		&:hover i {
-			.custom-mixin-fade-color (@mobile-menu-microwidgets-icon-color, @opacity:70%);
-		}
+		// &:hover i {
+		// 	.custom-mixin-fade-color (@mobile-menu-microwidgets-icon-color, @opacity:70%);
+		// }
 	}
 	.mobile-header-bar .mobile-mini-widgets & {
 		& i {
@@ -168,9 +173,9 @@ input.field {
 			//.icon-gap (@mobile-microwidgets-font-size);
 		}
 
-		&:hover i {
-			.custom-mixin-fade-color (@mobile-microwidgets-icon-color, @opacity:70%);
-		}
+		// &:hover i {
+		// 	.custom-mixin-fade-color (@mobile-microwidgets-icon-color, @opacity:70%);
+		// }
 	}
 }
 .overlay-search-microwidget {
@@ -205,39 +210,39 @@ input.field {
 	font: @additional-menu-elements-font-style @additional-menu-elements-font-variant @additional-menu-elements-font-weight @additional-menu-elements-font-size~"/"@additional-menu-elements-font-size + 4 @additional-menu-elements-font-family;
 	color: @additional-menu-elements-color;
 	&:hover {
-		//opacity: 0.7;
-		.custom-mixin-fade-color (@additional-menu-elements-color, @opacity:70%);
+		opacity: 0.7;
+		//.custom-mixin-fade-color (@additional-menu-elements-color, @opacity:70%);
 	}
 
 	
 	.branding & {
 		font: @additional-logo-elements-font-style @additional-logo-elements-font-variant @additional-logo-elements-font-weight @additional-logo-elements-font-size~"/"@additional-logo-elements-font-size + 4 @additional-logo-elements-font-family;
 		color: @additional-logo-elements-color;
-		&:hover {
-			.custom-mixin-fade-color (@additional-logo-elements-color, @opacity:70%);
-		}
+		// &:hover {
+		// 	.custom-mixin-fade-color (@additional-logo-elements-color, @opacity:70%);
+		// }
 	}
 	.mixed-header & {
 		font: @microwidgets-in-top-line-font-style @microwidgets-in-top-line-font-variant @microwidgets-in-top-line-font-weight @microwidgets-in-top-line-font-size~"/"@microwidgets-in-top-line-font-size + 4 @microwidgets-in-top-line-font_family;
 		color: @microwidgets-in-top-line-color;
-		&:hover {
-			.custom-mixin-fade-color (@microwidgets-in-top-line-color, @opacity:70%);
-		}
+		// &:hover {
+		// 	.custom-mixin-fade-color (@microwidgets-in-top-line-color, @opacity:70%);
+		// }
 	}
 	.dt-mobile-header & {
 		font: @mobile-menu-microwidgets-font-style @mobile-menu-microwidgets-font-variant @mobile-menu-microwidgets-font-weight @mobile-menu-microwidgets-font-size~"/"@mobile-menu-microwidgets-font-size+4 @mobile-menu-microwidgets-font-family;
 		text-transform: @mobile-menu-microwidgets-text-transform;
 		color: @mobile-menu-microwidgets-color;
-		&:hover {
-			.custom-mixin-fade-color (@mobile-menu-microwidgets-color, @opacity:70%);
-		}
+		// &:hover {
+		// 	.custom-mixin-fade-color (@mobile-menu-microwidgets-color, @opacity:70%);
+		// }
 	}
 	.mobile-header-bar .mobile-mini-widgets & {
 		font: @mobile-microwidgets-font-style @mobile-sub-menu-font-variant @mobile-microwidgets-font-weight @mobile-microwidgets-font-size~"/"@mobile-microwidgets-font-size+4 @mobile-microwidgets-font-family;
 		color: @mobile-microwidgets-color;
-		&:hover {
-			.custom-mixin-fade-color (@mobile-microwidgets-color, @opacity:70%);
-		}
+		// &:hover {
+		// 	.custom-mixin-fade-color (@mobile-microwidgets-color, @opacity:70%);
+		// }
 	}
 }
 	.dt-mobile-header .mini-search .popup-search-wrap {
@@ -272,8 +277,8 @@ input.field {
 .top-bar .mini-search .submit {
 	color: @top-color;
 	&:hover {
-		opacity: 1;
-		.custom-mixin-fade-color (@top-color, @opacity:70%);
+		opacity: 0.7;
+		//.custom-mixin-fade-color (@top-color, @opacity:70%);
 	}
 }
 	.top-bar .popup-search .submit:before,
@@ -360,7 +365,6 @@ input.field {
 	}
 	.mini-contacts {
 		text-decoration: none;
-
 		font: @additional-menu-elements-font-style @additional-menu-elements-font-variant @additional-menu-elements-font-weight @additional-menu-elements-font-size~"/"@additional-menu-elements-font-size + 4 @additional-menu-elements-font-family;
 		color: @additional-menu-elements-color;
 		& i {
@@ -432,7 +436,6 @@ input.field {
 	height: @soc-icons-bg-size;
 	margin: 0 @soc-icons-gap/2;
 	line-height: @soc-icons-bg-size;
-	-webkit-border-radius: @soc-icons-border-radius;
 	border-radius: @soc-icons-border-radius;
 	&:before,
 	&:after {
@@ -662,6 +665,7 @@ input.field {
 
 .mini-nav .customSelectInner i,
 .list-type-menu.mini-nav > ul > li > a i,
+.list-type-menu-first-switch.mini-nav > ul > li > a i,
 .list-type-menu-second-switch.mini-nav > ul > li > a i {
 	font-size: @additional-menu-elements-icon-size;
 	color: @additional-menu-elements-icon-color;
@@ -733,10 +737,12 @@ input.field {
 		font-size: @microwidget-button-icon-size;
 	}
 	&.btn-icon-align-left i {
-		.icon-gap-general (@microwidget-button-font-size);
+		//.icon-gap-general (@microwidget-button-font-size);
+		margin-right: @microwidget-button-icon-gap;
 	}
 	&.btn-icon-align-right i {
-		.icon-gap-left (@microwidget-button-font-size);
+		//.icon-gap-left (@microwidget-button-font-size);
+		margin-left: @microwidget-button-icon-gap;
 	}
 	
 	&.btn-icon-align-right:not(:hover) i {
@@ -791,10 +797,12 @@ input.field {
 		//.icon-gap-general (@microwidget-button-2-font-size);
 	}
 	&.btn-icon-align-left i {
-		.icon-gap-general (@microwidget-button-2-font-size);
+		//.icon-gap-general (@microwidget-button-font-size);
+		margin-right: @microwidget-button-2-icon-gap;
 	}
 	&.btn-icon-align-right i {
-		.icon-gap-left (@microwidget-button-2-font-size);
+		//.icon-gap-left (@microwidget-button-font-size);
+		margin-left: @microwidget-button-2-icon-gap;
 	}
 	&:not(:hover) i {
 		color: @microwidget-button-2-color;

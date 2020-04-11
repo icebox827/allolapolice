@@ -199,14 +199,16 @@ if ( ! function_exists( 'dt_woocommerce_replace_theme_breadcrumbs' ) ) :
 
 		if ( ! $html ) {
 			ob_start();
-			woocommerce_breadcrumb( array(
-				'delimiter' => '',
-				'wrap_before' => '<div class="assistive-text"></div><ol' . $args['listAttr'] . '>',
-				'wrap_after' => '</ol>',
-				'before' => '<li>',
-				'after' => '</li>',
-				'home' => __( 'Home', 'the7mk2' ),
-			) );
+			woocommerce_breadcrumb(
+				array(
+					'delimiter'   => '',
+					'wrap_before' => '<ol' . $args['listAttr'] . ' itemscope itemtype="https://schema.org/BreadcrumbList">',
+					'wrap_after'  => '</ol>',
+					'before'      => $args['linkBefore'],
+					'after'       => $args['linkAfter'],
+					'home'        => __( 'Home', 'the7mk2' ),
+				)
+			);
 			$html = ob_get_clean();
 
 			$html = apply_filters( 'presscore_get_breadcrumbs', $args['beforeBreadcrumbs'] . $html . $args['afterBreadcrumbs'] );

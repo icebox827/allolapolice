@@ -33,11 +33,9 @@
 }
 
 .border-radius (@radius: @border-radius-size) {
-  -webkit-border-radius: @radius;
   border-radius:         @radius;
 }
 .box-shadow (@string) {
-  -webkit-box-shadow: @string;
   box-shadow:         @string;
 }
 
@@ -82,7 +80,6 @@
   }
 }
 .box-sizing (@string) {
-  -webkit-box-sizing: @string;
   box-sizing:         @string;
 }
 /*--------------1.2 - Mixins:end--------------*/
@@ -162,7 +159,6 @@
 .shopping-cart {
   position: relative;
   .masthead & {
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: -ms-flex;
     display: flex;
@@ -408,11 +404,9 @@
 }
 .edd-ico-cart {
   position: relative;
-  display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: -ms-inline-flex;
   display: inline-flex;
-  -webkit-align-items: center;
   -ms-align-items: center;
   -ms-flex-align: center;
   align-items: center;

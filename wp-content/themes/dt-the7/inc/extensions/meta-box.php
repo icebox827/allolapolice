@@ -25,6 +25,7 @@ require_once( THE7_RWMB_DIR . 'meta-box.php' );
  *
  */
 require_once( PRESSCORE_EXTENSIONS_DIR . '/custom-meta-boxes/metabox-fields.php' );
+require_once( PRESSCORE_EXTENSIONS_DIR . '/custom-meta-boxes/class-the7-rwmb-dimension-field.php' );
 
 /**
  * Register meta boxes

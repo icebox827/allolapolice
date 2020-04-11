@@ -92,16 +92,6 @@ function optionsframework_widgetareas_ajax() {
 }
 add_action('wp_ajax_process_widgetarea', 'optionsframework_widgetareas_ajax');
 
-/**
- *	DEPRECATED.
- *
- * @param  boolean $get_defaults
- * @return array
- */
-function dt_get_google_fonts_list( $get_defaults = false ) {
-	return presscore_options_get_web_fonts();
-}
-
 /* find option pages in array */
 function optionsframework_options_page_filter( $item ) {
 	if( isset($item['type']) && 'page' == $item['type'] ) {

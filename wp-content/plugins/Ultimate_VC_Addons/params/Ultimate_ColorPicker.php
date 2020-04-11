@@ -1,53 +1,63 @@
 <?php
-if(!class_exists('Ultimate_ColorPicker_Param'))
-{
-	class Ultimate_ColorPicker_Param
-	{
-		function __construct()
-		{
-			if(defined('WPB_VC_VERSION') && version_compare(WPB_VC_VERSION, 4.8) >= 0) {
-				if(function_exists('vc_add_shortcode_param'))
-				{
-					vc_add_shortcode_param('colorpicker_alpha' , array($this, 'colorpicker_alpha_gen'));
+/**
+ * Class Ultimate_ColorPicker_Param
+ *
+ * @package Ultimate_ColorPicker_Param.
+ */
+
+if ( ! class_exists( 'Ultimate_ColorPicker_Param' ) ) {
+	/**
+	 * Class Ultimate_ColorPicker_Param
+	 *
+	 * @class Ultimate_ColorPicker_Param.
+	 */
+	class Ultimate_ColorPicker_Param {
+		/**
+		 * Initiator.
+		 */
+		public function __construct() {
+			if ( defined( 'WPB_VC_VERSION' ) && version_compare( WPB_VC_VERSION, 4.8 ) >= 0 ) {
+				if ( function_exists( 'vc_add_shortcode_param' ) ) {
+					vc_add_shortcode_param( 'colorpicker_alpha', array( $this, 'colorpicker_alpha_gen' ) );
 				}
-			}
-			else {
-				if(function_exists('add_shortcode_param'))
-				{
-					add_shortcode_param('colorpicker_alpha' , array($this, 'colorpicker_alpha_gen'));
+			} else {
+				if ( function_exists( 'add_shortcode_param' ) ) {
+					add_shortcode_param( 'colorpicker_alpha', array( $this, 'colorpicker_alpha_gen' ) );
 				}
 			}
 		}
-
-		function colorpicker_alpha_gen($settings, $value)
-		{
-			$base = $opacity = $output = '';
+		/**
+		 * Color Picker Alpha Generate.
+		 *
+		 * @param array  $settings Settings.
+		 * @param string $value Value.
+		 */
+		public function colorpicker_alpha_gen( $settings, $value ) {
+			$base       = '';
+			$opacity    = '';
+			$output     = '';
 			$dependency = '';
-			$param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
-			$type = isset($settings['type']) ? $settings['type'] : '';
-			$class = isset($settings['class']) ? $settings['class'] : '';
-			$uni = uniqid('colorpicker-'.rand());
-			if($value != ''){
-				$arr_v = explode(',', $value);
-				if(is_array($arr_v)){
-					if(isset($arr_v[1])){
+			$param_name = isset( $settings['param_name'] ) ? $settings['param_name'] : '';
+			$type       = isset( $settings['type'] ) ? $settings['type'] : '';
+			$class      = isset( $settings['class'] ) ? $settings['class'] : '';
+			$uni        = uniqid( 'colorpicker-' . wp_rand() );
+			if ( '' != $value ) {
+				$arr_v = explode( ',', $value );
+				if ( is_array( $arr_v ) ) {
+					if ( isset( $arr_v[1] ) ) {
 						$opacity = $arr_v[1];
 					}
-					if(isset($arr_v[0])){
+					if ( isset( $arr_v[0] ) ) {
 						$base = $arr_v[0];
 					}
 				}
 			}
-			else{
-				//$opacity=1;
-				//$base='#fff';
-			}
-			$output = '
-                <input id="alpha_val'. esc_attr( $uni ).'" class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $class ) . ' vc_column_alpha" value="'. esc_attr( $value ).'" '.$dependency.' data-uniqid="'.esc_attr( $uni ).'" data-opacity="'.esc_attr( $opacity ).'" data-hex-code="'.esc_attr( $base ).'"/>
+			$output  = '
+                <input id="alpha_val' . esc_attr( $uni ) . '" class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $class ) . ' vc_column_alpha" value="' . esc_attr( $value ) . '" ' . $dependency . ' data-uniqid="' . esc_attr( $uni ) . '" data-opacity="' . esc_attr( $opacity ) . '" data-hex-code="' . esc_attr( $base ) . '"/>
 ';
 			$output .= '
-<input class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr($type) . ' ' . esc_attr($class) . '" '.$dependency.' name="'.esc_attr($param_name).'" value="'.esc_attr($value).'" style="display:none"/>
-<button class="alpha_clear" type="button">'.__('Clear','ultimate_vc').'</button>
+<input class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $class ) . '" ' . $dependency . ' name="' . esc_attr( $param_name ) . '" value="' . esc_attr( $value ) . '" style="display:none"/>
+<button class="alpha_clear" type="button">' . __( 'Clear', 'ultimate_vc' ) . '</button>
 ';
 			?>
 			<script type="text/javascript">
@@ -77,14 +87,13 @@ if(!class_exists('Ultimate_ColorPicker_Param'))
 					colorpicker_alpha('.vc_column_alpha','#alpha_val');
 				})
 				</script>
-            <?php
+			<?php
 			return $output;
 		}
 
 	}
 }
 
-if(class_exists('Ultimate_ColorPicker_Param'))
-{
-	$Ultimate_ColorPicker_Param = new Ultimate_ColorPicker_Param();
+if ( class_exists( 'Ultimate_ColorPicker_Param' ) ) {
+	$ultimate_colorpicker_param = new Ultimate_ColorPicker_Param();
 }

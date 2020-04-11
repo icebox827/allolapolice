@@ -57,7 +57,17 @@ $options['woocommerce_shop_template_layout_default'] = array(
 	),
 );
 
+
 $options[] = array( 'type' => 'js_hide_end' );
+
+$options[] = array( 'type' => 'divider' );
+
+$options['woocommerce_shop-sidebar-collapse'] = array(
+	'id'   => 'woocommerce_shop-sidebar-collapse',
+	'name' => _x( 'Collapse sidebar filter on mobiles', 'theme-options', 'the7mk2' ),
+	'type' => 'checkbox',
+	'std'  => 1,
+);
 
 /**
  * Masonry & Grid.

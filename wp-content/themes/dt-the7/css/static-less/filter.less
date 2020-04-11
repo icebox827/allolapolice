@@ -127,7 +127,6 @@
 					width: 100%;
 					content: "";
 					opacity: 0;
-					-webkit-transition: opacity 0.3s ease;
 				 	transition: opacity 0.3s ease;
 				}
 				&.act:after,
@@ -160,10 +159,8 @@
 				white-space: nowrap;
 				opacity: 0;
 				visibility: hidden;
-				-webkit-transform: translate3d(-50%,10px, 0);
 				    transform: translate3d(-50%,10px, 0);
-				  -webkit-transition: all .25s ease-out;
-				          transition: all .25s ease-out;
+				    transition: all .25s ease-out;
 				.static-border-radius (@radius: 2px);
 				/* CSS Triangle*/
 				&:after {
@@ -211,9 +208,7 @@
 		.filter-extras > div > a > i:hover + .filter-popup {
 			visibility: visible;
 			opacity: 1;
-			 //pointer-events: auto;
-			  -webkit-transform: translate3d(-50%,0, 0);
-			          transform: translate3d(-50%,0, 0);
+			transform: translate3d(-50%,0, 0);
 			&:before {
 				bottom: 0;
 			}
@@ -244,8 +239,6 @@
 			height: 9px;
 			background-color: #fff;
 			content: "";
-
-			-webkit-transition:	left 300ms ease-out;
 			transition:			left 300ms ease-out;
 		}
 		.filter-switch.right-act .filter-switch-toggle {
@@ -254,28 +247,12 @@
 
 			.pressed .filter-switch-toggle:after,
 			.filter-extras a.pressed:after {
-				-webkit-animation: anim-effect-boris 0.450s ease-out forwards;
 				animation: anim-effect-boris 0.450s ease-out forwards;
 			}
 
-		@-webkit-keyframes anim-effect-boris {
-			0% {
-				-webkit-transform: scale(0);
-				transform: scale(0);
-			}
-			25%, 50% {
-				opacity: 1;
-			}
-			to {
-				opacity: 0;
-				-webkit-transform: scale(1);
-				transform: scale(1);
-			}
-		}
 
 		@keyframes anim-effect-boris {
 			0% {
-				-webkit-transform: scale(0);
 				transform: scale(0);
 			}
 			25%, 50% {
@@ -283,7 +260,6 @@
 			}
 			to {
 				opacity: 0;
-				-webkit-transform: scale(1);
 				transform: scale(1);
 			}
 		}

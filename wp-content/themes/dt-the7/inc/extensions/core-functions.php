@@ -521,36 +521,6 @@ function dt_get_uploaded_logo( $logo, $type = 'normal' ) {
 	return $res_arr;
 }
 
-
-// TODO: refactor
-/**
- * Description here.
- *
- * @since presscore 0.1
- */
-function dt_get_google_fonts( $font = '', $effect = '' ) {
-	if ( ! $font ) {
-		return;
-	}
-
-	?>
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=<?php echo str_replace( ' ', '+', $font ); ?>">
-	<?php
-}
-
-/**
- * Description here.
- *
- * @since presscore 0.1
- */
-function dt_make_web_font_uri( $font ) {
-	if ( !$font ) {
-		return false;
-	}
-
-    return '//fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font );
-}
-
 /**
  * Create html tag.
  *

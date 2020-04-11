@@ -222,12 +222,13 @@ if ( ! class_exists( 'DT_Shortcode_Portfolio_Carousel', false ) ) :
 
 				$post_media = '';
 				$target = '';
-				if($config->get( 'follow_external_link' )){
+				if ( $config->get( 'follow_external_link' ) && $config->get( 'post.buttons.link.enabled' ) ) {
 					$follow_link = $config->get( 'post.buttons.link.url' );
-					$target = $config->get( 'post.buttons.link.target_blank' );
-				}else{
+					$target      = $config->get( 'post.buttons.link.target_blank' );
+				} else {
 					$follow_link = get_the_permalink();
 				}
+
 				if ( has_post_thumbnail() ) {
 					// Post media.
 					$thumb_args = apply_filters(

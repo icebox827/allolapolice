@@ -17,11 +17,29 @@
 .top-bar.full-width-line:after {
 	border-bottom: @top-bar-line-size @top-bar-line-style @top-bar-line-color;
 }
+.top-bar.line-content:after {
+	width: calc(100% ~'-' @top-bar-padding-right ~'-' @top-bar-padding-left);
+	left: auto;
+	right: auto;
+	.boxed & {
+		left: 50%;
+	}
+}
 
 /*Top & bottom paddings*/
 .top-bar {
 	min-height: @top-bar-height;
 	padding: @top-bar-padding-top @top-bar-padding-right @top-bar-padding-bottom @top-bar-padding-left;
+	.masthead:not(.side-header):not(.side-header-menu-icon) & {
+		max-width: calc(@content-width);
+		.header-width (@content-width);
+		margin: 0 auto;
+	}
+	
+	.masthead:not(.side-header).full-width &,
+	.masthead.side-header-menu-icon {
+		max-width: 100%;
+	}
 }
 /*Top bar font color*/
 .top-bar,

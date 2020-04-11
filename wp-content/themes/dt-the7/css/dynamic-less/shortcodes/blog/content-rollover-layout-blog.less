@@ -8,18 +8,12 @@
 		top: 0;
 		height: 100%;
 		overflow-y: hidden;
-		display: -webkit-flex;
-	    display: -moz-flex;
 	    display: -ms-flexbox;
 	    display: -ms-flex;
 	    display: flex;
-	    -webkit-justify-content: flex-end;
-	    -moz-justify-content: flex-end;
 	    -ms-flex-pack: flex-end;
 	    -ms-justify-content: flex-end;
 	    justify-content: flex-end;
-	    -webkit-flex-flow: column nowrap;
-	    -moz-flex-flow: column nowrap;
 	    -ms-flex-flow: column nowrap;
 	    flex-flow: column nowrap;
 		&:before {
@@ -31,7 +25,6 @@
 			height: 100%;
 			opacity: 1;
 			content: '';
-			-webkit-transform: translate3d(0,35%,0);
 			transform: translate3d(0,35%,0);
 		}
 	}
@@ -40,7 +33,6 @@
 .post-details {
 	.content-rollover-layout-list & {
 		opacity: 0;
-		-webkit-transition: opacity 0.45s;
 		transition: opacity 0.45s;
 		
 	}
@@ -52,7 +44,6 @@
 .post-entry-content:before,
 .post-entry-content .post-entry-wrapper {
 	.content-rollover-layout-list & {
-		-webkit-transition: opacity 0.35s, bottom 0.35s, -webkit-transform 0.4s;
 		transition: opacity 0.35s, bottom 0.35s, transform 0.4s;
 	}
 }
@@ -70,7 +61,6 @@
 .mobile-false .content-rollover-layout-list:not(.disable-layout-hover) article:hover .post-entry-content:before,
 .mobile-true .content-rollover-layout-list:not(.disable-layout-hover) article.is-clicked .post-entry-content:before {
 	opacity: 1;
-	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
 .mobile-false .content-rollover-layout-list:not(.disable-layout-hover) article:hover .post-entry-wrapper {
@@ -81,7 +71,6 @@ article.is-clicked  .post-entry-wrapper {
 	.mobile-true .content-rollover-layout-list:not(.disable-layout-hover) & {
 		opacity: 1;
 		bottom: 0;
-		-webkit-transform: translateY(0) !important;
 		transform: translateY(0) !important;
 	}
 }

@@ -17,7 +17,9 @@ class The7_Elementor_Widget_Terms_Selector_Mutator {
 	public function enqueue_editor_scripts() {
 		wp_enqueue_script(
 			'the7-elements-widget-settings',
-			PRESSCORE_ADMIN_URI . '/assets/js/elementor/elements-widget-settings.js'
+			PRESSCORE_ADMIN_URI . '/assets/js/elementor/elements-widget-settings.js',
+			array(),
+			THE7_VERSION
 		);
 		wp_localize_script(
 			'the7-elements-widget-settings',

@@ -88,6 +88,7 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 				}
 
 				$plugin->tested = isset( $product['tested'] ) ? $product['tested'] : '';
+				$plugin->requires_php = isset( $product['php_version'] ) ? $product['php_version'] : '';
 
 				$plugin->icons = apply_filters( "bsf_product_icons_{$product['id']}", array(
 					'1x'      => ( isset( $product['product_image'] ) ) ? $product['product_image'] : '',
@@ -255,16 +256,6 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 				}
 			}
 
-			// Bundled plugins are installed when the demo is imported on Ajax request and bundled products should be unchanged in the ajax.
-			if ( ! defined( 'DOING_AJAX' ) ) {
-
-				$key = array_search( 'astra-pro-sites', $product_parent );
-
-				if ( false !== $key ) {
-					unset( $product_parent[ $key ] );
-				}
-			}
-
 			$product_parent = apply_filters( 'bsf_is_product_bundled', array_unique( $product_parent ), $bsf_product, $search_by );
 
 			return $product_parent;
@@ -347,7 +338,10 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 		 */
 		public static function prepare_plugins_for_update( $plugins ) {
 			foreach ( $plugins as $key => $plugin ) {
-				if ( ! isset( $plugin[ 'template' ] ) || ! file_exists( dirname( realpath( WP_PLUGIN_DIR . '/' . $plugin[ 'template' ] ) ) ) ) {
+				if ( isset( $plugin[ 'template' ] ) && ! file_exists( dirname( realpath( WP_PLUGIN_DIR . '/' . $plugin[ 'template' ] ) ) ) ) {
+					unset( $plugins[ $key ] );
+				}
+				if ( isset( $plugin[ 'init' ] ) && ! file_exists( dirname( realpath( WP_PLUGIN_DIR . '/' . $plugin[ 'init' ] ) ) ) ) {
 					unset( $plugins[ $key ] );
 				}
 			}
@@ -356,39 +350,14 @@ if ( ! class_exists( 'BSF_Update_Manager' ) ) {
 		}
 
 		public function _maybe_force_check_bsf_product_updates() {
-			if ( $this->time_since_last_versioncheck( 2 ) ) {
+			if ( true === bsf_time_since_last_versioncheck( 2, 'bsf_local_transient' ) ) {
 				global $ultimate_referer;
 				$ultimate_referer = 'on-transient-delete-2-hours';
 				bsf_check_product_update();
 				update_option( 'bsf_local_transient', (string) current_time( 'timestamp' ) );
-				set_transient( 'bsf_check_product_updates', true, 2 * 24 * 60 * 60 );
+				set_transient( 'bsf_check_product_updates', true, 2 * DAY_IN_SECONDS );
 			}
 
-		}
-
-		public function time_since_last_versioncheck( $hours_completed ) {
-
-			$seconds = $hours_completed * 3600;
-			$status  = false;
-
-			$bsf_local_transient = (int) get_option( 'bsf_local_transient', false );
-
-			if ( $bsf_local_transient != false ) {
-
-				// Find seconds passed since the last timestamp update (i.e. last request made)
-				$elapsed_seconds = (int) current_time( 'timestamp' ) - $bsf_local_transient;
-
-				// IF time is more than the required seconds allow a new HTTP request.
-				if ( $elapsed_seconds > $seconds ) {
-					$status = true;
-				}
-			} else {
-
-				// If timestamp is not yet set - allow the HTTP request.
-				$status = true;
-			}
-
-			return $status;
 		}
 
 		public function use_beta_version( $product_id ) {

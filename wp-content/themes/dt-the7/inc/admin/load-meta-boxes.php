@@ -34,12 +34,3 @@ function presscore_load_meta_boxes() {
 
 }
 add_action( 'admin_init', 'presscore_load_meta_boxes', 20 );
-
-/**
- * Return post types with default meta boxes.
- *
- * @return array
- */
-function presscore_get_pages_with_basic_meta_boxes() {
-	return apply_filters( 'presscore_pages_with_basic_meta_boxes', array( 'page', 'post' ) );
-}

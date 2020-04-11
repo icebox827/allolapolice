@@ -49,6 +49,15 @@ global $wp_filesystem;
                         <?php endif ?>
                     </td>
                 </tr>
+				<tr>
+					<td data-export-label="Path to uploads folder"><?php _e( 'Path to uploads folder:', 'the7mk2' ); ?></td>
+					<td>
+						<code><?php
+							$wp_uplodas = wp_get_upload_dir();
+							echo $wp_uplodas['basedir'];
+							?></code>
+					</td>
+				</tr>
                 <tr>
                     <td data-export-label="WP Memory Limit"><?php _e( 'WP Memory Limit:', 'the7mk2' ); ?></td>
                     <td>

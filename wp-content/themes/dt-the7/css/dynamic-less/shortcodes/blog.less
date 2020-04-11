@@ -270,8 +270,6 @@ article {
 @media screen and (max-width:@switch-blog-list-to-mobile){
 	article {
 		.@{unique-shortcode-class-name} & {
-			-webkit-flex-flow: column nowrap;
-		    -moz-flex-flow: column nowrap;
 		    -ms-flex-flow: column nowrap;
 		    flex-flow: column nowrap;
 		    margin-top: 20px;
@@ -313,16 +311,14 @@ article {
 		.post-thumbnail-wrap {
 			#page .@{unique-shortcode-class-name} .project-even &,
 			#page .@{unique-shortcode-class-name}.centered-layout-list & {
-				-webkit-order: 0;
-			    -moz-order: 0;
+				
 			    -ms-flex-order: 0;
 			    order: 0;
 			}
 		}
 		.post-entry-title-content {
 			#page .@{unique-shortcode-class-name}.centered-layout-list & {
-				-webkit-order: 1;
-			    -moz-order: 1;
+			
 			    -ms-flex-order: 1;
 			    order: 1;
 			    width: 100%;
@@ -331,8 +327,7 @@ article {
 		}
 		.post-entry-content {
 			#page .@{unique-shortcode-class-name}.centered-layout-list & {
-				-webkit-order: 2;
-			    -moz-order: 2;
+				
 			    -ms-flex-order: 2;
 			    order: 2;
 			    padding-top: 0;

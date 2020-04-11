@@ -15,7 +15,6 @@
 	pointer-events: none;
 	background-color: transparent;
 	opacity: 0.85;
-	-webkit-transition: all 300ms cubic-bezier(0.175,0.885,0.32,1.275);
 	transition:      all 300ms cubic-bezier(0.175,0.885,0.32,1.275);
 }
 .top-header .l-to-r-line > li.act > a i.underline,
@@ -39,11 +38,7 @@
 		height: 2px;
 		background-color: #000;
 		content: "";
-		-ms-transform: scaleX(0);
-		-webkit-transform: scaleX(0);
 		transform: scaleX(0);
-		-ms-transition: all 0.2s ease-in-out 0s;
-		-webkit-transition: all 0.2s ease-in-out 0s;
 		transition: all 0.2s ease-in-out 0s;
 		opacity: 0.85;
 	}
@@ -53,8 +48,6 @@
 	.from-centre-line > li.act > a .menu-item-text:before {
 		.top-header & {
 			visibility: visible;
-			-ms-transform: scaleX(1);
-			-webkit-transform: scaleX(1);
 			transform: scaleX(1);
 		}
 	}
@@ -74,11 +67,7 @@
 	background: rgba(0,0,0,0.1);
 	content: '';
 	opacity: 0;
-	-ms-transition: opacity 0.3s, -webkit-transform 0.3s;
-	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
 	transition: opacity 0.3s, transform 0.3s;
-	-ms-transform: translateY(10px);
-	-webkit-transform: translateY(10px);
 	transform: translateY(10px);
 }
 .upwards-line > li.dt-hovered > a .menu-item-text:before,
@@ -86,8 +75,6 @@
 .upwards-line > li.act > a .menu-item-text:before {
 	.top-header & {
 		opacity: 1;
-		-ms-transform: translateY(0px);
-		-webkit-transform: translateY(0px);
 		transform: translateY(0px);
 	}
 }
@@ -106,11 +93,7 @@
 	background: #fff;
 	content: '';
 	opacity: 0;
-	-ms-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-	-webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
 	transition: height 0.3s, opacity 0.3s, transform 0.3s;
-	-ms-transform: translateY(-10px);
-	-webkit-transform: translateY(-10px);
 	transform: translateY(-10px);
 }
 
@@ -120,8 +103,6 @@
 	.top-header & {
 		height: 2px;
 		opacity: 1;
-		-ms-transform: translateY(0px);
-		-webkit-transform: translateY(0px);
 		transform: translateY(0px);
 	}
 }
@@ -142,8 +123,6 @@
 	height: 2px;
 	content: "";
 	opacity: 0;
-	-ms-transition: opacity 300ms ease;
-	-webkit-transition: opacity 300ms ease;
 	transition:         opacity 300ms ease;
 }
 .active-line-decoration > li.act > a .decoration-line,
@@ -156,7 +135,6 @@
 
 .hover-bg-decoration > li:not(.act) > a {
 	.top-header & {
-		-webkit-transition: background 300ms ease;
 		transition:         background 300ms ease;
 	}
 }

@@ -886,6 +886,7 @@ if ( ! class_exists( 'The7_TGM_Plugin_Activation' ) ) {
 				// Perform the action and install the plugin from the $source urldecode().
 				add_filter( 'upgrader_source_selection', array( $this, 'maybe_adjust_source_dir' ), 1, 3 );
 
+				$plugin_is_installed = false;
 				if ( 'update' === $install_type ) {
 					// Inject our info into the update transient.
 					$to_inject                    = array( $slug => $this->plugins[ $slug ] );
@@ -895,6 +896,7 @@ if ( ! class_exists( 'The7_TGM_Plugin_Activation' ) ) {
 					$upgrader->upgrade( $this->plugins[ $slug ]['file_path'] );
 				} else {
 					$upgrader->install( $source );
+					$plugin_is_installed = true;
 				}
 
 				remove_filter( 'upgrader_source_selection', array( $this, 'maybe_adjust_source_dir' ), 1 );
@@ -904,7 +906,7 @@ if ( ! class_exists( 'The7_TGM_Plugin_Activation' ) ) {
 
 				// Only activate plugins if the config option is set to true and the plugin isn't
 				// already active (upgrade).
-				if ( $this->is_automatic && ! $this->is_plugin_active( $slug ) ) {
+				if ( $this->is_automatic && $plugin_is_installed ) {
 					$plugin_activate = $upgrader->plugin_info(); // Grab the plugin info from the Plugin_Upgrader method.
 					if ( false === $this->activate_single_plugin( $plugin_activate, $slug, true ) ) {
 						return true; // Finish execution of the function early as we encountered an error.

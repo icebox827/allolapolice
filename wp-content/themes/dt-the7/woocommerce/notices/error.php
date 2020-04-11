@@ -12,28 +12,24 @@
  *
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @package 	WooCommerce/Templates
- * @version     3.5.0
+ * @version     3.9.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! $messages ){
+if ( ! $notices ){
 	return;
 }
 
 ?>
 <div class="woocommerce-error" role="alert">
 <ul class="woocommerce-error-text">
-	<?php foreach ( $messages as $message ) : ?>
-		<li><?php
-            if ( function_exists( 'wc_kses_notice' ) ) {
-	            echo wc_kses_notice( $message );
-            } else {
-	            echo wp_kses_post( $message );
-            }
-            ?></li>
+	<?php foreach ( $notices as $notice ) : ?>
+		<li<?php echo function_exists( 'wc_get_notice_data_attr' ) ? wc_get_notice_data_attr( $notice ) : ''; ?>><?php
+			echo wc_kses_notice( $notice['notice'] );
+		?></li>
 	<?php endforeach; ?>
 </ul>
 <span class="close-message"></span>

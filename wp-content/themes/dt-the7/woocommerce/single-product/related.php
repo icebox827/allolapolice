@@ -13,7 +13,7 @@
  * @see           https://docs.woocommerce.com/document/template-structure/
  * @author        WooThemes
  * @package       WooCommerce/Templates
- * @version       3.0.0
+ * @version       3.9.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,13 @@ if ( $related_products ) : ?>
 
     <section class="related products">
 
-        <h2><?php esc_html_e( 'Related products', 'the7mk2' ); ?></h2>
+		<?php
+		$heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'the7mk2' ) );
+
+		if ( $heading ) :
+			?>
+			<h2><?php echo esc_html( $heading ); ?></h2>
+		<?php endif; ?>
 
         <ul class="related-product cart-btn-below-img">
 

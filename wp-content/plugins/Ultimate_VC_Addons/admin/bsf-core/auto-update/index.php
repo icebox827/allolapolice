@@ -6,52 +6,37 @@ if ( isset( $_POST['bsf-advanced-form-btn'] ) ) {
 }
 ?>
 <?php
-$request_product_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : '';
+$request_product_id = isset( $_GET['id'] ) ? intval( $_GET['id'] ) : '';
+$updgrate_action = isset( $_GET['action'] ) ? sanitize_text_field( $_GET['action'] ) : '';
 
-$updgrate_action = ( isset( $_GET['action'] ) && $_GET['action'] === 'upgrade' ) ? $_GET['action'] : '';
-if ( $updgrate_action === 'upgrade' ) {
-	$request_product_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : '';
-	if ( $request_product_id !== '' ) {
-		if ( isset( $_GET['bundled'] ) && $_GET['bundled'] !== '' ) {
-			$bundled = $_GET['bundled'];
-		} else {
-			$bundled = false;
-		}
-		?>
-		<div class="clear"></div>
-		<div class="wrap bsf-sp-screen">
-			<h2><?php echo __( 'Upgrading Extension', 'bsf' ); ?></h2>
-			<?php
-			$response = upgrade_bsf_product( $request_product_id, $bundled );
-			?>
-			<?php
-			if ( isset( $response['status'] ) && $response['status'] ) :
-				$url  = ( $response['type'] === 'theme' ) ? 'themes.php' : 'plugins.php';
-				$txt  = ( $response['type'] === 'theme' ) ? 'theme' : 'plugin';
-				$name = ( isset( $response['name'] ) ) ? $response['name'] : '';
-				if ( $name !== '' ) {
-					$hashname = preg_replace( '![^a-z0-9]+!i', '-', $name );
-					$url     .= '#' . $hashname;
-				}
-
-				$reg_url = bsf_registration_page_url();
-				?>
-				<a href="<?php echo ( is_multisite() ) ? network_admin_url( $url ) : admin_url( $url ); ?>"><?php echo __( 'Manage ' . $txt . ' here', 'bsf' ); ?></a> |
-				<a href="<?php echo $reg_url; ?>"><?php echo __( 'Back to Registration', 'bsf' ); ?></a>
-			<?php endif; ?>
-		</div>
-		<?php
-		require_once ABSPATH . 'wp-admin/admin-footer.php';
-		exit;
-	}
-}
-
-if ( isset( $_POST['bsf-developer-access'] ) ) {
-	// echo $_POST['bsf-developer-access-action'];
-	if ( isset( $_POST['bsf-developer-access-action'] ) || $_POST['bsf-developer-access-action'] !== '' ) {
-		$dev_action = $_POST['bsf-developer-access-action'];
-		bsf_grant_developer_access( $dev_action );
-	}
+if ( $updgrate_action === 'upgrade' && $request_product_id !== '' ) {
+    $bundled = ( isset( $_GET['bundled'] ) && $_GET['bundled'] !== '' ) ? rest_sanitize_boolean( $_GET['bundled'] ) : false;
+    ?>
+    <div class="clear"></div>
+    <div class="wrap bsf-sp-screen">
+        <h2><?php echo __( 'Upgrading Extension', 'bsf' ); ?></h2>
+        <?php
+        $response = upgrade_bsf_product( $request_product_id, $bundled );
+        ?>
+        <?php
+        if ( isset( $response['status'] ) && $response['status'] ) :
+            $url  = ( $response['type'] === 'theme' ) ? 'themes.php' : 'plugins.php';
+            $txt  = ( $response['type'] === 'theme' ) ? 'theme' : 'plugin';
+            $name = ( isset( $response['name'] ) ) ? $response['name'] : '';
+            if ( $name !== '' ) {
+                $hashname = preg_replace( '![^a-z0-9]+!i', '-', $name );
+                $url     .= '#' . $hashname;
+            }
+            $reg_url = bsf_registration_page_url();
+            $url = ( is_multisite() ) ? network_admin_url( $url ) : admin_url( $url );
+            ?>
+            <a href="<?php echo( htmlentities($url,  ENT_QUOTES,  "utf-8") ); ?>"><?php echo ( htmlentities('Manage ' . $txt . ' here', ENT_QUOTES,  "utf-8" )); ?></a> |
+            <a href="<?php echo $reg_url; ?>"><?php echo __( 'Back to Registration', 'bsf' ); ?></a>
+        <?php endif; ?>
+    </div>
+    <?php
+    require_once ABSPATH . 'wp-admin/admin-footer.php';
+    exit;
 }
 
 $author = ( isset( $_GET['author'] ) ) ? true : false;
@@ -653,10 +638,6 @@ $is_product_theme = false;
 									$action      = 'grant';
 								}
 								?>
-								<input type="hidden" name="bsf-developer-access-action" value="<?php echo $action; ?>"/>
-								<input type="submit" class="button-primary bsf-access-<?php echo $action; ?>-button"
-									   name="bsf-developer-access" value="<?php echo $button_text; ?>"
-									   title="<?php echo $title; ?>" <?php echo $disabled; ?>/>
 							</form>
 						</div>
 					</div>

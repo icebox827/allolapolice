@@ -194,15 +194,41 @@ if ( ! function_exists( 'the7_mass_regenerate_short_codes_inline_css' ) ) {
 }
 
 /**
- * Regenerate css for each post with fancy title.
+ * Regenerate css for each post.
  *
  * @since 7.9.1
  */
-function the7_regenerate_fancy_title_css() {
+function the7_regenerate_post_css() {
 	global $wpdb;
 
-	$posts_with_fancy_titles =  $wpdb->get_results( "SELECT post_id from $wpdb->postmeta where meta_key = '_dt_header_title' and meta_value = 'fancy'" );
-	foreach ( $posts_with_fancy_titles as $post ) {
-		The7_Fancy_Title_CSS::generate_css_for_post( $post->post_id );
+	$processed_posts = (array) get_transient( 'the7_updater_posts_with_regenerated_css' );
+	$processed_posts = array_map( 'intval', $processed_posts );
+	$supported_post_types = presscore_get_pages_with_basic_meta_boxes();
+
+	$post_type_paceholder = implode( ',', array_fill( 0, count( $supported_post_types ), '%s' ) );
+	$post_id_placeholder = implode( ',', array_fill( 0, count( $processed_posts ), '%d' ) );
+
+	$query = $wpdb->prepare(
+		"SELECT ID, post_type from $wpdb->posts where post_type in ($post_type_paceholder) and post_status = 'publish' and ID not in ($post_id_placeholder) order by ID asc limit 10",
+		array_merge( $supported_post_types, $processed_posts )
+	);
+
+	$posts = $wpdb->get_results( $query );
+
+	if ( ! $posts ) {
+		delete_transient( 'the7_updater_posts_with_regenerated_css' );
+
+		return false;
 	}
+
+	foreach ( $posts as $post ) {
+		the7_update_post_css_on_save( $post->ID );
+		$processed_posts[] = (int) $post->ID;
+	}
+
+	$processed_posts = array_filter( $processed_posts );
+
+	set_transient( 'the7_updater_posts_with_regenerated_css', $processed_posts, 30 * MINUTE_IN_SECONDS );
+
+	return __FUNCTION__;
 }

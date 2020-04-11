@@ -96,7 +96,6 @@ article {
 			opacity: 0;
 		}
 		&.visible {
-		    -webkit-animation: fadeInFromNone 0.5s ease-out;
 		    animation: fadeInFromNone 0.5s ease-out;
 		}
 		&.hidden {
@@ -104,22 +103,6 @@ article {
 			opacity: 0;
 		}
 	}
-}
-@-webkit-keyframes fadeInFromNone {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-    1% {
-       .flex-display(@display: flex);
-        opacity: 0;
-    }
-
-    100% {
-        .flex-display(@display: flex);
-        opacity: 1;
-    }
 }
 @keyframes fadeInFromNone {
     0% {
@@ -180,7 +163,6 @@ article {
 				height: 100%;
 				content: "";
 				opacity: 0;
-				-webkit-transition: opacity 0.35s linear;
 				transition: opacity 0.35s linear;
 				.blog-shortcode.gradient-overlay-layout-list & {
 					display: none;
@@ -215,19 +197,15 @@ article {
 				 article:hover .post-thumbnail > .post-thumbnail-rollover img {
 					.mobile-false .scale-img.gradient-overlay-layout-list &,
 					.mobile-false .scale-img.content-rollover-layout-list & {
-					  -webkit-transform: scale(1.2);
-					          transform: scale(1.2);
-					  -webkit-transition: -webkit-transform 4s ease-out;
-					          transition: transform 4s ease-out;
+				          transform: scale(1.2);
+				          transition: transform 4s ease-out;
 					}
 				}
 				 article.is-clicked .post-thumbnail > .post-thumbnail-rollover img {
 					.mobile-true .scale-img.gradient-overlay-layout-list &,
 					.mobile-true .scale-img.content-rollover-layout-list & {
-					  -webkit-transform: scale(1.2);
-					          transform: scale(1.2);
-					  -webkit-transition: -webkit-transform 4s ease-out;
-					          transition: transform 4s ease-out;
+				          transform: scale(1.2);
+				          transition: transform 4s ease-out;
 					}
 				}
 		/*-- Fancy date*/
@@ -394,10 +372,8 @@ article {
 	.post-entry-content .entry-title a,
 	.post-entry-title-content .entry-title a {
 		.blog-shortcode & {
-			-webkit-transition: color 0.35s;
 	 		transition: color 0.35s;
 	 		.accent-gradient & {
-				-webkit-transition: none;
 		 		transition: none;
 	 		}
 		}
@@ -483,7 +459,6 @@ article {
 				width: 0;
 				height: 2px;
 				content: "";
-				-webkit-transition: width 0.4s ease;
 				transition: width 0.4s ease;
 			}
 			&:hover:after {

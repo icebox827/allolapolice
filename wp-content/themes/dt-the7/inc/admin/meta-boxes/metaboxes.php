@@ -469,38 +469,86 @@ $prefix = '_dt_page_overrides_';
 
 $DT_META_BOXES['dt_page_box-page_vertical_margins'] = array(
 	'id'		=> 'dt_page_box-page_vertical_margins',
-	'title' 	=> _x('Page Margins', 'backend metabox', 'the7mk2'),
+	'title' 	=> _x('Page Paddings', 'backend metabox', 'the7mk2'),
 	'pages' 	=> $pages_with_basic_meta_boxes,
 	'context' 	=> 'side',
 	'priority' 	=> 'low',
 	'fields' 	=> array(
 		array(
-			'name'			=> _x('Top (in px or %)', 'backend metabox', 'the7mk2'),
-			'desc'			=> _x('Leave empty to use value from theme options.', 'backend metabox', 'the7mk2'),
-			'id'    		=> "{$prefix}top_margin",
-			'type'  		=> 'text',
-			'std'   		=> '',
+			'name'  => _x( 'Top ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}top_margin",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
 		),
 		array(
-			'name'			=> _x('Right (in px or %)', 'backend metabox', 'the7mk2'),
-			'desc'			=> _x('Leave empty to use value from theme options.', 'backend metabox', 'the7mk2'),
-			'id'    		=> "{$prefix}right_margin",
-			'type'  		=> 'text',
-			'std'   		=> '',
+			'name'  => _x( 'Right ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}right_margin",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
 		),
 		array(
-			'name'			=> _x('Bottom (in px or %)', 'backend metabox', 'the7mk2'),
-			'desc'			=> _x('Leave empty to use value from theme options.', 'backend metabox', 'the7mk2'),
-			'id'    		=> "{$prefix}bottom_margin",
-			'type'  		=> 'text',
-			'std'   		=> '',
+			'name'  => _x( 'Bottom ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}bottom_margin",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
 		),
 		array(
-			'name'			=> _x('Left (in px or %)', 'backend metabox', 'the7mk2'),
-			'desc'			=> _x('Leave empty to use value from theme options.', 'backend metabox', 'the7mk2'),
-			'id'    		=> "{$prefix}left_margin",
-			'type'  		=> 'text',
-			'std'   		=> '',
+			'name'  => _x( 'Left ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}left_margin",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
+		),
+	)
+);
+
+$prefix = '_dt_mobile_page_padding_';
+
+$DT_META_BOXES['dt_page_box-mobile_page_paddings'] = array(
+	'id'		=> 'dt_page_box-mobile_page_paddings',
+	'title' 	=> _x('Page Mobile Paddings', 'backend metabox', 'the7mk2'),
+	'pages' 	=> $pages_with_basic_meta_boxes,
+	'context' 	=> 'side',
+	'priority' 	=> 'low',
+	'fields' 	=> array(
+		array(
+			'name'  => _x( 'Top ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}top",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
+		),
+		array(
+			'name'  => _x( 'Right ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}right",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
+		),
+		array(
+			'name'  => _x( 'Bottom ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}bottom",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
+		),
+		array(
+			'name'  => _x( 'Left ("px" or "%")', 'backend metabox', 'the7mk2' ),
+			'desc'  => _x( 'Leave empty to use the value from the theme options.', 'backend metabox', 'the7mk2' ),
+			'id'    => "{$prefix}left",
+			'type'  => 'dimension',
+			'units' => array( 'px', '%' ),
+			'std'   => '',
 		),
 	)
 );

@@ -29,8 +29,6 @@ class The7_DB_Patch_080000 extends The7_DB_Patch {
 		if ( $this->option_exists( 'top_bar-padding' ) ) {
 			$this->migrate_top_bar_padding();
 		}
-
-		$this->remove_deprecated_options();
 	}
 
 	protected function migrate_page_margins( $side_padding ) {
@@ -53,7 +51,13 @@ class The7_DB_Patch_080000 extends The7_DB_Patch {
 
 		$header_layout = $this->get_option( 'header-layout' );
 		if ( in_array( $header_layout, [ 'classic', 'inline', 'split', 'top_line' ] ) ) {
-			if ( (string) $this->get_option( "header-{$header_layout}-is_fullwidth" ) === '1' ) {
+			if ( $header_layout === 'top_line' ) {
+				$fullwidth_option_name = "layout-{$header_layout}-is_fullwidth";
+			} else {
+				$fullwidth_option_name = "header-{$header_layout}-is_fullwidth";
+			}
+
+			if ( (string) $this->get_option( $fullwidth_option_name ) === '1' ) {
 				$menu_margin = '0px 0px';
 			} else {
 				$menu_margin = "$side_padding $side_padding";
@@ -89,18 +93,6 @@ class The7_DB_Patch_080000 extends The7_DB_Patch {
 		if ( count( $padding ) === 3 ) {
 			list( $top, $bottom, $side ) = $padding;
 			$this->set_option( 'top_bar-padding', "$top $side $bottom $side" );
-		}
-	}
-
-	protected function remove_deprecated_options() {
-		$options_to_delete = array(
-			'general-side_content_paddings',
-			'general-mobile_side_content_paddings',
-			'general-switch_content_paddings',
-		);
-
-		foreach ( $options_to_delete as $option ) {
-			$this->remove_option( $option );
 		}
 	}
 }

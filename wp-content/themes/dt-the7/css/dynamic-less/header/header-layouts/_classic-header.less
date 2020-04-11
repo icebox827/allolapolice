@@ -1,9 +1,13 @@
 /*! Classic header */
 
 /*Menu background for "Classic" header*/
-	.classic-header.content-width-line .navigation:before,
-	.classic-header.full-width-line .navigation:before {
-		background-color: @navigation-bg-color;
+	.classic-header.content-width-line .navigation,
+	.classic-header.full-width-line .navigation {
+		&:before {
+			height: @header-classic-menu-line-size;
+			background-color: @navigation-bg-color;
+		}
+		padding-top: @header-classic-menu-line-size;
 	}
 	.classic-header.bg-behind-menu .navigation:before {
 		background-color: @navigation-bg-color;

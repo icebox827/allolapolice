@@ -27,6 +27,31 @@ function bsf_get_api_url( $prefer_unsecure = false ) {
 	return $url;
 }
 
+function bsf_time_since_last_versioncheck( $hours_completed, $option ) {
+
+	$seconds = $hours_completed * 3600;
+	$status  = false;
+
+	$bsf_local_transient = (int) get_option( $option, false );
+
+	if ( $bsf_local_transient != false ) {
+
+		// Find seconds passed since the last timestamp update (i.e. last request made)
+		$elapsed_seconds = (int) current_time( 'timestamp' ) - $bsf_local_transient;
+
+		// IF time is more than the required seconds allow a new HTTP request.
+		if ( $elapsed_seconds > $seconds ) {
+			$status = true;
+		}
+	} else {
+
+		// If timestamp is not yet set - allow the HTTP request.
+		$status = true;
+	}
+
+	return $status;
+}
+
 if ( ! function_exists( 'bsf_convert_core_path_to_relative' ) ) {
 
 	/**

@@ -1,0 +1,35 @@
+.padding-top(@value) when (isnumber(@value)) {
+  padding-top: @value;
+}
+
+.padding-bottom(@value) when (isnumber(@value)) {
+  padding-bottom: @value;
+}
+
+.padding-left(@value) when (isnumber(@value)) {
+  padding-left: @value;
+}
+
+.padding-right(@value) when (isnumber(@value)) {
+  padding-right: @value;
+}
+
+.page-content-padding(@top, @right, @bottom, @left) {
+  #main {
+    .padding-top(@top);
+    .padding-bottom(@bottom);
+
+    > .wf-wrap {
+      .padding-right(@right);
+      .padding-left(@left);
+    }
+  }
+}
+
+.page-content-padding(@page-padding-top, @page-padding-right, @page-padding-bottom, @page-padding-left);
+
+@media screen and (max-width: @switch-content-paddings) {
+  .page-content-padding(@mobile-page-padding-top, @mobile-page-padding-right, @mobile-page-padding-bottom, @mobile-page-padding-left);
+}
+
+// DYNAMIC_IMPORT_BOTTOM

@@ -27,8 +27,12 @@ add_action( 'presscore_after_loop', 'presscore_remove_posts_masonry_wrap', 15 );
 add_action( 'presscore_after_shortcode_loop', 'presscore_remove_posts_masonry_wrap', 15 );
 add_action( 'presscore_after_main_container', 'presscore_add_footer_widgetarea', 15 );
 add_action( 'presscore_after_content', 'presscore_add_sidebar_widgetarea', 15 );
+
+add_action( 'presscore_before_main_container', 'the7_print_post_inlne_css', 10 );
 add_action( 'presscore_before_main_container', 'presscore_fancy_header_controller', 15 );
+add_action( 'presscore_before_main_container', 'presscore_slideshow_controller', 15 );
 add_action( 'presscore_before_main_container', 'presscore_page_title_controller', 16 );
+
 add_filter( 'post_class', 'presscore_post_class_filter' );
 add_filter( 'presscore_get_category_list', 'presscore_add_wrap_for_catgorizer', 16, 2 );
 add_filter( 'dt_portfolio_thumbnail_args', 'presscore_setup_image_proportions', 15 );
@@ -37,7 +41,6 @@ add_filter( 'dt_album_title_image_args', 'presscore_setup_image_proportions', 15
 add_filter( 'dt_media_image_args', 'presscore_setup_image_proportions', 15 );
 add_filter( 'presscore_get_images_gallery_hoovered-title_img_args', 'presscore_setup_image_proportions', 15 );
 add_action( 'presscore_body_top', 'presscore_render_fullscreen_overlay' );
-add_action( 'presscore_before_main_container', 'presscore_slideshow_controller', 15 );
 add_action( 'wp_head', 'the7_site_icon', 98 );
 add_action( 'presscore_get_filtered_posts', 'presscore_update_post_thumbnail_cache' );
 add_filter( 'presscore_get_header_elements_list-near_logo_left', 'presscore_empty_classic_header_microwidgets_exception_filter' );
@@ -1142,5 +1145,21 @@ if ( ! function_exists( 'the7_setup_speed_img_resize' ) ) {
 		}
 
 		return $args;
+	}
+}
+
+/**
+ * Print post inline css
+ *
+ * Include fancy header and post content padding override.
+ *
+ * @since 8.3.0
+ */
+function the7_print_post_inlne_css() {
+	$config = presscore_config();
+
+	$post_inline_css = The7_Post_CSS_Generator::get_css_for_post( $config->get( 'post_id' ) );
+	if ( $post_inline_css ) {
+		echo '<style id="the7-page-content-style">', "\n", $post_inline_css, "\n", '</style>';
 	}
 }

@@ -19,9 +19,6 @@ if ( ! function_exists( 'presscore_register_scripts' ) ) :
 			'dt-main'                 => array(
 				'src' => PRESSCORE_THEME_URI . '/css/main',
 			),
-			'dt-fontello'             => array(
-				'src' => PRESSCORE_THEME_URI . '/fonts/fontello/css/fontello',
-			),
 			'the7-font'               => array(
 				'src' => PRESSCORE_THEME_URI . '/fonts/icomoon-the7-font/icomoon-the7-font',
 			),
@@ -155,6 +152,8 @@ if ( ! function_exists( 'presscore_localize_main_script' ) ) :
 				'desktopHeader'                  => array(
 					'height' => $header_height,
 				),
+				'ToggleCaptionEnabled' =>   $config->get( 'header.close.hamburger.caption'),
+				'ToggleCaption' => of_get_option( 'header-menu-close_icon-caption-text' ),
 				'floatingHeader'                 => array(
 					'showAfter' => (int) $config->get( 'header.floating_navigation.show_after' ),
 					'showMenu'  => dt_sanitize_flag( $config->get( 'header.floating_navigation.enabled' ) ),
@@ -178,6 +177,9 @@ if ( ! function_exists( 'presscore_localize_main_script' ) ) :
 					'secondSwitchPoint'       => (int) of_get_option( 'header-mobile-second_switch-after' ),
 					'firstSwitchPointHeight'  => (int) of_get_option( 'header-mobile-first_switch-height' ),
 					'secondSwitchPointHeight' => (int) of_get_option( 'header-mobile-second_switch-height' ),
+					'mobileToggleCaptionEnabled' =>   $config->get( 'header.mobile.hamburger.caption' ),
+					'mobileToggleCaption' => of_get_option( 'header-mobile-menu_icon-caption-text' ),
+					
 				),
 				'stickyMobileHeaderFirstSwitch'  => array(
 					'logo' => array(
@@ -250,7 +252,6 @@ if ( ! function_exists( 'presscore_enqueue_scripts' ) ) :
 				wp_enqueue_style( 'the7-awesome-fonts-back' );
 			}
 		}
-        wp_enqueue_style( 'dt-fontello' );
 
 		// Enqueue base js.
 		wp_enqueue_script( 'dt-above-fold' );
@@ -521,6 +522,33 @@ if ( ! function_exists( 'presscore_body_class' ) ) :
 				$classes[] = 'header-side-left';
 				break;
 		}
+		switch ( $config->get( 'header.mobile.menu-close_icon.position' )) {
+			case 'left':
+				$classes[] = 'left-mobile-menu-close-icon';
+				break;
+			case 'right':
+				$classes[] = 'right-mobile-menu-close-icon';
+				break;
+			case 'center':
+				$classes[] ='center-mobile-menu-close-icon';
+				break;
+
+			case 'outside':
+				$classes[] ='ouside-mobile-menu-close-icon';
+				break;
+		}
+		if( $config->get( 'header.mixed.menu-close_icon.position' ) == 'outside'){
+			$classes[] ='ouside-menu-close-icon';
+		}
+	
+		switch ( $config->get( 'header.mobile.close.hamburger.caption' )){
+			case 'left':
+				$classes[] = 'mobile-close-left-caption';
+				break;
+			case 'right':
+				$classes[] = 'mobile-close-right-caption';
+				break;
+		}
 
 		if ( in_array( $config->get( 'header.layout' ), array( 'top_line', 'side_line', 'menu_icon' ), true ) ) {
 			switch ( $config->get( 'header.navigation' ) ) {
@@ -545,29 +573,53 @@ if ( ! function_exists( 'presscore_body_class' ) ) :
 
 		if ( 'side_line' === $config->get( 'header.layout' ) ) {
 			$classes[] = 'header-side-line';
-
-			switch ( $config->get( 'header.mixed.view.side_line.position' ) ) {
-				case 'above':
-					$classes[] = 'header-above-side-line';
-					break;
-				case 'under':
-					$classes[] = 'header-under-side-line';
-					break;
-			}
-			switch ( $config->get( 'header.mixed.view.side_line_v.position' ) ) {
-				case 'left':
-					$classes[] = 'left-side-line';
-					break;
-				case 'right':
-					$classes[] = 'right-side-line';
-					break;
-			}
+			$classes[] = 'left-side-line';
+			$classes[] = 'header-above-side-line';
 		}
+		$classes[] = presscore_array_value( $config->get( 'header.mobile.hamburger.close.bg' ), array(
+			'enabled' => 'mobile-hamburger-close-bg-enable',
+		) );
+		$classes[] = presscore_array_value( $config->get( 'header.mobile.hamburger.close.bg.hover' ), array(
+			'enabled' => 'mobile-hamburger-close-bg-hover-enable',
+		) );
+		$classes[] = presscore_array_value( $config->get( 'header.mobile.hamburger.close.border' ), array(
+			'enabled' => 'mobile-hamburger-close-border-enable',
+		) );
+		$classes[] = presscore_array_value( $config->get( 'header.mobile.hamburger.close.border.hover' ), array(
+			'enabled' => 'mobile-hamburger-close-border-hover-enable',
+		) );
+		
+		$classes[] = presscore_array_value( $config->get( 'header.mobile.menu-close_icon.size' ), array(
+			//'small' => 'small-mobile-menu-close-icon',
+			'minus-medium' => 'minus-medium-mobile-menu-close-icon',
+			'fade_medium' => 'fade-medium-mobile-menu-close-icon',
+			'rotate_medium' => 'rotate-medium-mobile-menu-close-icon',
+			'fade_big' => 'fade-big-mobile-menu-close-icon',
+			'fade_thin'=> 'fade-thin-mobile-menu-close-icon',
+			'fade_small' => 'fade-small-mobile-menu-close-icon',
+			'v_dots' => 'v-dots-mobile-menu-close-icon',
+			'h_dots' => 'h-dots-mobile-menu-close-icon',
+			'scale_dot' => 'scale-dot-mobile-menu-close-icon',
+		) );
+		$classes[] = presscore_array_value( $config->get( 'header.mixed.menu-close_icon.size' ), array(
+
+			'minus-medium' => 'medium-menu-close-icon',
+			'fade_medium' => 'fade-medium-menu-close-icon',
+			'rotate_medium' => 'rotate-medium-menu-close-icon',
+			'fade_big' => 'fade-big-menu-close-icon',
+			'fade_thin'=> 'fade-thin-menu-close-icon',
+			'fade_small' => 'fade-small-menu-close-icon',
+			'v_dots' => 'v-dots-menu-close-icon',
+			'h_dots' => 'h-dots-menu-close-icon',
+			'scale_dot' => 'scale-dot-menu-close-icon',
+		) );
 
 		if ( 'gradient' === $config->get( 'template.accent.color.mode' ) ) {
 			$classes[] = 'accent-gradient';
 		}
-
+		if ( $config->get( 'page.bg' ) ) {
+			$classes[] = 'fixed-page-bg';
+		}
 		$classes[] = 'srcset-enabled';
 
 		switch ( $config->get( 'buttons.style' ) ) {
@@ -642,6 +694,7 @@ if ( ! function_exists( 'presscore_body_class' ) ) :
 					'disabled' => 'phantom-disable-decoration',
 					'shadow'   => 'phantom-shadow-decoration',
 					'line'     => 'phantom-line-decoration',
+					'content-width-line'     => 'phantom-content-width-line-decoration',
 				)
 			);
 
@@ -717,6 +770,11 @@ if ( ! function_exists( 'presscore_body_class' ) ) :
 
 		if ( of_get_option( 'wc_dt-custom_style' ) ) {
 			$classes[] = 'dt-wc-custom';
+		}
+		if ( function_exists( 'is_shop' ) && function_exists( 'is_product_taxonomy' ) && of_get_option( 'woocommerce_shop-sidebar-collapse' ) && 'disabled' !== presscore_config()->get( 'sidebar_position' )) {
+			if ( is_shop() || is_product_taxonomy() ) {
+				$classes[] = 'dt-wc-sidebar-collapse';
+			}
 		}
 
 		if ( of_get_option( 'contact_form_message' ) ) {
@@ -844,17 +902,22 @@ if ( ! function_exists( 'presscore_enqueue_web_fonts' ) ) :
 				continue;
 			}
 
-			$font_obj = new Presscore_Web_Font( $font_family );
+			$font_obj = new The7_Web_Font( $font_family );
+			$font_obj->add_weight( '400' );
 			$font_obj->add_weight( '600' );
 			$font_obj->add_weight( '700' );
 
-			$fonts[] = (string) $font_obj;
+			$fonts[] = $font_obj;
 		}
 
-		$fonts_compressor = new Presscore_Web_Fonts_Compressor();
-		$compressed_fonts = $fonts_compressor->compress_fonts( $fonts );
+		if ( $fonts ) {
+			$fonts_compressor = new The7_Web_Fonts_Compressor( $fonts );
+			if ( The7_Admin_Dashboard_Settings::get( 'web-fonts-display-swap' ) ) {
+				$fonts_compressor->add_display_prop( 'swap' );
+			}
 
-		wp_enqueue_style( 'dt-web-fonts', dt_make_web_font_uri( $compressed_fonts ), false, THE7_VERSION );
+			wp_enqueue_style( 'dt-web-fonts', $fonts_compressor->compress_to_url(), false, null );
+		}
 	}
 
 endif;

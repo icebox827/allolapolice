@@ -391,6 +391,19 @@ return array(
 			),
 		),
 		array(
+			'heading'    => __( 'Icon gap', 'the7mk2' ),
+			'param_name' => 'icon_gap',
+			'type'       => 'dt_number',
+			'value'      => '8px',
+			'units'      => 'px',
+			'group'      => __( 'Button', 'the7mk2' ),
+			
+			'dependency' => array(
+				'element' => 'icon_type',
+				'value'   => array( 'picker', 'html' ),
+			),
+		),
+		array(
 			'group'      => __( 'Button', 'the7mk2' ),
 			'heading'    => __( 'Icon alignment', 'the7mk2' ),
 			'param_name' => 'icon_align',

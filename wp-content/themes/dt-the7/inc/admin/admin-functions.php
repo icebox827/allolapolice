@@ -21,6 +21,38 @@ add_action( 'admin_post_the7_admin_wa_manager_save', array( 'The7_Admin_WA_Manag
 add_action( 'widgets_admin_page', array( 'The7_Admin_WA_Manager', 'display' ) );
 add_action( 'load-widgets.php', array( 'The7_Admin_WA_Manager', 'enqueue_assets' ) );
 
+add_action( 'save_post', 'the7_update_post_css_on_save', 20 );
+
+/**
+ * @param $post_id
+ */
+function the7_update_post_css_on_save( $post_id ) {
+	if ( wp_is_post_revision( $post_id ) ) {
+		return;
+	}
+	
+	the7_update_post_css( $post_id );
+}
+
+/**
+ * @param $post_id
+ *
+ * @throws Exception
+ */
+function the7_update_post_css( $post_id ) {
+	$css = The7_Post_CSS_Generator::generate_css_for_post(
+		$post_id,
+		the7_get_new_shortcode_less_vars_manager(),
+		new The7_Less_Compiler()
+	);
+
+	if ( $css ) {
+		The7_Post_CSS_Generator::update_css_for_post( $post_id, $css );
+	} else {
+		The7_Post_CSS_Generator::delete_css_for_post( $post_id );
+	}
+}
+
 if ( ! function_exists( 'presscore_themeoptions_add_share_buttons' ) ) :
 
 	/**

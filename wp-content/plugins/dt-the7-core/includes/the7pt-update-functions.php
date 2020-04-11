@@ -200,3 +200,14 @@ function the7pt_set_db_version_2_1_0() {
 function the7pt_set_db_version_2_2_0() {
 	The7PT_Install::update_db_version( '2.2.0' );
 }
+
+/**
+ * Update plugin db version.
+ *
+ * @since 2.2.3
+ *
+ * @uses  The7PT_Install::update_db_version
+ */
+function the7pt_set_db_version_2_2_4() {
+	The7PT_Install::update_db_version( '2.2.4' );
+}

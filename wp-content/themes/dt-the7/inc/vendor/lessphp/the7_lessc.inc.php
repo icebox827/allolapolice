@@ -2027,9 +2027,10 @@ class the7_lessc {
 	 * Uses the current value of $this->count to show line and line number
 	 */
 	protected function throwError($msg = null) {
-		if ($this->sourceLoc >= 0) {
+		if ( $this->sourceLoc >= 0 ) {
+			$file = str_replace( ABSPATH, '', (string) key( $this->allParsedFiles ) );
 			end( $this->allParsedFiles );
-			$this->sourceParser->throwError($msg . ' in var ' . $this->currentProp, $this->sourceLoc);
+			$this->sourceParser->throwError( "{$msg} in var {$this->currentProp} in file {$file}", $this->sourceLoc );
 		}
 		throw new exception($msg);
 	}

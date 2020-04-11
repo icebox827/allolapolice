@@ -23,6 +23,7 @@ include $path . '/wpml/class-compatibility-wpml.php';
 include $path . '/backward-compat/mod-the7-compatibility.php';
 include $path . '/edd/class-compatibility-edd.php';
 include $path . '/class-the7-sensei-compatibility.php';
+include $path . '/the7-ti-wishlist-compatibility.php';
 
 The7_Sensei_Compatibility::bootstrap();
 
@@ -52,6 +53,5 @@ if ( defined( 'ULTIMATE_VERSION' ) ) {
 
 if ( class_exists( 'Elementor\Plugin' ) ) {
 	require_once $path . '/elementor/class-the7-elementor-compatibility.php';
-	$elemetor_compat = new The7_Elementor_Compatibility();
-	$elemetor_compat->bootstrap();
+	The7_Elementor_Compatibility::instance();
 }

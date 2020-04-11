@@ -191,7 +191,6 @@ if ( ! function_exists( 'presscore_get_breadcrumbs' ) ) :
 
 	/**
 	 * Returns breadcrumbs html
-	 * original script you can find on http://dimox.net
 	 * 
 	 * @since 1.0.0
 	 *
@@ -200,26 +199,28 @@ if ( ! function_exists( 'presscore_get_breadcrumbs' ) ) :
 	 * @return string Breadcrumbs html
 	 */
 	function presscore_get_breadcrumbs( $args = array() ) {
+		global $post, $author;
+
 		$default_args = array(
-			'text' => array(
-				'home' => __( 'Home', 'the7mk2'),
-				'category' => __( 'Category "%s"', 'the7mk2'),
-				'search' => __( 'Results for "%s"', 'the7mk2'),
-				'tag' => __( 'Entries tagged with "%s"', 'the7mk2'),
-				'author' => __( 'Article author %s', 'the7mk2'),
-				'404' => __( 'Error 404', 'the7mk2'),
+			'text'              => array(
+				'home'     => __( 'Home', 'the7mk2' ),
+				'category' => __( 'Category "%s"', 'the7mk2' ),
+				'search'   => __( 'Results for "%s"', 'the7mk2' ),
+				'tag'      => __( 'Entries tagged with "%s"', 'the7mk2' ),
+				'author'   => __( 'Article author %s', 'the7mk2' ),
+				'404'      => __( 'Error 404', 'the7mk2' ),
 			),
-			'showCurrent' => true,
-			'showOnHome' => true,
-			'delimiter' => '',
-			'before' => '<li class="current">',
-			'after' => '</li>',
-			'linkBefore' => '<li typeof="v:Breadcrumb">',
-			'linkAfter' => '</li>',
-			'linkAttr' => ' rel="v:url" property="v:title"',
+			'showCurrent'       => true,
+			'showOnHome'        => true,
+			'delimiter'         => '',
+			'before'            => '<li class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">',
+			'after'             => '</li>',
+			'linkBefore'        => '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">',
+			'linkAfter'         => '</li>',
+			'linkAttr'          => ' itemprop="item"',
 			'beforeBreadcrumbs' => '',
-			'afterBreadcrumbs' => '',
-			'listAttr' => ' class="breadcrumbs text-small"'
+			'afterBreadcrumbs'  => '',
+			'listAttr'          => ' class="breadcrumbs text-small"',
 		);
 
 		$args = wp_parse_args( $args, $default_args );
@@ -231,199 +232,235 @@ if ( ! function_exists( 'presscore_get_breadcrumbs' ) ) :
 
 		extract( array_intersect_key( $args, $default_args ), EXTR_OVERWRITE );
 
-		$link = $linkBefore . '<a' . $linkAttr . ' href="%1$s" title="">%2$s</a>' . $linkAfter;
-
-		$breadcrumbs_html .= '<div class="assistive-text">' . __( 'You are here:', 'the7mk2' ) . '</div>';
-
-		$homeLink = trailingslashit( home_url() );
-		global $post;
-
 		$current_words_num = apply_filters( 'presscore_get_breadcrumbs-current_words_num', 5 );
 
-		if (is_home() || is_front_page()) {
+		$breadcrumbs_parts = array();
 
-			if ($showOnHome) {
-				$breadcrumbs_html .= '<ol' . $listAttr . '><a href="' . $homeLink . '">' . $text['home'] . '</a></ol>';
-			}
+		$is_front = is_home() || is_front_page();
 
-		} else {
+		if ( ( $showOnHome && $is_front ) || ! $is_front ) {
 
-			$breadcrumbs_html .= '<ol' . $listAttr . ' xmlns:v="http://rdf.data-vocabulary.org/#">' . sprintf($link, $homeLink, $text['home']) . $delimiter;
+			$breadcrumbs_parts[] = array(
+				'name' => $text['home'],
+				'url'  => trailingslashit( home_url() ),
+			);
 
-			if ( is_category() ) {
-
-				$thisCat = get_category(get_query_var('cat'), false);
-
-				if ($thisCat->parent !== 0) {
-
-					$cats = get_category_parents($thisCat->parent, TRUE, $delimiter);
-					$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
-					$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
-
-					if(preg_match( '/title="/', $cats ) ===0) {
-						$cats = preg_replace('/title=""/', 'title=""', $cats);
-					}
-
-					$breadcrumbs_html .= $cats;
-				}
-
-				$breadcrumbs_html .= $before . sprintf($text['category'], single_cat_title('', false)) . $after;
-
-			} elseif ( is_search() ) {
-
-				$breadcrumbs_html .= $before . sprintf($text['search'], get_search_query()) . $after;
-
-			} elseif ( is_day() ) {
-
-				$breadcrumbs_html .= sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
-				$breadcrumbs_html .= sprintf($link, get_month_link(get_the_time('Y'),get_the_time('m')), get_the_time('F')) . $delimiter;
-				$breadcrumbs_html .= $before . get_the_time('d') . $after;
-
-			} elseif ( is_month() ) {
-
-				$breadcrumbs_html .= sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y')) . $delimiter;
-				$breadcrumbs_html .= $before . get_the_time('F') . $after;
-
-			} elseif ( is_year() ) {
-
-				$breadcrumbs_html .= $before . get_the_time('Y') . $after;
-
-			} elseif ( is_single() && !is_attachment() ) {
-
-				$post_type = get_post_type();
-				$post_type_obj = get_post_type_object( $post_type );
-
-				if ( $post_type !== 'post' ) {
-					if ( $post_type_obj ) {
-						$post_type_name = $post_type_obj->labels->singular_name;
-
-						if ( $post_type === 'dt_portfolio' ) {
-							$post_type_name_text = of_get_option( 'portfolio-breadcrumbs-text', '' );
-							if ( $post_type_name_text ) {
-								$post_type_name = apply_filters( 'wpml_translate_single_string', $post_type_name_text, 'dt-the7', 'portfolio-breadcrumbs-text' );
-							}
-						}
-
-						$breadcrumbs_html .= sprintf( $link, get_post_type_archive_link( $post_type ), esc_html( $post_type_name ) );
-					}
-
-					if ( $showCurrent ) {
-						$breadcrumbs_html .= $delimiter . $before . wp_trim_words( get_the_title(), $current_words_num ) . $after;
-					}
-				} else {
-
-					$cat = get_the_category();
-					if ( $cat ) {
-						$cat = $cat[0];
-						$cats = get_category_parents($cat, TRUE, $delimiter);
-
-						if ( ! is_wp_error( $cats ) ) {
-							if (! $showCurrent) {
-								$cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
-							}
-
-							$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
-							$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
-
-							$breadcrumbs_html .= $cats;
-						}
-					}
-
-					if ($showCurrent) {
-						$breadcrumbs_html .= $before . wp_trim_words( get_the_title(), $current_words_num ) . $after;
-					}
-
-				}
-
-			} elseif ( !is_single() && !is_page() && get_post_type() !== 'post' && !is_404() ) {
-				$post_type = get_post_type();
-				$post_type_obj = get_post_type_object( $post_type );
-				if ( $post_type_obj ) {
-					$post_type_name = $post_type_obj->labels->singular_name;
-					if ( $post_type === 'dt_portfolio' ) {
-						$post_type_name_text = of_get_option( 'portfolio-breadcrumbs-text', '' );
-						if ( $post_type_name_text ) {
-							$post_type_name = apply_filters( 'wpml_translate_single_string', $post_type_name_text, 'dt-the7', 'portfolio-breadcrumbs-text' );
-						}
-					}
-
-					$breadcrumbs_html .= $before . esc_html( $post_type_name ) . $after;
-				}
-			} elseif ( is_attachment() ) {
-
-				if ($showCurrent) {
-					$breadcrumbs_html .= $delimiter . $before . wp_trim_words( get_the_title(), $current_words_num ) . $after;
-				}
-
-			} elseif ( is_page() && !$post->post_parent ) {
-
-				if ($showCurrent) {
-					$breadcrumbs_html .= $before . wp_trim_words( get_the_title(), $current_words_num ) . $after;
-				}
-
-			} elseif ( is_page() && $post->post_parent ) {
-
-				$parent_id  = $post->post_parent;
-				$breadcrumbs = array();
-
-				while ($parent_id) {
-					$page = get_post($parent_id);
-					$breadcrumbs[] = sprintf($link, get_permalink($page->ID), get_the_title($page->ID));
-					$parent_id  = $page->post_parent;
-				}
-
-				$breadcrumbs = array_reverse($breadcrumbs);
-
-				for ($i = 0; $i < count($breadcrumbs); $i++) {
-
-					$breadcrumbs_html .= $breadcrumbs[$i];
-
-					if ($i != count($breadcrumbs)-1) {
-						$breadcrumbs_html .= $delimiter;
-					}
-				}
-
-				if ($showCurrent) {
-					$breadcrumbs_html .= $delimiter . $before . wp_trim_words( get_the_title(), $current_words_num ) . $after;
-				}
-
-			} elseif ( is_tag() ) {
-
-				$breadcrumbs_html .= $before . sprintf($text['tag'], single_tag_title('', false)) . $after;
-
-			} elseif ( is_author() ) {
-
-				global $author;
-				$userdata = get_userdata($author);
-				$breadcrumbs_html .= $before . sprintf($text['author'], $userdata->display_name) . $after;
-
-			} elseif ( is_404() ) {
-
-				$breadcrumbs_html .= $before . $text['404'] . $after;
-			}
-
-			if ( get_query_var('paged') ) {
-
-				$breadcrumbs_html .= $before;
-
-				if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) {
-					$breadcrumbs_html .= ' (';
-				}
-
-				$breadcrumbs_html .= __( 'Page', 'the7mk2' ) . ' ' . get_query_var('paged');
-
-				if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) {
-					$breadcrumbs_html .= ')';
-				}
-
-				$breadcrumbs_html .= $after;
-
-			}
-
-			$breadcrumbs_html .= '</ol>';
 		}
 
-		return apply_filters( 'presscore_get_breadcrumbs', $beforeBreadcrumbs . $breadcrumbs_html . $afterBreadcrumbs, $args );
+		if ( is_category() ) {
+
+			$thisCat = get_category( get_query_var( 'cat' ), OBJECT );
+
+			if ( $thisCat && ! is_wp_error( $thisCat ) && $thisCat->parent !== 0 ) {
+				$taxonomy = 'category';
+				$parents = get_ancestors( $thisCat->parent, $taxonomy, 'taxonomy' );
+				array_unshift( $parents, $thisCat->parent );
+
+				foreach ( array_reverse( $parents ) as $term_id ) {
+					$parent_cat = get_term( $term_id, $taxonomy );
+					if ( $parent_cat && ! is_wp_error( $parent_cat ) ) {
+						$name                = $parent_cat->name;
+						$breadcrumbs_parts[] = array(
+							'name' => $name,
+							'url'  => get_term_link( $parent_cat->term_id, $taxonomy ),
+						);
+					}
+				}
+
+			}
+
+			$breadcrumbs_parts[] = array(
+				'name' => sprintf( $text['category'], single_cat_title( '', false ) ),
+			);
+
+		} elseif ( is_author() ) {
+
+			$userdata            = get_userdata( $author );
+			if ( $userdata ) {
+				$breadcrumbs_parts[] = array(
+					'name' => sprintf( $text['author'], $userdata->display_name ),
+				);
+			}
+
+		} elseif ( is_search() ) {
+
+			$breadcrumbs_parts[] = array(
+				'name' => sprintf( $text['search'], get_search_query() ),
+			);
+
+		} elseif ( is_day() ) {
+
+			$breadcrumbs_parts[] = array(
+				'name' => get_the_time( 'Y' ),
+				'url'  => get_year_link( get_the_time( 'Y' ) ),
+			);
+			$breadcrumbs_parts[] = array(
+				'name' => get_the_time( 'F' ),
+				'url'  => get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ),
+			);
+			$breadcrumbs_parts[] = array(
+				'name' => get_the_time( 'd' ),
+			);
+
+		} elseif ( is_month() ) {
+
+			$breadcrumbs_parts[] = array(
+				'name' => get_the_time( 'Y' ),
+				'url'  => get_year_link( get_the_time( 'Y' ) ),
+			);
+			$breadcrumbs_parts[] = array(
+				'name' => get_the_time( 'F' ),
+			);
+
+		} elseif ( is_year() ) {
+
+			$breadcrumbs_parts[] = array(
+				'name' => get_the_time( 'Y' ),
+			);
+
+		} elseif ( is_single() && !is_attachment() ) {
+
+			$post_type = get_post_type();
+			$post_type_obj = get_post_type_object( $post_type );
+
+			if ( $post_type === 'post' ) {
+				$cat = get_the_category();
+				if ( $cat ) {
+					$term_id = $cat[0]->term_id;
+					$taxonomy = 'category';
+					$parents = get_ancestors( $term_id, $taxonomy, 'taxonomy' );
+					array_unshift( $parents, $term_id );
+
+					foreach ( array_reverse( $parents ) as $term_id ) {
+						$parent_cat = get_term( $term_id, $taxonomy, OBJECT );
+						if ( $parent_cat && ! is_wp_error( $parent_cat ) ) {
+							$name                = $parent_cat->name;
+							$breadcrumbs_parts[] = array(
+								'name' => $name,
+								'url'  => get_term_link( $parent_cat->term_id, $taxonomy ),
+							);
+						}
+					}
+				}
+			} elseif ( $post_type_obj ) {
+				$post_type_name = $post_type_obj->labels->singular_name;
+
+				if ( $post_type === 'dt_portfolio' ) {
+					$post_type_name_text = of_get_option( 'portfolio-breadcrumbs-text', '' );
+					if ( $post_type_name_text ) {
+						$post_type_name = apply_filters( 'wpml_translate_single_string', $post_type_name_text, 'dt-the7', 'portfolio-breadcrumbs-text' );
+					}
+				}
+
+				$breadcrumbs_parts[] = array(
+					'name' => esc_html( $post_type_name ),
+					'url'  => get_post_type_archive_link( $post_type ),
+				);
+			}
+
+			if ( $showCurrent ) {
+				$breadcrumbs_parts[] = array(
+					'name' => wp_trim_words( get_the_title(), $current_words_num ),
+				);
+			}
+
+		} elseif ( ! is_single() && ! is_page() && get_post_type() !== 'post' && ! is_404() ) {
+
+			$post_type = get_post_type();
+			$post_type_obj = get_post_type_object( $post_type );
+
+			if ( $post_type_obj ) {
+				$post_type_name = $post_type_obj->labels->singular_name;
+
+				if ( $post_type === 'dt_portfolio' ) {
+					$post_type_name_text = of_get_option( 'portfolio-breadcrumbs-text', '' );
+					if ( $post_type_name_text ) {
+						$post_type_name = apply_filters( 'wpml_translate_single_string', $post_type_name_text, 'dt-the7', 'portfolio-breadcrumbs-text' );
+					}
+				}
+
+				$breadcrumbs_parts[] = array(
+					'name' => esc_html( $post_type_name ),
+				);
+			}
+
+		} elseif ( is_attachment() ) {
+
+			if ( $showCurrent ) {
+				$breadcrumbs_parts[] = array(
+					'name' => wp_trim_words( get_the_title(), $current_words_num ),
+				);
+			}
+
+		} elseif ( is_page() && ! $is_front) {
+
+			if ( $post->post_parent ) {
+				$parent_id   = $post->post_parent;
+				$page_breadcrumbs = array();
+
+				while ( $parent_id ) {
+					$parent_page               = get_post( $parent_id );
+					if ( $parent_page ) {
+						$page_breadcrumbs[] = array(
+							'name' => get_the_title( $parent_page->ID ),
+							'url'  => get_permalink( $parent_page->ID ),
+						);
+						$parent_id          = $parent_page->post_parent;
+					} else {
+						$parent_id = 0;
+					}
+				}
+
+				$page_breadcrumbs = array_reverse( $page_breadcrumbs );
+				$breadcrumbs_parts = array_merge( $breadcrumbs_parts, $page_breadcrumbs );
+			}
+
+			if ( $showCurrent ) {
+				$breadcrumbs_parts[] = array(
+					'name' => wp_trim_words( get_the_title(), $current_words_num ),
+				);
+			}
+
+		} elseif ( is_tag() ) {
+
+			$breadcrumbs_parts[] = array(
+				'name' => sprintf( $text['tag'], single_tag_title( '', false ) ),
+			);
+
+		} elseif ( is_404() ) {
+
+			$breadcrumbs_parts[] = array(
+				'name' => $text['404'],
+			);
+
+		}
+
+		$breadcrumbs_parts = (array) apply_filters( 'presscore_breadcrumbs_parts', $breadcrumbs_parts );
+
+		$breadcrumbs = array();
+		foreach( $breadcrumbs_parts as $index => $breadcrumb_part ) {
+			if ( ! isset( $breadcrumb_part['name'] ) ) {
+				continue;
+			}
+
+			$breadcrumb = '<span itemprop="name">' . $breadcrumb_part['name'] . '</span>';
+			$position = $index + 1;
+			$position_meta = '<meta itemprop="position" content="' . (int) $position . '" />';
+			if ( isset( $breadcrumb_part['url'] ) ) {
+				$breadcrumb = $linkBefore . '<a' . $linkAttr . ' href="' . esc_url( $breadcrumb_part['url'] ) .'" title="">' . $breadcrumb . '</a>' . $position_meta . $linkAfter;
+			} else {
+				$breadcrumb = $before . $breadcrumb . $position_meta . $after;
+			}
+
+			$breadcrumbs[] = $breadcrumb;
+		}
+
+		$html = '<div class="assistive-text">' . __( 'You are here:', 'the7mk2' ) . '</div>';
+		$html .= '<ol' . $listAttr . ' itemscope itemtype="https://schema.org/BreadcrumbList">';
+		$html .= implode( $delimiter, $breadcrumbs );
+		$html .= '</ol>';
+
+		return apply_filters( 'presscore_get_breadcrumbs', $beforeBreadcrumbs . $html . $afterBreadcrumbs, $args );
 	}
 
 endif;

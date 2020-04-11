@@ -328,16 +328,16 @@ jQuery(document).ready(function($){
     $(".mobile-false .forward-post").forwardToPost();
 
     $.fn.touchforwardToPost = function() {
+        $body.on("touchend", function(e) {
+            $(".mobile-true .rollover-content").removeClass("is-clicked");
+            $(".mobile-true .rollover-project").removeClass("is-clicked");
+        });
         return this.each(function() {
             var $this = $(this);
             if ($this.hasClass("touch-hover-ready")) {
                 return;
             }
 
-            $body.on("touchend", function(e) {
-                $(".mobile-true .rollover-content").removeClass("is-clicked");
-                $(".mobile-true .rollover-project").removeClass("is-clicked");
-            });
             var $this = $(this).find(".rollover-content");
             $this.on("touchstart", function(e) { 
                 origY = e.originalEvent.touches[0].pageY;
@@ -421,6 +421,12 @@ jQuery(document).ready(function($){
     $(".mobile-false .rollover-project.rollover-active, .mobile-false .rollover-active,  .mobile-false .buttons-on-img.rollover-active").followCurentLink();
 
     $.fn.touchFollowCurentLink = function() {
+
+        $body.on("touchend", function(e) {
+            $(".mobile-true .rollover-content").removeClass("is-clicked");
+            $(".mobile-true .rollover-active").removeClass("is-clicked");
+            $(".mobile-true .rollover-active").parent("article").removeClass("is-clicked");
+        });
         return this.each(function() {
             if($(this).parents('.content-rollover-layout-list').length > 0 || $(this).parents('.gradient-overlay-layout-list').length > 0){
                 var $this = $(this).parent('article');
@@ -435,11 +441,6 @@ jQuery(document).ready(function($){
                 $thisCategory = $this.find(".portfolio-categories a");
             var alreadyTriggered = false; 
 
-            $body.on("touchend", function(e) {
-                $(".mobile-true .rollover-content").removeClass("is-clicked");
-                $(".mobile-true .rollover-active").removeClass("is-clicked");
-                $(".mobile-true .rollover-active").parent("article").removeClass("is-clicked");
-            });
 
            
             $this.on("touchstart", function(e) { 
@@ -489,6 +490,10 @@ jQuery(document).ready(function($){
     $(".mobile-true .rollover-project.rollover-active, .mobile-true .rollover-active,  .mobile-true .buttons-on-img.rollover-active").touchFollowCurentLink();
 
     $.fn.touchRolloverPostClick = function() {
+        $body.on("touchend", function(e) {
+            $(".mobile-true .post").removeClass("is-clicked");
+        });
+          
         return this.each(function() {
             var $this = $(this);
             // if ($this.hasClass("touch-post-rollover-ready")) {
@@ -498,10 +503,7 @@ jQuery(document).ready(function($){
                 $thisCategory = $this.find(".entry-meta a, .fancy-date a, .fancy-categories a"),
                 $thisOfTop = $this.find(".entry-excerpt").height() + $this.find(".post-details").height();
 
-            $body.on("touchend", function(e) {
-                $(".mobile-true .post").removeClass("is-clicked");
-            });
-          
+           
             $this.on("touchstart", function(e) { 
                 origY = e.originalEvent.touches[0].pageY;
                 origX = e.originalEvent.touches[0].pageX;
@@ -509,7 +511,8 @@ jQuery(document).ready(function($){
             $this.on("touchend", function(e) {
                 var touchEX = e.originalEvent.changedTouches[0].pageX,
                     touchEY = e.originalEvent.changedTouches[0].pageY;
-                if( origY == touchEY || origX == touchEX ){
+              //  if( origY == touchEY || origX == touchEX ){
+                if( origY <= (touchEY+5) && origY >= (touchEY-5) || origX <= touchEX + 5 && origX == touchEX - 5 ){
                     //else {
                          if ($this.hasClass("is-clicked")) {
                              //   window.location.href = $thisSingleLink.attr('href');
@@ -540,15 +543,16 @@ jQuery(document).ready(function($){
     $(".mobile-true .content-rollover-layout-list.portfolio-shortcode .post, .mobile-true .gradient-overlay-layout-list.portfolio-shortcode .post").touchRolloverPostClick();
 
     $.fn.touchHoverImage = function() {
+
+        $body.on("touchend", function(e) {
+            $(".mobile-true .rollover-content").removeClass("is-clicked");
+        });
         return this.each(function() {
             var $img = $(this);
             if ($img.hasClass("hover-ready")) {
                 return;
             }
 
-            $body.on("touchend", function(e) {
-                $(".mobile-true .rollover-content").removeClass("is-clicked");
-            });
             var $this = $(this).find(".rollover-content"),
                 thisPar = $this.parents(".wf-cell");
             $this.on("touchstart", function(e) { 
@@ -580,15 +584,16 @@ jQuery(document).ready(function($){
     $(".mobile-true .buttons-on-img").touchHoverImage();
    
     $.fn.touchScrollerImage = function() {
+
+        $body.on("touchend", function(e) {
+            $(".mobile-true .project-list-media").removeClass("is-clicked");
+        });
         return this.each(function() {
             var $img = $(this);
             if ($img.hasClass("hover-ready")) {
                 return;
             }
 
-            $body.on("touchend", function(e) {
-                $(".mobile-true .project-list-media").removeClass("is-clicked");
-            });
             var $this = $(this),
                 $thisSingleLink = $this.find("a.rollover-click-target").first(),
                 $thisButtonLink = $this.find(".links-container");
@@ -668,15 +673,16 @@ jQuery(document).ready(function($){
     $(".mobile-true .dt-owl-item .links-container > a").touchHoverLinks();
 
     /*!Trigger albums click */
+
     $.fn.triggerAlbumsClick = function() {
         return this.each(function() {
-            var $this = $(this);
+           var $this = $(this);
             if ($this.hasClass("this-ready")) {
                 return;
             }
 
-            var $thisSingleLink = $this.find("a.rollover-click-target, a.dt-pswp-item").first(),
-                $thisCategory = $this.find(".portfolio-categories a");
+            var $thisSingleLink = $(this).find("a.rollover-click-target, a.dt-pswp-item").first(),
+                $thisCategory = $(this).find(".portfolio-categories a");
 
 
             if( $thisSingleLink.length > 0 ){
@@ -692,8 +698,10 @@ jQuery(document).ready(function($){
 
                 var alreadyTriggered = false;
 
-                $this.on("click", function(){
-                    if ($this.parents(".ts-wrap").hasClass("ts-interceptClicks")) return;
+                $(this).on("click", function(){
+                    var $thisSingleLink = $(this).find("a.rollover-click-target, a.dt-pswp-item").first(),
+                $thisCategory = $(this).find(".portfolio-categories a");
+                    if ($(this).parents(".ts-wrap").hasClass("ts-interceptClicks")) return;
 
                     if ( !alreadyTriggered ) {
                         alreadyTriggered = true;
@@ -703,7 +711,7 @@ jQuery(document).ready(function($){
                     }
                     return false;
                 })
-                $this.find($thisCategory).click(function(e) {
+               $(this).find($thisCategory).click(function(e) {
 
                      e.stopPropagation()
                     window.location.href = $thisCategory.attr('href');
@@ -712,7 +720,54 @@ jQuery(document).ready(function($){
             $this.addClass("this-ready");
         });
     };
-    $(".mobile-false .dt-albums-template .rollover-project, .mobile-false .dt-albums-shortcode .rollover-project, .mobile-false .dt-albums-template .buttons-on-img, .mobile-false .dt-albums-shortcode .buttons-on-img, .mobile-false .archive .type-dt_gallery .buttons-on-img, .mobile-false .albums-shortcode:not(.content-rollover-layout-list):not(.gradient-overlay-layout-list) .post-thumbnail").triggerAlbumsClick();
+    $(".mobile-false .dt-albums-template .rollover-project, .mobile-false .dt-albums-shortcode .rollover-project, .mobile-false .dt-albums-template .buttons-on-img, .mobile-false .dt-albums-shortcode .buttons-on-img, .mobile-false .archive .type-dt_gallery .buttons-on-img, .mobile-false .albums-shortcode:not(.content-rollover-layout-list):not(.gradient-overlay-layout-list) .post-thumbnail-wrap").triggerAlbumsClick();
+
+     $.fn.triggerClonedAlbumsClick = function() {
+        return this.each(function() {
+           var $this = $(this);
+            if ($this.hasClass("this-clone-ready")) {
+                return;
+            }
+
+            var $thisSingleLink = $(this).find("a.rollover-click-target, a.dt-pswp-item").first(),
+                $thisCategory = $(this).find(".portfolio-categories a");
+
+
+            if( $thisSingleLink.length > 0 ){
+                $thisSingleLink.on("click", function(event) {
+                    event.preventDefault();
+                   // event.stopPropagation();
+                     if ($thisSingleLink.parents(".ts-wrap").hasClass("ts-interceptClicks")) return;
+
+                    if ( $(this).hasClass('go-to') ) {
+                        window.location.href = $(this).attr('href');
+                    }
+                });
+
+                var alreadyTriggered = false;
+
+                $(this).on("click", function(){
+                    var $thisSingleLink = $(this).find("a.rollover-click-target, a.dt-pswp-item").first(),
+                $thisCategory = $(this).find(".portfolio-categories a");
+                    if ($(this).parents(".ts-wrap").hasClass("ts-interceptClicks")) return;
+
+                    if ( !alreadyTriggered ) {
+                        alreadyTriggered = true;
+                        $thisSingleLink.trigger("click");
+                        
+                        alreadyTriggered = false;
+                    }
+                    return false;
+                })
+               $(this).find($thisCategory).click(function(e) {
+
+                     e.stopPropagation()
+                    window.location.href = $thisCategory.attr('href');
+                });
+            }
+            $this.addClass("this-clone-ready");
+        });
+    };
     $.fn.triggerOverlayAlbumsClick = function() {
         return this.each(function() {
             var $this = $(this);
@@ -759,16 +814,62 @@ jQuery(document).ready(function($){
         });
     };
     $(" .mobile-false .albums-shortcode.content-rollover-layout-list .post-entry-content, .mobile-false .albums-shortcode.gradient-overlay-layout-list .post-entry-content").triggerOverlayAlbumsClick();
+     $.fn.triggerClonedOverlayAlbumsClick = function() {
+        return this.each(function() {
+            var $this = $(this);
+            if ($this.hasClass("this-cloned-overlay-ready")) {
+                return;
+            }
+            var $thisSingleLink = $this.parents('.post').first().find("a.rollover-click-target, a.dt-pswp-item").first(),
+                $thisCategory = $this.find(".portfolio-categories a, .entry-excerpt a");
+
+
+             if( $thisSingleLink.length > 0 ){
+                $thisSingleLink.on("click", function(event) {
+                    event.preventDefault();
+                   // event.stopPropagation();
+                     if ($thisSingleLink.parents(".ts-wrap").hasClass("ts-interceptClicks")) return;
+
+                    if ( $(this).hasClass('go-to') ) {
+                        window.location.href = $(this).attr('href');
+                    }
+                });
+
+                var alreadyTriggered = false;
+
+                $this.on("click", function(){
+
+                    if ($this.parents(".ts-wrap").hasClass("ts-interceptClicks")) return;
+
+                    if ( !alreadyTriggered ) {
+                        alreadyTriggered = true;
+                        $thisSingleLink.trigger("click");
+
+                        
+                        alreadyTriggered = false;
+                    }
+                    return false;
+                })
+                $this.find($thisCategory).click(function(e) {
+
+                     e.stopPropagation()
+                    window.location.href = $thisCategory.attr('href');
+                });
+            }
+            $this.addClass("this-cloned-overlay-ready");
+        });
+    };
 
      $.fn.triggerOverlayAlbumsTouch = function() {
+
+        $body.on("touchend", function(e) {
+            $(".mobile-true .post").removeClass("is-clicked");
+        });
         return this.each(function() {
             var $this = $(this);
             var $thisSingleLink = $this.find("a.rollover-click-target, a.dt-pswp-item").first(),
                 $thisCategory = $this.find(".portfolio-categories a");
 
-            $body.on("touchend", function(e) {
-                $(".mobile-true .post").removeClass("is-clicked");
-            });
 
             $this.on("touchstart", function(e) { 
                 origY = e.originalEvent.touches[0].pageY;
@@ -818,6 +919,9 @@ jQuery(document).ready(function($){
 
     /*!Trigger albums click */
     $.fn.triggerAlbumsTouch = function() {
+        $body.on("touchend", function(e) {
+            $(".mobile-true .rollover-content").removeClass("is-clicked");
+        });
         return this.each(function() {
             var $this = $(this);
             if ($this.hasClass("this-touch-ready")) {
@@ -827,9 +931,7 @@ jQuery(document).ready(function($){
             var $thisSingleLink = $this.find("a.rollover-click-target, a.dt-pswp-item").first(),
                 $thisCategory = $this.find(".portfolio-categories a");
 
-                $body.on("touchend", function(e) {
-                $(".mobile-true .rollover-content").removeClass("is-clicked");
-            });
+              
            
 
             if( $thisSingleLink.length > 0 ){
@@ -909,7 +1011,6 @@ jQuery(document).ready(function($){
                     $targetClick = $(e.target);
                    
                     if($targetClick.hasClass("project-zoom") || $targetClick.parent('a').hasClass("project-zoom")){ 
-                        console.log($targetClick)
                     }else{
                         if ( !alreadyTriggered ) {
                             alreadyTriggered = true;

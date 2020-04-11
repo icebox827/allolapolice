@@ -1,57 +1,69 @@
 <?php
-if(!class_exists('Ultimate_Gradient_Param'))
-{
-	class Ultimate_Gradient_Param
-	{
-		function __construct()
-		{
-			if(defined('WPB_VC_VERSION') && version_compare(WPB_VC_VERSION, 4.8) >= 0) {
-				if(function_exists('vc_add_shortcode_param'))
-				{
-					vc_add_shortcode_param('gradient' , array(&$this, 'gradient_picker' ) );
+/**
+ * Class Ultimate_Gradient_Param
+ *
+ * @package Ultimate_Gradient_Param.
+ */
+
+if ( ! class_exists( 'Ultimate_Gradient_Param' ) ) {
+	/**
+	 * Class Ultimate_Gradient_Param
+	 *
+	 * @class Ultimate_Gradient_Param.
+	 */
+	class Ultimate_Gradient_Param {
+		/**
+		 * Initiator.
+		 */
+		public function __construct() {
+			if ( defined( 'WPB_VC_VERSION' ) && version_compare( WPB_VC_VERSION, 4.8 ) >= 0 ) {
+				if ( function_exists( 'vc_add_shortcode_param' ) ) {
+					vc_add_shortcode_param( 'gradient', array( &$this, 'gradient_picker' ) );
 				}
-			}
-			else {
-				if(function_exists('add_shortcode_param'))
-				{
-					add_shortcode_param('gradient' , array(&$this, 'gradient_picker' ) );
+			} else {
+				if ( function_exists( 'add_shortcode_param' ) ) {
+					add_shortcode_param( 'gradient', array( &$this, 'gradient_picker' ) );
 				}
 			}
 		}
-
-		function gradient_picker($settings, $value)
-		{
+		/**
+		 * Gradient_picker.
+		 *
+		 * @param array  $settings Settings.
+		 * @param string $value Value.
+		 */
+		public function gradient_picker( $settings, $value ) {
 			$dependency = '';
-			$param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
-			$type = isset($settings['type']) ? $settings['type'] : '';
-			$color1 = isset($settings['color1']) ? $settings['color1'] : ' ';
-			$color2 = isset($settings['color2']) ? $settings['color2'] : ' ';
-			$class = isset($settings['class']) ? $settings['class'] : '';
+			$param_name = isset( $settings['param_name'] ) ? $settings['param_name'] : '';
+			$type       = isset( $settings['type'] ) ? $settings['type'] : '';
+			$color1     = isset( $settings['color1'] ) ? $settings['color1'] : ' ';
+			$color2     = isset( $settings['color2'] ) ? $settings['color2'] : ' ';
+			$class      = isset( $settings['class'] ) ? $settings['class'] : '';
 
-			$dependency_element = $settings['dependency']['element'];
-			$dependency_value = $settings['dependency']['value'];
-			$dependency_value_json =  json_encode($dependency_value);
+			$dependency_element    = $settings['dependency']['element'];
+			$dependency_value      = $settings['dependency']['value'];
+			$dependency_value_json = wp_json_encode( $dependency_value );
 
-			$uni = uniqid();
-			$output = '<div class="vc_ug_control" data-uniqid="'.esc_attr( $uni ).'" data-color1="'.esc_attr( $color1 ).'" data-color2="'.esc_attr( $color2 ).'">';
-			//$output .= '<div class="wpb_element_label" style="margin-top: 10px;">'.__('Gradient Type','upb_parallax').'</div>
-			$output .= '<select id="grad_type'.esc_attr( $uni ).'" class="grad_type" data-uniqid="'.esc_attr( $uni ).'">
-				<option value="vertical">'.__('Vertical','ultimate_vc').'</option>
-				<option value="horizontal">'.__('Horizontal','ultimate_vc').'</option>
-				<option value="custom">'.__('Custom','ultimate_vc').'</option>
+			$uni    = uniqid();
+			$output = '<div class="vc_ug_control" data-uniqid="' . esc_attr( $uni ) . '" data-color1="' . esc_attr( $color1 ) . '" data-color2="' . esc_attr( $color2 ) . '">';
+			// $output .= '<div class="wpb_element_label" style="margin-top: 10px;">'.__('Gradient Type','upb_parallax').'</div>
+			$output .= '<select id="grad_type' . esc_attr( $uni ) . '" class="grad_type" data-uniqid="' . esc_attr( $uni ) . '">
+				<option value="vertical">' . __( 'Vertical', 'ultimate_vc' ) . '</option>
+				<option value="horizontal">' . __( 'Horizontal', 'ultimate_vc' ) . '</option>
+				<option value="custom">' . __( 'Custom', 'ultimate_vc' ) . '</option>
 			</select>
-			<div id="grad_type_custom_wrapper'.esc_attr( $uni ).'" class="grad_type_custom_wrapper" style="display:none;"><input type="number" id="grad_type_custom'.esc_attr( $uni ).'" placeholder="45" data-uniqid="'.esc_attr( $uni ).'" class="grad_custom" style="width: 200px; margin-bottom: 10px;"/> deg</div>';
-			$output .= '<div class="wpb_element_label" style="margin-top: 10px;">'.__('Choose Colors','ultimate_vc').'</div>';
-			$output .= '<div class="grad_hold" id="grad_hold'.esc_attr( $uni ).'"></div>';
-			$output .= '<div class="grad_trgt" id="grad_target'.esc_attr( $uni ).'"></div>';
+			<div id="grad_type_custom_wrapper' . esc_attr( $uni ) . '" class="grad_type_custom_wrapper" style="display:none;"><input type="number" id="grad_type_custom' . esc_attr( $uni ) . '" placeholder="45" data-uniqid="' . esc_attr( $uni ) . '" class="grad_custom" style="width: 200px; margin-bottom: 10px;"/> deg</div>';
+			$output .= '<div class="wpb_element_label" style="margin-top: 10px;">' . __( 'Choose Colors', 'ultimate_vc' ) . '</div>';
+			$output .= '<div class="grad_hold" id="grad_hold' . esc_attr( $uni ) . '"></div>';
+			$output .= '<div class="grad_trgt" id="grad_target' . esc_attr( $uni ) . '"></div>';
 
-			$output .= '<input id="grad_val'.esc_attr( $uni ).'" class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $class ) . ' vc_ug_gradient" name="' . esc_attr( $param_name ) . '"  style="display:none"  value="'.esc_attr( $value ).'" '.$dependency.'/></div>';
+			$output .= '<input id="grad_val' . esc_attr( $uni ) . '" class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $class ) . ' vc_ug_gradient" name="' . esc_attr( $param_name ) . '"  style="display:none"  value="' . esc_attr( $value ) . '" ' . $dependency . '/></div>';
 
 			?>
 				<script type="text/javascript">
 				jQuery(document).ready(function(){
-						var dependency_element = '<?php echo $dependency_element ?>';
-						var dependency_values = jQuery.parseJSON('<?php echo $dependency_value_json ?>');
+						var dependency_element = '<?php echo esc_js( $dependency_element ); ?>';
+						var dependency_values = jQuery.parseJSON('<?php echo $dependency_value_json; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>');
 						var dependency_values_array = jQuery.map(dependency_values, function(el) { return el; });
 
 						var get_depend_value = jQuery('.'+dependency_element).val();
@@ -174,16 +186,16 @@ if(!class_exists('Ultimate_Gradient_Param'))
 									width:350,
 									height:25,
 									orientation : orientation,
-							        target:did,
-							        gradient: prev_col,
-							        onChange: function(stringGradient,cssGradient) {
+									target:did,
+									gradient: prev_col,
+									onChange: function(stringGradient,cssGradient) {
 
 										var depend = uvc_gradient_verfiy_depedant(dependency_element, dependency_values_array);
 
-							        	cssGradient = cssGradient.replace('url(data:image/svg+xml;base64,','');
-							        	var e_pos = cssGradient.indexOf(';');
-							        	cssGradient = cssGradient.substring(e_pos+1);
-							        	if(jQuery(tid).parents('.wpb_el_type_gradient').css('display')=='none'){
+										cssGradient = cssGradient.replace('url(data:image/svg+xml;base64,','');
+										var e_pos = cssGradient.indexOf(';');
+										cssGradient = cssGradient.substring(e_pos+1);
+										if(jQuery(tid).parents('.wpb_el_type_gradient').css('display')=='none'){
 											//jQuery(tid).val('');
 											cssGradient='';
 										}
@@ -191,12 +203,12 @@ if(!class_exists('Ultimate_Gradient_Param'))
 											jQuery(tid).val(cssGradient);
 										else
 											jQuery(tid).val('');
-							        },
-							        onInit: function(cssGradient){
-							        	//console.log(jQuery(tid).val())
+									},
+									onInit: function(cssGradient){
+										//console.log(jQuery(tid).val())
 										//check_for_orientation();
 
-							        }
+									}
 								});
 								jQuery('.colorpicker').css('z-index','999999');
 							})
@@ -237,7 +249,6 @@ if(!class_exists('Ultimate_Gradient_Param'))
 	}
 }
 
-if(class_exists('Ultimate_Gradient_Param'))
-{
-	$Ultimate_Gradient_Param = new Ultimate_Gradient_Param();
+if ( class_exists( 'Ultimate_Gradient_Param' ) ) {
+	$ultimate_gradient_param = new Ultimate_Gradient_Param();
 }

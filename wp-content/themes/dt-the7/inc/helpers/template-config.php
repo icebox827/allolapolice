@@ -131,6 +131,7 @@ if ( ! function_exists( 'presscore_config_populate_archive_vars' ) ) :
 		$config->set( 'all_the_same_width', true );
 		$config->set( 'item_padding', 10 );
 
+
 		if ( is_home() ) {
 			$config->set( 'sidebar_position', 'right' );
 			$config->set( 'footer_show', true );
@@ -657,6 +658,18 @@ if ( ! function_exists( 'presscore_config_get_theme_option' ) ) :
 			'header.transparent.color_scheme'                     => array( 'option', 'page_title-background-style-transparent-color_scheme' ),
 			'header.layout'                                       => array( 'option', 'header-layout', 'inline' ),
 			'header.navigation'                                       => array( 'option', 'header_navigation' ),
+			'header.hamburger.caption'                                => array( 'option', 'header-menu_icon-caption' ),
+			'header.hamburger.caption.text'                                => array( 'option', 'header-menu_icon-caption-text' ),
+			'header.hamburger.bg'                                => array( 'option', 'header-menu_icon-bg' ),
+			'header.hamburger.bg.hover'                                => array( 'option', 'header-menu_icon-bg-hover' ),
+			'header.hamburger.border'                                => array( 'option', 'header-menu_icon-border' ),
+			'header.hamburger.border.hover'                                => array( 'option', 'header-menu_icon-border-hover' ),
+			'header.hamburger.close.bg'                                => array( 'option', 'header-menu_close_icon-bg' ),
+			'header.hamburger.close.bg.hover'                                => array( 'option', 'header-menu_close_icon-bg-hover' ),
+			'header.hamburger.close.border'                                => array( 'option', 'header-menu_close_icon-border' ),
+			'header.hamburger.close.border.hover'                                => array( 'option', 'header-menu_close_icon-border-hover' ),
+
+			'header.close.hamburger.caption'                                => array( 'option', 'header-menu-close_icon-caption' ),
 			'header.mobile.logo.first_switch.layout'              => array( 'option', 'header-mobile-first_switch-layout' ),
 			'header.mobile.logo.second_switch.layout'             => array( 'option', 'header-mobile-second_switch-layout' ),
 			'header.mobile.logo.first_switch'                     => array( 'option', 'header-mobile-first_switch-logo', 'mobile' ),
@@ -665,6 +678,22 @@ if ( ! function_exists( 'presscore_config_get_theme_option' ) ) :
 			'header.mobile.menu.align'                            => array( 'option', 'header-mobile-menu-align', 'left' ),
 			'header.mobile.menu_icon.size'                              => array( 'option', 'header-mobile-menu_icon-size' ),
 			'header.mobile.menu_icon.bg.enable'                              => array( 'option', 'header-mobile-menu_icon-bg-enable' ),
+			'header.mobile.menu_icon.hover.bg.enable'                              => array( 'option', 'header-mobile-menu_icon-bg-hover' ),
+			'header.mobile.menu_icon.border.enable'                              => array( 'option', 'header-mobile-menu_icon-border' ),
+			'header.mobile.menu_icon.hover.border.enable'                              => array( 'option', 'header-mobile-menu_icon-border-hover' ),
+			'header.mobile.hamburger.caption'                                => array( 'option', 'header-mobile-menu_icon-caption' ),
+			'header.mobile.hamburger.caption.text'                                => array( 'option', 'header-mobile-menu_icon-caption-text' ),
+			'header.mobile.decoration'                                   => array( 'option', 'header-mobile-decoration', 'shadow' ),
+
+			'header.mobile.close.hamburger.caption'                                => array( 'option', 'header-mobile-menu-close_icon-caption' ),
+			'header.mobile.close.hamburger.caption.text'                                => array( 'option', 'header-mobile-menu-close_icon-caption-text' ),
+			'header.mobile.menu-close_icon.size'                              => array( 'option', 'header-mobile-menu-close_icon-size' ),
+			'header.mobile.menu-close_icon.position'                              => array( 'option', 'header-mobile-menu-close_icon-position' ),
+			'header.mobile.hamburger.close.bg'                                => array( 'option', 'header-mobile-menu_close_icon-bg' ),
+			'header.mobile.hamburger.close.bg.hover'                                => array( 'option', 'header-mobile-menu_close_icon-bg-hover' ),
+			'header.mobile.hamburger.close.border'                                => array( 'option', 'header-mobile-menu_close_icon-border' ),
+			'header.mobile.hamburger.close.border.hover'                                => array( 'option', 'header-mobile-menu_close_icon-border-hover' ),
+
 			'header.menu.submenu.parent_clickable'                => array( 'option', 'header-menu-submenu-parent_is_clickable', true ),
 			'header.menu.hover.decoration.style'                  => array( 'option', 'menu-decoration_style', '' ),
 			'header.decoration'                                   => array( 'option', 'header-decoration', 'shadow' ),
@@ -703,6 +732,8 @@ if ( ! function_exists( 'presscore_config_get_theme_option' ) ) :
 
 		$config->set( 'template.footer.layout', of_get_option( 'footer-layout', '1/4+1/4+1/4+1/4' ) );
 		$config->set( 'template.footer.decoration', of_get_option( 'footer-decoration', 'none' ) );
+
+		$config->set( 'page.bg', of_get_option( 'general-bg_fixed' ) );
 
 		// bottom bar
 		$config->set( 'template.bottom_bar.enabled', of_get_option( 'bottom_bar-enabled' ) );
@@ -767,6 +798,9 @@ if ( ! function_exists( 'presscore_config_get_theme_option' ) ) :
 			'header.decoration'                                        => array( 'option', 'header-decoration' ),
 			'header.mixed.decoration'                                  => array( 'option', 'header-mixed-decoration' ),
 			'header.mixed.menu_icon.size'                              => array( 'option', 'header-menu_icon-size' ),
+			'header.mixed.menu-close_icon.size'                              => array( 'option', 'header-menu-close_icon-size' ),
+			'header.mixed.menu-close_icon.position'                              => array( 'option', 'header-menu-close_icon-position' ),
+			
 			'header.mixed.view'                                        => array( 'option', "{$header}layout" ),
 			'header.mixed.navigation'                                  => array( 'option', 'header_navigation' ),
 			'header.mixed.view.menu_icon.floating_logo.enabled'        => array( 'option', "layout-menu_icon-show_floating_logo" ),
@@ -774,8 +808,7 @@ if ( ! function_exists( 'presscore_config_get_theme_option' ) ) :
 			'header.mixed.view.top_line.is_fullwidth'                  => array( 'option', "layout-top_line-is_fullwidth" ),
 			'header.mixed.view.top_line.is_sticky'                     => array( 'option', "layout-top_line-is_sticky" ),
 			'header.mixed.view.top_line.logo.position'                 => array( 'option', "layout-top_line-logo-position" ),
-			'header.mixed.view.side_line.position'                     => array( 'option', "layout-side_line-position" ),
-			'header.mixed.view.side_line_v.position'                     => array( 'option', "layout-side_line-v_position" ),
+			
 			'header.mixed.floating_top-bar.enabled'                => array( 'option', 'header-mixed-floating-top-bar', '0' ),
 		) );
 	}

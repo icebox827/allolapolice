@@ -212,7 +212,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'standard',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 		),
 		array(
 			'heading' => __('Show all pages in paginator', 'the7mk2'),
@@ -263,7 +263,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'js_pagination',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 		),
 		array(
 			'heading' => __('Show all pages in paginator', 'the7mk2'),
@@ -314,7 +314,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'js_more',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 		),
 		array(
 			'heading' => __('Gap before pagination', 'the7mk2'),
@@ -351,7 +351,7 @@ return array(
 				'element' => 'loading_mode',
 				'value'	=> 'js_lazy_loading',
 			),
-			'description' => __('Leave empty to use number from wp settings.', 'the7mk2'),
+			'description' => __('Leave empty to use value from the WP Reading settings.', 'the7mk2'),
 		),
 		array(
 			'heading' => __( 'Categorization', 'the7mk2' ),

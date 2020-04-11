@@ -274,7 +274,7 @@ class Presscore_Inc_Widgets_ContactForm extends WP_Widget {
 		$instance['button_size'] = in_array( $instance['button_size'], array( 's', 'm', 'l' ) ) ? $instance['button_size'] : self::$widget_defaults['button_size'];
 		$instance['button_title'] = esc_html( $instance['button_title'] );
 
-		$instance['terms'] = (bool) $new_instance['terms'];
+		$instance['terms'] = isset( $new_instance['terms'] );
 		$terms_msg = $new_instance['terms_msg'] ? $new_instance['terms_msg'] : self::$widget_defaults['terms_msg'];
 		$instance['terms_msg'] = wp_kses_post( $terms_msg );
 

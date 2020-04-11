@@ -190,9 +190,19 @@ if ( ! class_exists( 'DT_Shortcode_GalleryMasonry', false ) ):
 									'class'				=> ' rollover-click-target rollover',
 									'img_description'	=> get_the_content(),
 									'title'				=> $thumb_title,
-									'options'			=> presscore_set_image_dimesions(),
 									'wrap'				=> '<a %HREF% %CLASS% %TITLE% data-dt-img-description="%RAW_IMG_DESCRIPTION%"  data-large_image_width="' . $thumb_meta[1] . '" data-large_image_height = "' . $thumb_meta[2]. '" %CUSTOM%><img %IMG_CLASS% %SRC% %ALT% %SIZE% /><span class="gallery-rollover">' . $show_icon_zoom . '</span></a>'
 								);
+
+								if ( 'browser_width_based' === $this->get_att( 'responsiveness' ) ) {
+									$image_is_wide         = false;
+									$thumb_args['options'] = the7_calculate_bwb_image_resize_options(
+										DT_VCResponsiveColumnsParam::decode_columns( $this->get_att( 'bwb_columns' ) ),
+										$this->get_att( 'gap_between_posts' ),
+										$image_is_wide
+									);
+								} else {
+									$thumb_args['options'] = presscore_set_image_dimesions();
+								}
 
 								$video_url = presscore_get_image_video_url( $img_id );
 								$image_link = presscore_get_image_link( $img_id );

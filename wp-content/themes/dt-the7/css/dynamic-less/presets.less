@@ -9,7 +9,6 @@
 .transparent:not(.photo-scroller-album) .masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on),
 .transparent .sticky-on.masthead.masthead-mobile {
 	border: none;
-	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 }
 	/*Hamburger icon*/
@@ -89,7 +88,7 @@
 	.classic-search input::placeholder,
 	.animate-search-width input::placeholder {
 		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on) & {
-			color: #fff;
+			color: #fff !important;
 		}
 	}
 	/*classic navigation bg color*/
@@ -153,15 +152,64 @@
 	.hover-line-decoration > li.dt-hovered:not(.act) > a .decoration-line,
 	.dt-mobile-menu-icon .lines,
 	.dt-mobile-menu-icon .lines:before,
-	.dt-mobile-menu-icon .lines:after {
+	.dt-mobile-menu-icon .lines:after
+	 {
 		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) & {
 			background-color: rgba(255,255,255,1);
 			background-image: none;
 		}
 	}
-	.dt-mobile-menu-icon:not(.floating-btn) {
+
+	.menu-line:after,
+	.menu-line:before {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on) & {
+			background: rgba(255,255,255,1) !important;
+		}
+	}
+	//.dt-mobile-menu-icon:not(.floating-btn)
+	.dt-mobile-menu-icon:not(.floating-btn):before {
 		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).mobile-menu-icon-bg-on & {
+			background: rgba(255,255,255,0.3) !important;
+		}
+	}
+	.dt-mobile-menu-icon:not(.floating-btn):after {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).mobile-menu-icon-hover-bg-on & {
 			background: rgba(255,255,255,0.25) !important;
+		}
+	}
+	.dt-mobile-menu-icon:not(.floating-btn):after {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).mobile-menu-icon-hover-border-enable & {
+			border-color: rgba(255,255,255,0.25) !important;
+		}
+	}
+	.dt-mobile-menu-icon:not(.floating-btn):hover .menu-line {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on):not(.animate-color-mobile-menu-icon):not(.two-line-mobile-menu-icon) & {
+			background: rgba(255,255,255,1) !important;
+		}
+	}
+	 .menu-toggle:before {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).hamburger-bg-enable & {
+			background: rgba(255,255,255,0.3) !important;
+		}
+	}
+	.dt-mobile-menu-icon:not(.floating-btn):before {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).mobile-menu-icon-border-enable & {
+			border-color: rgba(255,255,255,0.3) !important;
+		}
+	}
+	.menu-toggle:after {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).hamburger-bg-hover-enable & {
+			background: rgba(255,255,255,0.25) !important;
+		}
+	}
+	 .menu-toggle:before {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).hamburger-border-enable & {
+			border-color: rgba(255,255,255,0.3) !important;
+		}
+	}
+	.menu-toggle:after {
+		.light-preset-color.masthead:not(#phantom):not(.sticky-on):not(.sticky-mobile-on):not(.sticky-top-line-on).hamburger-border-hover-enable & {
+			border-color: rgba(255,255,255,0.25) !important;
 		}
 	}
 	/*Main navigation arrow color*/

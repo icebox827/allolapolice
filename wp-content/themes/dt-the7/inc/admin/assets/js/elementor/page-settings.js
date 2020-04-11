@@ -32,10 +32,26 @@ jQuery(function ($) {
         return $(controlsHTML);
     }
 
-    function addControls($el, controls) {
-        var $controlsOverlay = getControlsOverlay(controls);
+    function removeAllControls() {
+        var iframe = $("#elementor-preview-iframe").first().contents();
+        var $the7overlays = $(".the7-elementor-overlay-active", iframe);
+        $the7overlays.find(".the7-elementor-overlay").remove();
+        $the7overlays.removeClass("the7-elementor-overlay-active");
+    }
 
-        // Add events.
+    function addControls($el, controls) {
+        var $controlsOverlay;
+
+        controls = controls.filter(function(control) {
+            return !control.section || elementor.settings.page.model.controls[control.section];
+        });
+
+        if (!controls) {
+            return;
+        }
+
+        $controlsOverlay = getControlsOverlay(controls);
+
         controls.forEach(function (control) {
             if (control.events) {
                 var events = control.events;
@@ -50,15 +66,29 @@ jQuery(function ($) {
         $el.append($controlsOverlay);
     }
 
-    elementor.on("preview:loaded", function () {
-        setTimeout(function () {
-            var iframe = $("#elementor-preview-iframe").first().contents();
+    elementor.on("document:loaded", function (document) {
+        var iframe = $("#elementor-preview-iframe").first().contents();
+        var $elementorEditor = $(".elementor-editor-active #content > .elementor", iframe);
 
+        removeAllControls();
+
+        $(".transparent .masthead", iframe).hover(
+            function () {
+                $(this).hasClass("sticky-off") && $elementorEditor.children(".elementor-document-handle").addClass("visible");
+
+            },
+            function () {
+                $(this).hasClass("sticky-off") && $elementorEditor.children(".elementor-document-handle").removeClass("visible");
+            }
+        );
+
+        if (($("body.elementor-editor-footer")[0] === undefined) && ($("body.elementor-editor-header")[0]  === undefined)){
             addControls($("#sidebar", iframe), [
                 {
                     action: "edit",
                     title: "Edit Sidebar",
                     icon: "eicon-edit",
+                    section: "the7_document_sidebar",
                     events: {
                         click: function () {
                             activateEditorPageSettingsSection("the7_document_sidebar");
@@ -69,26 +99,30 @@ jQuery(function ($) {
                 }
             ]);
 
-            addControls($("#footer > .wf-wrap > .wf-container-footer > .wf-container", iframe), [
-                {
-                    action: "edit",
-                    title: "Edit Footer",
-                    icon: "eicon-edit",
-                    events: {
-                        click: function () {
-                            activateEditorPageSettingsSection("the7_document_footer");
+            if ($("#footer.elementor-footer", iframe)[0] === undefined){
+                addControls($("#footer > .wf-wrap > .wf-container-footer > .wf-container", iframe), [
+                    {
+                        action: "edit",
+                        title: "Edit Footer",
+                        icon: "eicon-edit",
+                        section: "the7_document_footer",
+                        events: {
+                            click: function () {
+                                activateEditorPageSettingsSection("the7_document_footer");
 
-                            return false;
+                                return false;
+                            }
                         }
                     }
-                }
-            ]);
+                ]);
+            }
 
             addControls($(".masthead, .page-title", iframe), [
                 {
                     action: "edit",
                     title: "Edit Title",
                     icon: "eicon-edit",
+                    section: "the7_document_title_section",
                     events: {
                         click: function () {
                             activateEditorPageSettingsSection("the7_document_title_section");
@@ -98,27 +132,40 @@ jQuery(function ($) {
                     }
                 }
             ]);
-
-        }, 10);
-    });
-
-    elementor.settings.page.model.on("change", function (settings) {
-        var the7Settings = arrayIntersect(Object.keys(settings.changed), the7Elementor.controlsIds);
-
-        clearTimeout(autoSaveTimeout);
-        if (the7Settings.length > 0) {
-            autoSaveTimeout = setTimeout(function () {
-                elementor.saver.saveAutoSave({
-                    onSuccess: function onSuccess() {
-                        elementor.reloadPreview();
-                        elementor.once("preview:loaded", function () {
-                            if (settings.controls[the7Settings[0]]) {
-                                activateEditorPageSettingsSection(settings.controls[the7Settings[0]].section);
-                            }
-                        });
-                    }
-                });
-            }, 300);
         }
+        elementor.settings.page.model.on("change", function (settings) {
+            var iframe = $("#elementor-preview-iframe").first().contents();
+            var the7Settings = arrayIntersect(Object.keys(settings.changed), the7Elementor.controlsIds);
+
+            var tobBarColor = settings.changed.the7_document_disabled_header_top_bar_color || settings.changed.the7_document_fancy_header_top_bar_color;
+            var headerBgColor = settings.changed.the7_document_disabled_header_backgraund_color || settings.changed.the7_document_fancy_header_backgraund_color;
+
+            if (tobBarColor !== undefined) {
+                $(".top-bar .top-bar-bg", iframe).css("background-color", tobBarColor);
+            }
+
+            if (headerBgColor !== undefined) {
+                $(".masthead.inline-header, .masthead.classic-header, .masthead.split-header, .masthead.mixed-header", iframe).css("background-color", headerBgColor);
+            }
+
+            clearTimeout(autoSaveTimeout);
+            if (the7Settings.length > 0) {
+                autoSaveTimeout = setTimeout(function () {
+                    elementor.saver.saveAutoSave({
+                        onSuccess: function onSuccess() {
+                            elementor.reloadPreview();
+                            elementor.once("preview:loaded", function () {
+                                if (!settings.controls[the7Settings[0]]) {
+                                    return;
+                                }
+                                setTimeout(function () {
+                                    activateEditorPageSettingsSection(settings.controls[the7Settings[0]].section);
+                                });
+                            });
+                        }
+                    });
+                }, 300);
+            }
+        });
     });
 });

@@ -5,8 +5,6 @@
 .side-header .main-nav > li > a.mega-menu-img-top_align_left,
 .side-header .mini-nav li > a.mega-menu-img-top,
 .side-header .mini-nav li > a.mega-menu-img-top_align_left {
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
@@ -22,11 +20,8 @@
 }
 .sub-downwards .sub-nav li.hide-mega-title > a.mega-menu-img-top,
 .sub-downwards .sub-nav li.hide-mega-title > a.mega-menu-img-top_align_left {
-  display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
@@ -86,12 +81,9 @@
   visibility: hidden;
   opacity: 0;
   padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 .main-nav .dt-mega-menu-wrap {
-  -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
   box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
 }
 .top-header.floating-navigation-below-slider .main-nav > li > .dt-mega-menu-wrap.bottom-overflow {
@@ -152,13 +144,9 @@
 }
 .masthead:not(.sub-downwards) .dt-mega-menu .dt-mega-menu-wrap .dt-mega-parent {
   position: static;
-  display: -webkit-inline-flex;
-  display: -moz-inline-flex;
   display: -ms-inline-flexbox;
   display: -ms-inline-flex;
   display: inline-flex;
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
   padding: 0 10px 0;
@@ -176,7 +164,6 @@
   border-radius: none;
 }
 .dt-mega-menu .sub-nav .dt-mega-parent:hover > a {
-  -webkit-border-radius: 0;
   border-radius: 0;
 }
 .dt-mega-menu .sub-nav .dt-mega-parent > a {
@@ -194,7 +181,6 @@
   max-width: 100%;
   padding: 0;
   background: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .rtl .masthead:not(.sub-downwards) .dt-mega-menu .dt-mega-parent .sub-nav,
@@ -224,7 +210,6 @@
   padding: 0;
 }
 .menu-item .dt-mega-menu-wrap > .sub-nav {
-  -webkit-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
 }
 .menu-item.show-mega-menu-content .dt-mega-menu-wrap > .sub-nav {
@@ -232,11 +217,9 @@
   opacity: 1;
 }
 .dt-mega-menu-wrap > .sub-nav {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: -ms-flex;
   display: flex;
-  -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
 }
@@ -289,8 +272,6 @@
 }
 .mega-menu-img-right_top,
 .mega-menu-img-left_top {
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
@@ -298,39 +279,32 @@
 .mobile-main-nav .mega-menu-img-right_top,
 .masthead:not(.sub-downwards) .dt-mega-parent > .mega-menu-img-left_top,
 .mobile-main-nav .mega-menu-img-left_top {
-  -webkit-align-content: flex-start;
-  -moz-align-content: flex-start;
   -ms-align-content: flex-start;
   align-content: flex-start;
 }
 .mobile-main-nav .mega-menu-img-right_top,
 .mobile-main-nav .mega-menu-img-left_top {
-  -webkit-align-items: flex-start;
   -ms-align-items: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
 }
 .mega-menu-img-right_top .menu-item-text,
 .mega-menu-img-left_top .menu-item-text {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: -ms-flex;
   display: flex;
-  -webkit-align-items: center;
   -ms-align-items: center;
   -ms-flex-align: center;
   align-items: center;
 }
 .masthead:not(.sub-downwards) .mega-menu-img-right_top .menu-item-text,
 .masthead:not(.sub-downwards) .mega-menu-img-left_top .menu-item-text {
-  -webkit-align-self: flex-start;
   -ms-align-self: flex-start;
   -ms-flex-item-align: flex-start;
   align-self: flex-start;
 }
 .masthead:not(.sub-downwards) .mega-menu-img-right_top .subtitle-text,
 .masthead:not(.sub-downwards) .mega-menu-img-left_top .subtitle-text {
-  -webkit-align-self: flex-start;
   -ms-align-self: flex-start;
   -ms-flex-item-align: flex-start;
   align-self: flex-start;
@@ -338,8 +312,6 @@
 }
 .mega-menu-img-right,
 .mega-menu-img-left {
-  -webkit-flex-flow: row nowrap;
-  -moz-flex-flow: row nowrap;
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
 }
@@ -362,14 +334,10 @@
 }
 .top-header .main-nav > li:not(.dt-mega-parent) > a.mega-menu-img-top,
 .top-header .main-nav > li:not(.dt-mega-parent) > a.mega-menu-img-top_align_left {
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
 .masthead:not(.sub-downwards) .main-nav > li:not(.dt-mega-parent) > a.mega-menu-img-top_align_left {
-  -webkit-align-items: flex-start;
-  -moz-align-items: flex-start;
   -ms-align-items: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
@@ -379,15 +347,11 @@
 }
 .top-header .sub-nav > li:not(.dt-mega-parent) > a.mega-menu-img-top,
 .top-header .sub-nav > li:not(.dt-mega-parent) > a.mega-menu-img-top_align_left {
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
 .sub-nav > li:not(.dt-mega-parent) > a.mega-menu-img-right_top,
 .sub-nav > li:not(.dt-mega-parent) > a.mega-menu-img-right {
-  -webkit-align-content: flex-start;
-  -moz-align-content: flex-start;
   -ms-align-content: flex-start;
   align-content: flex-start;
 }
@@ -396,8 +360,6 @@
 .masthead:not(.sub-downwards) .sub-nav > li > a.mega-menu-img-right .menu-item-text,
 .dt-mobile-header .sub-nav > li > a.mega-menu-img-right .menu-item-text {
   width: 100%;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
   -ms-flex-pack: space-between;
   -ms-justify-content: space-between;
   justify-content: space-between;
@@ -406,11 +368,8 @@
   text-align: center;
 }
 .sub-downwards.h-center .sub-nav > li > a.mega-menu-img-top {
-  -webkit-flex-flow: column wrap;
-  -moz-flex-flow: column wrap;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: -ms-flex;
   display: flex;
@@ -498,7 +457,7 @@
   display: inline-block;
 }
 .main-nav .dt-mega-menu .sub-nav .dt-mega-parent > a > i,
-.main-nav .dt-mega-menu .sub-nav .dt-mega-parent > a > span > i {
+.main-nav .dt-mega-menu .sub-nav .dt-mega-parent > a > span i {
   font-size: 16px;
   color: #333333;
 }

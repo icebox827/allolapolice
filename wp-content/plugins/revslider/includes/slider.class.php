@@ -1,186 +1,343 @@
 <?php
 /**
  * @author    ThemePunch <info@themepunch.com>
- * @link      http://www.themepunch.com/
- * @copyright 2015 ThemePunch
+ * @link      https://www.themepunch.com/
+ * @copyright 2019 ThemePunch
  */
 
-if( !defined( 'ABSPATH') ) exit();
+if(!defined('ABSPATH')) exit();
 
-class RevSliderSlider extends RevSliderElementsBase{
-
-	const DEFAULT_POST_SORTBY = "ID";
-	const DEFAULT_POST_SORTDIR = "DESC";
+class RevSliderSlider extends RevSliderFunctions {
 	
-	const VALIDATE_NUMERIC = "numeric";
-	const VALIDATE_EMPTY = "empty";
-	const FORCE_NUMERIC = "force_numeric";
+	public $id;
+	public $title;
+	public $alias;
+	public $settings = array();
+	public $params = array();
+	public $slides;
+	public $type;
+	public $inited = false;
+	public $map;
 	
-	const SLIDER_TYPE_GALLERY = "gallery";
-	const SLIDER_TYPE_POSTS = "posts";
-	const SLIDER_TYPE_TEMPLATE = "template";
-	const SLIDER_TYPE_ALL = "all";
+	/**
+	 * used to determinate if we need to init the layers of the Slides
+	 * can cause heavy ram usage on slider overview page if we have 100+ Sliders
+	 **/
+	public $init_layer = true;
 	
-	private $slider_version = 5;
-	private $id;
-	private $title;
-	private $alias;
-	private $arrParams;
-	private $settings;
-	private $arrSlides = array();
 	
 	public function __construct(){
-		parent::__construct();
+		$this->map = array();
+	}
+	
+	/**
+	 * START: DEPRECATED FUNCTIONS THAT ARE IN HERE FOR OLD ADDONS TO WORK PROPERLY
+	 **/
+	 
+	/**
+	 * old version of get_param();
+	 * added for compatibility with old AddOns
+	 **/
+	public function getParam($key, $default = '', $validateType = null, $title = ''){
+		//echo '<!-- Slider Revolution Notice: Please do not use RevSliderSlider->getParam() anymore, use RevSliderSlider->get_param() instead -->'."\n";
+		return $this->get_param($key, $default);
+	}
+	
+	/**
+	 * old version of get_param();
+	 * added for compatibility with old AddOns
+	 **/
+	public function getParams(){
+		//echo '<!-- Slider Revolution Notice: Please do not use RevSlider->getParams() anymore, use RevSliderSlider->get_params() instead -->'."\n";
+		return $this->get_params();
+	}
+	
+	/**
+	 * old version of get_id();
+	 * added for compatibility with old AddOns
+	 **/
+	public function getID(){
+		//echo '<!-- Slider Revolution Notice: Please do not use RevSliderSlider->getID() anymore, use RevSliderSlider->get_id() instead -->'."\n";
+		return $this->get_id();
+	}
+	
+	/**
+	 * old version of get_sliders();
+	 * added for compatibility with old AddOns
+	 **/
+	public function getArrSliders($templates = false){
+		//echo '<!-- Slider Revolution Notice: Please do not use RevSliderSlider->getArrSliders() anymore, use RevSliderSlider->get_sliders() instead -->'."\n";
+		return $this->get_sliders($templates);
+	}
+	
+	/**
+	 * old version of init_by_mixed();
+	 * added for compatibility with old Themes
+	 **/
+	public function initByMixed($mixed){
+		$this->init_by_mixed($mixed);
+	}
+	
+	/**
+	 * old version of init_by_id();
+	 * added for compatibility with old AddOns
+	 **/
+	public function initByID($sid){
+		//echo '<!-- Slider Revolution Notice: Please do not use RevSlider->initByID() anymore, use RevSliderSlider->init_by_id() instead -->'."\n";
+		$this->init_by_id($sid);
+	}
+	
+	/**
+	 * old version of initByAlias();
+	 */
+	public function initByAlias($alias){
+		$this->init_by_alias($alias);
+	}
+	
+	/**
+	 * old version of get_alias();
+	 */
+	public function getAlias(){
+		return $this->get_alias();
+	}
+	
+	/**
+	 * old version of check_alias();
+	 */
+	public function isAliasExistsInDB($alias){
+		return $this->check_alias($alias);
+	}
+	
+	/**
+	 * old version of get_shortcode();
+	 */
+	public function getShortcode(){
+		return $this->get_shortcode();
+	}
+	
+	/**
+	 * old version of get_first_slide_id_from_gallery();
+	 */
+	public function getFirstSlideIdFromGallery(){
+		return $this->get_first_slide_id_from_gallery();
+	}
+	
+	/**
+	 * old version of is_posts();
+	 */
+	public function isSlidesFromPosts(){
+		return $this->is_posts();
+	}
+	
+	/**
+	 * old version of is_stream();
+	 */
+	public function isSlidesFromStream(){
+		return $this->is_stream();
+	}
+	
+	/**
+	 * used in featured addon 
+	 **/
+	public function getNumSlidesRaw(){
+		return $this->get_slides();
+	}
+	
+	/**
+	 * used in featured addon 
+	 **/
+	public function getNumSlides(){
+		return $this->get_slides();
+	}
+	
+	/**
+	 * used in featured addon 
+	 * old version of get_wanted_slides();
+	 * @obsolete: $published obsolete
+	 **/
+	public function getNumRealSlides($published = false, $type = 'post'){
+		return $this->get_wanted_slides($type);
+	}
+	
+	/**
+	 * old version of get_title();
+	 */
+	public function getTitle(){
+		return $this->get_title();
+	}
+	
+	/**
+	 * old version of get_sliders_short();
+	 */		
+	public function getArrSlidersShort($exclude_id = null, $filter = 'all'){
+		return $this->get_sliders_short($exclude_id, $filter);
+	}
+	
+	/**
+	 * old version of init_by_data();
+	 */
+	public function initByDBData($data){
+		$this->init_by_data($data);
+	}
+	
+	/**
+	 * old version of alias_exists();
+	 */
+	public static function isAliasExists($alias, $return_id = false){
+		return self::alias_exists($alias, $return_id);
+	}
+	
+	/**
+	 * old version of get_slide_names();
+	 */
+	public function getArrSlideNames(){
+		return $this->get_slide_names();
+	}
+	
+	/**
+	 * this function does not exist anymore, only added for backwards compatibility,
+	 * as a theme author, please use different functionality to recreate this
+	 */
+	public function getAllSliderAliases(){
+		return array();
+	}
+	
+	/**
+	 * old version of get_slides();
+	 */
+	public function getSlidesFromGallery($published = false, $allwpml = false, $first = false){
+		return $this->get_slides($published, $allwpml, $first);
+	}
+	
+	/**
+	 * old version of import_slider();
+	 * $updateStatic is obsolete now
+	 */
+	public function importSliderFromPost($update_animation = true, $updateStatic = true, $exact_filepath = false, $is_template = false, $single_slide = false, $update_navigation = true, $install = true){
+		$i = new RevSliderSliderImport();
+		$r = $i->import_slider($update_animation, $exact_filepath, $is_template, $single_slide, $update_navigation, $install);
+		
+		return $r;
+	}
+	
+	/**
+	 * old version of delete_slider();
+	 */
+	public function deleteSlider(){
+		$this->delete_slider();
+	}
+	
+	/**
+	 * old version of get_slider_for_admin_menu();
+	 */
+	public function getAllSliderForAdminMenu(){
+		return $this->get_slider_for_admin_menu();
+	}
+	
+	/**
+	 * END: DEPRECATED FUNCTIONS THAT ARE IN HERE FOR OLD ADDONS TO WORK PROPERLY
+	 **/
+	
+	
+	/**
+	 * return the map of slide IDs
+	 **/
+	public function get_map(){
+		return $this->map;
+	}
+	 
+	/**
+	 * init by id or alias
+	 * @before: RevSliderSlider::initByMixed();
+	 */
+	public function init_by_mixed($mixed, $show_error = true){
+
+		if(is_numeric($mixed)){
+			$this->init_by_id($mixed, $show_error);
+		}else{
+			$this->init_by_alias($mixed, $show_error);
+		}
 	}
 	
 	
 	/**
-	 * 
-	 * return if the slider is inited or not
+	 * initialize the slider data by given id
+	 * before: RevSliderSlider::initByID();
 	 */
-	public function isInited(){
-		if(!empty($this->id))
-			return(true);
-			
-		return(false);
+	public function init_by_id($sid, $show_error = true){
+		global $wpdb;
+		$this->validate_numeric($sid, 'Slider ID');
+		
+		$slider_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE id = %d", $sid), ARRAY_A);
+		if(empty($slider_data) && !is_admin() && $show_error === true){
+			throw new Exception('Slider not found.');
+		}
+		
+		if(!empty($slider_data)){
+			$this->init_by_data($slider_data);
+		}
 	}
 	
 	
 	/**
-	 * 
-	 * validate that the slider is inited. if not - throw error
+	 * initialize the slider data by given alias
+	 * @before: RevSliderSlider::initByAlias();
 	 */
-	private function validateInited(){
-		if(empty($this->id))
-			RevSliderFunctions::throwError("The slider is not initialized!");
+	public function init_by_alias($alias, $show_error = true){
+		global $wpdb;
+		
+		$alias = str_replace(' ', '-', $alias); //make sure that no spaces are added
+		$slider_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE alias = %s", $alias), ARRAY_A);
+		if(empty($slider_data)){
+			$alias = str_replace('-', ' ', $alias); //go back to an very old option where an slider alias could have a space
+			$slider_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE alias = %s", $alias), ARRAY_A);
+		}
+		if(empty($slider_data) && !is_admin() && $show_error === true){
+			throw new Exception('Slider with alias '.sanitize_text_field(esc_attr($alias)).' not found.');
+		}
+		
+		if(!empty($slider_data)){
+			$this->init_by_data($slider_data);
+		}
 	}
+	
 	
 	/**
 	 * init slider by db data
+	 * before: RevSliderSlider::initByDBData
 	 */
-	public function initByDBData($arrData){
+	public function init_by_data($data){
+		$data = apply_filters('revslider_slider_init_by_data', $data);
 		
-		$this->id = $arrData["id"];
-		$this->title = $arrData["title"];
-		$this->alias = $arrData["alias"];
+		$this->id		= $this->get_val($data, 'id');
+		$this->title	= $this->get_val($data, 'title');
+		$this->alias	= $this->get_val($data, 'alias');
+		$this->settings	= (array)json_decode($this->get_val($data, 'settings'), true);
+		$this->params	= (array)json_decode($this->get_val($data, 'params'), true);
 		
-		$settings = $arrData["settings"];
-		$settings = (array)json_decode($settings);
+		$this->params['version'] = $this->get_val($this->settings, 'version');
 		
-		$this->settings = $settings;
+		$this->type		= $this->get_val($data, 'type');
+		$this->inited	= true;
 		
-		$params = $arrData["params"];
-		$params = (array)json_decode($params);
-		$params = RevSliderBase::translate_settings_to_v5($params);
-		
-		$this->arrParams = $params;
+		do_action('revslider_slider_init_by_data_post', $this);
 	}
 	
 	
 	/**
-	 * 
-	 * init the slider object by database id
-	 */
-	public function initByID($sliderID){
-		RevSliderFunctions::validateNumeric($sliderID,"Slider ID");
-		
-		try{
-			$sliderData = $this->db->fetchSingle(RevSliderGlobals::$table_sliders, $this->db->prepare("id = %s", array($sliderID)));
-		}catch(Exception $e){
-			$message = $e->getMessage();
-			echo $message;
-			exit;
-		}
-		
-		$this->initByDBData($sliderData);
-	}
-
-	/**
-	 * 
-	 * init slider by alias
-	 */
-	public function initByAlias($alias){
-
-		try{
-			$where = $this->db->prepare("alias = %s  AND `type` != 'template'", array($alias));
-			
-			$sliderData = $this->db->fetchSingle(RevSliderGlobals::$table_sliders,$where);
-			
-		}catch(Exception $e){
-			$arrAliases = $this->getAllSliderAliases();
-			$strAliases = "";
-			
-			if(!empty($arrAliases) && is_array($arrAliases)){
-				$arrAliases = array_slice($arrAliases, 0, 6); //show 6 other, will be enough
-				
-				$strAliases = "'".sanitize_text_field(implode("' or '", $arrAliases))."'";
-			}
-				
-			$errorMessage = 'Slider with alias <strong>'.sanitize_text_field(esc_attr($alias)).'</strong> not found.';
-			if(!empty($strAliases))
-				$errorMessage .= ' <br>Maybe you mean: '.$strAliases;
-				
-			RevSliderFunctions::throwError($errorMessage);
-		}
-		
-		$this->initByDBData($sliderData);
-	}
-	
-	
-	/**
-	 * 
-	 * init by id or alias
-	 */
-	public function initByMixed($mixed){
-		if(is_numeric($mixed))
-			$this->initByID($mixed);
-		else
-			$this->initByAlias($mixed);
-	}
-	
-	
-	/**
-	 * 
-	 * get data functions
-	 */
-	public function getTitle(){
-		return($this->title);
-	}
-	
-	public function getID(){
-		return($this->id);
-	}
-	
-	public function getParams(){
-		return($this->arrParams);
-	}
-	
-	/*
-	 * return Slider settings
-	 * @since: 5.0
-	 */
-	public function getSettings(){
-		return($this->settings);
-	}
-	
-	/*
-	 * return true if slider is favorite
-	 * @since: 5.0
-	 */
-	public function isFavorite(){
-		if(!empty($this->settings)){
-			if(isset($this->settings['favorite']) && $this->settings['favorite'] == 'true') return true;
-		}
-		
-		return false;
-	}
-	
-	/**
-	 * 
 	 * set slider params
 	 */
-	public function setParams($arrParams){
-		$this->arrParams = $arrParams;
+	public function set_params($params){
+		$this->params = $params;
+	}
+	
+	
+	/**
+	 * return params of current initialized Slider
+	 * before: RevSliderSlider::getParams()
+	 */
+	public function get_params(){
+		return $this->params;
 	}
 	
 	
@@ -188,2039 +345,1358 @@ class RevSliderSlider extends RevSliderElementsBase{
 	 * set specific slider param
 	 * @since: 5.1.1
 	 */
-	public function setParam($param, $value){
-		$this->arrParams[$param] = $value;
-	}
-	
-	
-	/**
-	 * 
-	 * get parameter from params array. if no default, then the param is a must!
-	 */
-	function getParam($name,$default=null,$validateType = null,$title=""){
-		
-		if($default === null){
-			$default = "";
-		}
-		
-		$value = RevSliderFunctions::getVal($this->arrParams, $name,$default);
-		
-		//validation:
-		switch($validateType){
-			case self::VALIDATE_NUMERIC:
-			case self::VALIDATE_EMPTY:
-				$paramTitle = !empty($title)?$title:$name;
-				if($value !== "0" && $value !== 0 && empty($value))
-					RevSliderFunctions::throwError("The param <strong>$paramTitle</strong> should not be empty.");
-			break;
-			case self::VALIDATE_NUMERIC:
-				$paramTitle = !empty($title)?$title:$name;
-				if(!is_numeric($value))
-					RevSliderFunctions::throwError("The param <strong>$paramTitle</strong> should be numeric. Now it's: $value");
-			break;
-			case self::FORCE_NUMERIC:
-				if(!is_numeric($value)){
-					$value = 0;
-					if(!empty($default))
-						$value = $default;
+	public function set_param($name, $value){
+		if(is_array($name)){
+			$params = &$this->params;
+			if(!empty($name)){
+				foreach($name as $key){
+					if(is_array($params)){
+						$params = &$params[$key];
+					}elseif(is_object($params)){
+						$params = &$params->$key;
+					}
 				}
-			break; 
+			}
+			$params = $value;
+		}else{
+			$this->params[$name] = $value;
 		}
-		
-		return $value;
-	}
-	
-	public function getAlias(){
-		return($this->alias);
-	}
-	
-	/**
-	 * get combination of title (alias)
-	 */
-	public function getShowTitle(){
-		$showTitle = $this->title;
-		return($showTitle);
-	}
-	
-	/**
-	 * 
-	 * get slider shortcode
-	 */
-	public function getShortcode(){
-		$shortCode = '[rev_slider alias="'.$this->alias.'"]';
-		return($shortCode);
 	}
 	
 	
 	/**
-	 * 
-	 * check if alias exists in DB
+	 * set specific slider param
+	 * @since: 5.1.1
 	 */
-	public function isAliasExistsInDB($alias){
-		
-		$where = $this->db->prepare("alias = %s ", array($alias));
-		if(!empty($this->id)){
-			
-			$where .= $this->db->prepare(" and id != %s  AND `type` != 'template'", array($this->id));
+	/*public function set_param($name, $value){
+		if(is_array($name)){
+			$n = count($name);
+			switch(count($name)){
+				case 1:
+					$this->params[$name[0]] = $value;
+				break;
+				case 2:
+					$this->params[$name[0]][$name[1]] = $value;
+				break;
+				case 3:
+					$this->params[$name[0]][$name[1]][$name[2]] = $value;
+				break;
+				case 4:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]] = $value;
+				break;
+				case 5:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]][$name[4]] = $value;
+				break;
+				case 6:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]][$name[4]][$name[5]] = $value;
+				break;
+				case 7:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]][$name[4]][$name[5]][$name[6]] = $value;
+				break;
+				case 8:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]][$name[4]][$name[5]][$name[6]][$name[7]] = $value;
+				break;
+				case 9:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]][$name[4]][$name[5]][$name[6]][$name[7]][$name[8]] = $value;
+				break;
+				case 10:
+					$this->params[$name[0]][$name[1]][$name[2]][$name[3]][$name[4]][$name[5]][$name[6]][$name[7]][$name[8]][$name[9]] = $value;
+				break;
+			}
+		}else{
+			$this->params[$name] = $value;
 		}
-		
-		
-		$response = $this->db->fetch(RevSliderGlobals::$table_sliders,$where);
-		
-		return(!empty($response));
-		
-	}
+	}*/
 	
 	
 	/**
-	 * 
-	 * check if alias exists in DB
+	 * return certain param of current initialized Slider
+	 * before: RevSliderSlider::get_param()
 	 */
-	public static function isAliasExists($alias){
-		global $wpdb;
-		
-		$response = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".RevSliderGlobals::$table_sliders." WHERE alias = %s AND `type` != 'template'", $alias));
-		
-		return(!empty($response));
-	}
-	
-	
-	/**
-	 * 
-	 * validate settings for add
-	 */
-	private function validateInputSettings($title,$alias,$params){
-		RevSliderFunctions::validateNotEmpty($title,"title");
-		RevSliderFunctions::validateNotEmpty($alias,"alias");
-		
-		if($this->isAliasExistsInDB($alias))
-			RevSliderFunctions::throwError("Some other slider with alias '$alias' already exists");
-		
-	}
-	
-	
-	/**
-	 * set new hero slide id for the Slider
-	 * @since: 5.0
-	 */
-	public function setHeroSlide($data){
-		$sliderID = RevSliderFunctions::getVal($data, "slider_id");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$this->initByID($sliderID);
-
-		$new_slide_id = RevSliderFunctions::getVal($data, "slide_id");
-		RevSliderFunctions::validateNotEmpty($new_slide_id,"Hero Slide ID");
-		
-		$this->updateParam(array('hero_active' => intval($new_slide_id)));
-		
-		return($new_slide_id);
-	}
-	
-	/**
-	 * 
-	 * create / update slider from options
-	 */
-	private function createUpdateSliderFromOptions($options, $sliderID = null){
-		
-		$arrMain = RevSliderFunctions::getVal($options, "main");
-		$params = RevSliderFunctions::getVal($options, "params");
-		
-		//trim all input data
-		$arrMain = RevSliderFunctions::trimArrayItems($arrMain);
-		
-		$params = RevSliderFunctions::trimArrayItems($params);
-		
-		$params = array_merge($arrMain,$params);
-		
-		$title = sanitize_text_field(RevSliderFunctions::getVal($arrMain, "title"));
-		$alias = sanitize_text_field(RevSliderFunctions::getVal($arrMain, "alias"));
-		
-		//params css and js check
-		if(!RevSliderFunctionsWP::isAdminUser() && apply_filters('revslider_restrict_role', true)){
-			//dont allow css and javascript from users other than administrator
-			unset($params['custom_css']);
-			unset($params['custom_javascript']);
-		}
-		
-		if(!empty($sliderID)){
-			$this->initByID($sliderID);
-			
-			if(!RevSliderFunctionsWP::isAdminUser() && apply_filters('revslider_restrict_role', true)){
-				//check for js and css, add it to $params
-				$params['custom_css'] = $this->getParam('custom_css', '');
-				$params['custom_javascript'] = $this->getParam('custom_javascript', '');
+	public function get_param($key, $default = ''){
+		if(!is_array($key)){
+			return $this->get_val($this->params, $key, $default);
+		}else{
+			$a = $this->params;
+			foreach($key as $k => $v){
+				$a = $this->get_val($a, $v, $default);
 			}
 			
+			return $a;
+		}
+	}
+	
+	
+	/*
+	 * return settings of current initialized Slider
+	 * @since: 5.0
+	 * before: RevSliderSlider::getSettings()
+	 */
+	public function get_settings(){
+		return $this->settings;
+	}
+	
+	
+	/*
+	 * return certain setting
+	 * @since: 5.0
+	 */
+	public function get_setting($handle, $default){
+		return $this->get_val($this->settings, $handle, $default);
+	}
+	
+	
+	/**
+	 * get the slider title
+	 * @before: RevSliderSlider::getTitle()
+	 */
+	public function get_title(){
+		return $this->title;
+	}
+	
+	
+	/**
+	 * get the slider alias
+	 * @before: RevSliderSlider::getAlias()
+	 */
+	public function get_alias(){
+		return $this->alias;
+	}
+	
+	
+	/**
+	 * get slider shortcode
+	 * @before: RevSliderSlider::getShortcode() 
+	 */
+	public function get_shortcode(){
+		return '[rev_slider alias="'.$this->alias.'"]';
+	}
+	
+	/**
+	 * get the slider tags
+	 * @since: 6.0
+	 */
+	public function get_tags(){
+		return $this->get_val($this->settings, 'tags', array());
+	}
+	
+	
+	/**
+	 * get the slider id
+	 * @before: RevSliderSlider::getID()
+	 */
+	public function get_id(){
+		return $this->id;
+	}
+	
+	/**
+	 * return if the slider source is from posts
+	 * @before: RevSliderSlider::isSlidesFromPosts();
+	 */
+	public function is_posts(){
+		$source = $this->get_param('sourcetype', 'gallery');
+
+		return (in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'woo'), true)) ? true : false;
+	}
+	
+	
+	/**
+	 * return if the slider source is from posts
+	 * @before: RevSliderSlider::isSlidesFromPosts();
+	 */
+	public function is_posts_pre60(){
+		$source = $this->get_param('source_type', 'gallery');
+
+		return (in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'woo'), true)) ? true : false;
+	}
+	
+	
+	/**
+	 * return if the slider source is from specific posts
+	 */
+	public function is_specific_posts(){
+		return (in_array($this->get_param('source_type', 'gallery'), array('specific_posts', 'specific_post'), true)) ? true : false;
+	}
+
+
+	/**
+	 * return if the slider source is from stream
+	 * @before: RevSliderSlider::isSlidesFromStream();
+	 */
+	public function is_stream(){
+		$source = $this->get_param('sourcetype', 'gallery');
+		
+		return (!in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'gallery'), true)) ? $source : false;
+	}
+	
+	
+	/**
+	 * return if the slider source is from stream
+	 * @since: 6.0.0
+	 */
+	public function is_stream_pre60(){
+		$source = $this->get_param('source_type', 'gallery');
+		
+		return (!in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'gallery'), true)) ? $source : false;
+	}
+	
+	/**
+	 * get real slides number, from posts, social streams ect.
+	 */
+	public function get_wanted_slides($type = 'post'){
+		$ns = count($this->slides);
+		
+		switch($type){
+			case 'post':
+				if($this->get_param(array('source', 'post', 'fetchType'), 'cat_tag') == 'next_prev'){
+					$ns = 2;
+				}else{
+					$ns = $this->get_param(array('source', 'post', 'maxPosts'), $ns);
+					if(intval($ns) == 0) $ns = '∞';
+				}
+			break;
+			case 'facebook':
+			case 'twitter':
+			case 'instagram':
+			case 'flickr':
+			case 'youtube':
+			case 'vimeo':
+				$ns = $this->get_param(array('source', $type, 'count'), $ns);
+			break;
 		}
 		
-		$this->validateInputSettings($title, $alias, $params);
+		return $ns;
+	}
+	
+	/*
+	 * return true if slider is favorite
+	 * @since: 5.0
+	 * @before: RevSliderSlider::isFavorite()
+	 * @obsolete since 6.0 as it was moved to the favorite.class.php
+	 */
+	public function is_favorite(){
+		return ($this->get_val($this->settings, 'favorite', 'false') == 'true') ? true : false;
+	}
+	
+	
+	/**
+	 * return the number of Sliders existing
+	 */
+	public function get_slider_count(){
+		global $wpdb;
 		
-		$jsonParams = json_encode($params);
+		$count = count($wpdb->get_results("SELECT COUNT(*) FROM ".$wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE `type` = '' OR `type` IS NULL", ARRAY_A));
 		
-		//insert slider to database
-		$arrData = array();
-		$arrData["title"] = $title;
-		$arrData["alias"] = $alias;
-		$arrData["params"] = $jsonParams;
-		$arrData["type"] = '';
+		return $count;
+	}
+	
+	
+	/**
+	 * get the first slide ID of the current slider
+	 * @before: RevSliderSlider::getFirstSlideIdFromGallery()
+	 */
+	public function get_first_slide_id_from_gallery(){
+		global $wpdb;
 		
-		if(empty($sliderID)){	//create slider	
+		$slides = array();
+		$record = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDES ." WHERE slider_id = %s ORDER BY slide_order ASC LIMIT 0,1", array($this->get_id())), ARRAY_A);
+		
+		if(!empty($record)){
+			$slide = new RevSliderSlide();
+			$slide->init_by_data($record);
+			$sid = $slide->get_id();
+			$slides[$sid] = $slide;
 			
-			$arrData['settings'] = json_encode(array('version' => 5.0));
-			
-			$sliderID = $this->db->insert(RevSliderGlobals::$table_sliders,$arrData);
-			return($sliderID);
-			
-		}else{	//update slider
-			$this->initByID($sliderID);
-			
-			$settings = $this->getSettings();
-			$settings['version'] = 5.0;
-			$arrData['settings'] = json_encode($settings);
-			
-			$sliderID = $this->db->update(RevSliderGlobals::$table_sliders,$arrData,array("id"=>$sliderID));
+			return $slides;
+		}
+		
+		return false;
+	}
+	
+	
+	/**
+	 * get the alias of an slider by id
+	 **/
+	public function get_alias_by_id($slider_id){
+		global $wpdb;
+		
+		$record = $wpdb->get_row($wpdb->prepare("SELECT `alias` FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE id = %s LIMIT 0,1", array($slider_id)), ARRAY_A);
+		
+		return (!empty($record)) ? $this->get_val($record, 'alias') : false;
+	}
+	
+	
+	/**
+	 * get all images that are beeing used by the Slider
+	 **/
+	public function get_images(){
+		$images = array();
+		$ret	= array();
+		$image = $this->get_val($this->params, array('layout', 'bg', 'image'));
+		$a_url = $this->get_val($this->params, array('troubleshooting', 'alternateURL'));
+		
+		if($image != '') $images[$image] = true;
+		if($a_url != '') $images[$a_url] = true;
+		
+		if(!empty($this->slides) && count($this->slides) > 0){
+			foreach($this->slides as $key => $slide){
+				$params = $slide->get_params();
+				$layers = $slide->get_layers();
+				$image	= $this->get_val($params, array('bg', 'image'));
+				$thumb	= $this->get_val($params, array('thumb', 'customThumbSrc'));
+				$a_thumb = $this->get_val($params, array('thumb', 'customAdminThumbSrc'));
+				
+				if($image != ''){
+					$altOption	 = $this->get_val($params, array('attributes', 'altOption'), 'media_library');
+					$titleOption = $this->get_val($params, array('attributes', 'titleOption'), 'media_library');
+					$alt		 = '';
+					$title		 = '';
+					switch($altOption){
+						case 'media_library';
+							$id = attachment_url_to_postid($image);
+							if($id > 0) $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
+						break;
+						case 'file_name';
+							$alt = $image;
+						break;
+						case 'custom';
+							$alt = $this->get_val($params, array('attributes', 'alt'), '');
+						break;
+					}
+					switch($titleOption){
+						case 'media_library';
+							$id = attachment_url_to_postid($image);
+							if($id > 0) $title = get_the_title($id);
+						break;
+						case 'file_name';
+							$title = $image;
+						break;
+						case 'custom';
+							$title = $this->get_val($params, array('attributes', 'title'), '');
+						break;
+					}
+					$images[$image] = array(
+						'src' => $image,
+						'alt' => $alt,
+						'title' => $title
+					);
+				}
+				if($thumb != '' && !isset($images[$thumb])) $images[$thumb] = true;
+				if($a_thumb != '' && !isset($images[$a_thumb])) $images[$a_thumb] = true;
+				
+				if(!empty($layers)){
+					foreach($layers as $layer){
+						$type		= $this->get_val($layer, 'type', 'text');
+						$image		= $this->get_val($layer, array('media', 'imageUrl'));
+						$bg_image	= $this->get_val($layer, array('idle', 'backgroundImage'));
+						
+						if($image != '' && !isset($images[$image]))	$images[$image] = true;
+						if($bg_image != '' && !isset($images[$bg_image])) $images[$bg_image] = true;
+						
+						if(in_array($type, array('video', 'audio'))){
+							$poster = $this->get_val($layer, array('media', 'posterUrl'), '');
+							if($poster != '' && !isset($images[$poster])) $images[$poster] = true;
+						}
+						if($type === 'video'){
+							$very_big	= $this->get_val($layer, array('media', 'thumbs', 'veryBig'));
+							$big		= $this->get_val($layer, array('media', 'thumbs', 'big'));
+							$large		= $this->get_val($layer, array('media', 'thumbs', 'large'));
+							$medium		= $this->get_val($layer, array('media', 'thumbs', 'medium'));
+							$small		= $this->get_val($layer, array('media', 'thumbs', 'small'));
+							
+							$very_big	= (is_array($very_big) && isset($very_big['url'])) ? $very_big['url'] : $very_big;
+							$big		= (is_array($big) && isset($big['url'])) ? $big['url'] : $big;
+							$large		= (is_array($large) && isset($large['url'])) ? $large['url'] : $large;
+							$medium		= (is_array($medium) && isset($medium['url'])) ? $medium['url'] : $medium;
+							$small		= (is_array($small) && isset($small['url'])) ? $small['url'] : $small;
+							
+							if($very_big != '' && !isset($images[$very_big])) $images[$very_big] = true;
+							if($big != '' && !isset($images[$big]))			  $images[$big] = true;
+							if($large != '' && !isset($images[$large]))		  $images[$large] = true;
+							if($medium != '' && !isset($images[$medium]))	  $images[$medium] = true;
+							if($small != '' && !isset($images[$small]))		  $images[$small] = true;
+						}
+					}
+				}
+			}
+		}
+		
+		if(!empty($images)){
+			foreach($images as $img => $b){
+				if(!is_bool($b)){
+					$ret[] = $b;
+				}else{
+					$alt = '';
+					$title = '';
+					$id = attachment_url_to_postid($img);
+					if($id > 0){
+						if($id > 0) $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
+						if($id > 0) $title = get_the_title($id);
+					}
+					$ret[] = array(
+						'src' => $img,
+						'alt' => $alt,
+						'title' => $title
+					);
+				}
+			}
+		}
+		
+		return $ret;
+	}
+	
+	
+	/**
+	 * check if alias already exists
+	 * @before: RevSliderSlider::isAliasExists()
+	 */
+	public static function alias_exists($alias, $return_id = false){
+		global $wpdb;
+		
+		$alias_exists = $wpdb->get_row($wpdb->prepare("SELECT id FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE alias = %s", $alias), ARRAY_A);
+		
+		if($return_id === true){
+			return (!empty($alias_exists)) ? $alias_exists['id'] : false;
+		}else{
+			return (!empty($alias_exists)) ? true : false;
 		}
 	}
 	
 	
 	/**
 	 * delete slider from datatase
+	 * @before RevSliderSlider::deleteSlider();
 	 */
-	public function deleteSlider(){
-		
-		$this->validateInited();
+	public function delete_slider(){
+		global $wpdb;
 		
 		//delete slider
-		$this->db->delete(RevSliderGlobals::$table_sliders, $this->db->prepare("id = %s", array($this->id)));
+		$wpdb->delete($wpdb->prefix . RevSliderFront::TABLE_SLIDER, array('id' => $this->id));
 		
 		//delete slides
-		$this->deleteAllSlides();
-		$this->deleteStaticSlide();
+		$this->delete_all_slides();
+		$this->delete_static_slide();
 	}
-
+	
+	
 	/**
-	 * 
 	 * delete all slides
+	 * @before: RevSliderSlider::deleteAllSlides();
 	 */
-	private function deleteAllSlides(){
-		$this->validateInited();
+	private function delete_all_slides(){
+		global $wpdb;
 		
-		$this->db->delete(RevSliderGlobals::$table_slides, $this->db->prepare("slider_id = %s", array($this->id)));
+		$wpdb->delete($wpdb->prefix . RevSliderFront::TABLE_SLIDES, array('slider_id' => $this->id));
 		
+		do_action('revslider_slider_delete_all_slides', $this->id);
 		do_action('revslider_slider_deleteAllSlides', $this->id);
 	}
 	
 
 	/**
-	 * 
-	 * delete all slides
+	 * delete static slide
+	 * @before: RevSliderSlider::deleteStaticSlide();
 	 */
-	public function deleteStaticSlide(){
-		$this->validateInited();
+	public function delete_static_slide(){
+		global $wpdb;
 		
-		$this->db->delete(RevSliderGlobals::$table_static_slides, $this->db->prepare("slider_id = %s", array($this->id)));
+		$wpdb->delete($wpdb->prefix . RevSliderFront::TABLE_STATIC_SLIDES, array('slider_id' => $this->id));
+		do_action('revslider_slider_delete_static_slide', $this->id);
 	}
 	
 	
 	/**
-	 * 
-	 * get all slide children
+	 * duplicate a slide by given data
+	 * @before: RevSliderSlider::duplicateSliderFromData();
 	 */
-	public function getArrSlideChildren($slideID){
-	
-		$this->validateInited();
-		$arrSlides = $this->getSlidesFromGallery();
-		if(!isset($arrSlides[$slideID]))
-			RevSliderFunctions::throwError("Slide with id: $slideID not found in the main slides of the slider. Maybe it's child slide.");
+	public function duplicate_slider_by_id($id, $is_template = false){
+		$this->validate_not_empty($id, 'Slider ID');
+		$this->init_by_id($id);
 		
-		$slide = $arrSlides[$slideID];
-		$arrChildren = $slide->getArrChildren();
-		
-		return($arrChildren);
-	}
-	
-	
-	/**
-	 * 
-	 * duplicate slider in datatase
-	 */
-	private function duplicateSlider($title = false, $prefix = false){
-		
-		$this->validateInited();
-		
-		//insert a new slider
-		$sqlSelect = $this->db->prepare("select ".RevSliderGlobals::FIELDS_SLIDER." from ".RevSliderGlobals::$table_sliders." where id = %s", array($this->id));
-		$sqlInsert = "insert into ".RevSliderGlobals::$table_sliders." (".RevSliderGlobals::FIELDS_SLIDER.") ($sqlSelect)";
-		
-		$this->db->runSql($sqlInsert);
-		$lastID = $this->db->getLastInsertID();
-		RevSliderFunctions::validateNotEmpty($lastID);
-		
-		
-		$params = $this->arrParams;
-		
-		if($title === false){
-			//get slider number:
-			$response = $this->db->fetch(RevSliderGlobals::$table_sliders);
-			$numSliders = count($response);
-			$newSliderSerial = $numSliders+1;
-			
-			$newSliderTitle = "Slider".$newSliderSerial;
-			$newSliderAlias = "slider".$newSliderSerial;
+		$title = $this->get_title();
+		if($is_template){
+			$title = str_replace(' Template', '', $title); //remove the added Template from the title in copy process
+			$talias	= $title;
 		}else{
-			if($prefix !== false){
-				$newSliderTitle = sanitize_text_field($title.' '.$params['title']);
-				$newSliderAlias = sanitize_title($title.' '.$params['title']);
-			}else{
-				$newSliderTitle = sanitize_text_field($title);
-				$newSliderAlias = sanitize_title($title);
+			$talias	= $this->get_alias();
+		}
+		
+		$ti = 1;
+		while($this->alias_exists($talias)){ //set a new alias and title if its existing in database
+			$talias = $title. ' ' .$ti;
+			$ti++;
+		}
+		
+		return $this->duplicate_slider($talias);
+	}
+	
+	
+	/**
+	 * update the Slider title
+	 */
+	public function update_title($new_title){
+		global $wpdb;
+		
+		$new_title = stripslashes(esc_html($new_title));
+		if(!empty($new_title)){
+			$this->title = $new_title;
+			
+			$return = $wpdb->update($wpdb->prefix . RevSliderFront::TABLE_SLIDER, array('title' => $this->title), array('id' => $this->id));
+		}else{
+			$return = $this->title;
+		}
+		
+		return ($return) ? $this->title : false;
+	}
+	
+	
+	/**
+	 * update the Slider Tags
+	 * @since: 6.0
+	 */
+	public function update_slider_tags($slider_id, $tags){
+		global $wpdb;
+		
+		$this->validate_not_empty($slider_id, 'Slider ID');
+		
+		$record	  = $wpdb->get_row($wpdb->prepare("SELECT `settings` FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE id = %s", $slider_id), ARRAY_A);
+		$cur_tags = array();
+		
+		if(!empty($tags)){	
+			foreach($tags as $tag){
+				$tag		= preg_replace('/ /', '-', $tag);
+				$tag		= preg_replace('/[^-0-9a-zA-Z_-]/', '', $tag);
+				$cur_tags[] = $tag;
 			}
-			// Check Duplicate Alias
-			$sqlTitle = $this->db->fetch(RevSliderGlobals::$table_sliders, $this->db->prepare("alias = %s", array($newSliderAlias)));
-			if(!empty($sqlTitle)){
-				$response = $this->db->fetch(RevSliderGlobals::$table_sliders);
-				$numSliders = count($response);
-				$newSliderSerial = $numSliders+1;
-				$newSliderTitle .= $newSliderSerial;
-				$newSliderAlias .= $newSliderSerial;	
+		}
+			
+		if(!isset($record['settings'])){
+			$record['settings'] = array();
+		}else{
+			$record['settings'] = json_decode($record['settings'], true);
+		}
+		
+		if(!isset($record['settings']['tags'])) $record['settings']['tags'] = array();
+		
+		$record['settings']['tags'] = $cur_tags;
+		$settings					= json_encode($record['settings']);
+		
+		return $wpdb->update($wpdb->prefix . RevSliderFront::TABLE_SLIDER, array('settings' => $settings), array('id' => $slider_id));
+	}
+	
+	
+	/**
+	 * get the last Slider ID
+	 * @since: 6.0
+	 */
+	public function get_last_slider_id(){
+		global $wpdb;
+		
+		$record = $wpdb->get_row("SELECT `id` FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." ORDER BY `id` DESC LIMIT 0,1", ARRAY_A);
+		$id 	= (!empty($record)) ? $this->get_val($record, 'id') : -1;
+		
+		return $id;
+	}
+	
+	
+	/**
+	 * get all slide children
+	 * @before: RevSliderSlider::getArrSlideChildren();
+	 */
+	public function get_slide_children($slide_id){
+		$slides = $this->get_slides();
+		
+		if(!isset($slides[$slide_id])){
+			$this->throw_error(__('Slide not found in the main slides of the slider. Maybe it', 'revslider'));
+		}
+		
+		$slide		= $slides[$slide_id];
+		$children	= $slide->get_children();
+		
+		return $children;
+	}
+	
+	
+	/**
+	 * get array of slide names
+	 * @before: RevSliderSlider::getArrSlideNames();
+	 */
+	public function get_slide_names(){
+		if(empty($this->slides)){
+			$this->get_slides();
+		}
+		
+		$names = array();
+		if(!empty($this->slides)){
+			foreach($this->slides as $slide){
+				$id		 = $slide->get_id();
+				$file	 = $slide->image_filename;	
+				$title	 = $slide->get_title();
+				$name	 = $title;
+				$name 	.= (!empty($file)) ? ' ('. $file .')' : '';
+				
+				$childs	 = $slide->get_child_ids();
+				
+				$names[$id] = array(
+					'name'			 => $name,
+					'arrChildrenIDs' => $childs,
+					'title'			 => $title
+				);
 			}
 		}
 		
-		//update params
+		return $names;
+	}
+	
+	
+	/**
+	 * duplicate slider in datatase
+	 * @before: RevSliderSlider::duplicateSlider();
+	 */
+	private function duplicate_slider($title = false, $prefix = false){
+		global $wpdb;
 		
-		$params["title"] = $newSliderTitle;
-		$params["alias"] = $newSliderAlias;
-		$params["shortcode"] = "[rev_slider alias=\"". $newSliderAlias ."\"]";
+		//select a slider and then duplicate it
+		$select = $wpdb->prepare("SELECT title, alias, params, type, settings FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE id = %s", array($this->id));
+		$wpdb->query("INSERT INTO ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." (title, alias, params, type, settings) (".$select.")");
 		
-		//update the new slider with the title and the alias values
-		$arrUpdate = array();
-		$arrUpdate["title"] = $newSliderTitle;
-		$arrUpdate["alias"] = $newSliderAlias;
+		//update the slider title and alias to a new one
+		$slider_last_id	= $wpdb->insert_id;
+		$params			= $this->params;
+		$this->validate_not_empty($slider_last_id, 'Slider ID');
+		$slider_counter = $this->get_slider_count(); //get last slider number
+		
+		if($title === false){
+			$slider_counter++;
+			$new_title = 'Slider'.$slider_counter;
+			$new_alias = 'slider'.$slider_counter;
+		}else{
+			$new_title = ($prefix !== false) ? sanitize_text_field($title.' '.$this->get_val($params, 'title')) : sanitize_text_field($title);
+			$new_alias = ($prefix !== false) ? sanitize_title($title.' '.$this->get_val($params, 'title')) : sanitize_title($title);
+			
+			//check if alias exists
+			$c_title = $new_title;
+			$c_alias = $new_alias;
+			while($this->alias_exists($c_alias)){
+				$c_title = $new_title . $slider_counter;
+				$c_alias = $new_alias . $slider_counter;
+				$slider_counter++;
+			}
+			$new_title = $c_title;
+			$new_alias = $c_alias;
+		}
+		
+		$params['title']	 = $new_title;
+		$params['alias']	 = $new_alias;
+		$params['shortcode'] = '[rev_slider alias="'. $new_alias .'"]';
+		
+		$wpdb->update(
+			$wpdb->prefix . RevSliderFront::TABLE_SLIDER,
+			array(
+				'title'	 => $new_title,
+				'alias'	 => $new_alias,
+				'params' => json_encode($params),
+				'type'	 => ''
+			),
+			array('id' => $slider_last_id)
+		);
 		
 		
-
-		$jsonParams = json_encode($params);
-		$arrUpdate["params"] = $jsonParams;
-
-		$arrUpdate["type"] = '';//remove the type as we do not want it to be template if it was
-
-		$this->db->update(RevSliderGlobals::$table_sliders, $arrUpdate, array("id"=>$lastID));
-		
-		//duplicate Slides
-		$slides = $this->db->fetch(RevSliderGlobals::$table_slides, $this->db->prepare("slider_id = %s", array($this->id)));
+		//duplicate slides and add them to the new Slider
+		$slides_ids = array();
+		$slides = $wpdb->get_results($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDES ." WHERE slider_id = %s", $this->id), ARRAY_A);
 		if(!empty($slides)){
 			foreach($slides as $slide){
-				$slide['slider_id'] = $lastID;
-				$myID = $slide['id'];
+				$slide['slider_id'] = $slider_last_id;
+				$slide_id = $slide['id'];
 				unset($slide['id']);
-				$last_id = $this->db->insert(RevSliderGlobals::$table_slides,$slide);
+				$wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_SLIDES, $slide);
 				
-				if(isset($myID)){
-					$slider_map[$myID] = $last_id;
+				if(isset($slide_id)){
+					$this->map[$slide_id] = $wpdb->insert_id;
 				}
 			}
 		}
 		
 		//duplicate static slide if exists
-		$slide = new RevSlide();
-		$staticID = $slide->getStaticSlideID($this->id);
-		$static_id = 0;
+		$slide		= new RevSliderSlide();
+		$staticID	= $slide->get_static_slide_id($this->id);
+		$static_id	= 0;
 		if($staticID !== false){
-			$record = $this->db->fetchSingle(RevSliderGlobals::$table_static_slides, $this->db->prepare("id = %s", array($staticID)));
+			$record = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_STATIC_SLIDES ." WHERE id = %s", $staticID), ARRAY_A);
 			unset($record['id']);
-			$record['slider_id'] = $lastID;
+			$record['slider_id'] = $slider_last_id;
 			
-			$static_id = $this->db->insert(RevSliderGlobals::$table_static_slides, $record);
+			$wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_STATIC_SLIDES, $record);
+			$static_id = $wpdb->insert_id;
+		}else{ //create static slide as there is no static slide yet
+			
 		}
-		
 		
 		//update actions
-		$slides = $this->db->fetch(RevSliderGlobals::$table_slides, $this->db->prepare("slider_id = %s", array($lastID)));
+		$slides = $wpdb->get_results($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDES ." WHERE slider_id = %s", $slider_last_id), ARRAY_A);
 		if($static_id > 0){
-			$slides_static = $this->db->fetch(RevSliderGlobals::$table_static_slides, $this->db->prepare("id = %s", array($static_id)));
-			$slides = array_merge($slides, $slides_static);
+			$slides_static = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_STATIC_SLIDES ." WHERE id = %s", $static_id), ARRAY_A);
+			if(!empty($slides_static)) $slides[] = $slides_static;
 		}
+		
 		if(!empty($slides)){
 			foreach($slides as $slide){
-				$c_slide = new RevSlide();
-				$c_slide->initByData($slide);
-				
-				$layers = $c_slide->getLayers();
-				$did_change = false;
-				foreach($layers as $key => $value){
-					if(isset($value['layer_action'])){
-						if(isset($value['layer_action']->jump_to_slide) && !empty($value['layer_action']->jump_to_slide)){
-							foreach($value['layer_action']->jump_to_slide as $jtsk => $jtsval){
-								if(isset($slider_map[$jtsval])){
-									
-									$layers[$key]['layer_action']->jump_to_slide[$jtsk] = $slider_map[$jtsval];
+				$c_slide	= new RevSliderSlide();
+				$c_slide->init_by_data($slide);
+				$layers		= $c_slide->get_layers();
+				$did_change	= false;
+				if(!empty($layers)){
+					foreach($layers as $key => $value){
+						$actions = $this->get_val($value, array('actions', 'action'));
+						
+						if(!empty($actions)){
+							foreach($actions as $a_k => $action){
+								$jtsval = $this->get_val($action, 'jump_to_slide');
+								if(isset($this->map[$jtsval])){
+									$this->set_val($layers, array($key, 'actions', 'action', $a_k, 'jump_to_slide'), $this->map[$jtsval]);
 									$did_change = true;
 								}
 							}
 						}
 					}
 				}
-				
 				if($did_change === true){
-					
-					$arrCreate = array();
-					$my_layers = json_encode($layers);
-					if(empty($my_layers))
-						$my_layers = stripslashes(json_encode($layers));
-					
-					$arrCreate['layers'] = $my_layers;
+					$create		= array();
+					$my_layers	= json_encode($layers);
+					$create['layers'] = (empty($my_layers)) ? stripslashes(json_encode($layers)) : $my_layers;
 					
 					if($slide['id'] == $static_id){
-						$this->db->update(RevSliderGlobals::$table_static_slides,$arrCreate,array("id"=>$static_id));
+						$wpdb->update($wpdb->prefix . RevSliderFront::TABLE_STATIC_SLIDES, $create, array('id' => $static_id));
 					}else{
-						$this->db->update(RevSliderGlobals::$table_slides,$arrCreate,array("id"=>$slide['id']));
+						$wpdb->update($wpdb->prefix . RevSliderFront::TABLE_SLIDES, $create, array('id' => $slide['id']));
 					}
-					
 				}
 			}
 		}
 		
 		//change the javascript api ID to the correct one
-		$c_slider = new RevSliderSlider();
-		$c_slider->initByID($lastID);
-		
-		$cus_js = $c_slider->getParam('custom_javascript', '');
+		$c_slider	= new RevSliderSlider();
+		$c_slider->init_by_id($slider_last_id);
+		$cus_js		= $c_slider->get_param(array('codes', 'javascript'), '');
 		
 		if(strpos($cus_js, 'revapi') !== false){
 			if(preg_match_all('/revapi[0-9]*/', $cus_js, $results)){
-				
 				if(isset($results[0]) && !empty($results[0])){
 					foreach($results[0] as $replace){
-						$cus_js = str_replace($replace, 'revapi'.$lastID, $cus_js);
+						$cus_js = str_replace($replace, 'revapi'.$slider_last_id, $cus_js);
 					}
 				}
 				
-				$c_slider->updateParam(array('custom_javascript' => $cus_js));
-				
+				$c_slider->update_params(array('codes' => array('javascript' => $cus_js, 'css' => $c_slider->get_param(array('codes', 'css'), ''))));
 			}
 		}
 		
-		return $lastID;
+		$upd = new RevSliderPluginUpdate();
+		$upd->upgrade_slider_to_latest($c_slider);
+		
+		return $slider_last_id;
 	}
 	
 	
 	/**
-	 * duplicate slide
+	 * update the modal id and the alias in the layer actions
+	 **/
+	public function update_modal_ids($slider_ids, $slide_ids){
+		$slides = $this->get_slides();
+		
+		if(empty($slides)) return;
+		
+		foreach($slides as $skey => $slide){
+			if(version_compare($slide->get_param('version', '1.0.0'), '6.0.0', '<')) continue;
+			$layers = $slide->get_layers();
+			
+			if(empty($layers)) continue;
+			$change = false;
+			foreach($layers as $lk => $layer){
+				$actions = $this->get_val($layer, array('actions', 'action'), array());
+			
+				if(empty($actions)) continue;
+				
+				foreach($actions as $ak => $a){
+					if($this->get_val($a, 'action', '') !== 'open_modal') continue;
+				
+					//$mm = $this->get_val($a, 'openmodal', '');
+					$v = intval($this->get_val($a, 'openmodalId', 0)); //only openmodal is set (alias), openmodalId is not set!
+					
+					if(isset($slider_ids[$v])){
+						$slider_alias = $this->get_alias_by_id($slider_ids[$v]);
+						$change = true;
+						$this->set_val($layers, array($lk, 'actions', 'action', $ak, 'openmodalId'), $slider_ids[$v]);
+						$this->set_val($layers, array($lk, 'actions', 'action', $ak, 'openmodal'), $slider_alias);
+						
+						$sv = $this->get_val($a, 'modalslide', 0);
+						if($sv !== 0){
+							$_sv = intval(str_replace('rs-', '', $sv));
+							if($_sv > 0 && isset($slide_ids[$_sv])){
+								$this->set_val($layers, array($lk, 'actions', 'action', $ak, 'modalslide'), 'rs-'.$slide_ids[$_sv]);
+							}
+						}
+					}
+				}
+			}
+			
+			if($change){
+				$slide->set_layers_raw($layers);
+				$slide->save_layers();
+			}
+		}
+	}
+	
+	
+	/**
+	 * Check if an alias exists in database
+	 * @before: RevSliderSlider::isAliasExistsInDB();
 	 */
-	public function duplicateSlide($slideID){
-		$slide = new RevSlide();
-		$slide->initByID($slideID);
-		$order = $slide->getOrder();
-		$slides = $this->getSlidesFromGallery();
-		$newOrder = $order+1;
-		$this->shiftOrder($newOrder);
+	public function check_alias($alias){
+		global $wpdb;
 		
-		//do duplication
-		$sqlSelect = $this->db->prepare("select ".RevSliderGlobals::FIELDS_SLIDE." from ".RevSliderGlobals::$table_slides." where id = %s", array(intval($slideID)));
-		$sqlInsert = "insert into ".RevSliderGlobals::$table_slides." (".RevSliderGlobals::FIELDS_SLIDE.") ($sqlSelect)";
+		$add	= (!empty($this->id)) ? $wpdb->prepare(" AND id != %s AND `type` != 'template'", array($this->id)) : '';
+		$slider	= $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE alias = %s", $alias).$add, ARRAY_A);
 		
-		$this->db->runSql($sqlInsert);
-		$lastID = $this->db->getLastInsertID();
-		RevSliderFunctions::validateNotEmpty($lastID);
-		
-		//update order
-		$arrUpdate = array("slide_order"=>$newOrder);
-		
-		$this->db->update(RevSliderGlobals::$table_slides,$arrUpdate, array("id"=>$lastID));
-		
-		return($lastID);
+		return !empty($slider);
 	}
 	
 	
 	/**
-	 * 
-	 * copy / move slide
-	 */		
-	private function copyMoveSlide($slideID,$targetSliderID,$operation){
+	 * Create a blank Slider
+	 **/
+	public function create_blank_slider(){
+		global $wpdb;
 		
-		if($operation == "move"){
-			
-			$targetSlider = new RevSlider();
-			$targetSlider->initByID($targetSliderID);
-			$maxOrder = $targetSlider->getMaxOrder();
-			$newOrder = $maxOrder+1;
-			$arrUpdate = array("slider_id"=>$targetSliderID,"slide_order"=>$newOrder);	
-			
-			//update children
-			$arrChildren = $this->getArrSlideChildren($slideID);
-			foreach($arrChildren as $child){
-				$childID = $child->getID();
-				$this->db->update(RevSliderGlobals::$table_slides,$arrUpdate,array("id"=>$childID));
-			}
-			
-			$this->db->update(RevSliderGlobals::$table_slides,$arrUpdate,array("id"=>$slideID));
-			
-		}else{	//in place of copy
-			$newSlideID = $this->duplicateSlide($slideID);
-			$this->duplicateChildren($slideID, $newSlideID);
-			
-			$this->copyMoveSlide($newSlideID,$targetSliderID,"move");
+		$title		= 'Slider ';
+		$alias		= 'slider-';
+		$counter	= 1;
+		$new_alias	= $alias.$counter;
+		
+		while($this->alias_exists($new_alias)){
+			$counter++;
+			$new_alias = $alias.$counter;
 		}
+		
+		$title .= $counter;
+		
+		//insert slider to database
+		$slider_data = array(
+			'title'		=> $title,
+			'alias'		=> $new_alias,
+			'params'	=> json_encode(array(), JSON_FORCE_OBJECT),
+			'settings'	=> json_encode(array('version' => RS_REVISION), JSON_FORCE_OBJECT),
+			'type'		=> ''
+		);
+		
+		$result		= $wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_SLIDER, $slider_data);
+		$slider_id	= ($result) ? $wpdb->insert_id : false;
+		
+		return $slider_id;
 	}
 	
 	
 	/**
-	 * 
-	 * shift order of the slides from specific order
-	 */
-	private function shiftOrder($fromOrder){
+	 * Save Slider Settings
+	 * @before: RevSliderSlider::createUpdateSliderFromOptions();
+	 **/
+	public function save_slider($slider_id, $data){
+		global $wpdb;
 		
-		$where = $this->db->prepare(" slider_id = %s and slide_order >= %s", array($this->id, $fromOrder));
-		$sql = "update ".RevSliderGlobals::$table_slides." set slide_order=(slide_order+1) where $where";
-		$this->db->runSql($sql);
+		$params		= $this->get_val($data, 'params');
+		$params 	= $this->json_decode_slashes($params);
+		$settings	= $this->get_val($data, 'settings');
+		$settings	= $this->json_decode_slashes($settings);
+		$settings['version'] = $this->get_val($params, 'version', $this->get_val($settings, 'version'));
 		
+		$title	= sanitize_text_field($this->get_val($params, 'title'));
+		$alias	= sanitize_text_field($this->get_val($params, 'alias'));
+		
+		unset($params['title']);
+		unset($params['alias']);
+		
+		$this->validate_not_empty($title, 'Title');
+		$this->validate_not_empty($alias, 'Alias');
+		
+		
+		//params css and js check
+		if(!current_user_can('administrator') && apply_filters('revslider_restrict_role', true)){
+			//dont allow css and javascript from users other than administrator
+			if(isset($params['codes']) && isset($params['codes']['css'])){
+				unset($params['codes']['css']);
+			}
+			if(isset($params['codes']) && isset($params['codes']['javascript'])){
+				unset($params['codes']['javascript']);
+			}
+		}
+		
+		if(!empty($slider_id)){
+			$this->init_by_id($slider_id);
+			
+			if(!current_user_can('administrator') && apply_filters('revslider_restrict_role', true)){
+				//check for js and css, add it to $params
+				$params['codes'] = array();
+				$params['codes']['css']			= $this->get_param(array('codes', 'css'), '');
+				$params['codes']['javascript']	= $this->get_param(array('codes', 'javascript'), '');
+			}
+		}
+		
+		if($this->check_alias($alias)){
+			$this->throw_error(__('A Slider with the given alias already exists', 'revslider'));
+		}
+		
+		//insert slider to database
+		$slider_data = array(
+			'title'		=> $title,
+			'alias'		=> $alias,
+			'params'	=> json_encode($params),
+			'settings'	=> json_encode($settings),
+			'type'		=> ''
+		);
+		
+		if(empty($slider_id)){ //create slider	
+			$result		= $wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_SLIDER, $slider_data);
+			$slider_id	= ($result) ? $wpdb->insert_id : false;
+			
+		}else{ //update slider
+			$result = $wpdb->update($wpdb->prefix . RevSliderFront::TABLE_SLIDER, $slider_data, array('id' => $slider_id));
+		}
+		
+		return $slider_id;
 	}
 	
 	
 	/**
-	 * 
-	 * create slider in database from options
-	 */
-	public function createSliderFromOptions($options){
-		$sliderID = $this->createUpdateSliderFromOptions($options,null);
-		return($sliderID);			
-	}
-	
-	
-	/**
-	 * 
-	 * export slider from data, output a file for download
-	 */
-	public function exportSlider($useDummy = false){
-		
-		$this->validateInited();
-		
-		$sliderParams = $this->getParamsForExport();
-		$arrSlides = $this->getSlidesForExport($useDummy);
-		$arrStaticSlide = $this->getStaticSlideForExport($useDummy);
-		
-		$usedCaptions = array();
-		$usedAnimations = array();
-		$usedImages = array();
-		$usedSVG = array();
-		$usedVideos = array();
-		$usedNavigations = array();
-		
-		$cfw = array();
-		if(!empty($arrSlides) && count($arrSlides) > 0) $cfw = array_merge($cfw, $arrSlides);
-		if(!empty($arrStaticSlide) && count($arrStaticSlide) > 0) $cfw = array_merge($cfw, $arrStaticSlide);
-		
-		
-		//remove image_id as it is not needed in export
-		//plus remove background image if solid color or transparent 
-		if(!empty($arrSlides)){
-			foreach($arrSlides as $k => $s){
-				if(isset($arrSlides[$k]['params']['image_id'])) unset($arrSlides[$k]['params']['image_id']);
-				if(isset($arrSlides[$k]['params']["background_type"]) && ($arrSlides[$k]['params']["background_type"] == 'solid' || $arrSlides[$k]['params']["background_type"] == "trans" || $arrSlides[$k]['params']["background_type"] == "transparent")){
-					if(isset($arrSlides[$k]['params']['background_image']))
-						$arrSlides[$k]['params']['background_image'] = '';
-				}
-			}
-		}
-		if(!empty($arrStaticSlide)){
-			foreach($arrStaticSlide as $k => $s){
-				if(isset($arrStaticSlide[$k]['params']['image_id'])) unset($arrStaticSlide[$k]['params']['image_id']);
-				if(isset($arrStaticSlide[$k]['params']["background_type"]) && ($arrStaticSlide[$k]['params']["background_type"] == 'solid' || $arrStaticSlide[$k]['params']["background_type"] == "trans" || $arrStaticSlide[$k]['params']["background_type"] == "transparent")){
-					if(isset($arrStaticSlide[$k]['params']['background_image']))
-						$arrStaticSlide[$k]['params']['background_image'] = '';
-				}
-			}
-		}
-		
-		if(!empty($cfw) && count($cfw) > 0){
-			foreach($cfw as $key => $slide){
-				//check if we are transparent and so on
-				if(isset($slide['params']['image']) && $slide['params']['image'] != '') $usedImages[$slide['params']['image']] = true; //['params']['image'] background url
-				if(isset($slide['params']['background_image']) && $slide['params']['background_image'] != '') $usedImages[$slide['params']['background_image']] = true; //['params']['image'] background url
-				if(isset($slide['params']['slide_thumb']) && $slide['params']['slide_thumb'] != '') $usedImages[$slide['params']['slide_thumb']] = true; //['params']['image'] background url
-				
-				//html5 video
-				if(isset($slide['params']['background_type']) && $slide['params']['background_type'] == 'html5'){
-					if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $usedVideos[$slide['params']['slide_bg_html_mpeg']] = true;
-					if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $usedVideos[$slide['params']['slide_bg_html_webm']] = true;
-					if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $usedVideos[$slide['params']['slide_bg_html_ogv']] = true;
-				}else{
-					if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $slide['params']['slide_bg_html_mpeg'] = '';
-					if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $slide['params']['slide_bg_html_webm'] = '';
-					if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $slide['params']['slide_bg_html_ogv'] = '';
-				}
-				
-				//image thumbnail
-				if(isset($slide['layers']) && !empty($slide['layers']) && count($slide['layers']) > 0){
-					foreach($slide['layers'] as $lKey => $layer){
-						if(isset($layer['style']) && $layer['style'] != '') $usedCaptions[$layer['style']] = true;
-						if(isset($layer['animation']) && $layer['animation'] != '' && strpos($layer['animation'], 'customin') !== false) $usedAnimations[str_replace('customin-', '', $layer['animation'])] = true;
-						if(isset($layer['endanimation']) && $layer['endanimation'] != '' && strpos($layer['endanimation'], 'customout') !== false) $usedAnimations[str_replace('customout-', '', $layer['endanimation'])] = true;
-						if(isset($layer['image_url']) && $layer['image_url'] != '') $usedImages[$layer['image_url']] = true; //image_url if image caption
-						if(isset($layer['bgimage_url']) && $layer['bgimage_url'] != '') $usedImages[$layer['bgimage_url']] = true; //image_url if background layer image
-						
-						if(isset($layer['type']) && ($layer['type'] == 'video' || $layer['type'] == 'audio')){
-							
-							$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
-							
-							if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
-
-								if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != '') $usedImages[$video_data['urlPoster']] = true;
-								
-								if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != '') $usedVideos[$video_data['urlMp4']] = true;
-								if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != '') $usedVideos[$video_data['urlWebm']] = true;
-								if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != '') $usedVideos[$video_data['urlOgv']] = true;
-								
-							}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
-								if($video_data['video_type'] == 'audio'){
-									if(isset($video_data['urlAudio']) && $video_data['urlAudio'] != '') $usedVideos[$video_data['urlAudio']] = true;
-								}else{
-									if(isset($video_data['previewimage']) && $video_data['previewimage'] != '') $usedImages[$video_data['previewimage']] = true;
-								}
-							}
-							
-							if($video_data['video_type'] != 'html5'){
-								$video_data['urlMp4'] = '';
-								$video_data['urlWebm'] = '';
-								$video_data['urlOgv'] = '';
-							}
-							if($video_data['video_type'] != 'audio'){
-								$video_data['urlAudio'] = '';
-							}
-							if(isset($layer['video_image_url']) && $layer['video_image_url'] != '') $usedImages[$layer['video_image_url']] = true;
-						}
-						
-						if(isset($layer['type']) && $layer['type'] == 'svg'){
-							if(isset($layer['svg']) && isset($layer['svg']->src)){
-								$usedSVG[$layer['svg']->src] = true;
-							}
-						}
-					}
-				}
-			}
-			
-			$d = array('usedSVG' => $usedSVG, 'usedImages' => $usedImages, 'usedVideos' => $usedVideos);
-			$d = apply_filters('revslider_exportSlider_usedMedia', $d, $cfw, $sliderParams, $useDummy); //  $arrSlides, $arrStaticSlide, 
-			
-			$usedSVG = $d['usedSVG'];
-			$usedImages = $d['usedImages'];
-			$usedVideos = $d['usedVideos'];
-		}
-		
-		$arrSliderExport = array("params"=>$sliderParams,"slides"=>$arrSlides);
-		if(!empty($arrStaticSlide))
-			$arrSliderExport['static_slides'] = $arrStaticSlide;
-		
-		$strExport = serialize($arrSliderExport);
-		
-		//$strExportAnim = serialize(RevSliderOperations::getFullCustomAnimations());
-		
-		$exportname = (!empty($this->alias)) ? $this->alias.'.zip' : "slider_export.zip";
-		
-		//add navigations if not default animation
-		if(isset($sliderParams['navigation_arrow_style'])) $usedNavigations[$sliderParams['navigation_arrow_style']] = true;
-		if(isset($sliderParams['navigation_bullets_style'])) $usedNavigations[$sliderParams['navigation_bullets_style']] = true;
-		if(isset($sliderParams['thumbnails_style'])) $usedNavigations[$sliderParams['thumbnails_style']] = true;
-		if(isset($sliderParams['tabs_style'])) $usedNavigations[$sliderParams['tabs_style']] = true;
-		$navs = false;
-		if(!empty($usedNavigations)){
-			$navs = RevSliderNavigation::export_navigation($usedNavigations);
-			if($navs !== false) $navs = serialize($navs);
-		}
-		
-		
-		$styles = '';
-		if(!empty($usedCaptions)){
-			$captions = array();
-			foreach($usedCaptions as $class => $val){
-				$cap = RevSliderOperations::getCaptionsContentArray($class);
-				//set also advanced styles here...
-				if(!empty($cap))
-					$captions[] = $cap;
-			}
-			$styles = RevSliderCssParser::parseArrayToCss($captions, "\n", true);
-		}
-		
-		$animations = '';
-		if(!empty($usedAnimations)){
-			$animation = array();
-			foreach($usedAnimations as $anim => $val){
-				$anima = RevSliderOperations::getFullCustomAnimationByID($anim);
-				if($anima !== false) $animation[] = $anima;
-				
-			}
-			if(!empty($animation)) $animations = serialize($animation);
-		}
-		
-		$usedImages = array_merge($usedImages, $usedVideos);
-		
-		$usepcl = false;
-		if(class_exists('ZipArchive')){
-			$zip = new ZipArchive;
-			$success = $zip->open(RevSliderGlobals::$uploadsUrlExportZip, ZIPARCHIVE::CREATE | ZipArchive::OVERWRITE);
-			
-			if($success !== true)
-				throwError("Can't create zip file: ".RevSliderGlobals::$uploadsUrlExportZip);
-			
-		}else{
-			//fallback to pclzip
-			require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
-			
-			$pclzip = new PclZip(RevSliderGlobals::$uploadsUrlExportZip);
-			
-			//either the function uses die() or all is cool
-			$usepcl = true;
-		}
-		
-		//add svg to the zip
-		if(!empty($usedSVG)){
-			$content_url = content_url();
-			$content_path = ABSPATH . 'wp-content';
-			$ud = wp_upload_dir();
-			$up_dir = $ud['baseurl'];
-			foreach($usedSVG as $file => $val){
-				if(strpos($file, 'http') !== false){ //remove all up to wp-content folder
-					$checkpath = str_replace($content_url, '', $file);
-
-					$checkpath2 = str_replace($up_dir, '', $file);
-					if($checkpath2 === $file){ //we have an SVG like whiteboard, fallback to older export
-						$checkpath2 = $checkpath;
-					}
-					if(is_file($content_path.$checkpath)){
-						$strExport = str_replace($file, str_replace('/revslider/assets/svg', '', $checkpath2), $strExport);
-					}
-				}
-			}
-		}
-		
-		//add images to zip
-		if(!empty($usedImages)){
-			$upload_dir = RevSliderFunctionsWP::getPathUploads();
-			$upload_dir_multisiteless = wp_upload_dir();
-			$cont_url = $upload_dir_multisiteless['baseurl'];
-			$cont_url_no_www = str_replace('www.', '', $upload_dir_multisiteless['baseurl']);
-			$upload_dir_multisiteless = $upload_dir_multisiteless['basedir'].'/';
-			
-			foreach($usedImages as $file => $val){
-				if($useDummy == "true"){ //only use dummy images
-					
-				}else{ //use the real images
-					if(strpos($file, 'http') !== false){
-						//check if we are in objects folder, if yes take the original image into the zip-
-						
-						$remove = false;
-						$checkpath = str_replace(array($cont_url, $cont_url_no_www), '', $file);
-						
-						if(is_file($upload_dir.$checkpath)){
-							if(!$usepcl){
-								$zip->addFile($upload_dir.$checkpath, 'images/'.$checkpath);
-							}else{
-								$v_list = $pclzip->add($upload_dir.$checkpath, PCLZIP_OPT_REMOVE_PATH, $upload_dir, PCLZIP_OPT_ADD_PATH, 'images/');
-							}
-							$remove = true;
-						}elseif(is_file($upload_dir_multisiteless.$checkpath)){
-							if(!$usepcl){
-								$zip->addFile($upload_dir_multisiteless.$checkpath, 'images/'.$checkpath);
-							}else{
-								$v_list = $pclzip->add($upload_dir_multisiteless.$checkpath, PCLZIP_OPT_REMOVE_PATH, $upload_dir_multisiteless, PCLZIP_OPT_ADD_PATH, 'images/');
-							}
-							$remove = true;
-						}
-						
-						if($remove){ //as its http, remove this from strexport
-							$strExport = str_replace(array($cont_url.$checkpath, $cont_url_no_www.$checkpath), $checkpath, $strExport);
-						}
-					}else{
-						if(is_file($upload_dir.$file)){
-							if(!$usepcl){
-								$zip->addFile($upload_dir.$file, 'images/'.$file);
-							}else{
-								$v_list = $pclzip->add($upload_dir.$file, PCLZIP_OPT_REMOVE_PATH, $upload_dir, PCLZIP_OPT_ADD_PATH, 'images/');
-							}
-						}elseif(is_file($upload_dir_multisiteless.$file)){
-							if(!$usepcl){
-								$zip->addFile($upload_dir_multisiteless.$file, 'images/'.$file);
-							}else{
-								$v_list = $pclzip->add($upload_dir_multisiteless.$file, PCLZIP_OPT_REMOVE_PATH, $upload_dir_multisiteless, PCLZIP_OPT_ADD_PATH, 'images/');
-							}
-						}
-					}
-				}
-			}
-		}
-		
-		if(!$usepcl){
-			$zip->addFromString("slider_export.txt", $strExport); //add slider settings
-		}else{
-			$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'slider_export.txt',PCLZIP_ATT_FILE_CONTENT => $strExport)));
-			if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
-			
-		}
-		if(strlen(trim($animations)) > 0){
-			if(!$usepcl){
-				$zip->addFromString("custom_animations.txt", $animations); //add custom animations
-			}else{
-				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'custom_animations.txt',PCLZIP_ATT_FILE_CONTENT => $animations)));
-				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
-			}
-		}
-		if(strlen(trim($styles)) > 0){
-			if(!$usepcl){
-				$zip->addFromString("dynamic-captions.css", $styles); //add dynamic styles
-			}else{
-				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'dynamic-captions.css',PCLZIP_ATT_FILE_CONTENT => $styles)));
-				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
-			}
-		}
-		if(strlen(trim($navs)) > 0){
-			if(!$usepcl){
-				$zip->addFromString("navigation.txt", $navs); //add dynamic styles
-			}else{
-				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'navigation.txt',PCLZIP_ATT_FILE_CONTENT => $navs)));
-				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
-			}
-		}
-		
-		$static_css = RevSliderOperations::getStaticCss();
-		if(trim($static_css) !== ''){
-			if(!$usepcl){
-				$zip->addFromString("static-captions.css", $static_css); //add slider settings
-			}else{
-				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'static-captions.css',PCLZIP_ATT_FILE_CONTENT => $static_css)));
-				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
-			}
-		}
-		$enable_slider_pack = apply_filters('revslider_slider_pack_export', false);
-		
-		if($enable_slider_pack){ //allow for slider packs the automatic creation of the info.cfg
-			if(!$usepcl){
-				$zip->addFromString('info.cfg', md5($this->alias)); //add slider settings
-			}else{
-				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'info.cfg',PCLZIP_ATT_FILE_CONTENT => md5($this->alias))));
-				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
-			}
-		}
-		
-		if(!$usepcl){
-			$zip->close();
-		}else{
-			//do nothing
-		}
-		
-		
-		header("Content-type: application/zip");
-		header("Content-Disposition: attachment; filename=".$exportname);
-		header("Pragma: no-cache");
-		header("Expires: 0");
-		
-		ob_clean();
-		flush();
-		
-		readfile(RevSliderGlobals::$uploadsUrlExportZip);
-		
-		@unlink(RevSliderGlobals::$uploadsUrlExportZip); //delete file after sending it to user
-		
-		exit();
-	}
-	
-	
-	/**
-	 * import slider from multipart form
-	 * @since: 5.3.1: $updateStatic is now deprecated
-	 */
-	public function importSliderFromPost($updateAnim = true, $updateStatic = true, $exactfilepath = false, $is_template = false, $single_slide = false, $updateNavigation = true){
-		
-		$real_slider_id = '';
-		try{
-			$upload_dir = wp_upload_dir();
-			$rem_path = $upload_dir['basedir'].'/rstemp/';
-			$d_path = $rem_path;
-			
-			$sliderID = RevSliderFunctions::getPostVariable("sliderid");
-			$sliderExists = !empty($sliderID);
-			
-			if($sliderExists)
-				$this->initByID($sliderID);
-			
-			if($exactfilepath !== false){
-				$filepath = $exactfilepath;
-			}else{
-				switch ($_FILES['import_file']['error']) {
-					case UPLOAD_ERR_OK:
-						break;
-					case UPLOAD_ERR_NO_FILE:
-						RevSliderFunctions::throwError(__('No file sent.', 'revslider'));
-					case UPLOAD_ERR_INI_SIZE:
-					case UPLOAD_ERR_FORM_SIZE:
-						RevSliderFunctions::throwError(__('Exceeded filesize limit.', 'revslider'));
-						
-					default:
-					break;
-				}
-				$filepath = $_FILES["import_file"]["tmp_name"];
-			}
-			
-			if(file_exists($filepath) == false)
-				RevSliderFunctions::throwError(__('Import file not found!!!', 'revslider'));
-			
-			$importZip = false;
-			
-			WP_Filesystem();
-			
-			global $wp_filesystem;
-			
-			$unzipfile = unzip_file( $filepath, $d_path);
-			
-			if( is_wp_error($unzipfile) ){
-				define('FS_METHOD', 'direct'); //lets try direct. 
-				
-				WP_Filesystem();  //WP_Filesystem() needs to be called again since now we use direct !
-				
-				//@chmod($filepath, 0775);
-				
-				$unzipfile = unzip_file( $filepath, $d_path);
-				if( is_wp_error($unzipfile) ){
-					$d_path = RS_PLUGIN_PATH.'rstemp/';
-					$rem_path = $d_path;
-					$unzipfile = unzip_file( $filepath, $d_path);
-					
-					if( is_wp_error($unzipfile) ){
-						$f = basename($filepath);
-						$d_path = str_replace($f, '', $filepath);
-						
-						$unzipfile = unzip_file( $filepath, $d_path);
-					}
-				}
-			}
-			
-			if( !is_wp_error($unzipfile) ){
-				$importZip = true; //raus damit..
-				
-				//read all files needed
-				$content = ( $wp_filesystem->exists( $d_path.'slider_export.txt' ) ) ? $wp_filesystem->get_contents( $d_path.'slider_export.txt' ) : '';
-				if($content == ''){
-					RevSliderFunctions::throwError(__('slider_export.txt does not exist!', 'revslider'));
-				}
-				$animations = ( $wp_filesystem->exists( $d_path.'custom_animations.txt' ) ) ? $wp_filesystem->get_contents( $d_path.'custom_animations.txt' ) : '';
-				$dynamic = ( $wp_filesystem->exists( $d_path.'dynamic-captions.css' ) ) ? $wp_filesystem->get_contents( $d_path.'dynamic-captions.css' ) : '';
-				//$static = ( $wp_filesystem->exists( $d_path.'static-captions.css' ) ) ? $wp_filesystem->get_contents( $d_path.'static-captions.css' ) : '';
-				$navigations = ( $wp_filesystem->exists( $d_path.'navigation.txt' ) ) ? $wp_filesystem->get_contents( $d_path.'navigation.txt' ) : '';
-				
-				$uid_check = ( $wp_filesystem->exists( $d_path.'info.cfg' ) ) ? $wp_filesystem->get_contents( $d_path.'info.cfg' ) : '';
-				$version_check = ( $wp_filesystem->exists( $d_path.'version.cfg' ) ) ? $wp_filesystem->get_contents( $d_path.'version.cfg' ) : '';
-				
-				if($is_template !== false){
-					if($uid_check != $is_template){
-						return(array("success"=>false,"error"=>__('Please select the correct zip file, checksum failed!', 'revslider')));
-					}
-				}else{ //someone imported a template base Slider, check if it is existing in Base Sliders, if yes, check if it was imported
-					if($uid_check !== ''){
-						$tmpl = new RevSliderTemplate();
-						$tmpl_slider = $tmpl->getThemePunchTemplateSliders();
-						
-						foreach($tmpl_slider as $tp_slider){
-							if(!isset($tp_slider['installed'])) continue;
-							
-							if($tp_slider['uid'] == $uid_check){
-								$is_template = $uid_check;
-								break;
-							}
-						}
-					}
-				}
-				
-				$db = new RevSliderDB();
-				
-				//update/insert custom animations
-				$animations = @unserialize($animations);
-				if(!empty($animations)){
-					foreach($animations as $key => $animation){ //$animation['id'], $animation['handle'], $animation['params']
-						$exist = $db->fetch(RevSliderGlobals::$table_layer_anims, $db->prepare("handle = %s", array($animation['handle'])));
-						if(!empty($exist)){ //update the animation, get the ID
-							if($updateAnim == "true"){ //overwrite animation if exists
-								$arrUpdate = array();
-								$arrUpdate['params'] = stripslashes(json_encode(str_replace("'", '"', $animation['params'])));
-								$db->update(RevSliderGlobals::$table_layer_anims, $arrUpdate, array('handle' => $animation['handle']));
-								
-								$anim_id = $exist['0']['id'];
-							}else{ //insert with new handle
-								$arrInsert = array();
-								$arrInsert["handle"] = 'copy_'.$animation['handle'];
-								$arrInsert["params"] = stripslashes(json_encode(str_replace("'", '"', $animation['params'])));
-								
-								$anim_id = $db->insert(RevSliderGlobals::$table_layer_anims, $arrInsert);
-							}
-						}else{ //insert the animation, get the ID
-							$arrInsert = array();
-							$arrInsert["handle"] = $animation['handle'];
-							$arrInsert["params"] = stripslashes(json_encode(str_replace("'", '"', $animation['params'])));
-							
-							$anim_id = $db->insert(RevSliderGlobals::$table_layer_anims, $arrInsert);
-						}
-						
-						//and set the current customin-oldID and customout-oldID in slider params to new ID from $id
-						$content = str_replace(array('customin-'.$animation['id'].'"', 'customout-'.$animation['id'].'"'), array('customin-'.$anim_id.'"', 'customout-'.$anim_id.'"'), $content);	
-					}
-					//dmp(__("animations imported!",'revslider'));
-				}
-				
-				//overwrite/append static-captions.css
-				/*if(!empty($static)){
-					if($updateStatic == "true"){ //overwrite file
-						RevSliderOperations::updateStaticCss($static);
-					}elseif($updateStatic == 'none'){
-						//do nothing
-					}else{//append
-						$static_cur = RevSliderOperations::getStaticCss();
-						$static = $static_cur."\n".$static;
-						RevSliderOperations::updateStaticCss($static);
-					}
-				}*/
-				
-				//overwrite/create dynamic-captions.css
-				//parse css to classes
-				$dynamicCss = RevSliderCssParser::parseCssToArray($dynamic);
-				if(is_array($dynamicCss) && $dynamicCss !== false && count($dynamicCss) > 0){
-					foreach($dynamicCss as $class => $styles){
-						//check if static style or dynamic style
-						$class = trim($class);
-						
-						if(strpos($class, ',') !== false && strpos($class, '.tp-caption') !== false){ //we have something like .tp-caption.redclass, .redclass
-							$class_t = explode(',', $class);
-							foreach($class_t as $k => $cl){
-								if(strpos($cl, '.tp-caption') !== false) $class = $cl;
-							}
-						}
-						
-						if((strpos($class, ':hover') === false && strpos($class, ':') !== false) || //before, after
-							strpos($class," ") !== false || // .tp-caption.imageclass img or .tp-caption .imageclass or .tp-caption.imageclass .img
-							strpos($class,".tp-caption") === false || // everything that is not tp-caption
-							(strpos($class,".") === false || strpos($class,"#") !== false) || // no class -> #ID or img
-							strpos($class,">") !== false){ //.tp-caption>.imageclass or .tp-caption.imageclass>img or .tp-caption.imageclass .img
-							continue;
-						}
-						
-						//is a dynamic style
-						if(strpos($class, ':hover') !== false){
-							$class = trim(str_replace(':hover', '', $class));
-							$arrInsert = array();
-							$arrInsert["hover"] = json_encode($styles);
-							$arrInsert["settings"] = json_encode(array('hover' => 'true'));
-						}else{
-							$arrInsert = array();
-							$arrInsert["params"] = json_encode($styles);
-							$arrInsert["settings"] = '';
-						}
-						//check if class exists
-						$result = $db->fetch(RevSliderGlobals::$table_css, $db->prepare("handle = %s", array($class)));
-						
-						if(!empty($result)){ //update
-							$db->update(RevSliderGlobals::$table_css, $arrInsert, array('handle' => $class));
-						}else{ //insert
-							$arrInsert["handle"] = $class;
-							$db->insert(RevSliderGlobals::$table_css, $arrInsert);
-						}
-					}
-					//dmp(__("dynamic styles imported!",'revslider'));
-				}
-				
-				//update/insert custom animations
-				$navigations = @unserialize($navigations);
-				if(!empty($navigations)){
-					
-					foreach($navigations as $key => $navigation){
-						$exist = $db->fetch(RevSliderGlobals::$table_navigation, $db->prepare("handle = %s", array($navigation['handle'])));
-						unset($navigation['id']);
-						
-						$rh = $navigation["handle"];
-						if(!empty($exist)){ //create new navigation, get the ID
-							if($updateNavigation == "true"){ //overwrite navigation if exists
-								unset($navigation['handle']);
-								$db->update(RevSliderGlobals::$table_navigation, $navigation, array('handle' => $rh));
-								
-							}else{
-								//insert with new handle
-								$navigation["handle"] = $navigation['handle'].'-'.date('is');
-								$navigation["name"] = $navigation['name'].'-'.date('is');
-								$content = str_replace($rh.'"', $navigation["handle"].'"', $content);
-								$navigation["css"] = str_replace('.'.$rh, '.'.$navigation["handle"], $navigation["css"]); //change css class to the correct new class
-								$navi_id = $db->insert(RevSliderGlobals::$table_navigation, $navigation);
-								
-							}
-						}else{
-							$navi_id = $db->insert(RevSliderGlobals::$table_navigation, $navigation);
-						}
-					}
-					//dmp(__("navigations imported!",'revslider'));
-				}
-			}else{
-				$message = $unzipfile->get_error_message();
-				
-				$wp_filesystem->delete($rem_path, true);
-				
-				return(array("success"=>false,"error"=>$message));
-			}
-			
-			//$content = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $content); //clear errors in string //deprecated in newest php version
-			$content = preg_replace_callback('!s:(\d+):"(.*?)";!', array('RevSliderSlider', 'clear_error_in_string') , $content); //clear errors in string
-			
-			$arrSlider = @unserialize($content);
-			if(empty($arrSlider)){
-				$wp_filesystem->delete($rem_path, true);
-				RevSliderFunctions::throwError(__('Wrong export slider file format! Please make sure that the uploaded file is either a zip file with a correct slider_export.txt in the root of it or an valid slider_export.txt file.', 'revslider'));
-			}
-			
-			//update slider params
-			$sliderParams = $arrSlider["params"];
-			
-			if($sliderExists){
-				$sliderParams["title"] = $this->arrParams["title"];
-				$sliderParams["alias"] = $this->arrParams["alias"];
-				$sliderParams["shortcode"] = $this->arrParams["shortcode"];
-			}
-			
-			if(isset($sliderParams["background_image"]))
-				$sliderParams["background_image"] = RevSliderFunctionsWP::getImageUrlFromPath($sliderParams["background_image"]);
-			
-			$import_statics = true;
-			if(isset($sliderParams['enable_static_layers'])){
-				if($sliderParams['enable_static_layers'] == 'off') $import_statics = false;
-				unset($sliderParams['enable_static_layers']);
-			}
-			
-			$sliderParams['version'] = $version_check;
-			
-			$json_params = json_encode($sliderParams);
-			
-			//update slider or create new
-			if($sliderExists){
-				$arrUpdate = array("params"=>$json_params);	
-				$this->db->update(RevSliderGlobals::$table_sliders,$arrUpdate,array("id"=>$sliderID));
-			}else{	//new slider
-				$arrInsert = array();
-				$arrInsert['params'] = $json_params;
-				//check if Slider with title and/or alias exists, if yes change both to stay unique
-				
-				
-				$arrInsert['title'] = RevSliderFunctions::getVal($sliderParams, 'title', 'Slider1');
-				$arrInsert['alias'] = RevSliderFunctions::getVal($sliderParams, 'alias', 'slider1');	
-				if($is_template === false){ //we want to stay at the given alias if we are a template
-					$talias = $arrInsert['alias'];
-					$ti = 1;
-					while($this->isAliasExistsInDB($talias)){ //set a new alias and title if its existing in database
-						$talias = $arrInsert['alias'] . $ti;
-						$ti++;
-					}
-					
-					if($talias !== $arrInsert['alias']){
-						$sliderParams['title'] = $talias;
-						$sliderParams['alias'] = $talias;
-						$arrInsert['title'] = $talias;
-						$arrInsert['alias'] = $talias;
-						$json_params = json_encode($sliderParams);
-						$arrInsert['params'] = $json_params;
-					}
-				}
-				
-				if($is_template !== false){ //add that we are an template
-					$arrInsert['type'] = 'template';
-					$sliderParams['uid'] = $is_template;
-					$json_params = json_encode($sliderParams);
-					$arrInsert['params'] = $json_params;
-				}
-				
-				
-				
-				$sliderID = $this->db->insert(RevSliderGlobals::$table_sliders,$arrInsert);
-			}
-			
-			//-------- Slides Handle -----------
-			
-			//delete current slides
-			if($sliderExists)
-				$this->deleteAllSlides();
-			
-			//create all slides
-			$arrSlides = $arrSlider["slides"];
-			
-			$alreadyImported = array();
-			
-			$content_url = content_url();
-			
-			//wpml compatibility
-			$slider_map = array();
-			foreach($arrSlides as $sl_key => $slide){
-				$params = $slide["params"];
-				$layers = $slide["layers"];
-				$settings = (isset($slide["settings"])) ? $slide["settings"] : '';
-				
-				//convert params images:
-				if($importZip === true){ //we have a zip, check if exists
-					//remove image_id as it is not needed in import
-					if(isset($params['image_id'])) unset($params['image_id']);
-					
-					if(isset($params["image"])){
-						$params["image"] = RevSliderBase::check_file_in_zip($d_path, $params["image"], $sliderParams["alias"], $alreadyImported);
-						$params["image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["image"]);
-					}
-					
-					if(isset($params["background_image"])){
-						$params["background_image"] = RevSliderBase::check_file_in_zip($d_path, $params["background_image"], $sliderParams["alias"], $alreadyImported);
-						$params["background_image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["background_image"]);
-					}
-					
-					if(isset($params["slide_thumb"])){
-						$params["slide_thumb"] = RevSliderBase::check_file_in_zip($d_path, $params["slide_thumb"], $sliderParams["alias"], $alreadyImported);
-						$params["slide_thumb"] = RevSliderFunctionsWP::getImageUrlFromPath($params["slide_thumb"]);
-					}
-					
-					if(isset($params["show_alternate_image"])){
-						$params["show_alternate_image"] = RevSliderBase::check_file_in_zip($d_path, $params["show_alternate_image"], $sliderParams["alias"], $alreadyImported);
-						$params["show_alternate_image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["show_alternate_image"]);
-					}
-					if(isset($params['background_type']) && $params['background_type'] == 'html5'){
-						if(isset($params['slide_bg_html_mpeg']) && $params['slide_bg_html_mpeg'] != ''){
-							$params['slide_bg_html_mpeg'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $params["slide_bg_html_mpeg"], $sliderParams["alias"], $alreadyImported, true));
-						}
-						if(isset($params['slide_bg_html_webm']) && $params['slide_bg_html_webm'] != ''){
-							$params['slide_bg_html_webm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $params["slide_bg_html_webm"], $sliderParams["alias"], $alreadyImported, true));
-						}
-						if(isset($params['slide_bg_html_ogv'])  && $params['slide_bg_html_ogv'] != ''){
-							$params['slide_bg_html_ogv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $params["slide_bg_html_ogv"], $sliderParams["alias"], $alreadyImported, true));
-						}
-					}
-				}
-				
-				//convert layers images:
-				foreach($layers as $key=>$layer){					
-					//import if exists in zip folder
-					if($importZip === true){ //we have a zip, check if exists
-						if(isset($layer["image_url"])){
-							$layer["image_url"] = RevSliderBase::check_file_in_zip($d_path, $layer["image_url"], $sliderParams["alias"], $alreadyImported);
-							$layer["image_url"] = RevSliderFunctionsWP::getImageUrlFromPath($layer["image_url"]);
-						}
-						if(isset($layer["bgimage_url"])){
-							$layer["bgimage_url"] = RevSliderBase::check_file_in_zip($d_path, $layer["bgimage_url"], $sliderParams["alias"], $alreadyImported);
-							$layer["bgimage_url"] = RevSliderFunctionsWP::getImageUrlFromPath($layer["bgimage_url"]);
-						}
-						if(isset($layer['type']) && ($layer['type'] == 'video' || $layer['type'] == 'audio')){
-							
-							$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
-							
-							if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
-
-								if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != ''){
-									$video_data['urlPoster'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlPoster"], $sliderParams["alias"], $alreadyImported));
-								}
-								
-								if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != ''){
-									$video_data['urlMp4'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlMp4"], $sliderParams["alias"], $alreadyImported, true));
-								}
-								if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != ''){
-									$video_data['urlWebm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlWebm"], $sliderParams["alias"], $alreadyImported, true));
-								}
-								if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != ''){
-									$video_data['urlOgv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlOgv"], $sliderParams["alias"], $alreadyImported, true));
-								}
-								
-							}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
-								if($video_data['video_type'] == 'audio'){
-									if(isset($video_data['urlAudio']) && $video_data['urlAudio'] != ''){
-										$video_data['urlAudio'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlAudio"], $sliderParams["alias"], $alreadyImported, true));
-									}
-								}else{
-									if(isset($video_data['previewimage']) && $video_data['previewimage'] != ''){
-										$video_data['previewimage'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["previewimage"], $sliderParams["alias"], $alreadyImported));
-									}
-								}
-							}
-							
-							$layer['video_data'] = $video_data;
-							
-							if(isset($layer['video_image_url']) && $layer['video_image_url'] != ''){
-								$layer['video_image_url'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $layer["video_image_url"], $sliderParams["alias"], $alreadyImported));
-							}
-						}
-						
-						if(isset($layer['type']) && $layer['type'] == 'svg'){
-							if(isset($layer['svg']) && isset($layer['svg']->src)){
-								$layer['svg']->src = $content_url.$layer['svg']->src;
-							}
-						}
-						
-					}
-					
-					$layer['text'] = stripslashes($layer['text']);
-					$layers[$key] = $layer;
-				}
-				$arrSlides[$sl_key]['layers'] = $layers;
-				
-				//create new slide
-				$arrCreate = array();
-				$arrCreate["slider_id"] = $sliderID;
-				$arrCreate["slide_order"] = $slide["slide_order"];
-				
-				$d = array('params' => $params, 'sliderParams' => $sliderParams, 'layers' => $layers, 'settings' => $settings, 'alreadyImported' => $alreadyImported);
-				$d = apply_filters('revslider_importSliderFromPost_modify_data', $d, 'normal', $d_path);
-				
-				$params = $d['params'];
-				$sliderParams = $d['sliderParams'];
-				$layers = $d['layers'];
-				$settings = $d['settings'];
-				$alreadyImported = $d['alreadyImported'];
-				
-				$my_layers = json_encode($layers);
-				if(empty($my_layers))
-					$my_layers = stripslashes(json_encode($layers));
-				$my_params = json_encode($params);
-				if(empty($my_params))
-					$my_params = stripslashes(json_encode($params));
-				$my_settings = json_encode($settings);
-				if(empty($my_settings))
-					$my_settings = stripslashes(json_encode($settings));
-				
-				$arrCreate["layers"] = $my_layers;
-				$arrCreate["params"] = $my_params;
-				$arrCreate["settings"] = $my_settings;
-				
-				$last_id = $this->db->insert(RevSliderGlobals::$table_slides,$arrCreate);
-				
-				if(isset($slide['id'])){
-					$slider_map[$slide['id']] = $last_id;
-				}
-			}
-			
-			//change for WPML the parent IDs if necessary
-			if(!empty($slider_map)){
-				foreach($arrSlides as $sl_key => $slide){
-					if(isset($slide['params']['parentid']) && isset($slider_map[$slide['params']['parentid']])){
-						$update_id = $slider_map[$slide['id']];
-						$parent_id = $slider_map[$slide['params']['parentid']];
-						
-						$arrCreate = array();
-						
-						$arrCreate["params"] = $slide['params'];
-						$arrCreate["params"]['parentid'] = $parent_id;
-						$my_params = json_encode($arrCreate["params"]);
-						if(empty($my_params))
-							$my_params = stripslashes(json_encode($arrCreate["params"]));
-						
-						$arrCreate["params"] = $my_params;
-						
-						$this->db->update(RevSliderGlobals::$table_slides,$arrCreate,array("id"=>$update_id));
-					}
-					
-					$did_change = false;
-					foreach($slide['layers'] as $key => $value){
-						if(isset($value['layer_action'])){
-							if(isset($value['layer_action']->jump_to_slide) && !empty($value['layer_action']->jump_to_slide)){
-								$value['layer_action']->jump_to_slide = (array)$value['layer_action']->jump_to_slide;
-								foreach($value['layer_action']->jump_to_slide as $jtsk => $jtsval){
-									if(isset($slider_map[$jtsval])){
-										$slide['layers'][$key]['layer_action']->jump_to_slide[$jtsk] = $slider_map[$jtsval];
-										$did_change = true;
-									}
-								}
-							}
-						}
-						
-						$link_slide = RevSliderFunctions::getVal($value, 'link_slide', false);
-						if($link_slide != false && $link_slide !== 'nothing'){ //link to slide/scrollunder is set, move it to actions
-							if(!isset($slide['layers'][$key]['layer_action'])) $slide['layers'][$key]['layer_action'] = new stdClass();
-							switch($link_slide){
-								case 'link':
-									$link = RevSliderFunctions::getVal($value, 'link');
-									$link_open_in = RevSliderFunctions::getVal($value, 'link_open_in');
-									$slide['layers'][$key]['layer_action']->action = array('a' => 'link');
-									$slide['layers'][$key]['layer_action']->link_type = array('a' => 'a');
-									$slide['layers'][$key]['layer_action']->image_link = array('a' => $link);
-									$slide['layers'][$key]['layer_action']->link_open_in = array('a' => $link_open_in);
-									
-									unset($slide['layers'][$key]['link']);
-									unset($slide['layers'][$key]['link_open_in']);
-								case 'next':
-									$slide['layers'][$key]['layer_action']->action = array('a' => 'next');
-								break;
-								case 'prev':
-									$slide['layers'][$key]['layer_action']->action = array('a' => 'prev');
-								break;
-								case 'scroll_under':
-									$scrollunder_offset = RevSliderFunctions::getVal($value, 'scrollunder_offset');
-									$slide['layers'][$key]['layer_action']->action = array('a' => 'scroll_under');
-									$slide['layers'][$key]['layer_action']->scrollunder_offset = array('a' => $scrollunder_offset);
-									
-									unset($slide['layers'][$key]['scrollunder_offset']);
-								break;
-								default: //its an ID, so its a slide ID
-									$slide['layers'][$key]['layer_action']->action = array('a' => 'jumpto');
-									$slide['layers'][$key]['layer_action']->jump_to_slide = array('a' => $slider_map[$link_slide]);
-								break;
-								
-							}
-							$slide['layers'][$key]['layer_action']->tooltip_event = array('a' => 'click');
-							
-							unset($slide['layers'][$key]['link_slide']);
-							
-							$did_change = true;
-						}
-						
-						
-						if($did_change === true){
-							
-							$arrCreate = array();
-							$my_layers = json_encode($slide['layers']);
-							if(empty($my_layers))
-								$my_layers = stripslashes(json_encode($layers));
-							
-							$arrCreate['layers'] = $my_layers;
-							
-							$this->db->update(RevSliderGlobals::$table_slides,$arrCreate,array("id"=>$slider_map[$slide['id']]));
-						}
-					}
-				}
-			}
-			
-			//check if static slide exists and import
-			if(isset($arrSlider['static_slides']) && !empty($arrSlider['static_slides']) && $import_statics){
-				$static_slide = $arrSlider['static_slides'];
-				foreach($static_slide as $slide){
-					
-					$params = $slide["params"];
-					$layers = $slide["layers"];
-					$settings = (isset($slide["settings"])) ? $slide["settings"] : '';
-					
-					//remove image_id as it is not needed in import
-					if(isset($params['image_id'])) unset($params['image_id']);
-					
-					//convert params images:
-					if(isset($params["image"])){
-						//import if exists in zip folder
-						if(strpos($params["image"], 'http') !== false){
-						}else{
-							if(trim($params["image"]) !== ''){
-								if($importZip === true){ //we have a zip, check if exists
-									$image = $wp_filesystem->exists( $d_path.'images/'.$params["image"] );
-									if(!$image){
-										echo $params["image"].__(' not found!<br>', 'revslider');
-									}else{
-										if(!isset($alreadyImported['images/'.$params["image"]])){
-											$importImage = RevSliderFunctionsWP::import_media($d_path.'images/'.$params["image"], $sliderParams["alias"].'/');
-
-											if($importImage !== false){
-												$alreadyImported['images/'.$params["image"]] = $importImage['path'];
-												
-												$params["image"] = $importImage['path'];
-											}
-										}else{
-											$params["image"] = $alreadyImported['images/'.$params["image"]];
-										}
-
-
-									}
-								}
-							}
-							$params["image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["image"]);
-						}
-					}
-					
-					//convert layers images:
-					foreach($layers as $key=>$layer){
-						if(isset($layer["image_url"])){
-							//import if exists in zip folder
-							if(trim($layer["image_url"]) !== ''){
-								if(strpos($layer["image_url"], 'http') !== false){
-								}else{
-									if($importZip === true){ //we have a zip, check if exists
-										$image_url = $wp_filesystem->exists( $d_path.'images/'.$layer["image_url"] );
-										if(!$image_url){
-											echo $layer["image_url"].__(' not found!<br>');
-										}else{
-											if(!isset($alreadyImported['images/'.$layer["image_url"]])){
-												$importImage = RevSliderFunctionsWP::import_media($d_path.'images/'.$layer["image_url"], $sliderParams["alias"].'/');
-												
-												if($importImage !== false){
-													$alreadyImported['images/'.$layer["image_url"]] = $importImage['path'];
-													
-													$layer["image_url"] = $importImage['path'];
-												}
-											}else{
-												$layer["image_url"] = $alreadyImported['images/'.$layer["image_url"]];
-											}
-										}
-									}
-								}
-							}
-							$layer["image_url"] = RevSliderFunctionsWP::getImageUrlFromPath($layer["image_url"]);
-						}
-						if(isset($layer["bgimage_url"])){
-							//import if exists in zip folder
-							if(trim($layer["bgimage_url"]) !== ''){
-								if(strpos($layer["bgimage_url"], 'http') !== false){
-								}else{
-									if($importZip === true){ //we have a zip, check if exists
-										$bgimage_url = $wp_filesystem->exists( $d_path.'images/'.$layer["bgimage_url"] );
-										if(!$bgimage_url){
-											echo $layer["bgimage_url"].__(' not found!<br>');
-										}else{
-											if(!isset($alreadyImported['images/'.$layer["bgimage_url"]])){
-												$importImage = RevSliderFunctionsWP::import_media($d_path.'images/'.$layer["bgimage_url"], $sliderParams["alias"].'/');
-												
-												if($importImage !== false){
-													$alreadyImported['images/'.$layer["bgimage_url"]] = $importImage['path'];
-													
-													$layer["bgimage_url"] = $importImage['path'];
-												}
-											}else{
-												$layer["bgimage_url"] = $alreadyImported['images/'.$layer["bgimage_url"]];
-											}
-										}
-									}
-								}
-							}
-							$layer["bgimage_url"] = RevSliderFunctionsWP::getImageUrlFromPath($layer["bgimage_url"]);
-						}
-						
-						$layer['text'] = stripslashes($layer['text']);
-							
-						if(isset($layer['type']) && ($layer['type'] == 'video' || $layer['type'] == 'audio')){
-							
-							$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
-							
-							if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
-
-								if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != ''){
-									$video_data['urlPoster'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlPoster"], $sliderParams["alias"], $alreadyImported));
-								}
-								if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != ''){
-									$video_data['urlMp4'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlMp4"], $sliderParams["alias"], $alreadyImported, true));
-								}
-								if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != ''){
-									$video_data['urlWebm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlWebm"], $sliderParams["alias"], $alreadyImported, true));
-								}
-								if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != ''){
-									$video_data['urlOgv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlOgv"], $sliderParams["alias"], $alreadyImported, true));
-								}
-								
-							}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
-								if($video_data['video_type'] == 'audio'){
-									if(isset($video_data['urlAudio']) && $video_data['urlAudio'] != ''){
-										$video_data['urlAudio'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlAudio"], $sliderParams["alias"], $alreadyImported, true));
-									}
-								}else{
-									if(isset($video_data['previewimage']) && $video_data['previewimage'] != ''){
-										$video_data['previewimage'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["previewimage"], $sliderParams["alias"], $alreadyImported));
-									}
-								}
-							}
-							
-							$layer['video_data'] = $video_data;
-							
-							if(isset($layer['video_image_url']) && $layer['video_image_url'] != ''){
-								$layer['video_image_url'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $layer["video_image_url"], $sliderParams["alias"], $alreadyImported));
-							}
-						}
-						
-						if(isset($layer['type']) && $layer['type'] == 'svg'){
-							if(isset($layer['svg']) && isset($layer['svg']->src)){
-								$layer['svg']->src = $content_url.$layer['svg']->src;
-							}
-						}
-						
-						if(isset($layer['layer_action'])){
-							if(isset($layer['layer_action']->jump_to_slide) && !empty($layer['layer_action']->jump_to_slide)){
-								foreach($layer['layer_action']->jump_to_slide as $jtsk => $jtsval){
-									if(isset($slider_map[$jtsval])){
-										$layer['layer_action']->jump_to_slide[$jtsk] = $slider_map[$jtsval];
-									}
-								}
-							}
-						}
-						
-						$link_slide = RevSliderFunctions::getVal($layer, 'link_slide', false);
-						if($link_slide != false && $link_slide !== 'nothing'){ //link to slide/scrollunder is set, move it to actions
-							if(!isset($layer['layer_action'])) $layer['layer_action'] = new stdClass();
-							
-							switch($link_slide){
-								case 'link':
-									$link = RevSliderFunctions::getVal($layer, 'link');
-									$link_open_in = RevSliderFunctions::getVal($layer, 'link_open_in');
-									$layer['layer_action']->action = array('a' => 'link');
-									$layer['layer_action']->link_type = array('a' => 'a');
-									$layer['layer_action']->image_link = array('a' => $link);
-									$layer['layer_action']->link_open_in = array('a' => $link_open_in);
-									
-									unset($layer['link']);
-									unset($layer['link_open_in']);
-								case 'next':
-									$layer['layer_action']->action = array('a' => 'next');
-								break;
-								case 'prev':
-									$layer['layer_action']->action = array('a' => 'prev');
-								break;
-								case 'scroll_under':
-									$scrollunder_offset = RevSliderFunctions::getVal($value, 'scrollunder_offset');
-									$layer['layer_action']->action = array('a' => 'scroll_under');
-									$layer['layer_action']->scrollunder_offset = array('a' => $scrollunder_offset);
-									
-									unset($layer['scrollunder_offset']);
-								break;
-								default: //its an ID, so its a slide ID
-									$layer['layer_action']->action = array('a' => 'jumpto');
-									$layer['layer_action']->jump_to_slide = array('a' => $slider_map[$link_slide]);
-								break;
-								
-							}
-							$layer['layer_action']->tooltip_event = array('a' => 'click');
-							
-							unset($layer['link_slide']);
-							
-							$did_change = true;
-						}
-						
-						$layers[$key] = $layer;
-					}
-					
-					$d = array('params' => $params, 'layers' => $layers, 'settings' => $settings);
-					$d = apply_filters('revslider_importSliderFromPost_modify_data', $d, 'static', $d_path);
-					
-					$params = $d['params'];
-					$layers = $d['layers'];
-					$settings = $d['settings'];
-					
-					
-					//create new slide
-					$arrCreate = array();
-					$arrCreate["slider_id"] = $sliderID;
-					
-					$my_layers = json_encode($layers);
-					if(empty($my_layers))
-						$my_layers = stripslashes(json_encode($layers));
-					$my_params = json_encode($params);
-					if(empty($my_params))
-						$my_params = stripslashes(json_encode($params));
-					$my_settings = json_encode($settings);
-					if(empty($my_settings))
-						$my_settings = stripslashes(json_encode($settings));
-						
-						
-					$arrCreate["layers"] = $my_layers;
-					$arrCreate["params"] = $my_params;
-					$arrCreate["settings"] = $my_settings;
-					
-					if($sliderExists){
-						unset($arrCreate["slider_id"]);
-						$this->db->update(RevSliderGlobals::$table_static_slides,$arrCreate,array("slider_id"=>$sliderID));
-					}else{
-						$this->db->insert(RevSliderGlobals::$table_static_slides,$arrCreate);
-					}
-				}
-			}
-			
-			$c_slider = new RevSliderSlider();
-			$c_slider->initByID($sliderID);
-			
-			//check to convert styles to latest versions
-			RevSliderPluginUpdate::update_css_styles(); //set to version 5
-			RevSliderPluginUpdate::add_animation_settings_to_layer($c_slider); //set to version 5
-			RevSliderPluginUpdate::add_style_settings_to_layer($c_slider); //set to version 5
-			RevSliderPluginUpdate::change_settings_on_layers($c_slider); //set to version 5
-			RevSliderPluginUpdate::add_general_settings($c_slider); //set to version 5
-			RevSliderPluginUpdate::change_general_settings_5_0_7($c_slider); //set to version 5.0.7
-			RevSliderPluginUpdate::change_layers_svg_5_2_5_5($c_slider); //set to version 5.2.5.5
-			
-			$cus_js = $c_slider->getParam('custom_javascript', '');
-			
-			if(strpos($cus_js, 'revapi') !== false){
-				if(preg_match_all('/revapi[0-9]*/', $cus_js, $results)){
-					
-					if(isset($results[0]) && !empty($results[0])){
-						foreach($results[0] as $replace){
-							$cus_js = str_replace($replace, 'revapi'.$sliderID, $cus_js);
-						}
-					}
-					
-					$c_slider->updateParam(array('custom_javascript' => $cus_js));
-					
-				}
-				
-			}
-			
-			$real_slider_id = $sliderID;
-			
-			if($is_template !== false){ //duplicate the slider now, as we just imported the "template"
-				if($single_slide !== false){ //add now one Slide to the current Slider
-					$mslider = new RevSlider();
-					
-					//change slide_id to correct, as it currently is just a number beginning from 0 as we did not have a correct slide ID yet.
-					$i = 0;
-					$changed = false;
-					foreach($slider_map as $value){
-						if($i == $single_slide['slide_id']){
-							$single_slide['slide_id'] = $value;
-							$changed = true;
-							break;
-						}
-						$i++;
-					}
-					
-					if($changed){
-						$return = $mslider->copySlideToSlider($single_slide);
-					}else{
-						return(array("success"=>false,"error"=>__('could not find correct Slide to copy, please try again.', 'revslider'),"sliderID"=>$sliderID));
-					}
-					
-				}else{
-					$mslider = new RevSlider();
-					$title = RevSliderFunctions::getVal($sliderParams, 'title', 'slider1');	
-					$talias = $title;
-					$ti = 1;
-					while($this->isAliasExistsInDB($talias)){ //set a new alias and title if its existing in database
-						$talias = $title . $ti;
-						$ti++;
-					}
-					$real_slider_id = $mslider->duplicateSliderFromData(array('sliderid' => $sliderID, 'title' => $talias));
-				}
-			}
-			
-			$wp_filesystem->delete($rem_path, true);
-			
-			
-		}catch(Exception $e){
-			$errorMessage = $e->getMessage();
-			
-			if(isset($rem_path)){
-				$wp_filesystem->delete($rem_path, true);
-			}
-			return(array("success"=>false,"error"=>$errorMessage,"sliderID"=>$sliderID));
-		}
-		
-		do_action('revslider_slider_imported', $real_slider_id);
-		
-		return(array("success"=>true,"sliderID"=>$real_slider_id));
-	}
-	
-	
-	/**
-	 * 
-	 * update slider from options
-	 */
-	public function updateSliderFromOptions($options){
-		
-		$sliderID = RevSliderFunctions::getVal($options, "sliderid");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		
-		$this->createUpdateSliderFromOptions($options,$sliderID);
-	}
-	
-	/**
-	 * 
 	 * update some params in the slider
+	 * @before: RevSliderSlider::updateParam();
 	 */
-	public function updateParam($arrUpdate){
-		$this->validateInited();
+	public function update_params($update, $replace = false){
+		global $wpdb;
 		
-		$this->arrParams = array_merge($this->arrParams,$arrUpdate);
-		$jsonParams = json_encode($this->arrParams);
-		$arrUpdateDB = array();
-		$arrUpdateDB["params"] = $jsonParams;
+		$this->params = ($replace) ? $update : array_merge($this->params, $update);
 		
-		$this->db->update(RevSliderGlobals::$table_sliders,$arrUpdateDB,array("id"=>$this->id));
+		$response = $wpdb->update($wpdb->prefix . RevSliderFront::TABLE_SLIDER, array('params' => json_encode($this->params)), array('id' => $this->id));
 	}
+	
 	
 	/**
 	 * update some settings in the slider
+	 * @before: RevSliderSlider::updateSetting()
 	 */
-	public function updateSetting($arrUpdate){
-		$this->validateInited();
+	public function update_settings($update){
+		global $wpdb;
 		
-		$this->settings = array_merge($this->settings,$arrUpdate);
-		$jsonParams = json_encode($this->settings);
-		$arrUpdateDB = array();
-		$arrUpdateDB["settings"] = $jsonParams;
+		$this->settings = array_merge($this->settings, $update);
 		
-		$this->db->update(RevSliderGlobals::$table_sliders,$arrUpdateDB,array("id"=>$this->id));
+		$response = $wpdb->update($wpdb->prefix . RevSliderFront::TABLE_SLIDER, array('settings' => json_encode($this->settings)), array('id' => $this->id));
 	}
 	
 	
 	/**
-	 * 
-	 * delete slider from input data
+	 * get array of slides numbers by id's
+	 * RevSliderSlider::getSlidesNumbersByIDs();
 	 */
-	public function deleteSliderFromData($data){
-		$sliderID = RevSliderFunctions::getVal($data, "sliderid");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$this->initByID($sliderID);
+	public function get_slide_numbers_by_id($published = false){
+		$numbers = array();
+		$counter = 0;
 		
-		$this->deleteSlider();
+		if(empty($this->slide)){
+			$this->get_slides($published);
+		}
 		
-		return true;
-	}
-
-	
-	/**
-	 * 
-	 * delete slider from input data
-	 */
-	public function duplicateSliderFromData($data){
-		$sliderID = RevSliderFunctions::getVal($data, "sliderid");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$this->initByID($sliderID);
-		$slider_id = $this->duplicateSlider(RevSliderFunctions::getVal($data, "title"));
-		return $slider_id;
-	}
-
-	
-	/**
-	 * delete slider from input data
-	 * @since: 5.2.5
-	 */
-	public function duplicateSliderPackageFromData($data){
-		$tmpl = new RevSliderTemplate();
-		
-		$slider_uid = RevSliderFunctions::getVal($data, "slideruid");
-		
-		$uids = $tmpl->get_package_uids($slider_uid);
-		
-		foreach($uids as $sid => $uid){
-			if($sid < 0){ //one or more still needs to be downloaded...
-				return __('Please install Package first to use this feature', 'revslider');
+		if(empty($this->arr_slides)){
+			foreach($this->slides as $slide){
+				$counter++;
+				$id				= $slide->get_id();
+				$numbers[$id]	= $counter;				
 			}
 		}
 		
-		foreach($uids as $sliderID => $uid){
-			$slider = new RevSlider();
-			$slider->initByID($sliderID);
-			$slider_id = $slider->duplicateSlider(RevSliderFunctions::getVal($data, "title"), true);
+		return $numbers;
+	}
+	
+	
+	/**
+	 * get sliders array - function don't belong to the object!
+	 * @before: RevSliderSlider::getArrSliders();
+	 */
+	public function get_sliders($templates = false){
+		global $wpdb;
+		
+		$sliders	= array();
+		$do_order	= 'id';
+		$direction	= 'ASC';
+		
+		$slider_data = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix . RevSliderFront::TABLE_SLIDER." WHERE `type` != 'folder' ORDER BY %s %s", array($do_order, $direction)), ARRAY_A); //WHERE `type` = '' OR `type` IS NULL 
+		if(!empty($slider_data)){
+			foreach($slider_data as $data){
+				$slider = new RevSliderSlider();
+				$slider->init_by_data($data);
+				
+				if($templates === true){
+					if($slider->type != 'template') continue;
+				}elseif($templates === false){
+					if($slider->type == 'template') continue;
+				}
+				
+				$sliders[] = $slider;
+			}
 		}
 		
-		return true;
+		return $sliders;
+	}
+
+	/**
+	 * get sliders shortlist object 
+	 */
+	public static function get_sliders_short_list(){
+		global $wpdb;
+		$slider_data = $wpdb->get_results($wpdb->prepare("SELECT id, title, alias FROM " . $wpdb->prefix . RevSliderFront::TABLE_SLIDER . " WHERE `type` != 'folder' AND `type` != 'template' ORDER BY %s %s", array('id', 'ASC')));
+		$slider_data = (object)$slider_data;
+		
+		return $slider_data;
 	}
 	
 	
 	/**
-	 * 
-	 * duplicate slide from input data
+	 * get array of alias
+	 * @before: getAllSliderForAdminMenu()
 	 */
-	public function duplicateSlideFromData($data){
+	public function get_slider_for_admin_menu(){
+		$sliders = $this->get_sliders();
+		$short = array();
+		if(!empty($sliders)){
+			foreach($sliders as $slider){
+				$id = $slider->get_id();
+				
+				$short[$id] = array('title' => $slider->get_title(), 'alias' => $slider->get_alias());
+			}
+		}
 		
-		//init the slider
-		$sliderID = RevSliderFunctions::getVal($data, "sliderID");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$this->initByID($sliderID);
-		
-		//get the slide id
-		$slideID = RevSliderFunctions::getVal($data, "slideID");
-		RevSliderFunctions::validateNotEmpty($slideID,"Slide ID");
-		$newSlideID = $this->duplicateSlide($slideID);
-		
-		$this->duplicateChildren($slideID, $newSlideID);
-		
-		return(array($sliderID, $newSlideID));
+		return $short;
 	}
 	
 	
 	/**
-	 * duplicate slide children
-	 * @param $slideID
+	 * get slides from gallery
+	 * force from gallery - get the slide from the gallery only
+	 * before: RevSliderSlider::getSlides() and also RevSliderSlider::getSlidesFromGallery()
 	 */
-	private function duplicateChildren($slideID,$newSlideID){
+	public function get_slides($published = false, $allwpml = false, $first = false){
+		$slide			= new RevSliderSlide();
+		$this->slides	= $slide->get_slides_by_slider_id($this->id, $published, $allwpml, $first, $this->init_layer);
 		
-		$arrChildren = $this->getArrSlideChildren($slideID);
+		return $this->slides;
+	}
+	
+	
+	/**
+	 * get slides for export
+	 * before: RevSliderSlider::getSlidesForExport()
+	 */
+	public function get_slides_for_export(){
+		$slides = $this->get_slides(false, true);
+		$export = array();
 		
-		foreach($arrChildren as $childSlide){
-			$childSlideID = $childSlide->getID();
-			//duplicate
-			$duplicatedSlideID = $this->duplicateSlide($childSlideID);
+		if(!empty($slides)){
+			foreach($slides as $slide){
+				$export[] = array(
+					'id'			=> $slide->get_id(),
+					'params'		=> $slide->get_params_for_export(),
+					'slide_order'	=> $slide->get_order(),
+					'layers'		=> $slide->get_layers_for_export(),
+					'settings'		=> $slide->get_settings()
+				);
+			}
+		}
+		
+		return apply_filters('revslider_get_slides_for_export', apply_filters('revslider_getSlidesForExport', $export));
+	}
+	
+	
+	/**
+	 * get static slide for export
+	 * before: RevSliderSlider::getStaticSlideForExport()
+	 */
+	public function get_static_slide_for_export(){
+		$static_slide	= array();
+		$slide			= new RevSliderSlide();
+		$static_id		= $slide->get_static_slide_id($this->id);
+		
+		if($static_id !== false){
+			$slide->init_by_static_id($static_id);
+			$static_slide[] = array(
+				'params'		=> $slide->get_params_for_export(),
+				'slide_order'	=> $slide->get_order(),
+				'layers'		=> $slide->get_layers_for_export(),
+				'settings'		=> $slide->get_settings()
+			);
+		}
+		
+		return apply_filters('revslider_getStaticSlideForExport', $static_slide);
+	}
+	
+	
+	/**
+	 * get array of sliders with slides, short, assoc.
+	 * @before: RevSliderSlider::getArrSlidersWithSlidesShort();
+	 */
+	public function get_sliders_with_slides_short($filter = 'all'){
+		$output	 = array();
+		$sliders = $this->get_sliders_short(null, $filter);
+		
+		if(!empty($sliders)){
+			foreach($sliders as $sid => $slider_name){
+				$slider = new RevSliderSlider();
+				$slider->init_by_id($sid);
+				$is_posts = $slider->is_posts();
+				
+				if($filter == 'posts' && $is_posts == false) continue; //filter by gallery only
+				if($filter == 'gallery' && $is_posts == true) continue;
+				if($filter == 'template' && $is_posts == false)	continue; //filter by template type
+				
+				$slides = $slider->get_slides_from_gallery_short();
+				if(!empty($slides)){
+					foreach($slides as $slide_id => $slide_name){
+						$output[$slide_id] = $slider_name.', '.$slide_name;
+					}
+				}
+			}
+		}
+		
+		return $output;
+	}
+	
+	
+	/**
+	 * get slide id and slide title from gallery
+	 * @before: RevSliderSlider::getArrSlidesFromGalleryShort()
+	 */
+	public function get_slides_from_gallery_short(){
+		$counter = 0;
+		$output	 = array();
+		$slides	 = $this->get_slides();
+		
+		if(!empty($slides)){
+			foreach($slides as $slide){
+				$id			 = $slide->get_id();
+				$name		 = 'Slide '.$counter;
+				$title		 = $slide->get_param('title', '');
+				$output[$id] = (!empty($title)) ? $name.' - ('.$title.')' : $name;
+				
+				$counter++;
+			}
+		}
+		
+		return $output;
+	}
+	
+	
+	/**
+	 * get slides for output
+	 * one level only without children
+	 * @before: RevSliderSlider::getSlidesForOutput();
+	 */
+	public function get_slides_for_output($published = false, $lang = 'all', $gal_ids = array()){
+		$parent_slides = $this->get_parent_slides($published, $gal_ids, $lang);
+		
+		if($lang == 'all' || $this->is_stream()) return $parent_slides;	//$this->is_posts() || 	
+		$slides = array();
+		
+		if(!empty($parent_slides)){
+			foreach($parent_slides as $parent_slide){
+				$parent_lang = $parent_slide->get_param(array('child', 'language'), 'all');
+				if($parent_lang == $lang){
+					$slides[] = $parent_slide;
+				}
+				
+				$added = false;
+				$children = $parent_slide->get_children();
+				if(!empty($children)){
+					foreach($children as $child){
+						if($child->get_param(array('child', 'language'), 'all') == $lang){
+							$slides[] = $child;
+							$added = true;
+							break;
+						}
+					}
+				}
+				
+				if($added == false && $parent_lang == 'all'){
+					$slides[] = $parent_slide;
+				}
+			}
+		}
+		
+		return $slides;
+	}
+	
+	
+	/**
+	 * get the parent Slides if the Slide has any
+	 **/
+	public function get_parent_slides($published, $gal_ids, $lang){
+		$post	= $this->is_posts();
+		$stream	= $this->is_stream();
+		
+		apply_filters('revslider_get_parent_slides_pre', $lang, $published, $gal_ids, $this);
+		
+		if($post){
+			$parent_slides = $this->get_slides_from_posts($published, $gal_ids, $lang);
+		}elseif($stream !== false){
+			$parent_slides = $this->get_slides_from_stream($published);
+		}else{
+			$parent_slides = $this->get_slides($published);
+		}
+		
+		apply_filters('revslider_get_parent_slides_post', $parent_slides, $published, $gal_ids, $this);
+		
+		return $parent_slides;
+	}
+	
+	
+	/**
+	 * get array of slider id -> title
+	 * @before: RevSliderSlider::getArrSlidersShort();
+	 */		
+	public function get_sliders_short($exclude_id = null, $filter = 'all'){
+		$sliders	= $this->get_sliders();
+		$short		= array();
+		if(!empty($sliders)){
+			foreach($sliders as $slider){
+				$id			= $slider->get_id();
+				$from_post	= $slider->is_posts();
+				
+				//filter by gallery only
+				if($filter == 'posts' && $from_post == false) 	 continue;
+				if($filter == 'gallery' && $from_post == true) 	 continue;
+				if($filter == 'template' && $from_post == false) continue; //filter by template type
+				if(!empty($exclude_id) && $exclude_id == $id)	 continue; //filter by except
+				
+				$short[$id] = $slider->get_title();
+			}
+		}
+		
+		return $short;
+	}
+	
+	
+	/**
+	 * get the maximum order
+	 * @before: RevSliderSlider::getMaxOrder()
+	 */
+	public function get_max_order(){
+		global $wpdb;
+		
+		$record = $wpdb->get_row($wpdb->prepare("SELECT slide_order FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDES ." WHERE slider_id = %d ORDER BY slide_order DESC LIMIT 0,1", $this->id), ARRAY_A);
+		
+		return (empty($record)) ? 0 : $this->get_val($record, 'slide_order');
+	}
+	
+	
+	/**
+	 * get the slider type
+	 */
+	public function get_type(){
+		$type		= 'gallery';
+		$is_stream	= $this->is_stream();
+		
+		if($this->is_posts() == true){
+			$type = (in_array($this->get_param('sourcetype', 'gallery'), array('woocommerce', 'woo'), true)) ? 'woocommerce' : 'posts';
+			if($this->is_specific_posts()) $type = 'specific_posts';
+		}elseif($is_stream !== false){
+			$type = (in_array($is_stream, array('facebook', 'twitter', 'instagram', 'flickr', 'youtube', 'vimeo'))) ? $is_stream : $type;
+		}
+		
+		return $type;
+	}
+	
+	
+	/**
+	 * get the slider type before 60, needed for partial update proceess introduced in 6.0.0
+	 * @since: 6.0.0
+	 */
+	public function get_type_pre60(){
+		$type		= 'gallery';
+		$is_stream	= $this->is_stream_pre60();
+		
+		if($this->is_posts_pre60() == true){
+			$type = ($this->get_param('source_type', 'gallery') == 'woocommerce') ? 'woocommerce' : 'posts';
 			
-			//update parent id
-			$duplicatedSlide = new RevSlide();
-			$duplicatedSlide->initByID($duplicatedSlideID);
-			$duplicatedSlide->updateParentSlideID($newSlideID);
+			if(in_array($this->get_param('sourcetype', 'gallery'), array('specific_posts', 'specific_post'), true)){
+				$type = 'specific_posts';
+			}
+			
+		}elseif($is_stream !== false){
+			$type = (in_array($is_stream, array('facebook', 'twitter', 'instagram', 'flickr', 'youtube', 'vimeo'))) ? $is_stream : $type;
 		}
 		
+		return $type;
 	}
 	
 	
 	/**
 	 * copy slide from one Slider to the given Slider ID
 	 * @since: 5.0
+	 * @before: RevSliderSlider::copySlideToSlider()
 	 */
-	public function copySlideToSlider($data){
+	public function copy_slide_to_slider($data){
 		global $wpdb;
 		
-		$sliderID = intval(RevSliderFunctions::getVal($data, "slider_id"));
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$slideID = intval(RevSliderFunctions::getVal($data, "slide_id"));
-		RevSliderFunctions::validateNotEmpty($slideID,"Slide ID");
-		
-		$tableSliders = $wpdb->prefix . RevSliderGlobals::TABLE_SLIDERS_NAME;
-		$tableSlides = $wpdb->prefix . RevSliderGlobals::TABLE_SLIDES_NAME;
-
-		//check if ID exists
-		$add_to_slider = $wpdb->get_row($wpdb->prepare("SELECT * FROM $tableSliders WHERE id = %s", $sliderID), ARRAY_A);
+		$slider_id		= intval($this->get_val($data, 'slider_id'));
+		$slide_id		= intval($this->get_val($data, 'slide_id'));
+		$add_to_slider	= $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE id = %s", $slider_id), ARRAY_A); //check if ID exists
 		
 		if(empty($add_to_slider))
 			return __('Slide could not be duplicated', 'revslider');
 		
 		//get last slide in slider for the order
-		$slide_order = $wpdb->get_row($wpdb->prepare("SELECT * FROM $tableSlides WHERE slider_id = %s ORDER BY slide_order DESC", $sliderID), ARRAY_A);
-		$order = (empty($slide_order)) ? 1 : $slide_order['slide_order'] + 1;
-		
-		$slide_to_copy = $wpdb->get_row($wpdb->prepare("SELECT * FROM $tableSlides WHERE id = %s", $slideID), ARRAY_A);
+		$slide_order	= $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDES ." WHERE slider_id = %s ORDER BY slide_order DESC", $slider_id), ARRAY_A);
+		$slide_to_copy	= $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDES ." WHERE id = %s", $slide_id), ARRAY_A);
 		
 		if(empty($slide_to_copy))
 			return __('Slide could not be duplicated', 'revslider');
 		
-		unset($slide_to_copy['id']); //remove the ID of Slide, as it will be a new Slide
-		$slide_to_copy['slider_id'] = $sliderID; //set the new Slider ID to the Slide
-		$slide_to_copy['slide_order'] = $order; //set the next slide order, to set slide to the end
+		unset($slide_to_copy['id']); //remove the ID of the Slide, as it will be a new Slide
+		$slide_to_copy['slider_id']		= $slider_id; //set the new Slider ID to the Slide
+		$slide_to_copy['slide_order']	= (empty($slide_order)) ? 1 : $this->get_val($slide_order, 'slide_order') + 1; //set the next slide order, to set slide to the end
 		
-		$response = $wpdb->insert($tableSlides, $slide_to_copy);
+		$response = $wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_SLIDES, $slide_to_copy);
 		
-		if($response === false) return __('Slide could not be copied', 'revslider');
-		
-		return true;
-	}
-	
-	
-	/**
-	 * copy / move slide from data
-	 */
-	public function copyMoveSlideFromData($data){
-		
-		$sliderID = RevSliderFunctions::getVal($data, "sliderID");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$this->initByID($sliderID);
-
-		$targetSliderID = RevSliderFunctions::getVal($data, "targetSliderID");
-		RevSliderFunctions::validateNotEmpty($sliderID,"Target Slider ID");
-		$this->initByID($sliderID);
-		
-		if($targetSliderID == $sliderID)
-			RevSliderFunctions::throwError("The target slider can't be equal to the source slider");
-		
-		$slideID = RevSliderFunctions::getVal($data, "slideID");
-		RevSliderFunctions::validateNotEmpty($slideID,"Slide ID");
-		
-		$operation = RevSliderFunctions::getVal($data, "operation");
-		
-		$this->copyMoveSlide($slideID,$targetSliderID,$operation);
-		
-		return($sliderID);
-	}
-	
-	
-	/**
-	 * create a slide from input data
-	 */
-	public function createSlideFromData($data,$returnSlideID = false){
-		
-		$sliderID = RevSliderFunctions::getVal($data, "sliderid");
-		$obj = RevSliderFunctions::getVal($data, "obj");
-		
-		RevSliderFunctions::validateNotEmpty($sliderID,"Slider ID");
-		$this->initByID($sliderID);
-		
-		if(is_array($obj)){	//multiple
-			foreach($obj as $item){
-				$slide = new RevSlide();
-				$slideID = $slide->createSlide($sliderID, $item);
-			}
-			
-			return(count($obj));
-			
-		}else{	//signle
-			$urlImage = $obj;
-			$slide = new RevSlide();
-			$slideID = $slide->createSlide($sliderID, $urlImage);
-			if($returnSlideID == true)
-				return($slideID);
-			else 
-				return(1);	//num slides -1 slide created
+		if(isset($slide_id) && $response !== false){
+			$this->map[$slide_id] = $wpdb->insert_id;
 		}
-	}
-	
-	
-	
-	/**
-	 * update slides order from data
-	 */
-	public function updateSlidesOrderFromData($data){
-		$sliderID = RevSliderFunctions::getVal($data, "sliderID");
-		$arrIDs = RevSliderFunctions::getVal($data, "arrIDs");
-		RevSliderFunctions::validateNotEmpty($arrIDs,"slides");
 		
-		$this->initByID($sliderID);
-		
-		$isFromPosts = $this->isSlidesFromPosts();
-		
-		foreach($arrIDs as $index=>$slideID){
-			
-			$order = $index+1;
-			
-			if($isFromPosts){
-				RevSliderFunctionsWP::updatePostOrder($slideID, $order);
-			}else{
-				
-				$arrUpdate = array("slide_order"=>$order);
-				$where = array("id"=>$slideID);
-				$this->db->update(RevSliderGlobals::$table_slides,$arrUpdate,$where);
-			}							
-		}//end foreach
-		
-		//update sortby			
-		if($isFromPosts){
-			$arrUpdate = array();
-			$arrUpdate["post_sortby"] = RevSliderFunctionsWP::SORTBY_MENU_ORDER;
-			$this->updateParam($arrUpdate);
-		} 
-		
-	}
-	
-	/**
-	 * 
-	 * get the "main" and "settings" arrays, for dealing with the settings.
-	 */
-	public function getSettingsFields(){
-		$this->validateInited();
-		
-		$arrMain = array();
-		$arrMain["title"] = $this->title;
-		$arrMain["alias"] = $this->alias;
-		
-		$arrRespose = array("main"=>$arrMain, "params"=>$this->arrParams);
-		
-		return($arrRespose);
+		return ($response === false) ? __('Slide could not be duplicated', 'revslider') : true;
 	}
 	
 	
 	/**
 	 * get all used fonts in the current Slider
 	 * @since: 5.1.0
+	 * @before: RevSliderSlider::getUsedFonts();
 	 */
-	public function getUsedFonts($full = false){
-		$this->validateInited();
-		$gf = array();
+	public function get_used_fonts($full = false){
+		$gf			= array();
+		$sl			= new RevSliderSlide();
+		$mslides	= $this->get_slides(true);
+		$static_id	= $sl->get_static_slide_id($this->get_id());
 		
-		$sl = new RevSliderSlide();
-		
-		$mslides = $this->getSlides(true);
-		
-		$staticID = $sl->getStaticSlideID($this->getID());
-		if($staticID !== false){
-			$msl = new RevSliderSlide();
-			if(strpos($staticID, 'static_') === false){
-				$staticID = 'static_'.$this->getID();
-			}
-			$msl->initByID($staticID);
-			if($msl->getID() !== ''){
+		if($static_id !== false){
+			$msl		= new RevSliderSlide();
+			$static_id	= (strpos($static_id, 'static_') === false) ? 'static_'.$static_id : $static_id;
+			
+			$msl->init_by_id($static_id);
+			if($msl->get_id() !== ''){
 				$mslides = array_merge($mslides, array($msl));
 			}
 		}
 		
 		if(!empty($mslides)){
 			foreach($mslides as $ms){
-				$mf = $ms->getUsedFonts($full);
+				$mf = $ms->get_used_fonts($full);
+				
 				if(!empty($mf)){
 					foreach($mf as $mfk => $mfv){
 						if(!isset($gf[$mfk])){
@@ -2230,7 +1706,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 								$gf[$mfk]['variants'][$mfvk] = true;
 							}
 						}
-						$gf[$mfk]['slide'][] = array('id' => $ms->getID(), 'title' => $ms->getTitle());
+						$gf[$mfk]['slide'][] = array('id' => $ms->get_id(), 'title' => $ms->get_title());
 					}
 				}
 			}
@@ -2241,1045 +1717,156 @@ class RevSliderSlider extends RevSliderElementsBase{
 	
 	
 	/**
-	 * get slides from gallery
-	 * force from gallery - get the slide from the gallery only
+	 * get slides from posts
+	 * @before: RevSliderSlider::getSlidesFromPosts();
 	 */
-	public function getSlides($publishedOnly = false){
+	public function get_slides_from_posts($published = false, $gal_ids = array(), $lang = 'all'){
+		$templates = $this->get_slides($published);
+		$templates = $this->assoc_to_array($templates);
 		
-		$arrSlides = $this->getSlidesFromGallery($publishedOnly);
+		if(count($templates) == 0) return array();
 		
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * get slides from gallery
-	 * get the slides raw, do not initialize them
-	 * @since: 5.3.0
-	 */
-	public function getSlidesCountRaw($publishedOnly = false){
+		$source = (!empty($gal_ids)) ? 'specific_posts' : $this->get_param('sourcetype', 'gallery'); //change to specific posts, give the gal_ids to the list
 		
-		$arrSlides = $this->getSlidesCountFromGallery($publishedOnly);
+		switch($source){
+			case 'posts':
+			case 'post':
+				$subtype = $this->get_param(array('source', 'post', 'subType'), 'post');
+				
+				if($subtype === 'current_post'){
+					global $post;
+					//$posts = $this->get_specific_posts(array($post->ID));
+					$posts = $this->get_specific_posts(array('', $post->ID));
+				}elseif(in_array($subtype, array('specific_posts', 'specific_post'), true)){
+					$posts = $this->get_specific_posts($gal_ids);
+				}else{
+					//check where to get posts from
+					switch($this->get_param(array('source', 'post', 'fetchType'), 'cat_type')){
+						case 'cat_tag':
+						default:
+							$posts = $this->get_posts_by_categories($published);
+						break;
+						case 'related':
+							$posts = $this->get_related_posts();
+						break;
+						case 'popular':
+							$posts = $this->get_popular_posts();
+						break;
+						case 'recent':
+							$posts = $this->get_latest_posts();
+						break;
+						case 'next_prev':
+							$posts = $this->get_next_previous_post();
+						break;
+					}
+				}
+			break;
+			/*case 'current_post':
+				global $post;
+				$posts = $this->get_specific_posts(array('', $post->ID));
+			break;
+			*/
+			/*
+			 * This needed to be uncommented for WP Gallery AddOn compatibility
+			*/
+			case 'specific_posts':
+			case 'specific_post':
+				$posts = $this->get_specific_posts($gal_ids);
+			break;
+			case 'woocommerce':
+			case 'woo':
+				$posts = $this->get_products_from_categories($published);
+			break;
+			default:
+				$this->throw_error(__('This Source Type must be from posts.', 'revslider'));
+			break;
+		}
 		
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * get first slide from gallery
-	 * @since: 5.3.0
-	 */
-	public function getFirstSlide($publishedOnly = false){
+		$slides		= array();
+		$key		= 0;
+		$num_temp	= count($templates);
 		
-		$arrSlides = $this->getSlidesFromGallery($publishedOnly, false, true);
-		
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * get slides from gallery respecting wpml
-	 * force from gallery - get the slide from the gallery only
-	 */
-	public function getSlidesWPML($publishedOnly = false, $slide){
-		
-		$arrSlides = $this->getSlides($publishedOnly);
-		
-		$mslide_list = array();
-		
-		//check if WPML is active and change the ID of Slide depending on that.
-		if(RevSliderWpml::isWpmlExists() && $this->getParam('use_wpml', 'off') == 'on'){
-			$lang = $slide->getParam('lang', 'all');
-			
-			if(!empty($arrSlides)){
-				foreach($arrSlides as $at_slide){
-					$langs = $at_slide->getArrChildrenLangs();
-					
-					if(!empty($langs) && is_array($langs)){
-						foreach($langs as $l){
-							if($l['lang'] == $lang){
-								$mslide_list[] = array('id' => $l['slideid'], 'title' => $at_slide->getParam('title', 'Slide'));
+		if(!empty($posts)){
+			foreach($posts as $post_data){
+				$found = false;
+				if($lang !== 'all' && $this->get_val($templates[$key], array('params', 'child', 'language'), 'all') !== $lang){
+					$children = $templates[$key]->get_children();
+					if(!empty($children)){
+						foreach($children as $child){
+							if($this->get_val($child, array('params', 'child', 'language'), 'all') === $lang){
+								$template = clone $child;
+								$found = true;
+								break;
 							}
 						}
 					}
 				}
-			}
-			//get cur lang of slide
-		}else{
-			if(!empty($arrSlides)){
-				foreach($arrSlides as $at_slide){
-					$mslID = $at_slide->getID();
-					
-					$mslide_list[] = array('id' => $mslID, 'title' => $at_slide->getParam('title', 'Slide'));
-				}
-			}
-		}
-		
-		return($mslide_list);
-	}
-	
-	
-	/**
-	 * get slides from posts
-	 */
-	public function getSlidesFromPosts($publishedOnly = false, $gal_ids = array()){
-		
-		$slideTemplates = $this->getSlidesFromGallery($publishedOnly);
-		$slideTemplates = RevSliderFunctions::assocToArray($slideTemplates);
-		
-		if(count($slideTemplates) == 0) return array();
-		
-		$sourceType = $this->getParam("source_type","gallery");
-		
-		if(!empty($gal_ids)) $sourceType = 'specific_posts'; //change to specific posts, give the gal_ids to the list
-		
-		switch($sourceType){
-			case "posts":
-				//check where to get posts from
-				$sourceType = $this->getParam("fetch_type","cat_tag");
-				switch($sourceType){
-					case 'cat_tag':
-					default:
-						$arrPosts = $this->getPostsFromCategories($publishedOnly);
-					break;
-					case 'related':
-						$arrPosts = $this->getPostsFromRelated();
-					break;
-					case 'popular':
-						$arrPosts = $this->getPostsFromPopular();
-					break;
-					case 'recent':
-						$arrPosts = $this->getPostsFromRecent();
-					break;
-					case 'next_prev':
-						$arrPosts = $this->getPostsNextPrevious();
-					break;
-				}
-			break;
-			case "current_post":
-				global $post;
-				$arrPosts = $this->getPostsFromSpecificList(array("",$post->ID));
-			break;
-			case "specific_posts":
-				$arrPosts = $this->getPostsFromSpecificList($gal_ids);
-			break;
-			case 'woocommerce':
-				$arrPosts = $this->getProductsFromCategories($publishedOnly);
-			break;
-			default:
-				RevSliderFunctions::throwError("getSlidesFromPosts error: This source type must be from posts.");
-			break;
-		}
-		
-		$arrSlides = array();
-		
-		$templateKey = 0;
-		$numTemplates = count($slideTemplates);
-		
-		
-		foreach($arrPosts as $postData){
-			$slideTemplate = clone $slideTemplates[$templateKey];
-			
-			//advance the templates
-			$templateKey++;
-			if($templateKey == $numTemplates){
-				$templateKey = 0;
-				$slideTemplates = $this->getSlidesFromGallery($publishedOnly); //reset as clone did not work properly
-				$slideTemplates = RevSliderFunctions::assocToArray($slideTemplates);
-			}
-			
-			$slide = new RevSlide();
-			$slide->initByPostData($postData, $slideTemplate, $this->id);
-			$arrSlides[] = $slide;
-		}
-		
-		$this->arrSlides = $arrSlides;
-		
-		
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * get slides from posts
-	 */
-	public function getSlidesFromStream($publishedOnly = false){
-		
-		$slideTemplates = $this->getSlidesFromGallery($publishedOnly);
-		$slideTemplates = RevSliderFunctions::assocToArray($slideTemplates);
-		
-		if(count($slideTemplates) == 0) return array();
-		
-		$arrPosts = array();
-		
-		$max_allowed = 999999;
-		$sourceType = $this->getParam("source_type","gallery");
-		$additions = array('fb_type' => 'album');
-		switch($sourceType){
-			case "facebook":
-				$facebook = new RevSliderFacebook($this->getParam('facebook-transient','1200'));
-				if($this->getParam('facebook-type-source','timeline') == "album"){
-					$arrPosts = $facebook->get_photo_set_photos($this->getParam('facebook-album'),$this->getParam('facebook-count',10),$this->getParam('facebook-app-id'),$this->getParam('facebook-app-secret'));
-				}
-				else{
-					$user_id = $facebook->get_user_from_url($this->getParam('facebook-page-url'));
-					$arrPosts = $facebook->get_photo_feed($user_id,$this->getParam('facebook-app-id'),$this->getParam('facebook-app-secret'),$this->getParam('facebook-count',10));
-					$additions['fb_type'] = $this->getParam('facebook-type-source','timeline');
-					$additions['fb_user_id'] = $user_id;
-				}
 				
-				if(!empty($arrPosts)){
-					foreach($arrPosts as $k => $p){
-						if(!isset($p->status_type)) continue;
-						
-						if(in_array($p->status_type, array("wall_post"))) unset($arrPosts[$k]);
-					}
+				if($found === false){
+					$template = clone $templates[$key];
 				}
-				$max_posts = $this->getParam('facebook-count', '25', self::FORCE_NUMERIC);
-				$max_allowed = 25;
-			break;
-			case "twitter":
-				$twitter = new RevSliderTwitter($this->getParam('twitter-consumer-key'),$this->getParam('twitter-consumer-secret'),$this->getParam('twitter-access-token'),$this->getParam('twitter-access-secret'),$this->getParam('twitter-transient','1200'));
-				$arrPosts = $twitter->get_public_photos($this->getParam('twitter-user-id'),$this->getParam('twitter-include-retweets'),$this->getParam( 'twitter-exclude-replies'),$this->getParam('twitter-count'),$this->getParam('twitter-image-only'));	
-				$max_posts = $this->getParam('twitter-count', '500', self::FORCE_NUMERIC);
-				$max_allowed = 500;
-				$additions['twitter_user'] = $this->getParam('twitter-user-id');
-			break;
-			case "instagram":
-				$instagram = new RevSliderInstagram($this->getParam('instagram-transient','1200'));
-				if($this->getParam('instagram-type','user')!="hash"){
-					$search_user_id = $this->getParam('instagram-user-id');
-					$arrPosts = $instagram->get_public_photos($search_user_id,$this->getParam('instagram-count'));
+				//advance the templates
+				$key++;
+				if($key == $num_temp){
+					$key		= 0;
+					$templates	= $this->get_slides($published); //reset as clone did not work properly
+					$templates	= $this->assoc_to_array($templates);
 				}
-				else{
-					$search_hash_tag = $this->getParam('instagram-hash-tag');
-					$arrPosts = $instagram->get_tag_photos($search_hash_tag,$this->getParam('instagram-count'));
-				}
-				
-				$max_posts = $this->getParam('instagram-count', '33', self::FORCE_NUMERIC);
-				$max_allowed = 33;
-			break;
-			case "flickr":
-				$flickr = new RevSliderFlickr($this->getParam('flickr-api-key'),$this->getParam('flickr-transient','1200'));
-				switch($this->getParam('flickr-type')){
-					case 'publicphotos':
-						$user_id = $flickr->get_user_from_url($this->getParam('flickr-user-url'));
-						$arrPosts = $flickr->get_public_photos($user_id,$this->getParam('flickr-count'));
-					break;
-					case 'gallery':
-						$gallery_id = $flickr->get_gallery_from_url($this->getParam('flickr-gallery-url'));
-						$arrPosts = $flickr->get_gallery_photos($gallery_id,$this->getParam('flickr-count'));
-					break;
-					case 'group':
-						$group_id = $flickr->get_group_from_url($this->getParam('flickr-group-url'));
-						$arrPosts = $flickr->get_group_photos($group_id,$this->getParam('flickr-count'));
-					break;
-					case 'photosets':
-						$arrPosts = $flickr->get_photo_set_photos($this->getParam('flickr-photoset'),$this->getParam('flickr-count'));
-					break;
-				}
-				$max_posts = $this->getParam('flickr-count', '99', self::FORCE_NUMERIC);
-			break;
-			case 'youtube':
-				$channel_id = $this->getParam('youtube-channel-id');
-				$youtube = new RevSliderYoutube($this->getParam('youtube-api'),$channel_id,$this->getParam('youtube-transient','1200'));
-				
-				if($this->getParam('youtube-type-source')=="playlist"){
-					$arrPosts = $youtube->show_playlist_videos($this->getParam('youtube-playlist'),$this->getParam('youtube-count'));
-				}
-				else{
-					$arrPosts = $youtube->show_channel_videos($this->getParam('youtube-count'));
-				}
-				$additions['yt_type'] = $this->getParam('youtube-type-source','channel');
-				$max_posts = $this->getParam('youtube-count', '25', self::FORCE_NUMERIC);
-				$max_allowed = 50;
-				break;
-			case 'vimeo':
-				$vimeo = new RevSliderVimeo($this->getParam('vimeo-transient','1200'));
-				$vimeo_type = $this->getParam('vimeo-type-source');
-				
-				switch ($vimeo_type) {
-					case 'user':
-						$arrPosts = $vimeo->get_vimeo_videos($vimeo_type,$this->getParam('vimeo-username'));
-						break;
-					case 'channel':
-						$arrPosts = $vimeo->get_vimeo_videos($vimeo_type,$this->getParam('vimeo-channelname'));
-						break;
-					case 'group':
-						$arrPosts = $vimeo->get_vimeo_videos($vimeo_type,$this->getParam('vimeo-groupname'));
-						break;
-					case 'album':
-						$arrPosts = $vimeo->get_vimeo_videos($vimeo_type,$this->getParam('vimeo-albumid'));
-						break;
-					default:
-						break;
 
-				}
-				$additions['vim_type'] = $this->getParam('vimeo-type-source','user');
-				$max_posts = $this->getParam('vimeo-count', '25', self::FORCE_NUMERIC);
-				$max_allowed = 60;
-				break;
-			default:
-				RevSliderFunctions::throwError("getSlidesFromStream error: This source type must be from stream.");
-			break;
-		}
-		
-		if($max_posts < 0) $max_posts *= -1;
-		
-		$arrPosts = apply_filters('revslider_pre_mod_stream_data', $arrPosts, $sourceType, $this->id);
-		
-		while(count($arrPosts) > $max_posts || count($arrPosts) > $max_allowed){
-			array_pop($arrPosts);
-		}
-		
-		$arrPosts = apply_filters('revslider_post_mod_stream_data', $arrPosts, $sourceType, $this->id);
-		
-		$arrSlides = array();
-		
-		$templateKey = 0;
-		$numTemplates = count($slideTemplates);
-		
-		if(empty($arrPosts)) RevSliderFunctions::throwError(__('Failed to load Stream', 'revslider'));
-		
-		foreach($arrPosts as $postData){
-			if(empty($postData)) continue; //ignore empty entries, like from instagram
-			
-			$slideTemplate = $slideTemplates[$templateKey];
-			
-			//advance the templates
-			$templateKey++;
-			if($templateKey == $numTemplates)
-				$templateKey = 0;
-			
-			$slide = new RevSlide();
-			$slide->initByStreamData($postData, $slideTemplate, $this->id, $sourceType, $additions);
-			$arrSlides[] = $slide;
-		}
-		
-		$this->arrSlides = $arrSlides;
-		
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * get the first slide ID of the current slider
-	 */
-	public function getFirstSlideIdFromGallery(){
-		$this->validateInited();
-		
-		$arrSlides = array();
-		$arrSlideRecords = $this->db->fetch(RevSliderGlobals::$table_slides,$this->db->prepare("slider_id = %s", array($this->id)),"slide_order",'',' LIMIT 0,1');
-		
-		foreach ($arrSlideRecords as $record){
-			$slide = new RevSlide();
-			$slide->initByData($record);
-			$slideID = $slide->getID();
-			$arrSlides[$slideID] = $slide;
-			return $arrSlides;
-		}
-		
-		return false;
-	}
-	
-	
-	/**
-	 * get slides of the current slider
-	 */
-	public function getSlidesFromGallery($publishedOnly = false, $allwpml = false, $first = false){
-		//global $rs_slide_template;
-		$this->validateInited();
-		
-		$arrSlides = array();
-		$arrSlideRecords = $this->db->fetch(RevSliderGlobals::$table_slides,$this->db->prepare("slider_id = %s", array($this->id)),"slide_order");
-		
-		//add Slides set by postsettings, so slide_template
-		/*if(!empty($rs_slide_template)){
-			foreach($rs_slide_template as $rs_s_t){
-				$rs_s_t_d = $this->db->fetch(RevSliderGlobals::$table_slides,$this->db->prepare("id = %s", array($rs_s_t)),"slide_order");
-				foreach($rs_s_t_d as $rs_s_t_d_v){
-					$arrSlideRecords[] = $rs_s_t_d_v;
-				}
-			}
-		}*/
-		
-		$arrChildren = array();
-		
-		foreach ($arrSlideRecords as $record){
-			$slide = new RevSlide();
-			$slide->initByData($record);
-			
-			$slideID = $slide->getID();
-			$arrIdsAssoc[$slideID] = true;
-
-			if($publishedOnly == true){
-				$state = $slide->getParam("state", "published");
-				if($state == "unpublished"){
-					continue;
-				}
-			}
-			
-			$parentID = $slide->getParam("parentid","");
-			if(!empty($parentID)){
-				$lang = $slide->getParam("lang","");
-				if(!isset($arrChildren[$parentID]))
-					$arrChildren[$parentID] = array();
-				$arrChildren[$parentID][] = $slide;
-				if(!$allwpml)
-					continue;	//skip adding to main list
-			}
-			
-			//init the children array
-			$slide->setArrChildren(array());
-			
-			$arrSlides[$slideID] = $slide;
-			
-			if($first) break; //we only want the first slide!
-		}
-		
-		//add children array to the parent slides
-		foreach($arrChildren as $parentID=>$arr){
-			if(!isset($arrSlides[$parentID])){
-				continue;
-			}
-			$arrSlides[$parentID]->setArrChildren($arr);
-		}
-		
-		$this->arrSlides = $arrSlides;
-
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * get slides of the current slider
-	 * @since: 5.3.0
-	 */
-	public function getSlidesFromGalleryRaw($publishedOnly = false){
-	
-		$this->validateInited();
-		
-		$arrSlideRecords = $this->db->fetch(RevSliderGlobals::$table_slides,$this->db->prepare("slider_id = %s", array($this->id)),"slide_order");
-		
-		return $arrSlideRecords;
-	}
-	
-	
-	/**
-	 * get slides of the current slider
-	 * @since: 5.3.0
-	 */
-	public function getSlidesCountFromGallery($publishedOnly = false){
-	
-		$this->validateInited();
-		
-		$sqlSelect = $this->db->prepare("select `id` from ".RevSliderGlobals::$table_slides." where `slider_id` = %s", array($this->id));
-		$arrSlideRecords = $this->db->runSqlR($sqlSelect);
-		
-		return $arrSlideRecords;
-	}
-	
-	
-	
-	/**
-	 * 
-	 * get slide id and slide title from gallery
-	 */
-	public function getArrSlidesFromGalleryShort(){
-		$arrSlides = $this->getSlidesFromGallery();
-		
-		$arrOutput = array();
-		$counter = 0;
-		foreach($arrSlides as $slide){
-			$slideID = $slide->getID();
-			$outputName = 'Slide '.$counter;
-			$title = $slide->getParam('title','');
-			$counter++;
-			
-			if(!empty($title))
-				$outputName .= ' - ('.$title.')';
+				$slide = new RevSliderSlide();
+				$slide->init_by_post_data($post_data, $template, $this->id);
 				
-			$arrOutput[$slideID] = $outputName;
-		}
-		
-		return($arrOutput);
-	}
-	
-	
-	/**
-	 * 
-	 * get slides for output
-	 * one level only without children
-	 */
-	public function getSlidesForOutput($publishedOnly = false, $lang = 'all',$gal_ids = array()){
-		
-		$isSlidesFromPosts = $this->isSlidesFromPosts();
-		$isSlidesFromStream = $this->isSlidesFromStream();
-		
-		
-		if(RevSliderWpml::isWpmlExists() && $this->getParam('use_wpml', 'off') == 'on'){
-			$cur_lang = apply_filters( 'wpml_current_language', null );
-			$wpml_current_language = apply_filters( 'wpml_current_language', null );
-			do_action( 'wpml_switch_language', $lang );
-		}
-		
-		if($isSlidesFromPosts){
-			$arrParentSlides = $this->getSlidesFromPosts($publishedOnly, $gal_ids);
-		}elseif($isSlidesFromStream !== false){
-			$arrParentSlides = $this->getSlidesFromStream($publishedOnly);
-		}else{
-			$arrParentSlides = $this->getSlides($publishedOnly);
-		}
-		
-		if(RevSliderWpml::isWpmlExists() && $this->getParam('use_wpml', 'off') == 'on'){ //switch language back
-			do_action( 'wpml_switch_language', $cur_lang );
-		}
-		
-		if($lang == 'all' || $isSlidesFromStream) // || $isSlidesFromPosts
-			return($arrParentSlides);
-		
-		$arrSlides = array();
-		foreach($arrParentSlides as $parentSlide){
-			$parentLang = $parentSlide->getLang();
-			if($parentLang == $lang)
-				$arrSlides[] = $parentSlide;
-				
-			$childAdded = false;
-			$arrChildren = $parentSlide->getArrChildren();
-			foreach($arrChildren as $child){
-				$childLang = $child->getLang();
-				
-				
-				//echo $childLang .'||'. $lang.'--';
-				
-				
-				if($childLang == $lang){
-					$arrSlides[] = $child;
-					$childAdded = true;
-					break;
-				}
-			}
-			
-			if($childAdded == false && $parentLang == "all")
-				$arrSlides[] = $parentSlide;
-		}
-		
-		return($arrSlides);
-	}
-	
-	
-	/**
-	 * 
-	 * get array of slide names
-	 */
-	public function getArrSlideNames(){
-		if(empty($this->arrSlides))
-			$this->getSlidesFromGallery();
-		
-		$arrSlideNames = array();
-
-		foreach($this->arrSlides as $number=>$slide){
-			$slideID = $slide->getID();
-			$filename = $slide->getImageFilename();	
-			$slideTitle = $slide->getParam("title","Slide");
-			$slideName = $slideTitle;
-			if(!empty($filename))
-				$slideName .= " ($filename)";
-			
-			$arrChildrenIDs = $slide->getArrChildrenIDs();
-			 
-			$arrSlideNames[$slideID] = array("name"=>$slideName,"arrChildrenIDs"=>$arrChildrenIDs,"title"=>$slideTitle);
-		}
-		return($arrSlideNames);
-	}
-	
-	
-	/**
-	 * 
-	 * get array of slides numbers by id's
-	 */
-	public function getSlidesNumbersByIDs($publishedOnly = false){
-		
-		if(empty($this->arrSlides))
-			$this->getSlides($publishedOnly);
-		
-		$arrSlideNumbers = array();
-		
-		$counter = 0;
-		
-		if(empty($this->arrSlides)) return $arrSlideNumbers;
-		
-		foreach($this->arrSlides as $slide){
-			$counter++;
-			$slideID = $slide->getID();
-			$arrSlideNumbers[$slideID] = $counter;				
-		}
-		return($arrSlideNumbers);
-	}
-	
-	
-	/**
-	 * 
-	 * get slider params for export slider
-	 */
-	private function getParamsForExport(){
-		$exportParams = $this->arrParams;
-		
-		//modify background image
-		$urlImage = RevSliderFunctions::getVal($exportParams, "background_image");
-		if(!empty($urlImage))
-			$exportParams["background_image"] = $urlImage;
-		
-		return($exportParams);
-	}
-
-	
-	/**
-	 * 
-	 * get slides for export
-	 */
-	public function getSlidesForExport($useDummy = false){
-		$arrSlides = $this->getSlidesFromGallery(false, true);
-		$arrSlidesExport = array();
-		
-		foreach($arrSlides as $slide){
-			$slideNew = array();
-			$slideNew["id"] = $slide->getID();
-			$slideNew["params"] = $slide->getParamsForExport();
-			$slideNew["slide_order"] = $slide->getOrder();
-			$slideNew["layers"] = $slide->getLayersForExport($useDummy);
-			$slideNew["settings"] = $slide->getSettings();
-			
-			$arrSlidesExport[] = $slideNew;
-		}
-		
-		return apply_filters('revslider_getSlidesForExport', $arrSlidesExport);
-	}
-
-	
-	/**
-	 * 
-	 * get slides for export
-	 */
-	public function getStaticSlideForExport($useDummy = false){
-		$arrSlidesExport = array();
-		
-		$slide = new RevSlide();
-		
-		$staticID = $slide->getStaticSlideID($this->id);
-		if($staticID !== false){
-			$slideNew = array();
-			$slide->initByStaticID($staticID);
-			$slideNew["params"] = $slide->getParamsForExport();
-			$slideNew["slide_order"] = $slide->getOrder();
-			$slideNew["layers"] = $slide->getLayersForExport($useDummy);
-			$slideNew["settings"] = $slide->getSettings();
-			$arrSlidesExport[] = $slideNew;
-		}
-		
-		return apply_filters('revslider_getStaticSlideForExport', $arrSlidesExport);
-	}
-	
-	
-	/**
-	 * get slides number
-	 */
-	public function getNumSlides($publishedOnly = false){
-		
-		if(empty($this->arrSlides))
-			$this->getSlides($publishedOnly);
-		
-		$numSlides = count($this->arrSlides);
-		return($numSlides);
-	}
-	
-	
-	/**
-	 * get slides number
-	 */
-	public function getNumSlidesRaw($publishedOnly = false){
-		
-		if(empty($this->arrSlides)){
-			$ret = $this->getSlidesCountRaw($publishedOnly);
-			$numSlides = count($ret);
-		}else{
-			$numSlides = count($this->arrSlides);
-		}
-		return($numSlides);
-	}
-	
-	
-	/**
-	 * get real slides number, from posts, social streams ect.
-	 */
-	public function getNumRealSlides($publishedOnly = false, $type = 'post'){
-		$numSlides = count($this->arrSlides);
-		
-		switch($type){
-			case 'post':
-				if($this->getParam('fetch_type', 'cat_tag') == 'next_prev'){
-					$numSlides = 2;
-				}else{
-					$numSlides = $this->getParam('max_slider_posts', count($this->arrSlides));
-					if(intval($numSlides) == 0) $numSlides = '∞';
-					//$this->getSlidesFromPosts($publishedOnly);
-					//$numSlides = count($this->arrSlides);
-				}
-			break;
-			case 'facebook':
-				$numSlides = $this->getParam('facebook-count', count($this->arrSlides));
-			break;
-			case 'twitter':
-				$numSlides = $this->getParam('twitter-count', count($this->arrSlides));
-			break;
-			case 'instagram':
-				$numSlides = $this->getParam('instagram-count', count($this->arrSlides));
-			break;
-			case 'flickr':
-				$numSlides = $this->getParam('flickr-count', count($this->arrSlides));
-			break;
-			case 'youtube':
-				$numSlides = $this->getParam('youtube-count', count($this->arrSlides));
-			break;
-			case 'vimeo':
-				$numSlides = $this->getParam('vimeo-count', count($this->arrSlides));
-			break;
-		}
-		
-		return($numSlides);
-	}
-	
-	
-	/**
-	 * get real slides number, from posts, social streams ect.
-	 */
-	public function getNumRealStreamSlides($publishedOnly = false){
-		
-		$this->getSlidesFromStream($publishedOnly);
-		
-		$numSlides = count($this->arrSlides);
-		return($numSlides);
-	}
-	
-	
-	/**
-	 * get sliders array - function don't belong to the object!
-	 */
-	public function getArrSliders($orders = false, $templates = 'neither'){
-		$order_fav = false;
-		if($orders !== false && key($orders) != 'favorite'){
-			$order_direction = reset($orders);
-			$do_order = key($orders);
-		}else{
-			$do_order = 'id';
-			$order_direction = 'ASC';
-			if(is_array($orders) && key($orders) == 'favorite'){
-				$order_direction = reset($orders);
-				$order_fav = true;
-			}
-		}
-		//$where = "`type` != 'template' ";
-		$where = "`type` != 'template' OR `type` IS NULL";
-		
-		$response = $this->db->fetch(RevSliderGlobals::$table_sliders,$where,$do_order,'',$order_direction);
-		
-		$arrSliders = array();
-		foreach($response as $arrData){
-			$slider = new RevSlider();
-			$slider->initByDBData($arrData);
-			
-			/*
-			This part needs to stay for backwards compatibility. It is used in the update process from v4x to v5x
-			*/
-			if($templates === true){
-				if($slider->getParam("template","false") == "false") continue;
-			}elseif($templates === false){
-				if($slider->getParam("template","false") == "true") continue;
-			}
-			
-			$arrSliders[] = $slider;
-		}
-		
-		if($order_fav === true){
-			$temp = array();
-			$temp_not = array();
-			foreach($arrSliders as $key => $slider){
-				if($slider->isFavorite()){
-					$temp_not[] = $slider;
-				}else{
-					$temp[] = $slider;
-				}
-			}
-			$arrSliders = array();
-			$arrSliders = ($order_direction == 'ASC') ? array_merge($temp, $temp_not) : array_merge($temp_not, $temp);
-		}
-		
-		return($arrSliders);
-	}
-
-	
-	/**
-	 * get array of alias
-	 */
-	public function getAllSliderAliases(){
-		$where = "`type` != 'template'";
-		
-		$response = $this->db->fetch(RevSliderGlobals::$table_sliders,$where,"id");
-		
-		$arrAliases = array();
-		foreach($response as $arrSlider){
-			$arrAliases[] = $arrSlider["alias"];
-		}
-		
-		return($arrAliases);
-	}
-
-	/**
-	 * get array of alias
-	 */
-	public function getAllSliderForAdminMenu(){
-		$arrSliders = $this->getArrSliders();
-		$arrShort = array();
-		if(!empty($arrSliders)){
-			foreach($arrSliders as $slider){
-				$id = $slider->getID();
-				$title = $slider->getTitle();
-				$alias = $slider->getAlias();
-				
-				$arrShort[$id] = array('title' => $title, 'alias' => $alias);
+				$slides[] = $slide;
 			}
 		}
 		
-		return($arrShort);
-	}	
-	
-	
-	/**
-	 * 
-	 * get array of slider id -> title
-	 */		
-	public function getArrSlidersShort($exceptID = null,$filterType = self::SLIDER_TYPE_ALL){
-		$arrSliders = $this->getArrSliders();
-		$arrShort = array();
-		foreach($arrSliders as $slider){
-			$id = $slider->getID();
-			$isFromPosts = $slider->isSlidesFromPosts();
-			$isTemplate = $slider->getParam("template","false");
-			
-			//filter by gallery only
-			if($filterType == self::SLIDER_TYPE_POSTS && $isFromPosts == false)
-				continue;
-				
-			if($filterType == self::SLIDER_TYPE_GALLERY && $isFromPosts == true)
-				continue;
-			
-			//filter by template type
-			if($filterType == self::SLIDER_TYPE_TEMPLATE && $isFromPosts == false)
-				continue;
-			
-			//filter by except
-			if(!empty($exceptID) && $exceptID == $id)
-				continue;
-				
-			$title = $slider->getTitle();
-			$arrShort[$id] = $title;
-		}
-		return($arrShort);
+		$this->slides = $slides;
+		
+		return $this->slides;
 	}
-	
-	/**
-	 * 
-	 * get array of sliders with slides, short, assoc.
-	 */
-	public function getArrSlidersWithSlidesShort($filterType = self::SLIDER_TYPE_ALL){
-		$arrSliders = self::getArrSlidersShort(null, $filterType);
-		
-		$output = array();
-		foreach($arrSliders as $sliderID=>$sliderName){
-			$slider = new RevSlider();
-			$slider->initByID($sliderID);
-			
-			$isFromPosts = $slider->isSlidesFromPosts();
-			$isTemplate = $slider->getParam("template","false");
-			
-			//filter by gallery only
-			if($filterType == self::SLIDER_TYPE_POSTS && $isFromPosts == false)
-				continue;
-				
-			if($filterType == self::SLIDER_TYPE_GALLERY && $isFromPosts == true)
-				continue;
-			
-			//filter by template type
-			if($filterType == self::SLIDER_TYPE_TEMPLATE && $isFromPosts == false) //$isTemplate == "false")
-				continue;
-				
-			$sliderTitle = $slider->getTitle();
-			$arrSlides = $slider->getArrSlidesFromGalleryShort();
-			
-			foreach($arrSlides as $slideID=>$slideName){
-				$output[$slideID] = $sliderName.", ".$slideName;
-			}
-		}
-		
-		return($output);
-	}
-	
-	
-	/**
-	 * 
-	 * get max order
-	 */
-	public function getMaxOrder(){
-		$this->validateInited();
-		$maxOrder = 0;
-		$arrSlideRecords = $this->db->fetch(RevSliderGlobals::$table_slides,$this->db->prepare("slider_id = %s", array($this->id)),"slide_order desc","","limit 1");
-		if(empty($arrSlideRecords))
-			return($maxOrder);
-		$maxOrder = $arrSlideRecords[0]["slide_order"];
-		
-		return($maxOrder);
-	}
-	
-	/**
-	 * 
-	 * get setting - start with slide
-	 */
-	public function getStartWithSlideSetting(){
-		
-		$numSlides = $this->getNumSlides();
-		
-		$startWithSlide = $this->getParam("start_with_slide","1");
-		if(is_numeric($startWithSlide)){
-			$startWithSlide = (int)$startWithSlide - 1;
-			if($startWithSlide < 0)
-				$startWithSlide = 0;
-				
-			if($startWithSlide >= $numSlides)
-				$startWithSlide = 0;
-			
-		}else
-			$startWithSlide = 0;
-		
-		return($startWithSlide);
-	}
-	
-	
-	/**
-	 * return if the slides source is from posts
-	 */
-	public function isSlidesFromPosts(){
-		$this->validateInited();
-		$sourceType = $this->getParam("source_type","gallery");
-		if($sourceType == "posts" || $sourceType == "specific_posts" || $sourceType == "current_post" || $sourceType == "woocommerce")
-			return(true);
-		
-		return(false);
-	}
-	
-	
-	/**
-	 * return if the slides source is from stream
-	 */
-	public function isSlidesFromStream(){
-		$this->validateInited();
-		$sourceType = $this->getParam("source_type","gallery");
-		if($sourceType != "posts" && $sourceType != "specific_posts" && $sourceType != "current_post" && $sourceType != "woocommerce" && $sourceType != "gallery")
-			return($sourceType);
-		
-		return(false);
-	}
-	
-	
-	/**
-	 * 
-	 * get posts from categories (by the slider params).
-	 */
-	private function getPostsFromCategories($publishedOnly = false){
-		$this->validateInited();
-		
-		$catIDs = $this->getParam("post_category");
-		$data = RevSliderFunctionsWP::getCatAndTaxData($catIDs);
-		
-		$taxonomies = $data["tax"];
-		$catIDs = $data["cats"];
-		
-		$sortBy = $this->getParam("post_sortby",self::DEFAULT_POST_SORTBY);
-		$sortDir = $this->getParam("posts_sort_direction",self::DEFAULT_POST_SORTDIR);
-		$maxPosts = $this->getParam("max_slider_posts","30");
-		if(empty($maxPosts) || !is_numeric($maxPosts))
-			$maxPosts = -1;
-		
-		$postTypes = $this->getParam("post_types","any");
-			
-		//set direction for custom order
-		if($sortBy == RevSliderFunctionsWP::SORTBY_MENU_ORDER)
-			$sortDir = RevSliderFunctionsWP::ORDER_DIRECTION_ASC;
-		
-		//Events integration
-		$arrAddition = array();
-		if($publishedOnly == true)			
-			$arrAddition["post_status"] = RevSliderFunctionsWP::STATE_PUBLISHED;
-		
-		if(RevSliderEventsManager::isEventsExists()){
-			
-			$filterType = $this->getParam("events_filter",RevSliderEventsManager::DEFAULT_FILTER);				
-			$arrAddition = RevSliderEventsManager::getWPQuery($filterType, $sortBy);
-		}
-		
-		$slider_id = $this->getID();
-		$arrPosts = RevSliderFunctionsWP::getPostsByCategory($slider_id, $catIDs,$sortBy,$sortDir,$maxPosts,$postTypes,$taxonomies,$arrAddition);
-		
-		return($arrPosts);
-	}  
 	
 	
 	/**
 	 * get related posts from current one
 	 * @since: 5.1.1
+	 * @before: RevSliderSlider::getPostsFromRelated();
 	 */
-	public function getPostsFromRelated(){
-		$my_posts = array();
+	public function get_related_posts(){
+		$my_posts	= array();
+		$tags		= '';
+		$post_id	= get_the_ID();
+		$sort_by	= $this->get_param(array('source', 'post', 'sortBy'), 'ID');
+		$source		= $this->get_param('source');
+		$post		= $this->get_val($source, 'post');
+		$max_posts	= $this->get_val($post, 'maxPosts', 30);
+		$max_posts	= (empty($max_posts) || !is_numeric($max_posts)) ? -1 :  $max_posts;
+		$post_tags	= get_the_tags();
 		
-		$sortBy = $this->getParam("post_sortby",self::DEFAULT_POST_SORTBY);
-		$sortDir = $this->getParam("posts_sort_direction",self::DEFAULT_POST_SORTDIR);
-		$max_posts = $this->getParam("max_slider_posts","30");
-		if(empty($max_posts) || !is_numeric($max_posts))
-			$max_posts = -1;
-		
-		$post_id = get_the_ID();
-		
-		$tags_string = '';
-		$post_tags = get_the_tags();
-		
-		if ($post_tags) {
-			foreach ($post_tags as $post_tag) {
-				$tags_string .= $post_tag->slug . ',';
+		if($post_tags){
+			foreach($post_tags as $post_tag){
+				$tags .= $post_tag->slug . ',';
 			}
 		}
 		
 		$query = array(
-						'exclude' => $post_id,
-						'numberposts' => $max_posts,
-						'order' => $sortDir,
-						'tag' => $tags_string
-					  );
-					  
-		if(strpos($sortBy, "meta_num_") === 0){
-			$metaKey = str_replace("meta_num_", "", $sortBy);
-			$query["orderby"] = "meta_value_num";
-			$query["meta_key"] = $metaKey;
-		}else
-		if(strpos($sortBy, "meta_") === 0){
-			$metaKey = str_replace("meta_", "", $sortBy);
-			$query["orderby"] = "meta_value";
-			$query["meta_key"] = $metaKey;
-		}else
-			$query["orderby"] = $sortBy;
+			'numberposts' => $max_posts,
+			'exclude'	=> $post_id,
+			'order'		=> $this->get_param(array('source', 'post', 'sortDirection'), 'DESC'),
+			'tag'		=> $tags
+		);
 		
-		$get_relateds = apply_filters('revslider_get_related_posts', $query, $post_id);
+		if(strpos($sort_by, 'meta_num_') === 0){
+			$query['orderby']	= 'meta_value_num';
+			$query['meta_key']	= str_replace('meta_num_', '', $sort_by);
+		}elseif(strpos($sort_by, 'meta_') === 0){
+			$query['orderby']	= 'meta_value';
+			$query['meta_key']	= str_replace('meta_', '', $sort_by);
+		}else{
+			$query['orderby']	= $sort_by;
+		}
 		
-		$tag_related_posts = get_posts($get_relateds);		
-		
+		$get_relateds		= apply_filters('revslider_get_related_posts', $query, $post_id);
+		$tag_related_posts	= get_posts($get_relateds);		
 		
 		if(count($tag_related_posts) < $max_posts){
 			$ignore = array();
@@ -3291,43 +1878,34 @@ class RevSliderSlider extends RevSliderElementsBase{
 			foreach($article_categories as $category) { 
 				$category_string .= $category->cat_ID . ',';
 			}
-			$max = $max_posts - count($tag_related_posts);
 			
-			$excl = implode(',', $ignore);
-			$query = array(
-							'exclude' => $excl,
-							'numberposts' => $max,
-							'category' => $category_string
-						  );
-						  
-			if(strpos($sortBy, "meta_num_") === 0){
-				$metaKey = str_replace("meta_num_", "", $sortBy);
-				$query["orderby"] = "meta_value_num";
-				$query["meta_key"] = $metaKey;
+			$max	= $max_posts - count($tag_related_posts);
+			$excl	= implode(',', $ignore);
+			$query	= array(
+				'exclude'		=> $excl,
+				'numberposts'	=> $max,
+				'category'		=> $category_string
+			);
+			
+			if(strpos($sort_by, 'meta_num_') === 0){
+				$query['orderby']	= 'meta_value_num';
+				$query['meta_key']	= str_replace('meta_num_', '', $sort_by);
 			}else
-			if(strpos($sortBy, "meta_") === 0){
-				$metaKey = str_replace("meta_", "", $sortBy);
-				$query["orderby"] = "meta_value";
-				$query["meta_key"] = $metaKey;
-			}else
-				$query["orderby"] = $sortBy;
+			if(strpos($sort_by, 'meta_') === 0){
+				$query['orderby']	= 'meta_value';
+				$query['meta_key']	= str_replace('meta_', '', $sort_by);
+			}else{
+				$query['orderby']	= $sort_by;
+			}
 			
-			$get_relateds = apply_filters('revslider_get_related_posts', $query, $post_id);
-			$cat_related_posts = get_posts($get_relateds);
-			
-			$tag_related_posts = $tag_related_posts + $cat_related_posts;
+			$get_relateds		= apply_filters('revslider_get_related_posts', $query, $post_id);
+			$cat_related_posts	= get_posts($get_relateds);
+			$tag_related_posts	= $tag_related_posts + $cat_related_posts;
 		}
 		
 		foreach($tag_related_posts as $post){
-			$the_post = array();
-			
-			if(method_exists($post, "to_array"))
-				$the_post = $post->to_array();
-			else
-				$the_post = (array)$post;
-			
+			$the_post = (method_exists($post, 'to_array')) ? $post->to_array() : (array)$post;
 			if($the_post['ID'] == $post_id) continue;
-			
 			$my_posts[] = $the_post;
 		}
 		
@@ -3338,37 +1916,36 @@ class RevSliderSlider extends RevSliderElementsBase{
 	/**
 	 * get popular posts
 	 * @since: 5.1.1
+	 * @before: RevSliderSlider::getPostsFromPopular();
+	 * @moved: 6.1.3
 	 */
-	public function getPostsFromPopular($max_posts = false){
-		$post_id = get_the_ID();
+	public function get_popular_posts($max_posts = false){
+		$post_id	= get_the_ID();
+		$my_posts	= array();
 		
 		if($max_posts == false){
-			$max_posts = $this->getParam("max_slider_posts","30");
-			if(empty($max_posts) || !is_numeric($max_posts))
-				$max_posts = -1;
+			$source		= $this->get_param('source');
+			$post		= $this->get_val($source, 'post');
+			$max_posts	= $this->get_val($post, 'maxPosts', 30);
+			$max_posts = (empty($max_posts) || !is_numeric($max_posts)) ? -1 : $max_posts;
 		}else{
 			$max_posts = intval($max_posts);
 		}
-		$my_posts = array();
 		
 		$args = array(
-			'post_type' => 'any',
-			'posts_per_page' => $max_posts,
 			'suppress_filters' => 0,
-			'meta_key'    => '_thumbnail_id',
-			'orderby'     => 'comment_count',
-			'order'       => 'DESC'
+			'posts_per_page' => $max_posts,
+			'post_type'	=> 'any',
+			'meta_key'  => '_thumbnail_id',
+			'orderby'   => 'comment_count',
+			'order'     => 'DESC'
 		);
 		
-		$args = apply_filters('revslider_get_popular_posts', $args, $post_id);
-		$posts = get_posts($args);
+		$args	= apply_filters('revslider_get_popular_posts', $args, $post_id);
+		$posts	= get_posts($args);
 		
 		foreach($posts as $post){
-		
-			if(method_exists($post, "to_array"))
-				$my_posts[] = $post->to_array();
-			else
-				$my_posts[] = (array)$post;
+			$my_posts[] = (method_exists($post, 'to_array')) ? $post->to_array() : (array)$post;
 		}
 		
 		return $my_posts;
@@ -3378,216 +1955,573 @@ class RevSliderSlider extends RevSliderElementsBase{
 	/**
 	 * get recent posts
 	 * @since: 5.1.1
+	 * @before: RevSliderSlider::getPostsFromRecent()
+	 * @moved: 6.1.3
 	 */
-	public function getPostsFromRecent($max_posts = false){
-		$post_id = get_the_ID();
+	public function get_latest_posts($max_posts = false){
+		$post_id	= get_the_ID();
+		$my_posts	= array();
+		$args		= array(
+			'post_type' => 'any',
+			'suppress_filters' => 0,
+			'meta_key'	=> '_thumbnail_id',
+			'orderby'	=> 'date',
+			'order'		=> 'DESC'
+		);
 		
 		if($max_posts == false){
-			$max_posts = $this->getParam("max_slider_posts","30");
-			if(empty($max_posts) || !is_numeric($max_posts))
-				$max_posts = -1;
+			$source		= $this->get_val($this->params, 'source');
+			$post		= $this->get_val($source, 'post');
+			$max_posts	= $this->get_val($post, 'maxPosts', 30);
+			$max_posts	= (empty($max_posts) || !is_numeric($max_posts)) ? -1 : $max_posts;
 		}else{
 			$max_posts = intval($max_posts);
 		}
 		
-		$my_posts = array();
+		$args['posts_per_page']	= $max_posts;
+		$args	= apply_filters('revslider_get_latest_posts', $args, $post_id);
+		$posts	= get_posts($args);
 		
-		$args = array(
-			'post_type' => 'any',
-			'posts_per_page' => $max_posts,
-			'suppress_filters' => 0,
-			'meta_key'    => '_thumbnail_id',
-			'orderby'     => 'date',
-			'order'       => 'DESC'
-		);
-		$args = apply_filters('revslider_get_latest_posts', $args, $post_id);
-		
-		$posts = get_posts($args);
-		
-		foreach($posts as $post){
-		
-			if(method_exists($post, "to_array"))
-				$my_posts[] = $post->to_array();
-			else
-				$my_posts[] = (array)$post;
+		if(!empty($posts)){
+			foreach($posts as $post){
+				$my_posts[] = (method_exists($post, 'to_array')) ? $post->to_array() : (array)$post;
+			}
 		}
 		
 		return $my_posts;
 	}
 	
+	
 	/**
 	 * get recent posts
 	 * @since: 5.1.1
+	 * @before: RevSliderSlider::getPostsNextPrevious();
 	 */
-	public function getPostsNextPrevious(){
+	public function get_next_previous_post(){
 		$my_posts = array();
 		
 		$startup_next_post = get_next_post();
-		if (!empty( $startup_next_post )){
-			if(method_exists($startup_next_post, "to_array"))
-				$my_posts[] = $startup_next_post->to_array();
-			else
-				$my_posts[] = (array)$startup_next_post;
+		if (!empty($startup_next_post)){
+			$my_posts[] = (method_exists($startup_next_post, 'to_array')) ? $startup_next_post->to_array() : (array)$startup_next_post;
 		}    
-
 		$startup_previous_post = get_previous_post();
-		if (!empty( $startup_previous_post )){
-			if(method_exists($startup_previous_post, "to_array"))
-				$my_posts[] = $startup_previous_post->to_array();
-			else
-				$my_posts[] = (array)$startup_previous_post;
+		if (!empty($startup_previous_post)){
+			$my_posts[] =(method_exists($startup_previous_post, 'to_array')) ? $startup_previous_post->to_array() : (array)$startup_previous_post;
 		}
 		
 		return $my_posts;
+	}
+	
+	
+	/**
+	 * get slides from posts
+	 * @before: RevSliderSlider::getSlidesFromStream();
+	 */
+	public function get_slides_from_stream($published = false){
+		$templates = $this->get_slides($published);
+		$templates = $this->assoc_to_array($templates);
+		
+		if(count($templates) == 0) return array();
+		
+		$posts		 = array();
+		$_slides	 = array();
+		$max_allowed = 999999;
+		$sourcetype	 = $this->get_param('sourcetype', 'gallery');
+		$additions	 = array('fb_type' => 'album');
+		
+		switch($sourcetype){
+			case 'facebook':
+				$facebook = new RevSliderFacebook($this->get_param(array('source', 'facebook', 'transient'), '1200'));
+				if($this->get_param(array('source', 'facebook', 'typeSource'), 'timeline') == 'album'){
+					$posts = $facebook->get_photo_set_photos($this->get_param(array('source', 'facebook', 'album')), $this->get_param(array('source', 'facebook', 'count'), 10), $this->get_param(array('source', 'facebook', 'appId')));
+				}else{
+					$user_id = $facebook->get_user_from_url($this->get_param(array('source', 'facebook', 'pageURL')));
+					$posts = $facebook->get_photo_feed($user_id, $this->get_param(array('source', 'facebook', 'appId')), $this->get_param(array('source', 'facebook', 'count'), 10));
+					$additions['fb_type']	 = $this->get_param(array('source', 'facebook', 'typeSource'), 'timeline');
+					$additions['fb_user_id'] = $user_id;
+				}
+				
+				if(!empty($posts)){
+					foreach($posts as $k => $p){
+						if(!isset($p->status_type)) continue;
+						if(in_array($p->status_type, array('wall_post'))) unset($posts[$k]);
+					}
+				}
+				
+				$max_posts	 = $this->get_param(array('source', 'facebook', 'count'), '25');
+				$max_allowed = 25;
+			break;
+			case 'twitter':
+				$twitter	 = new RevSliderTwitter($this->get_param(array('source', 'twitter', 'consumerKey')), $this->get_param(array('source', 'twitter', 'consumerSecret')), $this->get_param(array('source', 'twitter', 'accessToken')), $this->get_param(array('source', 'twitter', 'accessSecret')), $this->get_param(array('source', 'twitter', 'transient'), '1200'));
+				$posts		 = $twitter->get_public_photos($this->get_param(array('source', 'twitter', 'userId')), $this->get_param(array('source', 'twitter', 'includeRetweets')), $this->get_param(array('source', 'twitter', 'excludeReplies')), $this->get_param(array('source', 'twitter', 'count'), '500'), $this->get_param(array('source', 'twitter', 'imageOnly')));	
+				$max_posts	 = $this->get_param(array('source', 'twitter', 'count'), '500');
+				$max_allowed = 500;
+				$additions['twitter_user']	= $this->get_param(array('source', 'twitter', 'userId'));
+			break;
+			case 'instagram':
+				$instagram	 = new RevSliderInstagram($this->get_param(array('source', 'instagram', 'transient'), '1200'));
+				$posts		 = ($this->get_param(array('source', 'instagram', 'type'), 'user') != 'hash') ? $instagram->get_public_photos($this->get_param(array('source', 'instagram', 'userId')), $this->get_param(array('source', 'instagram', 'count'), '33')) : $instagram->get_tag_photos($this->get_param(array('source', 'instagram', 'hashTag')), $this->get_param(array('source', 'instagram', 'count'), '33'));
+				$max_posts	 = $this->get_param(array('source', 'instagram', 'count'), '33');
+				$additions['instagram_user'] = $this->get_param(array('source', 'instagram', 'userId'));
+				$max_allowed = 33;
+			break;
+			case 'flickr':
+				$flickr = new RevSliderFlickr($this->get_param(array('source', 'flickr', 'apiKey')), $this->get_param(array('source', 'flickr', 'transient'), '1200'));
+				switch($this->get_param(array('source', 'flickr', 'type'))){
+					case 'publicphotos':
+						$user_id = $flickr->get_user_from_url($this->get_param(array('source', 'flickr', 'userURL')));
+						$posts	 = $flickr->get_public_photos($user_id, $this->get_param(array('source', 'flickr', 'count')));
+					break;
+					case 'gallery':
+						$gallery_id	= $flickr->get_gallery_from_url($this->get_param(array('source', 'flickr', 'galleryURL')));
+						$posts		= $flickr->get_gallery_photos($gallery_id, $this->get_param(array('source', 'flickr', 'count')));
+					break;
+					case 'group':
+						$group_id	= $flickr->get_group_from_url($this->get_param(array('source', 'flickr', 'groupURL')));
+						$posts		= $flickr->get_group_photos($group_id, $this->get_param(array('source', 'flickr', 'count')));
+					break;
+					case 'photosets':
+						$posts = $flickr->get_photo_set_photos($this->get_param(array('source', 'flickr', 'photoSet')), $this->get_param(array('source', 'flickr', 'count')));
+					break;
+				}
+				$max_posts = $this->get_param(array('source', 'flickr', 'count'), '99');
+			break;
+			case 'youtube':
+				$channel_id	 = $this->get_param(array('source', 'youtube', 'channelId'));
+				$youtube	 = new RevSliderYoutube($this->get_param(array('source', 'youtube', 'api')), $channel_id, $this->get_param(array('source', 'youtube', 'transient'), '1200'));
+				if($this->get_param(array('source', 'youtube', 'typeSource')) == 'playlist'){
+					$posts = $youtube->show_playlist_videos($this->get_param(array('source', 'youtube', 'playList')), $this->get_param(array('source', 'youtube', 'count')));
+				}else{
+					$posts = $youtube->show_channel_videos($this->get_param(array('source', 'youtube', 'count')));
+				}
+				
+				$additions['yt_type'] = $this->get_param(array('source', 'youtube', 'typeSource'), 'channel');
+				$max_posts	 = $this->get_param(array('source', 'youtube', 'count'), '25');
+				$max_allowed = 50;
+			break;
+			case 'vimeo':
+				$vimeo = new RevSliderVimeo($this->get_param(array('source', 'vimeo', 'transient'), '1200'));
+				$vimeo_type = $this->get_param(array('source', 'vimeo', 'typeSource'));
+				
+				switch($vimeo_type){
+					case 'user':
+						$posts = $vimeo->get_vimeo_videos($vimeo_type, $this->get_param(array('source', 'vimeo', 'userName')));
+					break;
+					case 'channel':
+						$posts = $vimeo->get_vimeo_videos($vimeo_type, $this->get_param(array('source', 'vimeo', 'channelName')));
+					break;
+					case 'group':
+						$posts = $vimeo->get_vimeo_videos($vimeo_type, $this->get_param(array('source', 'vimeo', 'groupName')));
+					break;
+					case 'album':
+						$posts = $vimeo->get_vimeo_videos($vimeo_type, $this->get_param(array('source', 'vimeo', 'albumId')));
+					break;
+					default:
+					break;
+				}
+				
+				$additions['vim_type'] = $this->get_param(array('source', 'vimeo', 'typeSource'), 'user');
+				$max_posts	 = $this->get_param(array('source', 'vimeo', 'count'), '25');
+				$max_allowed = 60;
+			break;
+			default:
+				$this->throw_error(__('Sorry, this Social Stream cannot be displayed.', 'revslider'));
+			break;
+		}
+		
+		if($max_posts < 0) $max_posts *= -1;
+		
+		$posts = apply_filters('revslider_pre_mod_stream_data', $posts, $sourcetype, $this->id);
+		$posts = (is_string($posts)) ? array() : $posts;
+		
+		while(count($posts) > $max_posts || count($posts) > $max_allowed){
+			array_pop($posts);
+		}
+		
+		$posts = apply_filters('revslider_post_mod_stream_data', $posts, $sourcetype, $this->id);
+		
+		if(empty($posts)) $this->throw_error(__('Sorry, this Social Stream cannot be displayed.', 'revslider'));
+		
+		$i = 0;
+		$tk = 0;
+		
+		
+		foreach($posts as $data){
+			if(empty($data)) continue; //ignore empty entries, like from instagram
+			
+			$slide_template = $templates[$tk];
+			
+			//advance the templates
+			$tk++;
+			$tk = ($tk == count($templates)) ? 0 : $tk;
+			$_slides[$i] = new RevSliderSlide();
+
+			$_slides[$i]->init_by_stream_data($data, $slide_template, $this->id, $sourcetype, $additions);
+			
+			$i++;
+		}
+		
+		$this->slides = $_slides;
+		
+		return $this->slides;
+	}
+	
+	
+	/**
+	 * get posts from categories (by the slider params).
+	 * @before: RevSliderSlider::getPostsFromCategories();
+	 */
+	private function get_posts_by_categories($published = false){
+		$cat_ids	= $this->get_param(array('source', 'post', 'category'));
+		$data		= $this->get_tax_by_cat_id($cat_ids);
+		$post_types = $this->get_param(array('source', 'post', 'types'), 'post');
+		$sort_by	= $this->get_param(array('source', 'post', 'sortBy'), 'ID');
+		$sort_dir	= $this->get_param(array('source', 'post', 'sortDirection'), 'DESC');
+		$sort_dir	= ($sort_by == 'menu_order') ? 'ASC' : $sort_dir;
+		$source		= $this->get_param('source');
+		$post		= $this->get_val($source, 'post');
+		$max_posts	= $this->get_val($post, 'maxPosts', 30);
+		$max_posts	= (empty($max_posts) || !is_numeric($max_posts)) ? -1 : $max_posts;
+		$addition	= array();
+		
+		if($published == true){
+			$addition['post_status'] = 'publish';
+		}
+		
+		$slider_id	= $this->get_id();
+		$post		= $this->get_posts_by_category($slider_id, $data['cats'], $sort_by, $sort_dir, $max_posts, $post_types, $data['tax'], $addition, 'post');
+		
+		return apply_filters('revslider_get_posts_by_categories', $post, $this);
 	}
 	
 	
 	/**
 	 * get products from categories (by the slider params).
 	 * @since: 5.1.0
+	 * @before: RevSliderSlider::getProductsFromCategories();
 	 */
-	private function getProductsFromCategories($publishedOnly = false){
-		$this->validateInited();
+	private function get_products_from_categories($published = false){
+		$slider_id	= $this->get_id();
+		$cat_ids	= $this->get_param(array('source', 'woo', 'category'));
+		$data		= $this->get_tax_by_cat_id($cat_ids);
+		$cat_ids	= $data['cats'];
+		$taxonomies	= $data['tax'];
+		$sort_by	= $this->get_param(array('source', 'woo', 'sortBy'), 'ID');
+		$sort_dir	= $this->get_param(array('source', 'woo', 'sortDirection'), 'DESC');
+		$sort_dir	= ($sort_by == 'menu_order') ? 'ASC' : $sort_dir;
+		$max_posts	= $this->get_param(array('source', 'woo', 'maxProducts'), 30);
+		$max_posts	= (empty($max_posts) || !is_numeric($max_posts)) ? -1 : $max_posts;
+		$post_types	= $this->get_param(array('source', 'woo', 'types'), 'any');
+		$addition	= array();
 		
-		$catIDs = $this->getParam("product_category");
-		$data = RevSliderFunctionsWP::getCatAndTaxData($catIDs);
-		
-		$taxonomies = $data["tax"];
-		$catIDs = $data["cats"];
-		
-		$sortBy = $this->getParam("product_sortby",self::DEFAULT_POST_SORTBY);
-		$sortDir = $this->getParam("product_sort_direction",self::DEFAULT_POST_SORTDIR);
-		$maxPosts = $this->getParam("max_slider_products","30");
-		if(empty($maxPosts) || !is_numeric($maxPosts))
-			$maxPosts = -1;
-		
-		$postTypes = $this->getParam("product_types","any");
-			
-		//set direction for custom order
-		if($sortBy == RevSliderFunctionsWP::SORTBY_MENU_ORDER)
-			$sortDir = RevSliderFunctionsWP::ORDER_DIRECTION_ASC;
-		
-		//Events integration
-		$arrAddition = array();
-		if($publishedOnly == true)			
-			$arrAddition["post_status"] = RevSliderFunctionsWP::STATE_PUBLISHED;
-		
-		
-		$arrAddition = array_merge($arrAddition, RevSliderWooCommerce::getMetaQuery($this->getParams()));
-		$tax_addition = array();
-		
-		if(isset($arrAddition['tax_query'])){
-			$tax_addition = $arrAddition['tax_query'];
-			unset($arrAddition['tax_query']);
+		if($published == true){ //Events integration
+			$addition['post_status'] = 'publish';
 		}
+		$addition	= array_merge($addition, RevSliderWooCommerce::get_meta_query($this->get_params()));
 		
-		
-		$slider_id = $this->getID();
-		$arrPosts = RevSliderFunctionsWP::getPostsByCategory($slider_id, $catIDs,$sortBy,$sortDir,$maxPosts,$postTypes,$taxonomies,$arrAddition,$tax_addition);
-		
-		return($arrPosts);
+		return $this->get_posts_by_category($slider_id, $cat_ids, $sort_by, $sort_dir, $max_posts, $post_types, $taxonomies, $addition);
 	}
 	
 	
 	/**
-	 * 
-	 * get posts from specific posts list
+	 * get setting - start with slide
+	 * @before: RevSliderSlider::getStartWithSlideSetting();
 	 */
-	private function getPostsFromSpecificList($gal_ids = array()){
+	public function get_start_with_slide_setting(){
+		$slide = $this->get_param(array('general', 'firstSlide', 'alternativeFirstSlide'), 1);
+		if(is_numeric($slide)){
+			$slide = (int)$slide - 1;
+			if($slide < 0 || $slide >= count($this->slides)){
+				$slide = 0;
+			}
+		}else{
+			$slide = 0;
+		}
 		
-		$is_gal = false;
-		$additional = array();
-
-		if(!empty($gal_ids) && $gal_ids[0]){
-			$strPosts = $gal_ids;
-			$strPosts = apply_filters('revslider_set_posts_list_gal', $strPosts, $this->getID());
-			$is_gal = true;
+		return $slide;
+	}
+	
+	
+	/**
+	 * get the Slider Overview Structure
+	 * @since: 6.0
+	 */
+	public function get_overview_data($slider = false){
+		//if we are pre 6.0.0, we have to create the data from the old data instead of the new format!
+		
+		$favorite	= new RevSliderFavorite();
+		$slider		= ($slider == false) ? $this : $slider;
+		$post60		= (version_compare($slider->get_setting('version', '1.0.0'), '6.0.0', '<')) ? false : true;
+		$id			= 0;
+		$slide_ids	= array();
+		$slides		= $slider->get_slides();
+		$type		= ($post60) ? $slider->get_type() : $this->get_type_pre60();
+		$image		= '';
+		$sid		= $slider->get_id();
+		
+		if(!empty($slides)){
+			foreach($slides as $slide){
+				$id		= $slide->get_id();
+				$image	= ($post60) ? $slide->get_overview_image_attributes($type) : $slide->get_overview_image_attributes_pre60($type);
+				break;
+			}
+			foreach($slides as $slide){
+				$slide_ids[] = $slide->get_id();
+			}
+		}
+		
+		return array(
+			'id'		=> $sid,
+			'slide_id'	=> $id,
+			'slide_ids'	=> $slide_ids,
+			'title'		=> esc_html($slider->get_title()),
+			'alias'		=> $slider->get_alias(),
+			'source'	=> esc_html($type),
+			'type'		=> ($post60) ? $slider->get_param('type', 'standard') : $slider->get_param('slider-type', 'standard'),
+			'size'		=> ($post60) ? $slider->get_param('layouttype') : $slider->get_param('slider_type', 'fullwidth'),
+			'bg'		=> $image,
+			'tags'		=> $this->get_tags(),
+			'favorite'	=> $favorite->is_favorite('modules', $sid),
+			'children'	=> ($slider instanceof RevSliderFolder) ? $slider->get_children() : array(),
+			'folder'	=> ($slider instanceof RevSliderFolder) ? true : false
+		);
+	}
+	
+	
+	/**
+	 * get posts from specific posts list
+	 * @before: RevSliderSlider::getPostsFromSpecificList();
+	 */
+	public function get_specific_posts($gal_ids = array()){
+		$is_gal		= false;
+		$additional	= array();
+		$slider_id	= $this->get_id();
+		
+		if(!empty($gal_ids) && $gal_ids[0] !== ''){
+			$posts	= $gal_ids;
+			$posts	= apply_filters('revslider_set_posts_list_gal', $posts, $this->get_id());
+			$is_gal	= true;
 		}else{
 			if(isset($gal_ids[0])){
 				unset($gal_ids[0]);
-				$strPosts = implode(",", $gal_ids);
-				$additional['order'] = "none";
-				$additional['orderby'] = "post__in";
-			}else {
-				$strPosts = $this->getParam("posts_list", "");	
-				$additional['order'] = $this->getParam("posts_sort_direction", "DESC");
-				$additional['orderby'] = $this->getParam("post_sortby", "");
+				$posts					= implode(',', $gal_ids);
+				$additional['order']	= 'none';
+				$additional['orderby']	= 'post__in';
+			}else{
+				$posts = $this->get_param(array('source', 'post', 'list'), '');	
+				$additional['order'] = $this->get_param(array('source', 'post', 'sortDirection'), 'DESC');
+				$additional['orderby'] = $this->get_param(array('source', 'post', 'sortBy'), '');
 			}
-			$strPosts = apply_filters('revslider_set_posts_list', $strPosts, $this->getID());
+			$posts = apply_filters('revslider_set_posts_list', $posts, $this->get_id());
 		}
 		
-		$slider_id = $this->getID();
-		
-		$arrPosts = RevSliderFunctionsWP::getPostsByIDs($strPosts, $slider_id, $is_gal, $additional);
-
-		return($arrPosts);
+		return $this->get_posts_by_id($posts, $slider_id, $is_gal, $additional);
 	}
+	
 	
 	/**
-	 * update sortby option
+	 * get posts by coma saparated posts
+	 * @before: RevSliderFunctionsWP::getPostsByIDs();
 	 */
-	public function updatePostsSortbyFromData($data){
-		
-		$sliderID = RevSliderFunctions::getVal($data, "sliderID");
-		$sortBy = RevSliderFunctions::getVal($data, "sortby");
-		RevSliderFunctions::validateNotEmpty($sortBy,"sortby");
-		
-		$this->initByID($sliderID);
-		$arrUpdate = array();
-		$arrUpdate["post_sortby"] = $sortBy;
-		
-		$this->updateParam($arrUpdate); 
-	}
+	public function get_posts_by_id($ids, $slider_id, $is_gal, $additional = array()){
+		$arr = (is_string($ids)) ? explode(',', $ids) : $ids;
 
+		$query = array(
+			'ignore_sticky_posts' => 1,
+			'post_type'	=> 'any',
+			'post__in'	=> $arr
+		);
+		if($is_gal){
+			$query['post_status']	= 'inherit';
+			$query['orderby']		= 'post__in';
+		}
+		
+		$query	= array_merge($query, $additional);
+		$query	= apply_filters('revslider_get_posts', $query, $slider_id);
+		
+		$object	= new WP_Query($query);
+		$posts	= $object->posts;		
+
+		foreach($posts as $key => $post){
+			$posts[$key] = (method_exists($post, 'to_array')) ? $post->to_array() : (array)$post;
+		}
+		
+		return $posts;
+	}
+	
+	
 	/**
-	 * 
-	 * replace image urls
+	 * get posts by some category
+	 * could be multiple
+	 * @before: RevSliderFunctionsWP::getPostsByCategory()
 	 */
-	public function replaceImageUrlsFromData($data){
+	public function get_posts_by_category($slider_id, $cat_id, $sort_by = 'ID', $direction = 'DESC', $max_posts = -1, $post_types = 'any', $taxonomies = 'category', $addition = array(), $type = ''){
+		$a = apply_filters('revslider_get_posts_by_category', array('slider_id' => $slider_id, 'cat_id' => $cat_id, 'sort_by' => $sort_by, 'direction' => $direction, 'max_posts' => $max_posts, 'post_types' => $post_types, 'taxonomies' => $taxonomies, 'addition' => $addition, 'type' => $type), $this);
+		$slider_id	= $this->get_val($a, 'slider_id');
+		$cat_id		= $this->get_val($a, 'cat_id');
+		$sort_by	= $this->get_val($a, 'sort_by');
+		$direction	= $this->get_val($a, 'direction');
+		$max_posts	= $this->get_val($a, 'max_posts');
+		$post_types	= $this->get_val($a, 'post_types');
+		$taxonomies	= $this->get_val($a, 'taxonomies');
+		$addition	= $this->get_val($a, 'addition');
+		$type		= $this->get_val($a, 'type');
+		$tax		= (!empty($taxonomies)) ? explode(',', $taxonomies) : array(); //get taxonomies array
 		
-		$sliderID = RevSliderFunctions::getVal($data, "sliderid");
-		$urlFrom = RevSliderFunctions::getVal($data, "url_from");
-		RevSliderFunctions::validateNotEmpty($urlFrom,"url from");
-		$urlTo = RevSliderFunctions::getVal($data, "url_to");
+		if(!is_array($post_types)){
+			if(strpos($post_types, ',') !== false){
+				$post_types = explode(',', $post_types);
+				$post_types = (array_search('any', $post_types) !== false) ? 'any' : $post_types;
+			}
+		}
+		$post_types	= (empty($post_types)) ? 'any' : $post_types;
+		$cat_id		= (strpos($cat_id, ',') !== false) ? explode(',', $cat_id) : array($cat_id);
 		
-		$this->initByID($sliderID);
-		
-		$arrSildes = $this->getSlides();
-		foreach($arrSildes as $slide){
-			$slide->replaceImageUrls($urlFrom, $urlTo);
+		$query		= array(
+			'order'					=> $direction,
+			'ignore_sticky_posts'	=> 1,
+			'posts_per_page'		=> $max_posts,
+			'showposts'				=> $max_posts,
+			'post_type'				=> $post_types
+		);		
+
+		//add sort by (could be by meta)
+		if(strpos($sort_by, 'meta_num_') === 0){
+			$query['orderby']	= 'meta_value_num';
+			$query['meta_key']	= str_replace('meta_num_', '', $sort_by);
+		}elseif(strpos($sort_by, 'meta_') === 0){
+			$query['orderby']	= 'meta_value';
+			$query['meta_key']	= str_replace('meta_', '', $sort_by);
+		}else{
+			$query['orderby']	= $sort_by;
 		}
 		
+		if(!empty($taxonomies)){
+			$tax_query = array('relation' => 'OR');
 		
-		
-		$slide = new RevSlide();
-		$staticID = $slide->getStaticSlideID($sliderID);
-		
-		if($staticID !== false){
-			$slide->initByStaticID($staticID);
-			$slide->replaceImageUrls($urlFrom, $urlTo, $staticID);
+			//add taxomonies to the query
+			if(strpos($taxonomies, ',') !== false){	//multiple taxomonies
+				$taxonomies = explode(',', $taxonomies);
+				foreach($taxonomies as $taxomony){
+					$tax_query[] = array(
+						'taxonomy'	=> $taxomony,
+						'field'		=> 'id',
+						'terms'		=> $cat_id
+					);			
+				}
+			}else{		//single taxomony
+				$tax_query[] = array(
+					'taxonomy' => $taxonomies,
+					'field' => 'id',
+					'terms' => $cat_id
+				);			
+			}
+			
+			$query['tax_query'] = $tax_query;
 		}
-	}
-	
-	public function resetSlideSettings($data){
-		$sliderID = RevSliderFunctions::getVal($data, "sliderid");
 		
-		$this->initByID($sliderID);
-		
-		$arrSildes = $this->getSlides();
-		foreach($arrSildes as $slide){
-			$slide->reset_slide_values($data);
+		if(!empty($addition)){
+			$tax_query = $this->get_val($addition, 'tax_query', array());
+			if(!empty($tax_query)){
+				if(!isset($query['tax_query'])) $query['tax_query'] = array();
+				if(is_array($tax_query)){
+					foreach($tax_query as $tk => $tv){
+						if(is_numeric($tk)){
+							$query['tax_query'][] = $tv;
+						}else{
+							$query['tax_query'][$tk] = $tv;
+						}
+					}
+				}
+				unset($addition['tax_query']);
+			}
+			$query = array_merge($query, $addition);
 		}
+		
+		$query = apply_filters('revslider_get_posts', $query, $slider_id);
+		
+		$full_posts	= new WP_Query($query);
+		$posts		= $full_posts->posts;
+		
+		foreach($posts as $key => $post){
+			$arr_post = (method_exists($post, 'to_array')) ? $post->to_array() : (array)$post;
+			$arr_post['categories'] = $this->get_post_categories($post, $tax);
+			
+			$posts[$key] = $arr_post;
+		}
+		
+		return $posts;
 	}
 	
-	public static function clear_error_in_string($m){
-		return 's:'.strlen($m[2]).':"'.$m[2].'";';
+	
+	/**
+	 * get post categories by post ID and taxonomies
+	 * the post ID can be post object or array too
+	 * @before: RevSliderFunctionsWP::getPostCategories()
+	 */
+	public function get_post_categories($post_id, $tax){
+		if(!is_numeric($post_id)){
+			$post_id = (array)$post_id;
+			$post_id = $post_id['ID'];
+		}
+		$cats = wp_get_post_terms($post_id, $tax);
+		
+		return $this->class_to_array($cats);
 	}
 	
+	
+	/**
+	 * get cats and taxanomies data from the category id's
+	 * @before: RevSliderFunctionsWP::getCatAndTaxData()
+	 */
+	public function get_tax_by_cat_id($cat_ids){
+		$ret	= array('tax' => '', 'cats' => '');
+		$tax	= array();
+		$cats	= '';
+		$taxs	= '';
+		
+		if(is_string($cat_ids)){
+			$cat_ids = trim($cat_ids);
+			$cat_ids = (empty($cat_ids)) ? array() : explode(',', $cat_ids);
+		}
+		
+		if(!empty($cat_ids)){
+			foreach($cat_ids as $cat){
+				if(strpos($cat, 'option_disabled') === 0) continue;
+				
+				$pos = strrpos($cat, '_');
+				if($pos === false) $this->throw_error(__('Wrong category format', 'revslider'));
+				
+				$tax_name		= substr($cat, 0, $pos);
+				$tax[$tax_name]	= $tax_name;
+				$cats			.= (!empty($cats)) ? ',' : '';
+				$cats			.= substr($cat, $pos + 1, strlen($cat) - $pos - 1); //category id
+			}
+			
+			$ret['cats'] = $cats;
+		}
+		
+		if(!empty($tax)){
+			foreach($tax as $tax_name){
+				$taxs .= (!empty($taxs)) ? ','.$tax_name : $tax_name;
+			}
+		}
+		$ret['tax'] = $taxs;
+		
+		return $ret;
+	}
+	
+	
+	/**
+	 * convert assoc array to array
+	 * @before: RevSliderFunctions::assocToArray();
+	 */
+	public static function assoc_to_array($assoc){
+		$arr = array();
+		foreach($assoc as $item)
+			$arr[] = $item;
+		
+		return $arr;
+	}
 }
-
-/**
- * old classname extends new one (old classnames will be obsolete soon)
- * @since: 5.0
- **/
-class RevSlider extends RevSliderSlider {}
 ?>

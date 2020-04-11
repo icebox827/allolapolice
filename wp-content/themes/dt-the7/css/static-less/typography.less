@@ -110,11 +110,27 @@ body {
 		float: left;
 		margin: 0 30px 10px 0;
 	}
+	.alignleft.photoswipe-wrapper {
+		clear: both;
+		margin: 0;
+	}
+	.alignleft > .dt-pswp-item {
+		float: left;
+		margin: 0 30px 10px 0;
+	}
 	#footer .alignleft,
 	#sidebar .alignleft {
 		margin-right: 20px;
 	}
 	.alignright {
+		float: right;
+		margin: 0 0 10px 30px;
+	}
+	.alignright.photoswipe-wrapper {
+		clear: both;
+		margin: 0;
+	}
+	.alignright > .dt-pswp-item {
 		float: right;
 		margin: 0 0 10px 30px;
 	}
@@ -262,7 +278,6 @@ body {
 #page.boxed {
 	max-width: 1320px;
 	margin: 0px auto;
-	-webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
 	box-shadow:			0 0 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -297,8 +312,6 @@ body {
 .mobile-false .fancy-parallax-bg,
 .mobile-false .page-title-parallax-bg {
 	opacity: 0;
-
-	-webkit-transition: opacity 300ms ease;
 	transition:      opacity 300ms ease;
 }
 
@@ -326,7 +339,6 @@ video {
 	position: relative;
 	display: block;
 	opacity: 0;
-	-webkit-transition: opacity 400ms ease;
 	transition:      opacity 400ms ease;
 }
 .is-iphone .full-width-wrap {
@@ -349,7 +361,6 @@ video {
 	background-position:0 -16px;
 }
 .mejs-controls button {
-	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 .mejs-controls .mejs-mute button:hover {
@@ -372,7 +383,6 @@ video {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
     color: #21759b;
     display: block;
-    font-family: Montserrat, "Helvetica Neue", sans-serif;
     font-size: 14px;
     font-weight: 700;
     left: -9999em;
@@ -381,6 +391,15 @@ video {
     text-decoration: none;
     text-transform: none;
     top: -9999em;
+
+	&:focus{
+		left: 30px;
+		top: 15px;
+		height: auto;
+		width: auto;
+		clip: unset !important;
+		z-index: 9;
+	}
 }
 
 /**/

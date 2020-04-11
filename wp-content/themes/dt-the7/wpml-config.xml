@@ -522,6 +522,8 @@
             <key name="custom_error_messages_validation" />
             <key name="custom_error_messages" />
             <key name="custom_success_messages" />
+            <key name="header-mobile-menu_icon-caption-text" />
+            <key name="header-mobile-menu-close_icon-caption-text" />
         </key>
     </admin-texts>
 </wpml-config>

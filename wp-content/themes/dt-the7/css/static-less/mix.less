@@ -5,8 +5,6 @@
 img.lazy-load,
 img.blog-thumb-lazy-load {
 	opacity: 0;
-
-	-webkit-transition: opacity 0.38s;
 	transition: opacity 0.38s;
 	&.vc_single_image-img {
 		.mobile-true & {
@@ -28,13 +26,12 @@ img.is-loaded {
 	.justify-content(@justify: center);
 	right: 10px;
 	bottom: 10px;
-	width: 44px;
-	height: 44px;
+	width: 40px;
+	height: 40px;
 	opacity: 0;
 	z-index: -1;
 	filter: alpha(opacity=0);
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	-webkit-transition: opacity 400ms ease;
 	transition:      opacity 400ms ease;
 	.show-mobile-header & {
 		opacity: 0;
@@ -90,7 +87,6 @@ img.is-loaded {
 	.box-sizing (border-box);
 }
 a.no-avatar {
-	-webkit-transition: all 450ms ease;
 	transition:      all 450ms ease;
 }
 .no-avatar:after {
@@ -175,7 +171,6 @@ a.no-avatar {
 		width: 0;
 		height: 2px;
 		content: "";
-		-webkit-transition: width 0.4s ease;
 		transition: width 0.4s ease;
 	}
 	&:hover:before {
@@ -331,7 +326,6 @@ a.no-avatar {
 	/*VC Icon shortcode */
 	.vc_icon_element.vc_icon_element-outer .vc_icon_element-inner .vc_icon_element-icon,
 	.vc_message_box-icon > i {
-		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
 
@@ -390,18 +384,15 @@ a.no-avatar {
 	.useJS .container-3,
 	.useJS .container .photo.show,
 	.useJS .container .l3 {
-		-webkit-transform: none;
 		transform: none;
 	}
 	.lightbox.useJS .close,
 	div.lightbox.useJS .img-caption {
-		-webkit-transition: none;
 		transition:      none;
 	}
 	.jp-carousel-comment-form-button,
 	.wpb-js-composer div.pp_default .pp_expand,
 	.wpb-js-composer div.pp_default .pp_contract {
-		-webkit-box-shadow: none;
 		box-shadow:         none;
 	}
 
@@ -423,20 +414,6 @@ a.no-avatar {
 
 /* #Beautiful loading
 ================================================== */
-@-webkit-keyframes opacity-lat-rev {
-  0% {
-	opacity: 1;
-	visibility: visible;
-  }
-  30% {
-	opacity: 0;
-	visibility: hidden;
-  }
-  100% {
-	opacity: 0;
-	visibility: hidden;
-  }
-}
 @keyframes opacity-lat-rev {
   0% {
 	opacity: 1;
@@ -453,7 +430,6 @@ a.no-avatar {
 }
 
 .loading-ready #load {
-	-webkit-animation: opacity-lat-rev 0.8s ease 0ms 1 normal both;
 	animation: opacity-lat-rev 0.8s ease 0ms 1 normal both;
 }
 
@@ -498,7 +474,7 @@ body #load.loader-removed {
  		margin-bottom: 40px;
  	}
  }
- .woocommerce-products-header {
+ .woocommerce-products-header .term-description {
  	.archive:not(.post-type-archive-product) & {
  		margin-bottom: 50px;
  	}
@@ -532,4 +508,36 @@ body #load.loader-removed {
 /*Recpatha V3 badge*/
 .footer-overlap .grecaptcha-badge {
 	z-index: 103;
+}
+
+.elementor-button,
+.elementor-widget-accordion a,
+.elementor-tab-title a,
+.elementor-tab-title a,
+.elementor-cta,
+.elementor-headline,
+.elementor-widget .elementor-icon-list-item a,
+.elementor-widget-reviews .elementor-testimonial__header,
+.elementor-post-navigation .elementor-post-navigation__link a,
+.elementor-nav-menu--main .elementor-nav-menu a,
+.elementor-price-list .elementor-price-list-item,
+.elementor-blockquote__tweet-button {
+	text-decoration: none;
+}
+.elementor-slideshow__header {
+	box-sizing: border-box;
+}
+
+body.elementor-clear-template #main > .wf-wrap,
+#footer.elementor-footer  > .wf-wrap{
+	width: initial;
+	padding: 0;
+}
+
+body.elementor-clear-template #main,
+#footer.elementor-footer  > .wf-wrap,
+#footer.elementor-footer  > .wf-wrap > .wf-container-footer,
+#footer.elementor-footer  > .wf-wrap > .wf-container-footer > .wf-container{
+	padding: 0;
+	margin: 0;
 }

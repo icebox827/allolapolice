@@ -20,7 +20,7 @@ jQuery(document).ready( function($) {
     }
 
     function getPostMeta() {
-        return $('.the7-mb-field').find(':input').serializeArray();
+        return $('.the7-mb-field').not('.dont-save-in-preset').find(':input').serializeArray();
     }
 
     function presetActionsVisibilityCheck() {

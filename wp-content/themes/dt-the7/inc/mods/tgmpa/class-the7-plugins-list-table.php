@@ -113,7 +113,7 @@ if ( ! class_exists( 'The7_Plugins_List_Table' ) ) {
 					break;
 				case 'external':
 					if ( presscore_theme_is_activated() ) {
-						$string = __( 'External Source', 'tgmpa' );
+						$string = __( 'The7 Repository', 'tgmpa' );
 					} else {
 						$string = wp_kses( sprintf( __( 'Please <a href="%s">register</a> the theme', 'tgmpa' ), admin_url( 'admin.php?page=the7-dashboard' ) ), array( 'a' => array( 'href' => true ) ) );
 					}
@@ -168,7 +168,7 @@ if ( ! class_exists( 'The7_Plugins_List_Table' ) ) {
 
 			// Create the actual links.
 			foreach ( $actions as $action => $text ) {
-				$nonce_url               = $this->get_action_url( $action, $item['slug'] );
+				$nonce_url               = $this->get_action_url( $action, $item['slug'], 'minimum' );
 				$action_links[ $action ] = sprintf(
 					'<a href="%1$s">' . esc_html( $text ) . '</a>', // $text contains the second placeholder.
 					esc_url( $nonce_url ),
@@ -177,6 +177,7 @@ if ( ! class_exists( 'The7_Plugins_List_Table' ) ) {
 			}
 
 			$prefix = ( defined( 'WP_NETWORK_ADMIN' ) && WP_NETWORK_ADMIN ) ? 'network_admin_' : '';
+
 			return apply_filters( "tgmpa_{$prefix}plugin_action_links", array_filter( $action_links ), $item['slug'], $item, $this->view_context );
 		}
 

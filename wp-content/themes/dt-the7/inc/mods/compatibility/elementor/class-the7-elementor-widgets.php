@@ -26,8 +26,17 @@ class The7_Elementor_Widgets {
 		add_action( 'elementor/editor/after_save', [ $this, 'on_after_widget_save' ], 10, 2 );
 		add_action( 'elementor/init', [ $this, 'elementor_add_custom_category' ] );
 		add_action( 'elementor/init', [ $this, 'load_dependencies' ] );
+		add_action( 'elementor/preview/init', [ $this, 'turn_off_lazy_loading' ] );
+		add_action( 'elementor/editor/init', [ $this, 'turn_off_lazy_loading' ] );
 
 		presscore_template_manager()->add_path( 'elementor', array( 'template-parts/elementor' ) );
+	}
+
+	/**
+	 * Disable lazy loading with filter.
+	 */
+	public function turn_off_lazy_loading() {
+		add_filter( 'dt_of_get_option-general-images_lazy_loading', '__return_false' );
 	}
 
 	/**
@@ -39,16 +48,16 @@ class The7_Elementor_Widgets {
 		require_once __DIR__ . '/class-the7-elementor-widget-terms-selector-mutator.php';
 		require_once __DIR__ . '/trait-with-pagination.php';
 		require_once __DIR__ . '/class-the7-elementor-widget-base.php';
-		require_once __DIR__ . '/class-the7-elementor-elements-widget.php';
-		require_once __DIR__ . '/class-the7-elementor-elements-carousel-widget.php';
 		require_once __DIR__ . '/the7-elementor-less-vars-decorator-interface.php';
 		require_once __DIR__ . '/class-the7-elementor-less-vars-decorator.php';
+		require_once __DIR__ . '/widgets/class-the7-elementor-elements-widget.php';
+		require_once __DIR__ . '/widgets/class-the7-elementor-elements-carousel-widget.php';
 
 		$terms_selector_mutator = new The7_Elementor_Widget_Terms_Selector_Mutator();
 		$terms_selector_mutator->bootstrap();
 
-		$this->collection_add_widget( new The7_Elementor_Elements_Widget() );
-		$this->collection_add_widget( new The7_Elementor_Elements_Carousel_Widget() );
+		$this->collection_add_widget( new \The7\Adapters\Elementor\Widgets\The7_Elementor_Elements_Widget() );
+		$this->collection_add_widget( new \The7\Adapters\Elementor\Widgets\The7_Elementor_Elements_Carousel_Widget() );
 	}
 
 	/**

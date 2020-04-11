@@ -1,19 +1,12 @@
 <?php
 /**
- * Slider Revolution
- *
- * @package   Essential_Grid
- * @author    ThemePunch <info@themepunch.com>
- * @link      http://revolution.themepunch.com/
- * @copyright 2015 ThemePunch
- */
-
-/**
  * @package RevSliderExtension
- * @author  ThemePunch <info@themepunch.com>
+ * @author    ThemePunch <info@themepunch.com>
+ * @link      https://revolution.themepunch.com/
+ * @copyright 2019 ThemePunch
  */
  
-if( !defined( 'ABSPATH') ) exit();
+if(!defined('ABSPATH')) exit();
 
 class RevSliderExtension {
 	
@@ -41,10 +34,8 @@ class RevSliderExtension {
 		add_action('essgrid_save_meta_options', array($this, 'save_eg_additional_meta_field'), 10, 2);
 		
 		//only do on frontend
-		
 		add_action('admin_head', array($this, 'add_eg_additional_inline_javascript'));
-		add_action('wp_head', array($this, 'add_eg_additional_inline_javascript'));
-		
+		add_action('wp_footer', array($this, 'add_eg_additional_inline_javascript'));
 	}
 	
 	
@@ -66,9 +57,8 @@ class RevSliderExtension {
 		
 		if($handle !== 'revslider') return false;
 		
-		$slider_source = '';
-		
-		$values = get_post_custom($post['ID']);
+		$slider_source	= '';
+		$values			= get_post_custom($post['ID']);
 		
 		if(isset($values['eg_sources_revslider'])){
 			if(isset($values['eg_sources_revslider'][0]))
@@ -91,15 +81,15 @@ class RevSliderExtension {
 	 */
 	public function add_eg_additional_meta_field($values){
 		
-		$sld = new RevSlider();
-		$sliders = $sld->getArrSliders();
+		$sld = new RevSliderSlider();
+		$sliders = $sld->get_sliders();
 		$shortcodes = array();
 		if(!empty($sliders)){
 			$first = true;
 			foreach($sliders as $slider){
-				$name = $slider->getParam('shortcode','false');
+				$name = $slider->get_param('shortcode','false');
 				if($name != 'false'){
-					$shortcodes[$slider->getID()] = $name;
+					$shortcodes[$slider->get_id()] = $name;
 					$first = false;
 				}
 			}
@@ -129,7 +119,6 @@ class RevSliderExtension {
 			</select>
 		</p>
 		<?php
-		
 	}
 	
 	/**
@@ -152,6 +141,8 @@ class RevSliderExtension {
 			var ajaxRevslider;
 			
 			jQuery(document).ready(function() {
+
+				
 				// CUSTOM AJAX CONTENT LOADING FUNCTION
 				ajaxRevslider = function(obj) {
 				
@@ -160,29 +151,28 @@ class RevSliderExtension {
 					// obj.aspectratio : The Aspect Ratio of the Container / Media
 					// obj.selector : The Container Selector where the Content of Ajax will be injected. It is done via the Essential Grid on Return of Content
 					
-					var content = "";
-
-					data = {};
-					
-					data.action = 'revslider_ajax_call_front';
-					data.client_action = 'get_slider_html';
-					data.token = '<?php echo wp_create_nonce("RevSlider_Front"); ?>';
-					data.type = obj.type;
-					data.id = obj.id;
-					data.aspectratio = obj.aspectratio;
+					var content	= '';
+					var data	= {
+						action:			'revslider_ajax_call_front',
+						client_action:	'get_slider_html',
+						token:			'<?php echo wp_create_nonce('RevSlider_Front'); ?>',
+						type:			obj.type,
+						id:				obj.id,
+						aspectratio:	obj.aspectratio
+					};
 					
 					// SYNC AJAX REQUEST
 					jQuery.ajax({
-						type:"post",
-						url:"<?php echo admin_url('admin-ajax.php'); ?>",
-						dataType: 'json',
-						data:data,
-						async:false,
-						success: function(ret, textStatus, XMLHttpRequest) {
+						type:		'post',
+						url:		'<?php echo admin_url('admin-ajax.php'); ?>',
+						dataType:	'json',
+						data:		data,
+						async:		false,
+						success:	function(ret, textStatus, XMLHttpRequest) {
 							if(ret.success == true)
 								content = ret.data;								
 						},
-						error: function(e) {
+						error:		function(e) {
 							console.log(e);
 						}
 					});
@@ -193,26 +183,27 @@ class RevSliderExtension {
 				
 				// CUSTOM AJAX FUNCTION TO REMOVE THE SLIDER
 				var ajaxRemoveRevslider = function(obj) {
-					return jQuery(obj.selector+" .rev_slider").revkill();
+					return jQuery(obj.selector + ' .rev_slider').revkill();
 				};
 
-				// EXTEND THE AJAX CONTENT LOADING TYPES WITH TYPE AND FUNCTION
-				var extendessential = setInterval(function() {
-					if (jQuery.fn.tpessential != undefined) {
-						clearInterval(extendessential);
-						if(typeof(jQuery.fn.tpessential.defaults) !== 'undefined') {
-							jQuery.fn.tpessential.defaults.ajaxTypes.push({type:"revslider",func:ajaxRevslider,killfunc:ajaxRemoveRevslider,openAnimationSpeed:0.3});   
-							// type:  Name of the Post to load via Ajax into the Essential Grid Ajax Container
-							// func: the Function Name which is Called once the Item with the Post Type has been clicked
-							// killfunc: function to kill in case the Ajax Window going to be removed (before Remove function !
-							// openAnimationSpeed: how quick the Ajax Content window should be animated (default is 0.3)
-						}
-					}
-				},30);
+
+				// EXTEND THE AJAX CONTENT LOADING TYPES WITH TYPE AND FUNCTION				
+				if (jQuery.fn.tpessential !== undefined) 					
+					if(typeof(jQuery.fn.tpessential.defaults) !== 'undefined') 
+						jQuery.fn.tpessential.defaults.ajaxTypes.push({type: 'revslider', func: ajaxRevslider, killfunc: ajaxRemoveRevslider, openAnimationSpeed: 0.3});   
+						// type:  Name of the Post to load via Ajax into the Essential Grid Ajax Container
+						// func: the Function Name which is Called once the Item with the Post Type has been clicked
+						// killfunc: function to kill in case the Ajax Window going to be removed (before Remove function !
+						// openAnimationSpeed: how quick the Ajax Content window should be animated (default is 0.3)
+					
+				
+				
 			});
 		</script>
 		<?php
 	}
 	
 }
+
+$revext	= new RevSliderExtension();
 ?>

@@ -1,80 +1,80 @@
 <?php
-/*
-# Use
+/**
+ * Use
+ *
+ *  1] Previous Icon
+ *      Use param_name = prev_icon
+ *
+ *  2] Next Icon
+ *      Use param_name = next_icon
+ *
+ *  3] Dots
+ *  Use param_name = dots_icon
+ *
+ * @package Ultimate_Navigation.
+ * */
 
-	1] Previous Icon
-		Use param_name = prev_icon
-
-	2] Next Icon
-		Use param_name = next_icon
-
-	3] Dots
-		Use param_name = dots_icon
-*/
-if(!class_exists('Ultimate_Navigation'))
-{
-	class Ultimate_Navigation
-	{
-		function __construct()
-		{
-			if(defined('WPB_VC_VERSION') && version_compare(WPB_VC_VERSION, 4.8) >= 0) {
-				if(function_exists('vc_add_shortcode_param'))
-				{
-					vc_add_shortcode_param('ultimate_navigation' , array(&$this, 'icon_settings_field' ) );
+if ( ! class_exists( 'Ultimate_Navigation' ) ) {
+	/**
+	 * Class Ultimate_Navigation
+	 *
+	 * @class Ultimate_Navigation.
+	 */
+	class Ultimate_Navigation {
+		/**
+		 * Initiator __construct.
+		 */
+		public function __construct() {
+			if ( defined( 'WPB_VC_VERSION' ) && version_compare( WPB_VC_VERSION, 4.8 ) >= 0 ) {
+				if ( function_exists( 'vc_add_shortcode_param' ) ) {
+					vc_add_shortcode_param( 'ultimate_navigation', array( &$this, 'icon_settings_field' ) );
 				}
-			}
-			else {
-				if(function_exists('add_shortcode_param'))
-				{
-					add_shortcode_param('ultimate_navigation' , array(&$this, 'icon_settings_field' ) );
+			} else {
+				if ( function_exists( 'add_shortcode_param' ) ) {
+					add_shortcode_param( 'ultimate_navigation', array( &$this, 'icon_settings_field' ) );
 				}
 			}
 		}
-
-		function icon_settings_field($settings, $value)
-		{
+		/**
+		 * Icon_settings_field.
+		 *
+		 * @param array  $settings Settings.
+		 * @param string $value Value.
+		 */
+		public function icon_settings_field( $settings, $value ) {
 			$dependency = '';
-			$uid = uniqid();
-			$param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
-			$type = isset($settings['type']) ? $settings['type'] : '';
-			$class = isset($settings['class']) ? $settings['class'] : '';
-			if($param_name == "next_icon"){
-				$icons = array('ultsl-arrow-right','ultsl-arrow-right2','ultsl-arrow-right3','ultsl-arrow-right4','ultsl-arrow-right6');
+			$uid        = uniqid();
+			$param_name = isset( $settings['param_name'] ) ? $settings['param_name'] : '';
+			$type       = isset( $settings['type'] ) ? $settings['type'] : '';
+			$class      = isset( $settings['class'] ) ? $settings['class'] : '';
+			if ( 'next_icon' == $param_name ) {
+				$icons = array( 'ultsl-arrow-right', 'ultsl-arrow-right2', 'ultsl-arrow-right3', 'ultsl-arrow-right4', 'ultsl-arrow-right6' );
 			}
-			if($param_name == "prev_icon"){
-				$icons = array('ultsl-arrow-left','ultsl-arrow-left2','ultsl-arrow-left3','ultsl-arrow-left4','ultsl-arrow-left6');
+			if ( 'prev_icon' == $param_name ) {
+				$icons = array( 'ultsl-arrow-left', 'ultsl-arrow-left2', 'ultsl-arrow-left3', 'ultsl-arrow-left4', 'ultsl-arrow-left6' );
 			}
 
-			if($param_name == "dots_icon"){
-				$icons = array('ultsl-checkbox-unchecked','ultsl-checkbox-partial','ultsl-stop','ultsl-radio-checked','ultsl-radio-unchecked','ultsl-record');
+			if ( 'dots_icon' == $param_name ) {
+				$icons = array( 'ultsl-checkbox-unchecked', 'ultsl-checkbox-partial', 'ultsl-stop', 'ultsl-radio-checked', 'ultsl-radio-unchecked', 'ultsl-record' );
 			}
-			/*if($param_name == "exp_icon"){
-				//$icons = array('ultsl-checkbox-unchecked','ultsl-checkbox-partial','ultsl-stop','ultsl-radio-checked','ultsl-radio-unchecked','ultsl-record');
-				$icons = array('Defaults-circle-arrow-down','Defaults-arrow-down','Defaults-chevron-down','Defaults-hand-down','Defaults-circle-arrow-down','Defaults-angle-down','Defaults-chevron-sign-down');
-			}*/
-
-
-			$output = '<input type="hidden" name="'.esc_attr( $param_name ).'" class="wpb_vc_param_value '.esc_attr( $param_name ).' '.esc_attr( $type ).' '.esc_attr( $class ).'" value="'.esc_attr( $value ).'" id="trace-'.esc_attr( $uid ).'"/>';
-			//$output .= '<div class="ult-icon-preview icon-preview-'.$uid.'"><i class="'.$value.'"></i></div>';
-			//$output .='<input class="search" type="text" placeholder="Search" />';
-			$output .='<div id="icon-dropdown-'.esc_attr( $uid ).'" >';
+			$output  = '<input type="hidden" name="' . esc_attr( $param_name ) . '" class="wpb_vc_param_value ' . esc_attr( $param_name ) . ' ' . esc_attr( $type ) . ' ' . esc_attr( $class ) . '" value="' . esc_attr( $value ) . '" id="trace-' . esc_attr( $uid ) . '"/>';
+			$output .= '<div id="icon-dropdown-' . esc_attr( $uid ) . '" >';
 			$output .= '<ul class="icon-list">';
-			$n = 1;
-			foreach($icons as $icon)
-			{
-				$selected = ($icon == $value) ? 'class="selected"' : '';
-				$id = 'icon-'.$n;
-				$output .= '<li '.$selected.' data-ac-icon="'.esc_attr( $icon ).'"><i class="ult-icon '.esc_attr( $icon ).'"></i><label class="ult-icon">'.esc_html( $icon ).'</label></li>';
+			$n       = 1;
+			foreach ( $icons as $icon ) {
+				$selected = ( $icon == $value ) ? 'class="selected"' : '';
+				$id       = 'icon-' . $n;
+				$output  .= '<li ' . $selected . ' data-ac-icon="' . esc_attr( $icon ) . '"><i class="ult-icon ' . esc_attr( $icon ) . '"></i><label class="ult-icon">' . esc_html( $icon ) . '</label></li>';
 				$n++;
 			}
-			$output .='</ul>';
-			$output .='</div>';
+			$output .= '</ul>';
+			$output .= '</div>';
 			$output .= '<script type="text/javascript">
-					jQuery("#icon-dropdown-'.esc_attr( $uid ).' li").click(function() {
+					jQuery("#icon-dropdown-' . esc_attr( $uid ) . ' li").click(function() {
 						jQuery(this).attr("class","selected").siblings().removeAttr("class");
 						var icon = jQuery(this).attr("data-ac-icon");
-						jQuery("#trace-'.esc_attr( $uid ).'").val(icon);
-						jQuery(".icon-preview-'.esc_attr( $uid ).'").html("<i class=\'ult-icon "+icon+"\'></i>");
+						jQuery("#trace-' . esc_attr( $uid ) . '").val(icon);
+						jQuery(".icon-preview-' . esc_attr( $uid ) . '").html("<i class=\'ult-icon "+icon+"\'></i>");
 					});
 			</script>';
 			$output .= '<style type="text/css">';
@@ -115,7 +115,6 @@ if(!class_exists('Ultimate_Navigation'))
 	}
 }
 
-if(class_exists('Ultimate_Navigation'))
-{
-	$Ultimate_Navigation = new Ultimate_Navigation();
+if ( class_exists( 'Ultimate_Navigation' ) ) {
+	$ultimate_navigation = new Ultimate_Navigation();
 }

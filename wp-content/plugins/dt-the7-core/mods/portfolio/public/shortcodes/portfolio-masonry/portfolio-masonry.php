@@ -46,113 +46,114 @@ if ( ! class_exists( 'DT_Shortcode_PortfolioMasonry', false ) ):
 			$this->taxonomy = 'dt_portfolio_category';
 			$this->post_type = 'dt_portfolio';
 			$this->default_atts = array(
-				'post_type'                      => 'category',
-				'category'                       => '',
-				'posts'                          => '',
-				'posts_offset'                   => 0,
-				'mode'                           => 'masonry',
-				'loading_effect' 				 => 'none',
-				'layout'                         => 'classic',
-				'bo_content_width'               => '75%',
-				'bo_content_overlap'             => '100px',
-				'hover_animation' 				 => 'fade',
-				'content_bg'                     => 'y',
-				'custom_content_bg_color'        => '',
-				'post_content_paddings'          => '25px 30px 30px 30px',
-				'gap_between_posts'              => '15px',
-				'image_sizing'                   => 'resize',
-				'resized_image_dimensions'       => '1x1',
-				'image_paddings'                 => '0px 0px 0px 0px',
-				'image_scale_animation_on_hover' => 'quick_scale',
-				'image_hover_bg_color'           => 'default',
-				'image_border_radius'         	 => '0px',
-				'image_decoration'   			 => 'none',
-				'shadow_h_length'    			 => '0px',
-				'shadow_v_length'    			 => '4px',
-				'shadow_blur_radius' 			 => '12px',
-				'shadow_spread'      			 => '3px',
-				'shadow_color'       			 => 'rgba(0,0,0,0.25)',
-				'custom_rollover_bg_color'       => 'rgba(0,0,0,0.5)',
-				'custom_rollover_bg_gradient'    => '45deg|rgba(12,239,154,0.8) 0%|rgba(0,108,220,0.8) 50%|rgba(184,38,220,0.8) 100%',
-				'responsiveness'                 => 'browser_width_based',
-				'bwb_columns'                    => 'desktop:3|h_tablet:3|v_tablet:2|phone:1',
-				'pwb_column_min_width'           => '',
-				'pwb_columns'                    => '',
-				'all_posts_the_same_width'       => 'n',
-				'loading_mode'                   => 'disabled',
-				'dis_posts_total'                => '-1',
-				'st_posts_per_page'              => '',
-				'st_show_all_pages'              => 'n',
-				'st_gap_before_pagination'       => '',
-				'jsp_posts_total'                => '-1',
-				'jsp_posts_per_page'             => '',
-				'jsp_show_all_pages'             => 'n',
-				'jsp_gap_before_pagination'      => '',
-				'jsm_posts_total'                => '-1',
-				'jsm_posts_per_page'             => '',
-				'jsm_gap_before_pagination'      => '',
-				'jsl_posts_total'                => '-1',
-				'jsl_posts_per_page'             => '',
-				'content_alignment'              => 'left',
-				'link_lead'             		 => 'go_to_project',
-				'post_title_font_style'          => ':bold:',
-				'post_title_font_size'           => '',
-				'post_title_line_height'         => '',
-				'custom_title_color'             => '',
-				'post_title_bottom_margin'       => '5px',
-				'post_date'                      => 'y',
-				'post_category'                  => 'y',
-				'post_author'                    => 'y',
-				'post_comments'                  => 'y',
-				'meta_info_font_style'           => '',
-				'meta_info_font_size'            => '',
-				'meta_info_line_height'          => '',
-				'custom_meta_color'              => '',
-				'meta_info_bottom_margin'        => '15px',
-				'post_content'                   => 'show_excerpt',
-				'excerpt_words_limit'            => '',
-				'content_font_style'             => '',
-				'content_font_size'              => '',
-				'content_line_height'            => '',
-				'custom_content_color'           => '',
-				'content_bottom_margin'          => '5px',
-				'read_more_button'               => 'default_link',
-				'read_more_button_text'          => __( 'Read more', 'dt-the7-core' ),
-				'show_details' 					 => '',
-				'show_link' 					 => '',
-				'show_zoom' 					 => '',
-				'project_link_icon'           	 => 'icon-portfolio-p205',
-				'external_link_icon'           	 => 'icon-portfolio-p204',
-				'image_zoom_icon'           	 => 'icon-portfolio-p203',
-				'project_icon_size'				 => '16px',
-				'dt_project_icon' 				 => '',
-				'project_icon_bg_size' 			 => '44px',
-				'project_icon_border_width'		 => '0',
-				'project_icon_border_radius'	 => '100px',
-				'project_icon_color' 			 => 'rgba(255,255,255,1)',
-				'project_icon_border'			 => 'y',
-				'project_icon_border_color'		 => '',
-				'project_icon_bg' 				 => 'y',
-				'project_icon_bg_color'			 => 'rgba(255,255,255,0.3)',
-				'dt_icon_hover' 				 => 'y',
-				'project_icon_color_hover' 		 => 'rgba(255,255,255,1)',
-				'project_icon_border_hover'		 => 'y',
-				'project_icon_border_color_hover'=> '',
-				'project_icon_bg_hover' 		 => 'y',
-				'project_icon_bg_color_hover' 	 => 'rgba(255,255,255,0.5)',
-				'project_icon_gap' 				 => '10px',
-				'project_icon_below_gap' 		 => '10px',
-				'project_icon_above_gap' 		 => '10px',
-				'order'                          => 'desc',
-				'orderby'                        => 'date',
-				'show_categories_filter'         => 'n',
-				'show_orderby_filter'            => 'n',
-				'show_order_filter'              => 'n',
-				'filter_position'				 => 'center',
-				'gap_below_category_filter'      => '',
-				'navigation_font_color'          => '',
-				'navigation_accent_color'        => '',
-				'css_dt_portfolio'         => '',
+				'post_type'                       => 'category',
+				'category'                        => '',
+				'posts'                           => '',
+				'posts_offset'                    => 0,
+				'mode'                            => 'masonry',
+				'loading_effect'                  => 'none',
+				'layout'                          => 'classic',
+				'bo_content_width'                => '75%',
+				'bo_content_overlap'              => '100px',
+				'hover_animation'                 => 'fade',
+				'content_bg'                      => 'y',
+				'custom_content_bg_color'         => '',
+				'post_content_paddings'           => '25px 30px 30px 30px',
+				'gap_between_posts'               => '15px',
+				'image_sizing'                    => 'resize',
+				'resized_image_dimensions'        => '1x1',
+				'image_paddings'                  => '0px 0px 0px 0px',
+				'image_scale_animation_on_hover'  => 'quick_scale',
+				'image_hover_bg_color'            => 'default',
+				'image_border_radius'             => '0px',
+				'image_decoration'                => 'none',
+				'shadow_h_length'                 => '0px',
+				'shadow_v_length'                 => '4px',
+				'shadow_blur_radius'              => '12px',
+				'shadow_spread'                   => '3px',
+				'shadow_color'                    => 'rgba(0,0,0,0.25)',
+				'custom_rollover_bg_color'        => 'rgba(0,0,0,0.5)',
+				'custom_rollover_bg_gradient'     => '45deg|rgba(12,239,154,0.8) 0%|rgba(0,108,220,0.8) 50%|rgba(184,38,220,0.8) 100%',
+				'responsiveness'                  => 'browser_width_based',
+				'bwb_columns'                     => 'desktop:3|h_tablet:3|v_tablet:2|phone:1',
+				'pwb_column_min_width'            => '',
+				'pwb_columns'                     => '',
+				'all_posts_the_same_width'        => 'n',
+				'loading_mode'                    => 'disabled',
+				'dis_posts_total'                 => '-1',
+				'st_posts_per_page'               => '',
+				'st_show_all_pages'               => 'n',
+				'st_gap_before_pagination'        => '',
+				'jsp_posts_total'                 => '-1',
+				'jsp_posts_per_page'              => '',
+				'jsp_show_all_pages'              => 'n',
+				'jsp_gap_before_pagination'       => '',
+				'jsm_posts_total'                 => '-1',
+				'jsm_posts_per_page'              => '',
+				'jsm_gap_before_pagination'       => '',
+				'jsl_posts_total'                 => '-1',
+				'jsl_posts_per_page'              => '',
+				'content_alignment'               => 'left',
+				'link_lead'                       => 'go_to_project',
+				'post_title_font_style'           => ':bold:',
+				'post_title_font_size'            => '',
+				'post_title_line_height'          => '',
+				'custom_title_color'              => '',
+				'post_title_bottom_margin'        => '5px',
+				'post_date'                       => 'y',
+				'post_category'                   => 'y',
+				'post_author'                     => 'y',
+				'post_comments'                   => 'y',
+				'meta_info_font_style'            => '',
+				'meta_info_font_size'             => '',
+				'meta_info_line_height'           => '',
+				'custom_meta_color'               => '',
+				'meta_info_bottom_margin'         => '15px',
+				'post_content'                    => 'show_excerpt',
+				'excerpt_words_limit'             => '',
+				'content_font_style'              => '',
+				'content_font_size'               => '',
+				'content_line_height'             => '',
+				'custom_content_color'            => '',
+				'content_bottom_margin'           => '5px',
+				'read_more_button'                => 'default_link',
+				'read_more_button_text'           => __( 'Read more', 'dt-the7-core' ),
+				'show_details'                    => '',
+				'show_link'                       => '',
+				'show_zoom'                       => '',
+				'project_link_icon'               => 'icon-portfolio-p205',
+				'external_link_icon'              => 'icon-portfolio-p204',
+				'image_zoom_icon'                 => 'icon-portfolio-p203',
+				'project_icon_size'               => '16px',
+				'dt_project_icon'                 => '',
+				'project_icon_bg_size'            => '44px',
+				'project_icon_border_width'       => '0',
+				'project_icon_border_radius'      => '100px',
+				'project_icon_color'              => 'rgba(255,255,255,1)',
+				'project_icon_border'             => 'y',
+				'project_icon_border_color'       => '',
+				'project_icon_bg'                 => 'y',
+				'project_icon_bg_color'           => 'rgba(255,255,255,0.3)',
+				'dt_icon_hover'                   => 'y',
+				'project_icon_color_hover'        => 'rgba(255,255,255,1)',
+				'project_icon_border_hover'       => 'y',
+				'project_icon_border_color_hover' => '',
+				'project_icon_bg_hover'           => 'y',
+				'project_icon_bg_color_hover'     => 'rgba(255,255,255,0.5)',
+				'project_icon_gap'                => '10px',
+				'project_icon_below_gap'          => '10px',
+				'project_icon_above_gap'          => '10px',
+				'order'                           => 'desc',
+				'orderby'                         => 'date',
+				'show_categories_filter'          => 'n',
+				'show_orderby_filter'             => 'n',
+				'show_order_filter'               => 'n',
+				'filter_position'                 => 'center',
+				'gap_below_category_filter'       => '',
+				'navigation_font_color'           => '',
+				'navigation_accent_color'         => '',
+				'css_dt_portfolio'                => '',
+				'allow_to_navigate_by_url'        => 'n',
 			);
 
 			parent::__construct();
@@ -210,9 +211,12 @@ if ( ! class_exists( 'DT_Shortcode_PortfolioMasonry', false ) ):
 				$filter_class[] = 'css-grid-filter';
 			}
 
-
 			if ( ! $this->get_flag( 'show_orderby_filter' ) && ! $this->get_flag( 'show_order_filter' ) ) {
 				$filter_class[] = 'extras-off';
+			}
+
+			if ( $this->allow_to_navigate_by_url() ) {
+				$filter_class[] = 'allow-navigation-by-url';
 			}
 
 			$config = presscore_config();
@@ -279,7 +283,7 @@ if ( ! class_exists( 'DT_Shortcode_PortfolioMasonry', false ) ):
 
 				$post_media = '';
 				$target = '';
-				if ( $config->get( 'follow_external_link' ) ) {
+				if ( $config->get( 'follow_external_link' ) && $config->get( 'post.buttons.link.enabled' ) ) {
 					$follow_link = $config->get( 'post.buttons.link.url' );
 					$target      = $config->get( 'post.buttons.link.target_blank' );
 				} else {
@@ -740,7 +744,7 @@ if ( ! class_exists( 'DT_Shortcode_PortfolioMasonry', false ) ):
 			$config->set( 'template.posts_filter.order.enabled', $this->get_flag( 'show_order_filter' ) );
 			$config->set( 'post.preview.hover.animation', $this->get_att( 'hover_animation') );
 
-			if ( 'standard' === $this->get_att( 'loading_mode' ) ) {
+			if ( in_array( $this->get_att( 'loading_mode' ), array( 'standard' ) ) ) {
 				$config->set( 'show_all_pages', $this->get_flag( 'st_show_all_pages' ) );
 
 				// Allow sorting from request.
@@ -753,10 +757,12 @@ if ( ! class_exists( 'DT_Shortcode_PortfolioMasonry', false ) ):
 				}
 			} else {
 				$config->set( 'show_all_pages', $this->get_flag( 'jsp_show_all_pages' ) );
-
-				$config->set( 'request_display', false );
 				$config->set( 'order', $this->get_att( 'order' ) );
 				$config->set( 'orderby', $this->get_att( 'orderby' ) );
+
+				if ( ! $this->allow_to_navigate_by_url() ) {
+					$config->set( 'request_display', false );
+				}
 			}
 
 			$config->set( 'item_padding', $this->get_att( 'gap_between_posts' ) );
@@ -1174,6 +1180,13 @@ if ( ! class_exists( 'DT_Shortcode_PortfolioMasonry', false ) ):
 			}
 
 			return new WP_Query( $query_args );
+		}
+
+		/**
+		 * @return bool
+		 */
+		protected function allow_to_navigate_by_url() {
+			return $this->get_att( 'allow_to_navigate_by_url' ) === 'y';
 		}
 	}
 

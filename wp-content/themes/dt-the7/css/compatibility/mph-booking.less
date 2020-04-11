@@ -2,7 +2,7 @@
 	display: none;
 }
 //Search form
-.mphb_sc_search-form, {
+.mphb_sc_search-form {
 	.book-form & {
 		display: flex;
 		flex-flow: row wrap;
@@ -11,18 +11,6 @@
 	}
 }
 .single-mphb_room_type .mphb-booking-form {
-	// display: flex;
-	// align-items: flex-end;
-	// justify-content: space-between;
-	& .mphb-check-in-date-wrapper,
-	& .mphb-check-out-date-wrapper {
-		//width: 30%;
-	}
-	& p {
-		// display: flex;
-		// flex-flow: column;
-		// align-items: flex-end;
-	}
 	& .mphb-required-fields-tip {
 		display: none;
 	}
@@ -30,23 +18,15 @@
 		display: none;
 	}
 	& label {
-		//width: auto;
 		margin-bottom: 5px;
-    padding-right: 10px;
-	}
-	& input {
-		//width: auto;
-	}
-	& select {
-		//max-width: 50px;
-		//width: auto;
+    	padding-right: 10px;
 	}
 	& .mphb-reserve-btn {
 		margin-bottom: 10px;
 	}
 }
-.mphb_sc_search-form input,
-.mphb_sc_search-form select, {
+.mphb_sc_search-form input:not(.elementor-field),
+.mphb_sc_search-form select:not(.elementor-field) {
 	.book-form & {
 		margin-bottom: 0;
 		border: none;
@@ -227,7 +207,6 @@
 .mphb-to-book-btn-wrapper  {
 	.mphb_sc_rooms-wrapper &,
 	.archive & {
-		-webkit-align-self: flex-start;
 	    -ms-align-self: flex-start;
 	    align-self: flex-start;
 	    padding-top: 10px;
@@ -253,11 +232,9 @@
 .archive .mphb-room-type,
 .mphb_sc_rooms-wrapper .mphb-room-type,
 .mphb_sc_search_results-wrapper .mphb-room-type {
-	display: -webkit-inline-flex;
 	display: -ms-inline-flexbox;
 	display: -ms-inline-flex;
 	display: inline-flex;
-    -webkit-flex-flow: row wrap;
     -moz-flex-flow: row wrap;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
@@ -292,8 +269,6 @@
 		margin-bottom: 25px;
 	}
 	& .mphb-regular-price {
-		-webkit-flex: 1 0 100%;
-		-moz-flex: 1 0 100%;
 		-ms-flex: 1 0 100%;
 		flex: 1 0 100%;
 		order: 1;
@@ -302,9 +277,7 @@
 		font: @h6-font-style @h6-font-variant @h6-font-weight @h6-font-size~"/"@h6-line-height @h6-font-family;
 		text-transform: @h6-text-transform;
 	}
-	& .mphb-room-type-title {	
-		-webkit-flex: 1 0 100%;
-		-moz-flex: 1 0 100%;
+	& .mphb-room-type-title {
 		-ms-flex: 1 0 100%;
 		flex: 1 0 100%;
 		font: @h4-font-style @h4-font-variant @h4-font-weight @h4-font-size~"/"@h4-line-height @h4-font-family;
@@ -340,7 +313,6 @@
 			width: 100%;
 			height: 2px;
 			content: "";
-			-webkit-transition: opacity 0.3s ease;
 		 	transition: opacity 0.3s ease;
 			background: @accent-bg-color;
 		}
@@ -349,12 +321,9 @@
 //Service
 .mphb_sc_services-wrapper {
 	& .mphb-service {
-		display: -webkit-flex;
 	    display: -ms-flexbox;
 	    display: -ms-flex;
 	    display: flex;
-	    -webkit-flex-flow: row wrap;
-	    -moz-flex-flow: row wrap;
 	    -ms-flex-flow: row wrap;
 	    flex-flow: row wrap;
 		width: 33.333%;
@@ -696,4 +665,9 @@ input[type="submit"] {
 }
 .datepick-popup {
 	box-sizing: border-box;
+}
+.datepick-month-header select:not(.elementor-field), .datepick-month-header input:not(.elementor-field) {
+	border: none;
+	min-width: 65px;
+	margin-bottom: 0;
 }

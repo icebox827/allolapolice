@@ -1,19 +1,7 @@
 
-	.top-bar,
-	.header-bar,
-	.mobile-header-bar {
-	 	.masthead:not(.side-header):not(.side-header-menu-icon) & {
-			max-width: calc(@content-width  ~"-" @header-right-padding ~"-" @header-left-padding);
-			margin: 0 auto;
-		}
-		.masthead:not(.side-header).full-width &,
-		.masthead.side-header-menu-icon {
-			max-width: 100%;
-		}
-	}
-	.phantom-sticky .boxed .masthead:not(.side-header).sticky-on {
-		max-width: @box-width;
-	}
+.phantom-sticky .boxed .masthead:not(.side-header).sticky-on {
+	max-width: @box-width;
+}
 .boxed .top-bar-bg,
 .boxed .classic-header .navigation:before {
 	width: 100%;
